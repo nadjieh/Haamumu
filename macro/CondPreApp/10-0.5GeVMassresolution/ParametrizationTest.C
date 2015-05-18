@@ -94,6 +94,27 @@ void ParametrizationTest() {
     c->SetLeftMargin(0.15);
     frame3->GetYaxis()->SetTitleOffset(1.6);
     frame3->Draw();
+
+    /*
+     * Test
+     */
     
-    
+    RooRealVar mean("mean", "mean", 29.96002);
+    RooRealVar sigma("sigma", "sigma", 0.2829472);
+    RooRealVar width("width", "width", 29.96002);
+    RooVoigtian Voig("tmp", "", *var, mean, width, sigma);
+
+    //RooRealVar mean_cb("mean_cb", "Mean", MeanCBInit.mean, MeanCBInit.low, MeanCBInit.high);
+    RooRealVar sigma_cb("sigma_cb", "Width", SigmaCBInit.mean, SigmaCBInit.low, SigmaCBInit.high);
+    RooRealVar n("n", "", 3.12);
+    //            RooRealVar n("n", "", NInit.mean, NInit.low, NInit.high);
+    //            RooRealVar alpha("alpha", "", AlphaInit.mean, AlphaInit.low, AlphaInit.high);
+    RooRealVar alpha("alpha", "", AlphaInit.mean);
+    //            RooCBShape CB("cball", "crystal ball", *var, mean_cb, sigma_cb, alpha, n);
+    RooCBShape CB("cball", "crystal ball", *var, mean, sigma_cb, alpha, n);
+
+    //            RooRealVar frac("frac", "frac", 0.5, 0., 1.);
+    RooRealVar frac("frac", "frac", 0.612);
+    RooAddPdf Voig2("sum", "Gaussian crystal ball and Voig PDF", RooArgList(Voig, CB), RooArgList(frac));
+    RooFitResult * ret = Voig2.fitTo(*data, RooFit::Save());
 }

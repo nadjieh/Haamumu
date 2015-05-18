@@ -36,10 +36,10 @@ int main(int argc, char** argv) {
     myMasses[2]->SetSigmaInit(0.2, 0.0, 1.);
 
     myMasses.push_back(new MassPoint(60, "H2ToH1H1_H1To2Mu2B_mH2-125_mH1-", "_LowJetPt10_Summer12_final_4_4.root", "H2ToH1H1_H1To2Mu2B_mH2-125_mH1_", "_Summer12_final_4_4.root"));
-    myMasses[3]->SetNInit(3., 0., 6.);
+    myMasses[3]->SetNInit(2., 0., 4.);
     myMasses[3]->SetAlphaInit(1.09, 0.0, 5.0);
     myMasses[3]->SetWidthInit(1., 0.0, 3.);
-    myMasses[3]->SetSigmaInit(0.2, 0.0, 1.);
+    myMasses[3]->SetSigmaInit(0.7, 0.0, 2.5);
     myMasses[3]->SetMeanCBInit(60., 50., 70.);
 
     for (unsigned int i = 0; i < myMasses.size(); i++) {
@@ -75,7 +75,7 @@ int main(int argc, char** argv) {
         //        mean_cb.value = paramNominal["mean_cb"];
         sigma_cb.value = paramNominal["sigma_cb"];
         sigma.value = paramNominal["sigma"];
-        width.value = paramNominal["width"];
+        //        width.value = paramNominal["width"];
         //        frac.value = paramNominal["frac"];
         //        n.value = paramNominal["n"];
         //        alpha.value = paramNominal["alpha"];
@@ -85,7 +85,7 @@ int main(int argc, char** argv) {
         //        mean_cb.statUnc = paramNominalErr["mean_cb"];
         sigma_cb.statUnc = paramNominalErr["sigma_cb"];
         sigma.statUnc = paramNominalErr["sigma"];
-        width.statUnc = paramNominalErr["width"];
+        //        width.statUnc = paramNominalErr["width"];
         //        frac.statUnc = paramNominalErr["frac"];
         //        n.statUnc = paramNominalErr["n"];
         //        alpha.statUnc = paramNominalErr["alpha"];
@@ -101,8 +101,8 @@ int main(int argc, char** argv) {
         sigma_cb.bUp = paramSystb["sigma_cb"].second;
         //        alpha.bDown = paramSystb["alpha"].first;
         //        alpha.bUp = paramSystb["alpha"].second;
-        width.bDown = paramSystb["width"].first;
-        width.bUp = paramSystb["width"].second;
+        //        width.bDown = paramSystb["width"].first;
+        //        width.bUp = paramSystb["width"].second;
         //        frac.bDown = paramSystb["frac"].first;
         //        frac.bUp = paramSystb["frac"].second;
         //        n.bDown = paramSystb["n"].first;
@@ -119,8 +119,8 @@ int main(int argc, char** argv) {
         sigma_cb.JESU = paramSystJES["sigma_cb"].second;
         //        alpha.JESD = paramSystJES["alpha"].first;
         //        alpha.JESU = paramSystJES["alpha"].second;
-        width.JESD = paramSystb["width"].first;
-        width.JESU = paramSystb["width"].second;
+        //        width.JESD = paramSystb["width"].first;
+        //        width.JESU = paramSystb["width"].second;
         //        frac.JESD = paramSystJES["frac"].first;
         //        frac.JESU = paramSystJES["frac"].second;
         //        n.JESD = paramSystJES["n"].first;
@@ -137,8 +137,8 @@ int main(int argc, char** argv) {
         sigma_cb.JERU = paramSystJER["sigma_cb"].second;
         //        alpha.JERD = paramSystJER["alpha"].first;
         //        alpha.JERU = paramSystJER["alpha"].second;
-        width.JERD = paramSystb["width"].first;
-        width.JERU = paramSystb["width"].second;
+        //        width.JERD = paramSystb["width"].first;
+        //        width.JERU = paramSystb["width"].second;
         //        frac.JERD = paramSystJER["frac"].first;
         //        frac.JERU = paramSystJER["frac"].second;
         //        n.JERD = paramSystJER["n"].first;
@@ -155,8 +155,8 @@ int main(int argc, char** argv) {
         sigma_cb.muu = paramSystmu["sigma_cb"].second;
         //        alpha.mud = paramSystmu["alpha"].first;
         //        alpha.muu = paramSystmu["alpha"].second;
-        width.mud = paramSystb["width"].first;
-        width.muu = paramSystb["width"].second;
+        //        width.mud = paramSystb["width"].first;
+        //        width.muu = paramSystb["width"].second;
         //        frac.mud = paramSystmu["frac"].first;
         //        frac.muu = paramSystmu["frac"].second;
         //        n.mud = paramSystmu["n"].first;
@@ -173,8 +173,8 @@ int main(int argc, char** argv) {
         sigma_cb.puu = paramSystpu["sigma_cb"].second;
         //        alpha.pud = paramSystpu["alpha"].first;
         //        alpha.puu = paramSystpu["alpha"].second;
-        width.pud = paramSystb["width"].first;
-        width.puu = paramSystb["width"].second;
+        //        width.pud = paramSystb["width"].first;
+        //        width.puu = paramSystb["width"].second;
         //        frac.pud = paramSystpu["frac"].first;
         //        frac.puu = paramSystpu["frac"].second;
         //        n.pud = paramSystpu["n"].first;

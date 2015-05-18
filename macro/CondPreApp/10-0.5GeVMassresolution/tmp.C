@@ -477,6 +477,7 @@
    PrevFitTMP->SetParameter(6,1.920123e-11);
    PrevFitTMP->SetParError(6,1.911263e-12);
    PrevFitTMP->SetParLimits(6,0,0);
+   cout<<PrevFitTMP->Eval(30)<<endl;
    grae->GetListOfFunctions()->Add(PrevFitTMP);
    
    grae->Draw("p|>");

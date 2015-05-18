@@ -161,7 +161,8 @@ public:
             TH1D * hist = (TH1D*) data->createHistogram("hist" + syst, *var, RooFit::Binning(nbin));
             RooRealVar mean("mean" + syst, "mean" + syst, hist->GetMean(), MeanInit.low * hist->GetMean(), MeanInit.high * hist->GetMean());
             RooRealVar sigma("sigma" + syst, "sigma" + syst, SigmaInit.mean, SigmaInit.low, SigmaInit.high);
-            RooRealVar width("width" + syst, "width" + syst, hist->GetRMS(), WidthInit.low * hist->GetRMS(), WidthInit.high * hist->GetRMS());
+            //            RooRealVar width("width" + syst, "width" + syst, hist->GetRMS(), WidthInit.low * hist->GetRMS(), WidthInit.high * hist->GetRMS());
+            RooRealVar width("width" + syst, "width" + syst, 0.033);
             RooVoigtian Voig("tmp" + syst, "" + syst, *var, mean, width, sigma);
 
             //RooRealVar mean_cb("mean_cb" + syst, "Mean" + syst, MeanCBInit.mean, MeanCBInit.low, MeanCBInit.high);
@@ -185,7 +186,8 @@ public:
             TH1D * hist = (TH1D*) data->createHistogram("hist" + syst, *var, RooFit::Binning(nbin));
             RooRealVar mean("mean" + syst, "mean" + syst, hist->GetMean(), MeanInit.low * hist->GetMean(), MeanInit.high * hist->GetMean());
             RooRealVar sigma("sigma" + syst, "sigma" + syst, SigmaInit.mean, SigmaInit.low, SigmaInit.high);
-            RooRealVar width("width" + syst, "width" + syst, hist->GetRMS(), WidthInit.low * hist->GetRMS(), WidthInit.high * hist->GetRMS());
+            //            RooRealVar width("width" + syst, "width" + syst, hist->GetRMS(), WidthInit.low * hist->GetRMS(), WidthInit.high * hist->GetRMS());
+            RooRealVar width("width" + syst, "width" + syst, 0.033);
             RooVoigtian Voig("tmp" + syst, "" + syst, *var, mean, width, sigma);
 
             //            RooRealVar mean_cb("mean_cb" + syst, "Mean" + syst, MeanCBInit.mean, MeanCBInit.low, MeanCBInit.high);
@@ -196,7 +198,7 @@ public:
             //                    paramNominal["n"] - paramNominalErr["n"],
             //                    paramNominal["n"] + paramNominalErr["n"]
             //                    );
-            //            cout << "RooRealVar n(\"n\"+" << syst << ", \"\" + " << syst << ", " << paramNominal["n"]
+            //            //            cout << "RooRealVar n(\"n\"+" << syst << ", \"\" + " << syst << ", " << paramNominal["n"]
             //                    << ", " << paramNominal["n"] - paramNominalErr["n"]
             //                    << ", " << paramNominal["n"] + paramNominalErr["n"] << " );" << endl;
             //            RooRealVar alpha("alpha" + syst, "" + syst, AlphaInit.mean, AlphaInit.low, AlphaInit.high
@@ -226,7 +228,7 @@ public:
         RooFitResult * iFRN = fitToSignal(nominal);
         paramNominal["mean" ] = ((RooRealVar*) iFRN->floatParsFinal().find("mean"))->getVal();
         paramNominal["sigma" ] = ((RooRealVar*) iFRN->floatParsFinal().find("sigma"))->getVal();
-        paramNominal["width" ] = ((RooRealVar*) iFRN->floatParsFinal().find("width"))->getVal();
+        //        paramNominal["width" ] = ((RooRealVar*) iFRN->floatParsFinal().find("width"))->getVal();
         //        paramNominal["mean_cb" ] = ((RooRealVar*) iFRN->floatParsFinal().find("mean_cb"))->getVal();
         paramNominal["sigma_cb" ] = ((RooRealVar*) iFRN->floatParsFinal().find("sigma_cb"))->getVal();
         //        paramNominal["alpha" ] = ((RooRealVar*) iFRN->floatParsFinal().find("alpha"))->getVal();
@@ -234,7 +236,7 @@ public:
         //        paramNominal["frac" ] = ((RooRealVar*) iFRN->floatParsFinal().find("frac"))->getVal();
         paramNominalErr["mean" ] = ((RooRealVar*) iFRN->floatParsFinal().find("mean"))->getError();
         paramNominalErr["sigma" ] = ((RooRealVar*) iFRN->floatParsFinal().find("sigma"))->getError();
-        paramNominalErr["width" ] = ((RooRealVar*) iFRN->floatParsFinal().find("width"))->getError();
+        //        paramNominalErr["width" ] = ((RooRealVar*) iFRN->floatParsFinal().find("width"))->getError();
         //        paramNominalErr["mean_cb" ] = ((RooRealVar*) iFRN->floatParsFinal().find("mean_cb"))->getError();
         paramNominalErr["sigma_cb" ] = ((RooRealVar*) iFRN->floatParsFinal().find("sigma_cb"))->getError();
         //        paramNominalErr["alpha" ] = ((RooRealVar*) iFRN->floatParsFinal().find("alpha"))->getError();
@@ -246,7 +248,8 @@ public:
             RooPlot * pl = var->frame();
             nominal->plotOn(pl);
             RooVoigtian * Voig = new RooVoigtian("tmpDraw", "", *var, *((RooRealVar*) iFRN->floatParsFinal().find("mean")),
-                    *((RooRealVar*) iFRN->floatParsFinal().find("width")),
+                    //                    *((RooRealVar*) iFRN->floatParsFinal().find("width")),
+                    *(new RooRealVar("TMPW", "TMPW", 0.033)),
                     *((RooRealVar*) iFRN->floatParsFinal().find("sigma")));
             //            RooCBShape * CB = new RooCBShape("cballDraw", "crystal ball", *var, *((RooRealVar*) iFRN->floatParsFinal().find("mean_cb")),
             RooCBShape * CB = new RooCBShape("cballDraw", "crystal ball", *var, *((RooRealVar*) iFRN->floatParsFinal().find("mean")),
@@ -272,7 +275,7 @@ public:
             RooFitResult * iFRU = fitToSignal(systUp[iu], systprefix[(2 * iu) + 1]);
             paramUp["mean" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("mean" + systprefix[(2 * iu) + 1]))->getVal();
             paramUp["sigma" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("sigma" + systprefix[(2 * iu) + 1]))->getVal();
-            paramUp["width" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("width" + systprefix[(2 * iu) + 1]))->getVal();
+            //            paramUp["width" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("width" + systprefix[(2 * iu) + 1]))->getVal();
             //            paramUp["mean_cb" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("mean_cb" + systprefix[(2 * iu) + 1]))->getVal();
             paramUp["mean" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("mean" + systprefix[(2 * iu) + 1]))->getVal();
             paramUp["sigma_cb" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("sigma_cb" + systprefix[(2 * iu) + 1]))->getVal();
@@ -286,7 +289,7 @@ public:
             RooFitResult * iFRD = fitToSignal(systDown[iu], systprefix[(2 * iu)]);
             paramDown["mean" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("mean" + systprefix[(2 * iu)]))->getVal();
             paramDown["sigma" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("sigma" + systprefix[(2 * iu)]))->getVal();
-            paramDown["width" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("width" + systprefix[(2 * iu)]))->getVal();
+            //            paramDown["width" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("width" + systprefix[(2 * iu)]))->getVal();
             //            paramDown["mean_cb" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("mean_cb" + systprefix[(2 * iu)]))->getVal();
             paramDown["mean" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("mean" + systprefix[(2 * iu)]))->getVal();
             paramDown["sigma_cb" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("sigma_cb" + systprefix[(2 * iu)]))->getVal();

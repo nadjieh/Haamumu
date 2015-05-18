@@ -276,6 +276,19 @@ public:
             ret.pud = this->mean_cb_pud;
             ret.muu = this->mean_cb_bup;
             ret.mud = this->mean_cb_mud;
+        } else if (input == "width") {
+            ret.value = this->width_value;
+            ret.statUnc = this->width_statUnc;
+            ret.JESD = this->width_JESD;
+            ret.JESU = this->width_JESU;
+            ret.JERD = this->width_JERD;
+            ret.JERU = this->width_JERU;
+            ret.bUp = this->width_bup;
+            ret.bDown = this->width_bDown;
+            ret.puu = this->width_bup;
+            ret.pud = this->width_pud;
+            ret.muu = this->width_bup;
+            ret.mud = this->width_mud;
         } else if (input == "sigma_cb") {
             ret.value = this->sigma_cb_value;
             ret.statUnc = this->sigma_cb_statUnc;

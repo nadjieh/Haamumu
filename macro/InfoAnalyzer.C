@@ -111,13 +111,13 @@ int main(int argc, char** argv) {
         //        mean_cb_eH[i] = fabs(mean_cbSyst.second);
         //        mean_cb_e[i] = mean_cb2.statUnc;
 
-        cout << "width" << endl;
-        width2 = myME->MakeStruct("width");
-        width[i] = width2.value;
-        std::pair<double, double> widthSyst = GetEnvelope(width2);
-        width_eL[i] = fabs(widthSyst.first);
-        width_eH[i] = fabs(widthSyst.second);
-        width_e[i] = width2.statUnc;
+        //        cout << "width" << endl;
+        //        width2 = myME->MakeStruct("width");
+        //        width[i] = width2.value;
+        //        std::pair<double, double> widthSyst = GetEnvelope(width2);
+        //        width_eL[i] = fabs(widthSyst.first);
+        //        width_eH[i] = fabs(widthSyst.second);
+        //        width_e[i] = width2.statUnc;
 
         cout << "sigma" << endl;
         sigma2 = myME->MakeStruct("sigma");
@@ -168,8 +168,8 @@ int main(int argc, char** argv) {
     //    MeanCB.SetNameTitle("mean_cb", "mean_cb");
     TGraphAsymmErrors SigmaCB(4, mass, sigma_cb, mass_eL, mass_eH, sigma_cb_eL, sigma_cb_eH);
     SigmaCB.SetNameTitle("sigma_cb", "sigma_cb");
-    TGraphAsymmErrors Width(4, mass, width, mass_eL, mass_eH, width_eL, width_eH);
-    Width.SetNameTitle("width", "width");
+    //    TGraphAsymmErrors Width(4, mass, width, mass_eL, mass_eH, width_eL, width_eH);
+    //    Width.SetNameTitle("width", "width");
     //    TGraphAsymmErrors N(4, mass, n, mass_eL, mass_eH, n_eL, n_eH);
     //    N.SetNameTitle("n", "n");
     //    TGraphAsymmErrors Alpha(4, mass, alpha, mass_eL, mass_eH, alpha_eL, alpha_eH);
@@ -185,8 +185,8 @@ int main(int argc, char** argv) {
     //    MeanCBStat.SetNameTitle("mean_cbStat", "mean_cb");
     TGraphErrors SigmaCBStat(4, mass, sigma_cb, mass_eL, sigma_cb_e);
     SigmaCBStat.SetNameTitle("sigma_cbStat", "sigma_cb");
-    TGraphErrors WidthStat(4, mass, width, mass_eL, width_e);
-    WidthStat.SetNameTitle("widthStat", "width");
+    //    TGraphErrors WidthStat(4, mass, width, mass_eL, width_e);
+    //    WidthStat.SetNameTitle("widthStat", "width");
     //    TGraphErrors NStat(4, mass, n, mass_eL, n_e);
     //    NStat.SetNameTitle("nStat", "n");
     //    TGraphErrors AlphaStat(4, mass, alpha, mass_eL, alpha_e);
@@ -199,7 +199,7 @@ int main(int argc, char** argv) {
     Sigma.Write();
     //    MeanCB.Write();
     SigmaCB.Write();
-    Width.Write();
+    //    Width.Write();
     //    N.Write();
     //    Alpha.Write();
     //    Frac.Write();
@@ -207,7 +207,7 @@ int main(int argc, char** argv) {
     SigmaStat.Write();
     //    MeanCBStat.Write();
     SigmaCBStat.Write();
-    WidthStat.Write();
+    //    WidthStat.Write();
     //    NStat.Write();
     //    AlphaStat.Write();
     //    FracStat.Write();
