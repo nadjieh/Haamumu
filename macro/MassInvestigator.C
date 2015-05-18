@@ -76,7 +76,7 @@ int main(int argc, char** argv) {
         sigma_cb.value = paramNominal["sigma_cb"];
         sigma.value = paramNominal["sigma"];
         width.value = paramNominal["width"];
-        frac.value = paramNominal["frac"];
+        //        frac.value = paramNominal["frac"];
         n.value = paramNominal["n"];
         //        alpha.value = paramNominal["alpha"];
 
@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
         sigma_cb.statUnc = paramNominalErr["sigma_cb"];
         sigma.statUnc = paramNominalErr["sigma"];
         width.statUnc = paramNominalErr["width"];
-        frac.statUnc = paramNominalErr["frac"];
+        //        frac.statUnc = paramNominalErr["frac"];
         n.statUnc = paramNominalErr["n"];
         //        alpha.statUnc = paramNominalErr["alpha"];
 
@@ -103,8 +103,8 @@ int main(int argc, char** argv) {
         //        alpha.bUp = paramSystb["alpha"].second;
         width.bDown = paramSystb["width"].first;
         width.bUp = paramSystb["width"].second;
-        frac.bDown = paramSystb["frac"].first;
-        frac.bUp = paramSystb["frac"].second;
+        //        frac.bDown = paramSystb["frac"].first;
+        //        frac.bUp = paramSystb["frac"].second;
         n.bDown = paramSystb["n"].first;
         n.bUp = paramSystb["n"].second;
 
@@ -121,8 +121,8 @@ int main(int argc, char** argv) {
         //        alpha.JESU = paramSystJES["alpha"].second;
         width.JESD = paramSystb["width"].first;
         width.JESU = paramSystb["width"].second;
-        frac.JESD = paramSystJES["frac"].first;
-        frac.JESU = paramSystJES["frac"].second;
+        //        frac.JESD = paramSystJES["frac"].first;
+        //        frac.JESU = paramSystJES["frac"].second;
         n.JESD = paramSystJES["n"].first;
         n.JESU = paramSystJES["n"].second;
 
@@ -139,8 +139,8 @@ int main(int argc, char** argv) {
         //        alpha.JERU = paramSystJER["alpha"].second;
         width.JERD = paramSystb["width"].first;
         width.JERU = paramSystb["width"].second;
-        frac.JERD = paramSystJER["frac"].first;
-        frac.JERU = paramSystJER["frac"].second;
+        //        frac.JERD = paramSystJER["frac"].first;
+        //        frac.JERU = paramSystJER["frac"].second;
         n.JERD = paramSystJER["n"].first;
         n.JERU = paramSystJER["n"].second;
 
@@ -157,8 +157,8 @@ int main(int argc, char** argv) {
         //        alpha.muu = paramSystmu["alpha"].second;
         width.mud = paramSystb["width"].first;
         width.muu = paramSystb["width"].second;
-        frac.mud = paramSystmu["frac"].first;
-        frac.muu = paramSystmu["frac"].second;
+        //        frac.mud = paramSystmu["frac"].first;
+        //        frac.muu = paramSystmu["frac"].second;
         n.mud = paramSystmu["n"].first;
         n.muu = paramSystmu["n"].second;
 
@@ -175,8 +175,8 @@ int main(int argc, char** argv) {
         //        alpha.puu = paramSystpu["alpha"].second;
         width.pud = paramSystb["width"].first;
         width.puu = paramSystb["width"].second;
-        frac.pud = paramSystpu["frac"].first;
-        frac.puu = paramSystpu["frac"].second;
+        //        frac.pud = paramSystpu["frac"].first;
+        //        frac.puu = paramSystpu["frac"].second;
         n.pud = paramSystpu["n"].first;
         n.puu = paramSystpu["n"].second;
         MassTree.Fill();

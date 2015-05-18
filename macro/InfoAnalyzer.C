@@ -136,13 +136,13 @@ int main(int argc, char** argv) {
         sigma_cb_eH[i] = fabs(sigma_cbSyst.second);
         sigma_cb_e[i] = sigma_cb2.statUnc;
 
-        cout << "frac ----" << endl;
-        frac2 = myME->MakeStruct("frac");
-        frac[i] = frac2.value;
-        std::pair<double, double> fracSyst = GetEnvelope(frac2);
-        frac_eL[i] = fabs(fracSyst.first);
-        frac_eH[i] = fabs(fracSyst.second);
-        frac_e[i] = frac2.statUnc;
+        //        cout << "frac ----" << endl;
+        //        frac2 = myME->MakeStruct("frac");
+        //        frac[i] = frac2.value;
+        //        std::pair<double, double> fracSyst = GetEnvelope(frac2);
+        //        frac_eL[i] = fabs(fracSyst.first);
+        //        frac_eH[i] = fabs(fracSyst.second);
+        //        frac_e[i] = frac2.statUnc;
 
         //        cout << "alpha" << endl;
         //        alpha2 = myME->MakeStruct("alpha");
@@ -174,8 +174,8 @@ int main(int argc, char** argv) {
     N.SetNameTitle("n", "n");
     //    TGraphAsymmErrors Alpha(4, mass, alpha, mass_eL, mass_eH, alpha_eL, alpha_eH);
     //    Alpha.SetNameTitle("alpha", "alpha");
-    TGraphAsymmErrors Frac(4, mass, frac, mass_eL, mass_eH, frac_eL, frac_eH);
-    Frac.SetNameTitle("frac", "frac");
+    //    TGraphAsymmErrors Frac(4, mass, frac, mass_eL, mass_eH, frac_eL, frac_eH);
+    //    Frac.SetNameTitle("frac", "frac");
 
     TGraphErrors MeanStat(4, mass, mean, mass_eL, mean_e);
     MeanStat.SetNameTitle("meanStat", "mean");
@@ -191,8 +191,8 @@ int main(int argc, char** argv) {
     NStat.SetNameTitle("nStat", "n");
     //    TGraphErrors AlphaStat(4, mass, alpha, mass_eL, alpha_e);
     //    AlphaStat.SetNameTitle("alphaStat", "alpha");
-    TGraphErrors FracStat(4, mass, frac, mass_eL, frac_e);
-    FracStat.SetNameTitle("fracStat", "frac");
+    //    TGraphErrors FracStat(4, mass, frac, mass_eL, frac_e);
+    //    FracStat.SetNameTitle("fracStat", "frac");
 
     TFile fout("graphs.root", "recreate");
     Mean.Write();
@@ -202,7 +202,7 @@ int main(int argc, char** argv) {
     Width.Write();
     N.Write();
     //    Alpha.Write();
-    Frac.Write();
+    //    Frac.Write();
     MeanStat.Write();
     SigmaStat.Write();
     //    MeanCBStat.Write();
@@ -210,7 +210,7 @@ int main(int argc, char** argv) {
     WidthStat.Write();
     NStat.Write();
     //    AlphaStat.Write();
-    FracStat.Write();
+    //    FracStat.Write();
     fout.Close();
     return 0;
 }

@@ -173,8 +173,8 @@ public:
             //            RooCBShape CB("cball" + syst, "crystal ball" + syst, *var, mean_cb, sigma_cb, alpha, n);
             RooCBShape CB("cball" + syst, "crystal ball" + syst, *var, mean, sigma_cb, alpha, n);
 
-            RooRealVar frac("frac" + syst, "frac" + syst, 0.612, 0., 1.);
-            //            RooRealVar frac("frac" + syst, "frac" + syst, 0.612);
+            //            RooRealVar frac("frac" + syst, "frac" + syst, 0.612, 0., 1.);
+            RooRealVar frac("frac" + syst, "frac" + syst, 0.612);
             RooAddPdf Voig2("sum" + syst, "Gaussian crystal ball and Voig PDF" + syst, RooArgList(Voig, CB), RooArgList(frac));
             RooFitResult * ret = Voig2.fitTo(*data, RooFit::Save());
 
@@ -205,11 +205,11 @@ public:
             //            RooCBShape CB("cball" + syst, "crystal ball" + syst, *var, mean_cb, sigma_cb, alpha, n);
             RooCBShape CB("cball" + syst, "crystal ball" + syst, *var, mean, sigma_cb, alpha, n);
 
-            //            RooRealVar frac("frac" + syst, "frac" + syst, 0.612);
-            RooRealVar frac("frac" + syst, "frac" + syst, paramNominal["frac"],
-                    paramNominal["frac"] - paramNominalErr["frac"],
-                    paramNominal["frac"] + paramNominalErr["frac"]
-                    );
+            RooRealVar frac("frac" + syst, "frac" + syst, 0.612);
+            //            RooRealVar frac("frac" + syst, "frac" + syst, paramNominal["frac"],
+            //                    paramNominal["frac"] - paramNominalErr["frac"],
+            //                    paramNominal["frac"] + paramNominalErr["frac"]
+            //                    );
             //            cout << "RooRealVar frac(\"frac\"+" << syst << ", \"\" + " << syst << ", " << paramNominal["frac"]
             //                    << ", " << paramNominal["frac"] - paramNominalErr["frac"]
             //                    << ", " << paramNominal["frac"] + paramNominalErr["frac"] << " );" << endl;
@@ -231,7 +231,7 @@ public:
         paramNominal["sigma_cb" ] = ((RooRealVar*) iFRN->floatParsFinal().find("sigma_cb"))->getVal();
         //        paramNominal["alpha" ] = ((RooRealVar*) iFRN->floatParsFinal().find("alpha"))->getVal();
         paramNominal["n" ] = ((RooRealVar*) iFRN->floatParsFinal().find("n"))->getVal();
-        paramNominal["frac" ] = ((RooRealVar*) iFRN->floatParsFinal().find("frac"))->getVal();
+        //        paramNominal["frac" ] = ((RooRealVar*) iFRN->floatParsFinal().find("frac"))->getVal();
         paramNominalErr["mean" ] = ((RooRealVar*) iFRN->floatParsFinal().find("mean"))->getError();
         paramNominalErr["sigma" ] = ((RooRealVar*) iFRN->floatParsFinal().find("sigma"))->getError();
         paramNominalErr["width" ] = ((RooRealVar*) iFRN->floatParsFinal().find("width"))->getError();
@@ -239,7 +239,7 @@ public:
         paramNominalErr["sigma_cb" ] = ((RooRealVar*) iFRN->floatParsFinal().find("sigma_cb"))->getError();
         //        paramNominalErr["alpha" ] = ((RooRealVar*) iFRN->floatParsFinal().find("alpha"))->getError();
         paramNominalErr["n" ] = ((RooRealVar*) iFRN->floatParsFinal().find("n"))->getError();
-        paramNominalErr["frac" ] = ((RooRealVar*) iFRN->floatParsFinal().find("frac"))->getError();
+        //        paramNominalErr["frac" ] = ((RooRealVar*) iFRN->floatParsFinal().find("frac"))->getError();
         if (draw) {
             stringstream S;
             S << "plots_" << mass_ << ".C";
@@ -256,8 +256,8 @@ public:
                     //                    *(new RooRealVar("TMPN", "TMPN", 3.12)));
                     *((RooRealVar*) iFRN->floatParsFinal().find("n")));
             RooAddPdf * Voig2 = new RooAddPdf("sumDraw", "Gaussian crystal ball and Voig PDF", RooArgList(*Voig, *CB),
-                    //                    RooArgList(*(new RooRealVar("NAME", "", 0.612))));
-                    RooArgList(*((RooRealVar*) iFRN->floatParsFinal().find("frac"))));
+                    RooArgList(*(new RooRealVar("NAME", "", 0.612))));
+            //                    RooArgList(*((RooRealVar*) iFRN->floatParsFinal().find("frac"))));
             Voig2->plotOn(pl, RooFit::LineColor(kBlack));
             Voig2->plotOn(pl, RooFit::Components(*CB), RooFit::LineColor(kBlue));
             Voig2->plotOn(pl, RooFit::Components(*Voig), RooFit::LineColor(kRed));
@@ -278,7 +278,7 @@ public:
             paramUp["sigma_cb" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("sigma_cb" + systprefix[(2 * iu) + 1]))->getVal();
             //            paramUp["alpha" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("alpha" + systprefix[(2 * iu) + 1]))->getVal();
             paramUp["n" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("n" + systprefix[(2 * iu) + 1]))->getVal();
-            paramUp["frac" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("frac" + systprefix[(2 * iu) + 1]))->getVal();
+            //            paramUp["frac" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("frac" + systprefix[(2 * iu) + 1]))->getVal();
             delete iFRU;
         }
         for (unsigned int iu = 0; iu < systDown.size(); iu++) {
@@ -292,7 +292,7 @@ public:
             paramDown["sigma_cb" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("sigma_cb" + systprefix[(2 * iu)]))->getVal();
             //            paramDown["alpha" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("alpha" + systprefix[(2 * iu)]))->getVal();
             paramDown["n" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("n" + systprefix[(2 * iu)]))->getVal();
-            paramDown["frac" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("frac" + systprefix[(2 * iu)]))->getVal();
+            //            paramDown["frac" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("frac" + systprefix[(2 * iu)]))->getVal();
             delete iFRD;
         }
 
