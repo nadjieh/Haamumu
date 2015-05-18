@@ -152,13 +152,13 @@ int main(int argc, char** argv) {
         //        alpha_eH[i] = fabs(alphaSyst.second);
         //        alpha_e[i] = alpha2.statUnc;
 
-        cout << "n" << endl;
-        n2 = myME->MakeStruct("n");
-        n[i] = n2.value;
-        std::pair<double, double> nSyst = GetEnvelope(n2);
-        n_eL[i] = fabs(nSyst.first);
-        n_eH[i] = fabs(nSyst.second);
-        n_e[i] = n2.statUnc;
+        //        cout << "n" << endl;
+        //        n2 = myME->MakeStruct("n");
+        //        n[i] = n2.value;
+        //        std::pair<double, double> nSyst = GetEnvelope(n2);
+        //        n_eL[i] = fabs(nSyst.first);
+        //        n_eH[i] = fabs(nSyst.second);
+        //        n_e[i] = n2.statUnc;
     }
     TGraphAsymmErrors Mean(4, mass, mean, mass_eL, mass_eH, mean_eL, mean_eH);
     Mean.SetNameTitle("mean", "mean");
@@ -170,8 +170,8 @@ int main(int argc, char** argv) {
     SigmaCB.SetNameTitle("sigma_cb", "sigma_cb");
     TGraphAsymmErrors Width(4, mass, width, mass_eL, mass_eH, width_eL, width_eH);
     Width.SetNameTitle("width", "width");
-    TGraphAsymmErrors N(4, mass, n, mass_eL, mass_eH, n_eL, n_eH);
-    N.SetNameTitle("n", "n");
+    //    TGraphAsymmErrors N(4, mass, n, mass_eL, mass_eH, n_eL, n_eH);
+    //    N.SetNameTitle("n", "n");
     //    TGraphAsymmErrors Alpha(4, mass, alpha, mass_eL, mass_eH, alpha_eL, alpha_eH);
     //    Alpha.SetNameTitle("alpha", "alpha");
     //    TGraphAsymmErrors Frac(4, mass, frac, mass_eL, mass_eH, frac_eL, frac_eH);
@@ -187,8 +187,8 @@ int main(int argc, char** argv) {
     SigmaCBStat.SetNameTitle("sigma_cbStat", "sigma_cb");
     TGraphErrors WidthStat(4, mass, width, mass_eL, width_e);
     WidthStat.SetNameTitle("widthStat", "width");
-    TGraphErrors NStat(4, mass, n, mass_eL, n_e);
-    NStat.SetNameTitle("nStat", "n");
+    //    TGraphErrors NStat(4, mass, n, mass_eL, n_e);
+    //    NStat.SetNameTitle("nStat", "n");
     //    TGraphErrors AlphaStat(4, mass, alpha, mass_eL, alpha_e);
     //    AlphaStat.SetNameTitle("alphaStat", "alpha");
     //    TGraphErrors FracStat(4, mass, frac, mass_eL, frac_e);
@@ -200,7 +200,7 @@ int main(int argc, char** argv) {
     //    MeanCB.Write();
     SigmaCB.Write();
     Width.Write();
-    N.Write();
+    //    N.Write();
     //    Alpha.Write();
     //    Frac.Write();
     MeanStat.Write();
@@ -208,7 +208,7 @@ int main(int argc, char** argv) {
     //    MeanCBStat.Write();
     SigmaCBStat.Write();
     WidthStat.Write();
-    NStat.Write();
+    //    NStat.Write();
     //    AlphaStat.Write();
     //    FracStat.Write();
     fout.Close();

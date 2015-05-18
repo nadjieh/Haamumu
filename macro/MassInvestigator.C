@@ -77,7 +77,7 @@ int main(int argc, char** argv) {
         sigma.value = paramNominal["sigma"];
         width.value = paramNominal["width"];
         //        frac.value = paramNominal["frac"];
-        n.value = paramNominal["n"];
+        //        n.value = paramNominal["n"];
         //        alpha.value = paramNominal["alpha"];
 
         std::map<TString, double> paramNominalErr = myMasses[i]->GetParamNominalErr();
@@ -87,7 +87,7 @@ int main(int argc, char** argv) {
         sigma.statUnc = paramNominalErr["sigma"];
         width.statUnc = paramNominalErr["width"];
         //        frac.statUnc = paramNominalErr["frac"];
-        n.statUnc = paramNominalErr["n"];
+        //        n.statUnc = paramNominalErr["n"];
         //        alpha.statUnc = paramNominalErr["alpha"];
 
         std::map <TString, std::pair<double, double> > paramSystb = myMasses[i]->GetParamErrorsInd("b");
@@ -105,8 +105,8 @@ int main(int argc, char** argv) {
         width.bUp = paramSystb["width"].second;
         //        frac.bDown = paramSystb["frac"].first;
         //        frac.bUp = paramSystb["frac"].second;
-        n.bDown = paramSystb["n"].first;
-        n.bUp = paramSystb["n"].second;
+        //        n.bDown = paramSystb["n"].first;
+        //        n.bUp = paramSystb["n"].second;
 
         std::map <TString, std::pair<double, double> > paramSystJES = myMasses[i]->GetParamErrorsInd("JES");
         mean.JESD = paramSystJES["mean"].first;
@@ -123,8 +123,8 @@ int main(int argc, char** argv) {
         width.JESU = paramSystb["width"].second;
         //        frac.JESD = paramSystJES["frac"].first;
         //        frac.JESU = paramSystJES["frac"].second;
-        n.JESD = paramSystJES["n"].first;
-        n.JESU = paramSystJES["n"].second;
+        //        n.JESD = paramSystJES["n"].first;
+        //        n.JESU = paramSystJES["n"].second;
 
         std::map <TString, std::pair<double, double> > paramSystJER = myMasses[i]->GetParamErrorsInd("JER");
         mean.JERD = paramSystJER["mean"].first;
@@ -141,8 +141,8 @@ int main(int argc, char** argv) {
         width.JERU = paramSystb["width"].second;
         //        frac.JERD = paramSystJER["frac"].first;
         //        frac.JERU = paramSystJER["frac"].second;
-        n.JERD = paramSystJER["n"].first;
-        n.JERU = paramSystJER["n"].second;
+        //        n.JERD = paramSystJER["n"].first;
+        //        n.JERU = paramSystJER["n"].second;
 
         std::map <TString, std::pair<double, double> > paramSystmu = myMasses[i]->GetParamErrorsInd("mu");
         mean.mud = paramSystmu["mean"].first;
@@ -159,8 +159,8 @@ int main(int argc, char** argv) {
         width.muu = paramSystb["width"].second;
         //        frac.mud = paramSystmu["frac"].first;
         //        frac.muu = paramSystmu["frac"].second;
-        n.mud = paramSystmu["n"].first;
-        n.muu = paramSystmu["n"].second;
+        //        n.mud = paramSystmu["n"].first;
+        //        n.muu = paramSystmu["n"].second;
 
         std::map <TString, std::pair<double, double> > paramSystpu = myMasses[i]->GetParamErrorsInd("pu");
         mean.pud = paramSystpu["mean"].first;
@@ -177,8 +177,8 @@ int main(int argc, char** argv) {
         width.puu = paramSystb["width"].second;
         //        frac.pud = paramSystpu["frac"].first;
         //        frac.puu = paramSystpu["frac"].second;
-        n.pud = paramSystpu["n"].first;
-        n.puu = paramSystpu["n"].second;
+        //        n.pud = paramSystpu["n"].first;
+        //        n.puu = paramSystpu["n"].second;
         MassTree.Fill();
     }
     MassTree.Write();

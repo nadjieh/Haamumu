@@ -166,14 +166,14 @@ public:
 
             //RooRealVar mean_cb("mean_cb" + syst, "Mean" + syst, MeanCBInit.mean, MeanCBInit.low, MeanCBInit.high);
             RooRealVar sigma_cb("sigma_cb" + syst, "Width" + syst, SigmaCBInit.mean, SigmaCBInit.low, SigmaCBInit.high);
-            //            RooRealVar n("n" + syst, "" + syst, 3.12);
-            RooRealVar n("n" + syst, "" + syst, NInit.mean, NInit.low, NInit.high);
+            RooRealVar n("n" + syst, "" + syst, 3.12);
+            //            RooRealVar n("n" + syst, "" + syst, NInit.mean, NInit.low, NInit.high);
             //            RooRealVar alpha("alpha" + syst, "" + syst, AlphaInit.mean, AlphaInit.low, AlphaInit.high);
             RooRealVar alpha("alpha" + syst, "" + syst, AlphaInit.mean);
             //            RooCBShape CB("cball" + syst, "crystal ball" + syst, *var, mean_cb, sigma_cb, alpha, n);
             RooCBShape CB("cball" + syst, "crystal ball" + syst, *var, mean, sigma_cb, alpha, n);
 
-            //            RooRealVar frac("frac" + syst, "frac" + syst, 0.612, 0., 1.);
+            //            RooRealVar frac("frac" + syst, "frac" + syst, 0.5, 0., 1.);
             RooRealVar frac("frac" + syst, "frac" + syst, 0.612);
             RooAddPdf Voig2("sum" + syst, "Gaussian crystal ball and Voig PDF" + syst, RooArgList(Voig, CB), RooArgList(frac));
             RooFitResult * ret = Voig2.fitTo(*data, RooFit::Save());
@@ -190,8 +190,8 @@ public:
 
             //            RooRealVar mean_cb("mean_cb" + syst, "Mean" + syst, MeanCBInit.mean, MeanCBInit.low, MeanCBInit.high);
             RooRealVar sigma_cb("sigma_cb" + syst, "Width" + syst, SigmaCBInit.mean, SigmaCBInit.low, SigmaCBInit.high);
-            //            RooRealVar n("n" + syst, "" + syst, 3.12);
-            RooRealVar n("n" + syst, "" + syst, NInit.mean, NInit.low, NInit.high);
+            RooRealVar n("n" + syst, "" + syst, 3.12);
+            //            RooRealVar n("n" + syst, "" + syst, NInit.mean, NInit.low, NInit.high);
             //            RooRealVar n("n" + syst, "" + syst, paramNominal["n"],
             //                    paramNominal["n"] - paramNominalErr["n"],
             //                    paramNominal["n"] + paramNominalErr["n"]
@@ -230,7 +230,7 @@ public:
         //        paramNominal["mean_cb" ] = ((RooRealVar*) iFRN->floatParsFinal().find("mean_cb"))->getVal();
         paramNominal["sigma_cb" ] = ((RooRealVar*) iFRN->floatParsFinal().find("sigma_cb"))->getVal();
         //        paramNominal["alpha" ] = ((RooRealVar*) iFRN->floatParsFinal().find("alpha"))->getVal();
-        paramNominal["n" ] = ((RooRealVar*) iFRN->floatParsFinal().find("n"))->getVal();
+        //        paramNominal["n" ] = ((RooRealVar*) iFRN->floatParsFinal().find("n"))->getVal();
         //        paramNominal["frac" ] = ((RooRealVar*) iFRN->floatParsFinal().find("frac"))->getVal();
         paramNominalErr["mean" ] = ((RooRealVar*) iFRN->floatParsFinal().find("mean"))->getError();
         paramNominalErr["sigma" ] = ((RooRealVar*) iFRN->floatParsFinal().find("sigma"))->getError();
@@ -238,7 +238,7 @@ public:
         //        paramNominalErr["mean_cb" ] = ((RooRealVar*) iFRN->floatParsFinal().find("mean_cb"))->getError();
         paramNominalErr["sigma_cb" ] = ((RooRealVar*) iFRN->floatParsFinal().find("sigma_cb"))->getError();
         //        paramNominalErr["alpha" ] = ((RooRealVar*) iFRN->floatParsFinal().find("alpha"))->getError();
-        paramNominalErr["n" ] = ((RooRealVar*) iFRN->floatParsFinal().find("n"))->getError();
+        //        paramNominalErr["n" ] = ((RooRealVar*) iFRN->floatParsFinal().find("n"))->getError();
         //        paramNominalErr["frac" ] = ((RooRealVar*) iFRN->floatParsFinal().find("frac"))->getError();
         if (draw) {
             stringstream S;
@@ -253,11 +253,11 @@ public:
                     *((RooRealVar*) iFRN->floatParsFinal().find("sigma_cb")),
                     //                    *((RooRealVar*) iFRN->floatParsFinal().find("alpha")),
                     *(new RooRealVar("TMP", "TMP", AlphaInit.mean)),
-                    //                    *(new RooRealVar("TMPN", "TMPN", 3.12)));
-                    *((RooRealVar*) iFRN->floatParsFinal().find("n")));
+                    *(new RooRealVar("TMPN", "TMPN", 3.12)));
+            //                    *((RooRealVar*) iFRN->floatParsFinal().find("n")));
             RooAddPdf * Voig2 = new RooAddPdf("sumDraw", "Gaussian crystal ball and Voig PDF", RooArgList(*Voig, *CB),
                     RooArgList(*(new RooRealVar("NAME", "", 0.612))));
-            //                    RooArgList(*((RooRealVar*) iFRN->floatParsFinal().find("frac"))));
+            //      RooArgList(*((RooRealVar*) iFRN->floatParsFinal().find("frac"))));
             Voig2->plotOn(pl, RooFit::LineColor(kBlack));
             Voig2->plotOn(pl, RooFit::Components(*CB), RooFit::LineColor(kBlue));
             Voig2->plotOn(pl, RooFit::Components(*Voig), RooFit::LineColor(kRed));
@@ -277,7 +277,7 @@ public:
             paramUp["mean" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("mean" + systprefix[(2 * iu) + 1]))->getVal();
             paramUp["sigma_cb" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("sigma_cb" + systprefix[(2 * iu) + 1]))->getVal();
             //            paramUp["alpha" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("alpha" + systprefix[(2 * iu) + 1]))->getVal();
-            paramUp["n" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("n" + systprefix[(2 * iu) + 1]))->getVal();
+            //            paramUp["n" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("n" + systprefix[(2 * iu) + 1]))->getVal();
             //            paramUp["frac" + systprefix[(2 * iu) + 1]] = ((RooRealVar*) iFRU->floatParsFinal().find("frac" + systprefix[(2 * iu) + 1]))->getVal();
             delete iFRU;
         }
@@ -291,7 +291,7 @@ public:
             paramDown["mean" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("mean" + systprefix[(2 * iu)]))->getVal();
             paramDown["sigma_cb" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("sigma_cb" + systprefix[(2 * iu)]))->getVal();
             //            paramDown["alpha" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("alpha" + systprefix[(2 * iu)]))->getVal();
-            paramDown["n" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("n" + systprefix[(2 * iu)]))->getVal();
+            //            paramDown["n" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("n" + systprefix[(2 * iu)]))->getVal();
             //            paramDown["frac" + systprefix[(2 * iu)]] = ((RooRealVar*) iFRD->floatParsFinal().find("frac" + systprefix[(2 * iu)]))->getVal();
             delete iFRD;
         }
