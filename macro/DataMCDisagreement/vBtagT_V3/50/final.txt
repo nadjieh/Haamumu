@@ -1,0 +1,62 @@
+
+/////////// MC-fit ////////////////
+//// Tstring fname = "hamb-shapes-UnbinnedParam-m60-MC-fit.root";
+//// stringstream lambda; lambda << -0.150868;
+//// stringstream alpha; alpha << 0.941793;
+//// stringstream n; n <<  0.994515;
+//// stringstream meanbw; meanbw <<  90.6778;
+//// stringstream sigmabw; sigmabw <<  1;
+//// stringstream meancb; meancb <<  0.825519;
+//// stringstream sigmacb; sigmacb <<  1.45609;
+///////////////////////////////////
+| | SL | SM | SU |
+|expo | 612.974 \pm 35.8215|8.10197 \pm 0.47347|0.0921531 \pm 0.00538532|
+|B.W | 1.12501 \pm 0.039792|171.145 \pm 6.05347|1877.88 \pm 66.4216|
+|Sum fit | 614.099 \pm 35.8215|179.247 \pm 6.07195|1877.98 \pm 66.4216|
+|MC Data | 614 | 506.521 | 1878 |
+
+////////////////////////////////
+| | SM |
+|bkg | 506.528 \pm 56.8808|
+|B.W_pf | 3.97397e-07 \pm 19.054|
+|Sum fit_pf | 506.528 \pm 59.9873|
+|MC Data | 506.521 | 
+ 
+////////////// NORMALIZATION /////////////
+| | SLP | SM | SUP |
+|bkg | 1278.21 \pm 40.1065|452.59 \pm 14.201|192.552 \pm 6.04173|
+|B.W_pf | 62.9847 \pm 1.50546|163.984 \pm 3.91952|1928.27 \pm 46.0894|
+|Sum fit_pf | 1341.19 \pm 40.1347|616.564 \pm 14.7319|2120.8 \pm 46.4837|
+|MC Data | 1359.8 | 506.521 | 2102.15 | 
+
+============================================
+
+/////////// Data-fit ////////////////
+//// Tstring fname = "hamb-shapes-UnbinnedParam-m60-Data-fit.root";
+//// stringstream lambda; lambda << -0.144923;
+//// stringstream alpha; alpha << 1.19926;
+//// stringstream n; n <<  0.761363;
+//// stringstream meanbw; meanbw <<  90.8425;
+//// stringstream sigmabw; sigmabw <<  1.00001;
+//// stringstream meancb; meancb <<  0.321917;
+//// stringstream sigmacb; sigmacb <<  1.74216;
+///////////////////////////////////
+| | SL | SM | SU |
+|expo | 612.76 \pm 37.3323|9.78791 \pm 0.596326|0.133912 \pm 0.00815853|
+|B.W | 1.18127 \pm 0.043343|204.05 \pm 7.48698|1877.82 \pm 68.9006|
+|Sum fit | 613.941 \pm 37.3323|213.838 \pm 7.51069|1877.95 \pm 68.9006|
+|MC Data | 614 | 545 | 1878 |
+ 
+////////////////////////////////
+| | SM |
+|bkg | 400.902 \pm 284.886|
+|B.W_pf | 143.079 \pm 86.8024|
+|Sum fit_pf | 543.972 \pm 297.817|
+|MC Data | 545 | 
+ 
+////////////// NORMALIZATION /////////////
+| | SLP | SM | SUP |
+|bkg | 1159.46 \pm 39.1234|373.847 \pm 12.6146|158.179 \pm 5.33738|
+|B.W_pf | 78.4357 \pm 1.86704|193.709 \pm 4.61095|1922.46 \pm 45.7612|
+|Sum fit_pf | 1237.9 \pm 39.1679|567.548 \pm 13.4309|2080.64 \pm 46.0714|
+|MC Data | 1276 | 545 | 2043 | 

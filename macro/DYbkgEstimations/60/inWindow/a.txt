@@ -1,0 +1,203 @@
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+var: amassMu
+low: 10
+high: 120
+step: 8
+50	70
+Number of entries: 65
+8.05255	523.416	DYjets_M10to50
+Number of entries: 1021
+2.89576	2956.57	DYjets
+Number of entries: 1087
+0.275384	299.342	TTFullLept
+Number of entries: 16
+0.195614	3.12982	TTSemiLept
+Number of entries: 7
+0.443136	3.10195	Wtbar
+Number of entries: 7
+0.439398	3.07579	Wt
+Number of entries: 6
+0.110315	0.66189	WW
+Number of entries: 17
+0.0661901	1.12523	WZ
+Number of entries: 246
+0.000490794	0.120735	ZH125
+Number of entries: 305
+0.0166004	5.06312	ZZ
+Binned dataset integral: 523.416
+Binned dataset integral: 2956.57
+Binned dataset integral: 299.342
+Binned dataset integral: 3.12982
+Binned dataset integral: 3.10195
+Binned dataset integral: 3.07579
+Binned dataset integral: 0.66189
+Binned dataset integral: 1.12523
+Binned dataset integral: 0.120735
+Binned dataset integral: 5.06312
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'myDYtool_Data_0' created with bounds [10,50]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'myDYtool_Data_1' created with bounds [50,70]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'myDYtool_Data_2' created with bounds [70,120]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_myDYtool_Data_sum_data_myDYtool_Data_0) constructing test statistic for sub-range named myDYtool_Data_0
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'NormalizationRangeFormyDYtool_Data_0' created with bounds [10,120]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'fit_nll_myDYtool_Data_sum_data_myDYtool_Data_0' created with bounds [10,50]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_myDYtool_Data_sum_data_myDYtool_Data_0) fixing interpretation of coefficients of any RooAddPdf to full domain of observables 
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'refrange_fft_myDYtool_Data_bwxCryBall' created with bounds [10,120]
+[#1] INFO:Caching -- RooAbsCachedPdf::getCache(myDYtool_Data_bwxCryBall) creating new cache 0x225412e0 with pdf myDYtool_Data_gauss_bw_CONV_myDYtool_Data_cball_CACHE_Obs[eventSelectionamassMu] for nset (eventSelectionamassMu) with code 0
+[#1] INFO:NumericIntegration -- RooRealIntegral::init(myDYtool_Data_gauss_bw_CONV_myDYtool_Data_cball_CACHE_Obs[eventSelectionamassMu]_Int[eventSelectionamassMu]) using numeric integrator RooIntegrator1D to calculate Int(eventSelectionamassMu)
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_myDYtool_Data_sum_data_myDYtool_Data_2) constructing test statistic for sub-range named myDYtool_Data_2
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'NormalizationRangeFormyDYtool_Data_2' created with bounds [10,120]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'fit_nll_myDYtool_Data_sum_data_myDYtool_Data_2' created with bounds [70,120]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_myDYtool_Data_sum_data_myDYtool_Data_2) fixing interpretation of coefficients of any RooAddPdf to full domain of observables 
+[#1] INFO:Caching -- RooAbsCachedPdf::getCache(myDYtool_Data_bwxCryBall) creating new cache 0x225ede90 with pdf myDYtool_Data_gauss_bw_CONV_myDYtool_Data_cball_CACHE_Obs[eventSelectionamassMu] for nset (eventSelectionamassMu) with code 0 from preexisting content.
+[#1] INFO:NumericIntegration -- RooRealIntegral::init(myDYtool_Data_gauss_bw_CONV_myDYtool_Data_cball_CACHE_Obs[eventSelectionamassMu]_Int[eventSelectionamassMu]) using numeric integrator RooIntegrator1D to calculate Int(eventSelectionamassMu)
+[#1] INFO:Fitting -- RooAddition::defaultErrorLevel(nll_myDYtool_Data_sum_data) Summation contains a RooNLLVar, using its error level
+[#1] INFO:Minization -- RooMinuit::optimizeConst: activating const optimization
+[#1] INFO:Caching -- RooAbsCachedPdf::getCache(myDYtool_Data_bwxCryBall) creating new cache 0x22614900 with pdf myDYtool_Data_gauss_bw_CONV_myDYtool_Data_cball_CACHE_Obs[eventSelectionamassMu] for nset (eventSelectionamassMu) with code 0 from preexisting content.
+[#1] INFO:NumericIntegration -- RooRealIntegral::init(myDYtool_Data_gauss_bw_CONV_myDYtool_Data_cball_CACHE_Obs[eventSelectionamassMu]_Int[eventSelectionamassMu]) using numeric integrator RooIntegrator1D to calculate Int(eventSelectionamassMu)
+[#1] INFO:Minization --  The following expressions have been identified as constant and will be precalculated and cached: (myDYtool_Data_toppdf)
+[#1] INFO:Minization --  The following expressions will be evaluated in cache-and-track mode: (myDYtool_Data_bwxCryBall,myDYtool_Data_expo)
+[#1] INFO:Caching -- RooAbsCachedPdf::getCache(myDYtool_Data_bwxCryBall) creating new cache 0x22630060 with pdf myDYtool_Data_gauss_bw_CONV_myDYtool_Data_cball_CACHE_Obs[eventSelectionamassMu] for nset (eventSelectionamassMu) with code 0 from preexisting content.
+[#1] INFO:NumericIntegration -- RooRealIntegral::init(myDYtool_Data_gauss_bw_CONV_myDYtool_Data_cball_CACHE_Obs[eventSelectionamassMu]_Int[eventSelectionamassMu]) using numeric integrator RooIntegrator1D to calculate Int(eventSelectionamassMu)
+[#1] INFO:Minization --  The following expressions have been identified as constant and will be precalculated and cached: (myDYtool_Data_toppdf)
+[#1] INFO:Minization --  The following expressions will be evaluated in cache-and-track mode: (myDYtool_Data_bwxCryBall,myDYtool_Data_expo)
+ **********
+ **   13 **MIGRAD        5000           1
+ **********
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ START MIGRAD MINIMIZATION.  STRATEGY  1.  CONVERGENCE WHEN EDM .LT. 1.00e-03
+ FCN=-6044.85 FROM MIGRAD    STATUS=INITIATE      108 CALLS         109 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+  EXT PARAMETER               CURRENT GUESS       STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  myDYtool_Data_alpha   6.93502e-01   5.00000e-01   0.00000e+00  -1.14229e+02
+   2  myDYtool_Data_background   2.00000e+03   8.00000e+02   0.00000e+00   1.80174e+03
+   3  myDYtool_Data_lambda  -1.44812e-02   5.00000e-02   1.76109e-01   3.77731e+02
+   4  myDYtool_Data_mean_bw   9.08000e+01   6.00000e+00   0.00000e+00   1.49628e+03
+   5  myDYtool_Data_mean_cb   1.00000e+00   5.00000e-01   0.00000e+00   3.58207e+02
+   6  myDYtool_Data_n   2.50000e+00   5.00000e-01   0.00000e+00  -3.61573e+00
+   7  myDYtool_Data_sigma_bw   6.50000e+00   2.75000e+00   0.00000e+00   1.95869e+03
+   8  myDYtool_Data_sigma_cb   2.30000e+00   1.15000e+00   0.00000e+00   2.20713e+03
+   9  myDYtool_Data_signal_bw   3.00000e+03   1.20000e+03   0.00000e+00   2.00868e+03
+  10  myDYtool_Data_ttCont   5.00000e+02   2.00000e+02   0.00000e+00   3.91396e+02
+                               ERR DEF= 0.5
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 5 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1 added to diagonal of error matrix
+ MIGRAD FAILS TO FIND IMPROVEMENT
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-7409.06 FROM HESSE     STATUS=OK             90 CALLS         799 TOTAL
+                     EDM=0.0011777    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  myDYtool_Data_alpha   9.78525e-01   1.09274e-01   1.06394e-03  -3.38077e-01
+   2  myDYtool_Data_background   1.68837e+02   2.08284e+01   7.73788e-04   5.83300e-01
+   3  myDYtool_Data_lambda  -2.72171e-01   5.15929e-02   1.85451e-03   6.06114e-01
+   4  myDYtool_Data_mean_bw   9.08864e+01   1.43213e-01   1.83714e-04   5.10929e+00
+   5  myDYtool_Data_mean_cb   4.01477e-01   5.32883e-04   9.29274e-04  -8.76946e-02
+   6  myDYtool_Data_n   1.34701e+00   2.22034e-01   1.78587e-03   9.76731e-03
+   7  myDYtool_Data_sigma_bw   1.00000e+00   6.46822e-02   1.90777e-03** at limit **
+   8  myDYtool_Data_sigma_cb   1.69310e+00   9.85639e-02   1.88876e-04   6.52889e+00
+   9  myDYtool_Data_signal_bw   1.92716e+03   6.36764e+01   6.28044e-04  -6.24175e-02
+  10  myDYtool_Data_ttCont   5.45378e+02   5.84233e+01   2.27204e-03   6.33548e-01
+                               ERR DEF= 0.5
+ MIGRAD MINIMIZATION HAS CONVERGED.
+ FCN=-7409.06 FROM MIGRAD    STATUS=CONVERGED     819 CALLS         820 TOTAL
+                     EDM=2.89968e-06    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   0.9 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  myDYtool_Data_alpha   9.81666e-01   1.11579e-01   1.58240e-03  -3.52296e-02
+   2  myDYtool_Data_background   1.68864e+02   2.08391e+01   2.35174e-05  -3.12247e-03
+   3  myDYtool_Data_lambda  -2.72292e-01   5.15602e-02  -1.06240e-04   2.01292e-03
+   4  myDYtool_Data_mean_bw   9.08840e+01   1.44443e-01  -7.99548e-05   1.86330e-01
+   5  myDYtool_Data_mean_cb   4.01478e-01   5.32884e-04   9.61939e-09  -6.69667e-01
+   6  myDYtool_Data_n   1.33986e+00   2.25939e-01  -3.22454e-03  -4.90296e-03
+   7  myDYtool_Data_sigma_bw   1.00000e+00   6.49212e-02  -1.58271e-04** at limit **
+   8  myDYtool_Data_sigma_cb   1.69288e+00   9.84696e-02  -1.06984e-05   1.41273e-01
+   9  myDYtool_Data_signal_bw   1.92851e+03   6.42193e+01   3.05545e-04  -2.48600e-02
+  10  myDYtool_Data_ttCont   5.43677e+02   5.90080e+01  -1.91127e-03   7.56175e-03
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR= 10    ERR DEF=0.5
+  1.246e-02  6.472e-01  1.680e-03 -9.201e-03 -1.920e-08 -2.266e-02 -1.214e-07  5.139e-03  3.318e+00 -3.331e+00 
+  6.472e-01  4.343e+02  7.111e-01 -2.828e-01 -1.750e-06 -1.789e+00 -3.257e-06  1.242e-01  4.283e+02 -7.169e+02 
+  1.680e-03  7.111e-01  2.660e-03 -7.203e-04 -8.208e-09 -4.672e-03  1.453e-10  3.144e-04  1.123e+00 -1.904e+00 
+ -9.201e-03 -2.828e-01 -7.203e-04  2.086e-02 -3.026e-07  1.224e-02  1.183e-07 -1.003e-02 -1.427e+00  1.509e+00 
+ -1.920e-08 -1.750e-06 -8.208e-09 -3.026e-07  2.840e-07 -2.289e-08 -1.218e-11 -4.346e-08  1.336e-05 -1.980e-05 
+ -2.266e-02 -1.789e+00 -4.672e-03  1.224e-02 -2.289e-08  5.123e-02  2.723e-07 -5.683e-03 -9.186e+00  9.072e+00 
+ -1.214e-07 -3.257e-06  1.453e-10  1.183e-07 -1.218e-11  2.723e-07  1.595e-08 -3.154e-07 -6.060e-05  7.471e-05 
+  5.139e-03  1.242e-01  3.144e-04 -1.003e-02 -4.346e-08 -5.683e-03 -3.154e-07  9.696e-03  6.321e-01 -6.876e-01 
+  3.318e+00  4.283e+02  1.123e+00 -1.427e+00  1.336e-05 -9.186e+00 -6.060e-05  6.321e-01  4.124e+03 -2.157e+03 
+ -3.331e+00 -7.169e+02 -1.904e+00  1.509e+00 -1.980e-05  9.072e+00  7.471e-05 -6.876e-01 -2.157e+03  3.487e+03 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9     10
+        1  0.94778   1.000  0.278  0.292 -0.571 -0.000 -0.897 -0.009  0.467  0.463 -0.505
+        2  0.69612   0.278  1.000  0.662 -0.094 -0.000 -0.379 -0.001  0.061  0.320 -0.583
+        3  0.72481   0.292  0.662  1.000 -0.097 -0.000 -0.400  0.000  0.062  0.339 -0.625
+        4  0.76440  -0.571 -0.094 -0.097  1.000 -0.004  0.375  0.006 -0.705 -0.154  0.177
+        5  0.00728  -0.000 -0.000 -0.000 -0.004  1.000 -0.000 -0.000 -0.001  0.000 -0.001
+        6  0.95595  -0.897 -0.379 -0.400  0.375 -0.000  1.000  0.010 -0.255 -0.632  0.679
+        7  0.03392  -0.009 -0.001  0.000  0.006 -0.000  0.010  1.000 -0.025 -0.007  0.010
+        8  0.73747   0.467  0.061  0.062 -0.705 -0.001 -0.255 -0.025  1.000  0.100 -0.118
+        9  0.68864   0.463  0.320  0.339 -0.154  0.000 -0.632 -0.007  0.100  1.000 -0.569
+       10  0.81794  -0.505 -0.583 -0.625  0.177 -0.001  0.679  0.010 -0.118 -0.569  1.000
+ **********
+ **   18 **HESSE        5000
+ **********
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-7409.06 FROM HESSE     STATUS=OK             96 CALLS         916 TOTAL
+                     EDM=0.000491718    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                INTERNAL      INTERNAL  
+  NO.   NAME      VALUE            ERROR       STEP SIZE       VALUE   
+   1  myDYtool_Data_alpha   9.81666e-01   1.18791e-01   1.06418e-03  -6.52700e-01
+   2  myDYtool_Data_background   1.68864e+02   2.09768e+01   7.73817e-04  -1.27919e+00
+   3  myDYtool_Data_lambda  -2.72292e-01   5.20571e-02   1.86589e-03   1.09973e+00
+   4  myDYtool_Data_mean_bw   9.08840e+01   1.97550e-01   1.84233e-04   2.94702e-02
+   5  myDYtool_Data_mean_cb   4.01478e-01   1.47853e-01   7.09804e-06  -1.39134e+00
+   6  myDYtool_Data_n   1.33986e+00   2.32093e-01   7.14349e-04  -4.82568e-01
+   7  myDYtool_Data_sigma_bw   1.00000e+00   6.64001e-02   1.87734e-03  -1.57077e+00
+                                 WARNING -   - ABOVE PARAMETER IS AT LIMIT.
+   8  myDYtool_Data_sigma_cb   1.69288e+00   1.00764e-01   1.88908e-04  -1.40924e+00
+   9  myDYtool_Data_signal_bw   1.92851e+03   6.45767e+01   6.28031e-04  -7.45831e-01
+  10  myDYtool_Data_ttCont   5.43677e+02   5.94266e+01   2.27284e-03  -4.73859e-01
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR= 10    ERR DEF=0.5
+  1.413e-02  7.146e-01  1.874e-03 -3.523e-03 -6.176e-03 -2.491e-02  3.551e-08  6.054e-03  3.574e+00 -3.577e+00 
+  7.146e-01  4.401e+02  7.287e-01 -1.041e-01 -2.021e-01 -1.884e+00  1.241e-06  1.651e-01  4.433e+02 -7.320e+02 
+  1.874e-03  7.287e-01  2.712e-03 -2.604e-04 -5.360e-04 -4.952e-03  3.250e-09  4.306e-04  1.169e+00 -1.950e+00 
+ -3.523e-03 -1.041e-01 -2.604e-04  3.903e-02 -1.988e-02  3.925e-03 -1.285e-07 -7.219e-03 -4.620e-01  5.243e-01 
+ -6.176e-03 -2.021e-01 -5.360e-04 -1.988e-02  2.187e-02  8.893e-03  1.048e-07 -3.126e-03 -1.009e+00  1.014e+00 
+ -2.491e-02 -1.884e+00 -4.952e-03  3.925e-03  8.893e-03  5.407e-02 -8.591e-08 -6.994e-03 -9.513e+00  9.395e+00 
+  3.551e-08  1.241e-06  3.250e-09 -1.285e-07  1.048e-07 -8.591e-08  1.631e-08 -2.782e-07  1.125e-05 -1.181e-05 
+  6.054e-03  1.651e-01  4.306e-04 -7.219e-03 -3.126e-03 -6.994e-03 -2.782e-07  1.015e-02  7.846e-01 -8.281e-01 
+  3.574e+00  4.433e+02  1.169e+00 -4.620e-01 -1.009e+00 -9.513e+00  1.125e-05  7.846e-01  4.170e+03 -2.203e+03 
+ -3.577e+00 -7.320e+02 -1.950e+00  5.243e-01  1.014e+00  9.395e+00 -1.181e-05 -8.281e-01 -2.203e+03  3.537e+03 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9     10
+        1  0.95424   1.000  0.287  0.303 -0.150 -0.351 -0.901  0.002  0.506  0.466 -0.506
+        2  0.70073   0.287  1.000  0.667 -0.025 -0.065 -0.386  0.000  0.078  0.327 -0.587
+        3  0.72940   0.303  0.667  1.000 -0.025 -0.070 -0.409  0.000  0.082  0.348 -0.630
+        4  0.88056  -0.150 -0.025 -0.025  1.000 -0.680  0.085 -0.005 -0.363 -0.036  0.045
+        5  0.88177  -0.351 -0.065 -0.070 -0.680  1.000  0.259  0.006 -0.210 -0.106  0.115
+        6  0.95885  -0.901 -0.386 -0.409  0.085  0.259  1.000 -0.003 -0.299 -0.634  0.679
+        7  0.03400   0.002  0.000  0.000 -0.005  0.006 -0.003  1.000 -0.022  0.001 -0.002
+        8  0.75175   0.506  0.078  0.082 -0.363 -0.210 -0.299 -0.022  1.000  0.121 -0.138
+        9  0.69268   0.466  0.327  0.348 -0.036 -0.106 -0.634  0.001  0.121  1.000 -0.574
+       10  0.82018  -0.506 -0.587 -0.630  0.045  0.115  0.679 -0.002 -0.138 -0.574  1.000
+[#1] INFO:Minization -- RooMinuit::optimizeConst: deactivating const optimization
+[#1] INFO:Caching -- RooAbsCachedPdf::getCache(myDYtool_Data_bwxCryBall) creating new cache 0x225412e0 with pdf myDYtool_Data_gauss_bw_CONV_myDYtool_Data_cball_CACHE_Obs[eventSelectionamassMu] for nset (eventSelectionamassMu) with code 0
+[#1] INFO:NumericIntegration -- RooRealIntegral::init(myDYtool_Data_sum_Int[eventSelectionamassMu|myDYtool_Data_0]_Norm[eventSelectionamassMu]) using numeric integrator RooIntegrator1D to calculate Int(eventSelectionamassMu)
+[#1] INFO:NumericIntegration -- RooRealIntegral::init(myDYtool_Data_sum_Int[eventSelectionamassMu|myDYtool_Data_1]_Norm[eventSelectionamassMu]) using numeric integrator RooIntegrator1D to calculate Int(eventSelectionamassMu)
+[#1] INFO:NumericIntegration -- RooRealIntegral::init(myDYtool_Data_sum_Int[eventSelectionamassMu|myDYtool_Data_2]_Norm[eventSelectionamassMu]) using numeric integrator RooIntegrator1D to calculate Int(eventSelectionamassMu)
+Table for MC in myDYtool_Data
+||myDYtool_Data_0|myDYtool_Data_1|myDYtool_Data_2|
+|DYjets_M10to50|523.416|0|0|
+|DYjets|46.3322|393.823|2516.42|
+|TTFullLept|187.812|88.1229|23.4076|
+|TTSemiLept|1.3693|1.76053|0|
+|Wtbar|2.21568|0.443136|0.443136|
+|Wt|1.75759|0.878796|0.439398|
+|WW|0.330945|

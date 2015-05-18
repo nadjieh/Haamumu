@@ -1,0 +1,76 @@
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+var: amassMu
+low: 20
+high: 70
+---------
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[#1] INFO:Minization -- p.d.f. provides expected number of events, including extended term in likelihood.
+[#1] INFO:Minization -- RooMinuit::optimizeConst: activating const optimization
+[#1] INFO:Minization --  The following expressions will be evaluated in cache-and-track mode: (ttDimu)
+ **********
+ **   13 **MIGRAD        1500           1
+ **********
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ START MIGRAD MINIMIZATION.  STRATEGY  1.  CONVERGENCE WHEN EDM .LT. 1.00e-03
+ FCN=-3766.62 FROM MIGRAD    STATUS=INITIATE       12 CALLS          13 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+  EXT PARAMETER               CURRENT GUESS       STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_sig111     1.00000e+03   5.00000e+02   2.57889e-01  -1.12800e+03
+   2  a0           6.43000e+01   2.00000e+00   2.01881e-01   4.54373e-01
+   3  a1           9.00000e+00   1.00000e-01   2.01358e-01  -1.62717e-01
+                               ERR DEF= 0.5
+ MIGRAD MINIMIZATION HAS CONVERGED.
+ MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-3902.64 FROM MIGRAD    STATUS=CONVERGED      75 CALLS          76 TOTAL
+                     EDM=1.90861e-10    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  N_sig111     1.56400e+03   3.95455e+01   7.35899e-04  -2.44275e-04
+   2  a0           5.50000e+01   1.52762e+01   7.01486e-02** at limit **
+   3  a1           9.50000e+00   9.98246e-01   1.30428e-01** at limit **
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR=  3    ERR DEF=0.5
+  1.564e+03  0.000e+00  0.000e+00 
+  0.000e+00  1.100e-07 -2.276e-12 
+  0.000e+00 -2.276e-12  3.367e-10 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3
+        1  0.00000   1.000  0.000  0.000
+        2  0.00037   0.000  1.000 -0.000
+        3  0.00037   0.000 -0.000  1.000
+ **********
+ **   18 **HESSE        1500
+ **********
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-3902.64 FROM HESSE     STATUS=OK             16 CALLS          92 TOTAL
+                     EDM=1.90737e-10    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                INTERNAL      INTERNAL  
+  NO.   NAME      VALUE            ERROR       STEP SIZE       VALUE   
+   1  N_sig111     1.56400e+03   3.95455e+01   2.94360e-05  -3.83750e-01
+   2  a0           5.50000e+01   1.52752e+01   1.40297e-02  -7.85400e+00
+                                 WARNING -   - ABOVE PARAMETER IS AT LIMIT.
+   3  a1           9.50000e+00   9.98211e-01   2.60856e-02   7.85397e+00
+                                 WARNING -   - ABOVE PARAMETER IS AT LIMIT.
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR=  3    ERR DEF=0.5
+  1.564e+03  0.000e+00  0.000e+00 
+  0.000e+00  1.099e-07 -9.089e-14 
+  0.000e+00 -9.089e-14  3.365e-10 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3
+        1  0.00000   1.000  0.000  0.000
+        2  0.00001   0.000  1.000 -0.000
+        3  0.00001   0.000 -0.000  1.000
+[#1] INFO:Minization -- RooMinuit::optimizeConst: deactivating const optimization
+--- from fit: 1564 +/- 39.5455
+--- from fit: 55 +/- 15.2752
+--- from fit: 9.5 +/- 0.998211

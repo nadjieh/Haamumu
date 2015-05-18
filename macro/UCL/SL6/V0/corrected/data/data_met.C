@@ -1,0 +1,103 @@
+{
+//=========Macro generated from canvas: Canvas_1/Canvas_1
+//=========  (Wed Nov 26 11:50:02 2014) by ROOT version5.34/19
+   TCanvas *Canvas_1 = new TCanvas("Canvas_1", "Canvas_1",782,276,538,327);
+   Canvas_1->Range(-25,-961.9313,225,8657.381);
+   Canvas_1->SetFillColor(0);
+   Canvas_1->SetBorderMode(0);
+   Canvas_1->SetBorderSize(2);
+   Canvas_1->SetFrameBorderMode(0);
+   Canvas_1->SetFrameBorderMode(0);
+   
+   TH1D *MET_hamb__47 = new TH1D("MET_hamb__47","MET_hamb__47",100,0,200);
+   MET_hamb__47->SetBinContent(1,876);
+   MET_hamb__47->SetBinContent(2,2466);
+   MET_hamb__47->SetBinContent(3,4027);
+   MET_hamb__47->SetBinContent(4,5266);
+   MET_hamb__47->SetBinContent(5,6123);
+   MET_hamb__47->SetBinContent(6,6814);
+   MET_hamb__47->SetBinContent(7,7101);
+   MET_hamb__47->SetBinContent(8,7329);
+   MET_hamb__47->SetBinContent(9,7112);
+   MET_hamb__47->SetBinContent(10,6651);
+   MET_hamb__47->SetBinContent(11,6224);
+   MET_hamb__47->SetBinContent(12,5585);
+   MET_hamb__47->SetBinContent(13,4968);
+   MET_hamb__47->SetBinContent(14,4493);
+   MET_hamb__47->SetBinContent(15,3831);
+   MET_hamb__47->SetBinContent(16,3274);
+   MET_hamb__47->SetBinContent(17,2658);
+   MET_hamb__47->SetBinContent(18,2099);
+   MET_hamb__47->SetBinContent(19,1690);
+   MET_hamb__47->SetBinContent(20,1265);
+   MET_hamb__47->SetBinContent(21,993);
+   MET_hamb__47->SetBinContent(22,666);
+   MET_hamb__47->SetBinContent(23,505);
+   MET_hamb__47->SetBinContent(24,338);
+   MET_hamb__47->SetBinContent(25,212);
+   MET_hamb__47->SetBinContent(26,138);
+   MET_hamb__47->SetBinContent(27,64);
+   MET_hamb__47->SetBinContent(28,48);
+   MET_hamb__47->SetBinContent(29,32);
+   MET_hamb__47->SetBinContent(30,17);
+   MET_hamb__47->SetBinContent(31,11);
+   MET_hamb__47->SetBinContent(32,7);
+   MET_hamb__47->SetBinContent(33,4);
+   MET_hamb__47->SetBinContent(34,7);
+   MET_hamb__47->SetBinContent(35,4);
+   MET_hamb__47->SetBinContent(36,1);
+   MET_hamb__47->SetBinContent(37,2);
+   MET_hamb__47->SetBinContent(38,1);
+   MET_hamb__47->SetBinContent(39,1);
+   MET_hamb__47->SetBinContent(40,1);
+   MET_hamb__47->SetBinContent(42,1);
+   MET_hamb__47->SetBinContent(50,1);
+   MET_hamb__47->SetEntries(92906);
+   MET_hamb__47->SetStats(0);   
+   TPaveStats *ptstats = new TPaveStats(0.78,0.775,0.98,0.935,"brNDC");
+   ptstats->SetName("stats");
+   ptstats->SetBorderSize(1);
+   ptstats->SetFillColor(0);
+   ptstats->SetTextAlign(12);
+   ptstats->SetTextFont(42);
+   TText *text = ptstats->AddText("MET_hamb__47");
+   text->SetTextSize(0.0368);
+   text = ptstats->AddText("Entries = 92906  ");
+   text = ptstats->AddText("Mean  =  19.07");
+   text = ptstats->AddText("RMS   =  10.13");
+   ptstats->SetOptStat(1111);
+   ptstats->SetOptFit(0);
+   ptstats->Draw();
+   MET_hamb__47->GetListOfFunctions()->Add(ptstats);
+   ptstats->SetParent(MET_hamb__47);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#000099");
+   MET_hamb__47->SetLineColor(ci);
+   MET_hamb__47->GetXaxis()->SetLabelFont(42);
+   MET_hamb__47->GetXaxis()->SetLabelSize(0.035);
+   MET_hamb__47->GetXaxis()->SetTitleSize(0.035);
+   MET_hamb__47->GetXaxis()->SetTitleFont(42);
+   MET_hamb__47->GetYaxis()->SetLabelFont(42);
+   MET_hamb__47->GetYaxis()->SetLabelSize(0.035);
+   MET_hamb__47->GetYaxis()->SetTitleSize(0.035);
+   MET_hamb__47->GetYaxis()->SetTitleFont(42);
+   MET_hamb__47->GetZaxis()->SetLabelFont(42);
+   MET_hamb__47->GetZaxis()->SetLabelSize(0.035);
+   MET_hamb__47->GetZaxis()->SetTitleSize(0.035);
+   MET_hamb__47->GetZaxis()->SetTitleFont(42);
+   MET_hamb__47->Draw("");
+   
+   TPaveText *pt = new TPaveText(0.4619101,0.94,0.5380899,0.995,"blNDC");
+   pt->SetName("title");
+   pt->SetBorderSize(0);
+   pt->SetFillColor(0);
+   pt->SetFillStyle(0);
+   pt->SetTextFont(42);
+   text = pt->AddText("MET_hamb__47");
+   pt->Draw();
+   Canvas_1->Modified();
+   Canvas_1->cd();
+   Canvas_1->SetSelected(Canvas_1);
+}

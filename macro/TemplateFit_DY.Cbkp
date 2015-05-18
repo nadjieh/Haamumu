@@ -1,0 +1,403 @@
+/* 
+ * File:   TemplateFit.C
+ * Author: nadjieh
+ *
+ * Created on June 9, 2012, 3:57 PM
+ */
+#include "/opt/root/math/mathcore/inc/Math/Functor.h"
+#include<iostream>
+#include "TFile.h"
+#include "TTree.h"
+#include "../interface/HambFitter.h"
+#include "../interface/RDS.h"
+#include "../interface/RDSData.h"
+#include "../interface/RDSRegion.h"
+#include "TString.h"
+#ifndef __CINT__
+#include "RooGlobalFunc.h"
+#endif
+#include "RooRealVar.h"
+#include "RooVoigtian.h"
+#include "RooBreitWigner.h"
+#include "RooCBShape.h"
+#include "RooGaussian.h"
+#include "RooExponential.h"
+#include "RooDataSet.h"
+#include "RooGaussian.h"
+#include "RooGenericPdf.h"
+#include "RooCategory.h"
+#include "RooPlot.h"
+#include "RooHistPdf.h"
+#include "RooDataHist.h"
+#include "RooAddPdf.h"
+#include "RooRealVar.h"
+#include "RooDataSet.h"
+#include "RooPolynomial.h"
+#include "RooConstVar.h"
+#include "RooChebychev.h"
+#include "RooAddPdf.h"
+#include "RooSimultaneous.h"
+#include "RooExtendPdf.h"
+#include "RooCategory.h"
+#include "TCanvas.h"
+#include "TAxis.h"
+#include "RooPlot.h"
+#include "RooKeysPdf.h"
+#include "TH1.h"
+#include "TH2.h"
+#include "TDirectory.h"
+#include "TString.h"
+#include <string>
+#include <vector>
+#include <sstream>
+
+using namespace std;
+using namespace RooFit;
+
+/*
+ * 
+ */
+
+
+double getMultipliedErr(RooRealVar a, RooRealVar b) {
+    double a_ = a.getError() / a.getVal();
+    double b_ = b.getError() / b.getVal();
+    return a.getVal() * b.getVal() * sqrt(pow(a_, 2) + pow(b_, 2));
+}
+
+int main(int argc, char** argv) {
+    double lumi = 19700.;
+    TString treename = "rds_zbb";
+    TString var = "";
+    int step = 1000;
+    Region * myReg;
+    interval range;
+    varInfo myInfo;
+    TFile * ftmp = new TFile("atmp.root", "recreate");
+    for (int f = 1; f < argc; f++) {
+        std::string arg_fth(*(argv + f));
+        if (arg_fth == "treeName") {
+            f++;
+            std::string out(*(argv + f));
+            treename = out.c_str();
+        } else if (arg_fth == "variable") {
+            f++;
+            var = string(*(argv + f));
+            f++;
+            range.first = atof(string(*(argv + f)).c_str());
+            f++;
+            range.second = atof(string(*(argv + f)).c_str());
+            myInfo[var] = range;
+            cout << "var: " << var << endl;
+            cout << "low: " << range.first << endl;
+            cout << "high: " << range.second << endl;
+        } else if (arg_fth == "step") {
+            f++;
+            std::string out(*(argv + f));
+            step = (int) atof(out.c_str());
+            cout << "step: " << step << endl;
+        } else if (arg_fth == "data") {
+            if (var == "" || step == 1000) {
+                cout << "first set var and step!" << endl;
+                return 1;
+            }
+            f++;
+            std::string out(*(argv + f));
+            int pos = out.find(".root");
+            std::string mydir = out.substr(0, pos);
+            TFile * fdata = TFile::Open(out.c_str());
+            ftmp->mkdir(mydir.c_str())->cd();
+            TTree * myTree = (TTree*) fdata->Get(treename);
+            myReg = new Region(myTree, myInfo);
+            //            delete fdata;
+        } else if (arg_fth == "mc") {
+            if (var == "" || step == 1000) {
+                cout << "first set var and step!" << endl;
+                return 1;
+            }
+            f++;
+            std::string out(*(argv + f));
+            int pos = out.find(".root");
+            std::string mydir = out.substr(0, pos);
+            TFile * fMC = TFile::Open(out.c_str());
+            ftmp->mkdir(mydir.c_str())->cd();
+            TTree * myTree = (TTree*) fMC->Get(treename);
+            //error
+            f++;
+            out = string(*(argv + f));
+            double err = (double) atof(out.c_str());
+            //Weight: number of processed events, cross section
+            f++;
+            out = string(*(argv + f));
+            double nevt = (double) atof(out.c_str());
+            f++;
+            out = string(*(argv + f));
+            double xsec = (double) atof(out.c_str());
+            double weight = (xsec * lumi) / nevt;
+            //is fixed?
+            f++;
+            out = string(*(argv + f));
+            bool isFixed = (atof(out.c_str()) == 1.);
+            string name_ = nameExtractor(string(fMC->GetName()));
+            myReg->addMC(myTree, weight, err, isFixed, name_);
+            //            delete fMC;
+        }
+    }
+
+    //dy with amassMu
+    //the dy(s) id in the script
+    std::vector<int> ids;
+    ids.push_back(0);
+    ids.push_back(1);
+    ids.push_back(9);
+    //the rest of MC
+    std::vector<int> ids2;
+    for (int i = 0; i < 10; i++) {
+        if (i == 0 || i == 1 || i == 9)
+            continue;
+        ids2.push_back(i);
+    }
+    cout << "---------" << endl;
+
+    //One could take PDF from binned dataset or from histograms
+    //Make binned and unbinned RooDataSets from MC trees
+    cout << var << endl;
+    myReg->PrepareMCDataSets(var);
+    std::vector<std::pair<RooDataSet*, RooRealVar*> > myMCDatasets = myReg->datasets;
+    RooDataSet * myMCData = (RooDataSet*) (myMCDatasets[0].first)->Clone("myMCDataSet");
+    for (unsigned int i = 1; i < myMCDatasets.size(); i++) {
+        if (TString(myMCDatasets[i].first->GetName()).Contains("TTFullLep"))
+            continue;
+        myMCData->append(*myMCDatasets[i].first);
+    }
+    TCanvas cc;
+    cc.cd();
+    RooPlot * xFrame2 = myReg->VariablesMap[var]->frame(Title("Z-peak2"));
+    myMCData->plotOn(xFrame2, DataError(RooAbsData::SumW2), MarkerColor(kRed));
+    xFrame2->Draw();
+    cc.SaveAs("cc.C");
+    //Fill Histograms from trees with appropriate luminosity weight
+    myReg->FillHists(var, 100);
+    //Get data
+    RooDataSet * myData = myReg->GetData(var);
+
+    cout << "-------------- " << "Template fit with shapes from functions: useful to extrapolate" << endl;
+    cout << "-------------- " << "Z signal: BW conv. Gauss. background exp" << endl;
+    TCanvas c;
+    c.SetTitle("");
+    myReg->VariablesMap[var]->setRange("SL", 10, 20);
+    myReg->VariablesMap[var]->setRange("SM", 20, 70);
+    myReg->VariablesMap[var]->setRange("SU", 70, 120);
+    //Reg. 1
+    RooRealVar mean_bw("mean_bw", "Mean", 90.8, 60, 120);
+    RooRealVar mean_cb("mean_cb", "Mean", 90.8, 60, 120);
+    RooRealVar sigma_bw("sigma_bw", "Width", 6.5, 1.0, 260.0);
+    RooRealVar sigma_cb("sigma_cb", "Width", 2.3, 1.0, 260.0);
+    RooRealVar n("n", "", 0.0, 5.0);
+    RooRealVar alpha("alpha", "", 0.0, 5.0);
+    RooRealVar lambda("lambda", "slope", -0.1, -5., 0.);
+    RooRealVar s_bw("signal_bw", "signal", 100, 0, 10000);
+    RooRealVar s_cb("signal_cb", "signal", 100, 0, 10000);
+    RooRealVar b("background", "background yield", 100, 0, 10000);
+    RooRealVar width("width", "width", 5, 0., 10.);
+    RooRealVar a0("a0", "a0", 1., 0., 1000.);
+    RooRealVar a1("a1", "a1", -0.1, -1., 0.);
+
+
+    //RooVoigtian gauss_bw("gauss_bw","gauss_bw",*myReg->VariablesMap[var],mean_bw,width,sigma_bw);
+    RooBreitWigner gauss_bw("gauss_bw", "gauss_bw", *myReg->VariablesMap[var], mean_bw, sigma_bw);
+    RooCBShape cball("cball", "crystal ball", *myReg->VariablesMap[var], mean_cb, sigma_cb, alpha, n);
+    RooExponential expo("expo", "exponential PDF", *myReg->VariablesMap[var], lambda);
+    RooPolynomial p2("p2", "p2", *myReg->VariablesMap[var], RooArgList(a0, a1), 0);
+    RooAddPdf sum("sum", "gaussian crystal ball and exponential PDF",
+            RooArgList(gauss_bw, cball, expo), RooArgList(s_bw, s_cb, b));
+    //            RooArgList(gauss_bw, cball, p2), RooArgList(s_bw, s_cb, b));
+    RooPlot * xFrame = myReg->VariablesMap[var]->frame(Title("Z-peak"));
+    //sum.fitTo(*myData, RooFit::Save(kTRUE), RooFit::Range("SL,SU"), RooFit::Extended());
+    //myData->plotOn(xFrame);
+    //    sum.fitTo(*myMCData, RooFit::Save(kTRUE), RooFit::Range("SL,SM,SU"), RooFit::Extended());
+    sum.fitTo(*myMCData, RooFit::Save(kTRUE), RooFit::Range("SL,SU"), RooFit::Extended());
+    myMCData->plotOn(xFrame, DataError(RooAbsData::SumW2), MarkerColor(kRed));
+    sum.plotOn(xFrame);
+    sum.plotOn(xFrame, RooFit::Components(expo), RooFit::LineStyle(kDashed));
+    //    sum.plotOn(xFrame, RooFit::Components(p2), RooFit::LineStyle(kDashed));
+    sum.plotOn(xFrame, RooFit::Components(cball), RooFit::LineStyle(kDashed), RooFit::LineColor(kRed));
+    sum.plotOn(xFrame, RooFit::Components(gauss_bw), RooFit::LineStyle(kDashed), RooFit::LineColor(kGreen));
+    sum.paramOn(xFrame, Layout(0.65), Format("NEU", AutoPrecision(1)), Parameters(RooArgList(s_bw, s_cb, b, mean_bw, mean_cb, sigma_bw/*,width*/, sigma_cb)));
+    xFrame->Draw();
+    mean_bw.Print();
+    mean_cb.Print();
+    sigma_bw.Print();
+    sigma_cb.Print();
+    s_bw.Print();
+    s_cb.Print();
+    b.Print();
+    c.SaveAs("fitplot2noT.C");
+    double err = sqrt(pow(b.getError(), 2) + pow(s_cb.getError(), 2) + pow(s_bw.getError(), 2));
+    RooAbsReal* fracInt = sum.createIntegral(*myReg->VariablesMap[var], *myReg->VariablesMap[var], "SL");
+    cout << "PDF frac integral:" << fracInt->getVal() << ", and " << fracInt->getVal()*(b.getVal() + s_bw.getVal() + s_cb.getVal())
+            << "\\pm" << fracInt->getVal() * err << endl;
+    fracInt = sum.createIntegral(*myReg->VariablesMap[var], *myReg->VariablesMap[var], "SM");
+    cout << "PDF frac integral:" << fracInt->getVal() << ", and " << fracInt->getVal()*(b.getVal() + s_bw.getVal() + s_cb.getVal()) 
+            << "\\pm" << fracInt->getVal() * err << endl;
+    fracInt = sum.createIntegral(*myReg->VariablesMap[var], *myReg->VariablesMap[var], "SU");
+    cout << "PDF frac integral:" << fracInt->getVal() << ", and " << fracInt->getVal()*(b.getVal() + s_bw.getVal() + s_cb.getVal())
+            << "\\pm" << fracInt->getVal() * err << endl;
+    double fracData2 = myMCData->sumEntries(0);
+    double fracData3 = myMCData->sumEntries(0, "SM");
+    double fracData4 = myMCData->sumEntries(0, "SL");
+    double fracData5 = myMCData->sumEntries(0, "SU");
+    cout << "MCData integral2: " << fracData2 << "\n\t" << fracData3 << "\n\t" << fracData4 << "\n\t" << fracData5 << endl;
+
+    //Table
+    cout << "Table for MC ..." << endl;
+    cout << "||SL|SM|SU|" << endl;
+    for (unsigned int i = 0; i < myMCDatasets.size(); i++) {
+        cout << "|" << string(myMCDatasets[i].first->GetName()).substr(3) << "|"
+                << myMCDatasets[i].first->sumEntries(0, "SL") << "|"
+                << myMCDatasets[i].first->sumEntries(0, "SM") << "|"
+                << myMCDatasets[i].first->sumEntries(0, "SU") << "|"
+                << endl;
+    }
+    cout << "Table for fit breakdown ..." << endl;
+    cout << "||SL|SM|SU|" << endl;
+    cout << "|gauss_bw|" << (gauss_bw.createIntegral(*myReg->VariablesMap[var], *myReg->VariablesMap[var], "SL"))->getVal() * s_bw.getVal()
+            << "|" << (gauss_bw.createIntegral(*myReg->VariablesMap[var], *myReg->VariablesMap[var], "SM"))->getVal() * s_bw.getVal()
+            << "|" << (gauss_bw.createIntegral(*myReg->VariablesMap[var], *myReg->VariablesMap[var], "SU"))->getVal() * s_bw.getVal()
+            << "|" << endl;
+    cout << "|cball|" << (cball.createIntegral(*myReg->VariablesMap[var], *myReg->VariablesMap[var], "SL"))->getVal() * s_cb.getVal()
+            << "|" << (cball.createIntegral(*myReg->VariablesMap[var], *myReg->VariablesMap[var], "SM"))->getVal() * s_cb.getVal()
+            << "|" << (cball.createIntegral(*myReg->VariablesMap[var], *myReg->VariablesMap[var], "SU"))->getVal() * s_cb.getVal()
+            << "|" << endl;
+    cout << "|expo|" << (expo.createIntegral(*myReg->VariablesMap[var], *myReg->VariablesMap[var], "SL"))->getVal() * b.getVal()
+            << "|" << (expo.createIntegral(*myReg->VariablesMap[var], *myReg->VariablesMap[var], "SM"))->getVal() * b.getVal()
+            << "|" << (expo.createIntegral(*myReg->VariablesMap[var], *myReg->VariablesMap[var], "SU"))->getVal() * b.getVal()
+            << "|" << endl;
+    //    cout << "|p2|" << (p2.createIntegral(*myReg->VariablesMap[var], *myReg->VariablesMap[var], "SL"))->getVal() * b.getVal()
+    //            << "|" << (p2.createIntegral(*myReg->VariablesMap[var], *myReg->VariablesMap[var], "SM"))->getVal() * b.getVal()
+    //            << "|" << (p2.createIntegral(*myReg->VariablesMap[var], *myReg->VariablesMap[var], "SU"))->getVal() * b.getVal()
+    //            << "|" << endl;
+
+    return 1;
+
+    //Conclusion: Histograms are gitty!
+}
+
+/* I am seeing an annoying error due to the range :(
+ *   cout << "-------------- " << "Template fit with PDFs from MC (not useful to extrapolated the shape)" << endl;
+    //Template fit with PDFs from MC (not useful to extrapolated the shape)
+    //Works the best
+    //Get PDF from binned dataset
+    RooHistPdf p2sig = myReg->GetCombinedPdfFromHistogram(var, ids2, "signal");
+    RooHistPdf p2bkg = myReg->GetCombinedPdfFromHistogram(var, ids, "background");
+    //Are weights applied properly?
+    cout << "---------" << p2sig.createIntegral(*myReg->GetVar(var))->getVal() << endl;
+    cout << "---------" << p2bkg.createIntegral(*myReg->GetVar(var))->getVal() << endl;
+
+    //two ways for normalization:
+    //1- the fractional contribution (Not used here)
+    //2- absolute normalization
+
+    RooRealVar N_sig2("N_sig2", "N_sig2", 4790.35, 4000., 5000.);
+    RooRealVar N_bkg2("N_bkg2", "N_bkg2", 1033.24, 800., 1500.);
+    RooAddPdf model2("model2", "model2", RooArgList(p2sig, p2bkg), RooArgList(N_sig2, N_bkg2));
+    model2.fitTo(*myData);
+    cout<<"Here I am!!!"<<endl;
+    cout << N_sig2.getVal() << "\t" << N_bkg2.getVal() << endl;
+ */
+
+/*
+ * //Template fit with signal shapes from function: useful to extrapolate, bkg from MC
+    //Same signal as above
+    //Background same as 1
+    RooRealVar N_sig0("N_sig0", "N_sig0", 4790.35, 4000., 6000.);
+    RooRealVar N_bkg0("N_bkg0", "N_bkg0", 1033.24, 800., 10000.);
+    RooRealVar mean0("mean0", "mean0", 91.0, 76.0, 106.0);
+    //    RooRealVar mean0("mean0", "mean0", 9.09269e+01);
+    //    mean0.setConstant(kTRUE);
+    RooRealVar width0("width0", "width0", 5.0, 0.0, 30.0);
+    //    RooRealVar width0("width0", "width0", 4.38754e+00);
+    //    width0.setConstant(kTRUE);
+    RooRealVar sigma0("sigma0", "sigma0", 5.0, 0.0, 30.0);
+    //    RooRealVar sigma0("sigma0", "sigma0", 7.58261e-01);
+    //    sigma0.setConstant(kTRUE);
+    RooVoigtian gauss0("gauss0", "gauss0", *myReg->GetVar("amassMu"), mean0, width0, sigma0);
+    //    RooGaussian gauss0("gauss0", "gauss0", *myReg->GetVar("amassMu"), mean0, width0);
+    RooAddPdf model0("model0", "model0", RooArgList(gauss0, p2bkg), RooArgList(N_sig0, N_bkg0));
+    model0.fitTo(*myData);
+    cout << "model0: " << N_sig0.getVal() << "\t" << N_bkg0.getVal() << endl;
+
+    //    Plotting both PDFs for comparison
+    RooPlot * varFramdata = ((RooRealVar*) myReg->GetVar("amassMu"))->frame();
+    myData->plotOn(varFramdata);
+    model0.plotOn(varFramdata, LineColor(kBlue));
+    model2.plotOn(varFramdata, LineColor(kRed), LineStyle(kDashed));
+    model1.plotOn(varFramdata, LineColor(kGreen), LineStyle(kDashed));
+    //    composed.plotOn(varFramdata, LineColor(kGreen));
+    RooPlot * varFram = ((RooRealVar*) myReg->GetVar("amassMu"))->frame();
+    p2bkg.plotOn(varFram, LineColor(kBlue));
+    p2sig.plotOn(varFram, LineColor(kRed));
+    RooPlot * varFram2 = ((RooRealVar*) myReg->GetVar("amassMu"))->frame();
+    expo.plotOn(varFram2, LineColor(kBlue));
+    p2.plotOn(varFram2, LineColor(kBlack));
+    gauss.plotOn(varFram2, LineColor(kRed));
+    TFile * hplot = new TFile("hplot.root", "recreate");
+    //    for (unsigned int s = 0; s < myReg->GetHists().size(); s++) {
+    //        hplot->cd();
+    //        myReg->GetHists()[s]->Write();
+    //    }
+    TCanvas * c = new TCanvas("HistTemplate", "HistTemplate");
+    c->cd();
+    varFram->Draw();
+    c->Write();
+    c = new TCanvas("FuncTemplate", "FuncTemplate");
+    c->cd();
+    varFram2->Draw();
+    c->Write();
+    c = new TCanvas("Data", "Data");
+    c->cd();
+    varFramdata->Draw();
+    c->Write();
+    hplot->Write();
+    hplot->Close();
+ */
+/*
+ * //Template fit with shapes from functions: useful to extrapolate
+    // Z signal: BW conv. Gauss.
+    //    myReg->setVarRange(var, 85., 95.);
+    RooRealVar mean("mean", "mean", 91.0, 76.0, 106.0);
+    RooRealVar width("width", "width", 5.0, 0.0, 30.0);
+    RooRealVar sigma("sigma", "sigma", 5.0, 0.0, 30.0);
+    // Yields
+    RooRealVar s("s", "signal yield", 4790.35, 0., 10000.);
+    RooRealVar b("b", "background yield", 1033.24, 0., 10000.);
+
+    RooVoigtian gauss("gauss", "gauss", *myReg->GetVar("amassMu"), mean, width, sigma);
+    //    RooGaussian gauss("gauss", "gauss", *myReg->GetVar("amassMu"), mean, width);
+
+    // Exponential background
+    RooRealVar lambda("lambda", "slope", -0.1, -5., 0.);
+    RooExponential expo("expo", "exponential PDF", *myReg->GetVar("amassMu"), lambda);
+    RooExtendPdf extBkg("extBkg", "extBkg", expo, b);
+    RooExtendPdf extSig("extSig", "extSig", gauss, s);
+
+    RooRealVar a0("a0", "a0", 100, -100., 200);
+    //    a0.setConstant(kTRUE);
+    RooRealVar a1("a1", "a1", -10, -20, 20);
+    //    a1.setConstant(kTRUE);
+    RooPolynomial p2("p2", "p2", *myReg->GetVar("amassMu"), RooArgList());
+    RooExtendPdf extPbkg("extPbkg", "extPbkg", p2, b);
+
+    RooGenericPdf composed("composed", "composed", "(s*gauss) + (b*expo)", RooArgSet(s, b, gauss, expo));
+
+
+    //    RooAddPdf model1("model1", "Gaussian plus exponential PDF", RooArgList(gauss, expo), RooArgList(s, b));
+    //    RooAddPdf model1("model1", "Gaussian plus exponential PDF", RooArgList(extSig, extBkg));
+    //    RooAddPdf model1("model1", "Gaussian plus exponential PDF", RooArgList(extSig, extPbkg));
+    //    RooAddPdf model1("model1", "Gaussian plus exponential PDF", RooArgList(gauss, p2), RooArgList(s, b));
+    RooAddPdf model1("model1", "Gaussian ", RooArgList(gauss), RooArgList(s));
+    model1.fitTo(*myData);
+
+    //    composed.fitTo(*myData);
+    cout << "model1 " << s.getVal() << "\t" << b.getVal() << endl;
+ */

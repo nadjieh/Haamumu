@@ -1,0 +1,5 @@
+signal 1.077
+bkg MC 33
+bkg data 53 + 8 (ttbar) = 61 (50%)
+bw ratio 0.43
+

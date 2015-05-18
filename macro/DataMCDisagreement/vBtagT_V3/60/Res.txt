@@ -1,0 +1,84 @@
+scaleSU: 0.914709
+scaleSL: 0.845323
+
+
+/////////// MC-fit ////////////////
+//// Tstring fname = "hamb-shapes-UnbinnedParam-m60-MC-fit.root";
+//// stringstream lambda; lambda << -0.139706;
+//// stringstream alpha; alpha << 1.56009;
+//// stringstream n; n <<  0.46723;
+//// stringstream meanbw; meanbw <<  89.7275;
+//// stringstream sigmabw; sigmabw <<  1;
+//// stringstream meancb; meancb <<  1.38376;
+//// stringstream sigmacb; sigmacb <<  1.87468;
+///////////////////////////////////
+| | SL | SM | SU |
+|expo | 292.843 \pm 26.7349|1.36671 \pm 0.124773|0.0889644 \pm 0.00812194|
+|B.W | 1.84283 \pm 0.0613933|374.513 \pm 12.4768|2314.98 \pm 77.1228|
+|Sum fit |294.686 \pm 26.735|375.879 \pm 12.4774|2315.07 \pm 77.1228|
+|MC Data | 294.562 | 373.414 | 2315.49 |
+
+////////////////////////////////
+| | SM |
+|bkg | 6.5136 \pm 7.75249|
+|B.W_pf | 366.746 \pm 61.1062|
+|Sum fit_pf | 373.259 \pm 61.596|
+|MC Data | 373.414 | 
+
+
+
+
+
+==========================================
+
+
+/////////// Data-fit ////////////////
+//// Tstring fname = "hamb-shapes-UnbinnedParam-m60-Data-fit.root";
+//// stringstream lambda; lambda << -0.149132;
+//// stringstream alpha; alpha << 1.25628;
+//// stringstream n; n <<  0.806653;
+//// stringstream meanbw; meanbw <<  90.8672;
+//// stringstream sigmabw; sigmabw <<  1;
+//// stringstream meancb; meancb <<  0.298534;
+//// stringstream sigmacb; sigmacb <<  1.74768;
+///////////////////////////////////
+| | SL | SM | SU |
+|expo | 247.768 \pm 23.1121|0.77898 \pm 0.0726642|0.0415443 \pm 0.0038753|
+|B.W |1.19918 \pm 0.0399211|249.54 \pm 8.30729|2118.03 \pm 70.5101|
+|Sum fit | 248.968 \pm 23.1122|250.319 \pm 8.30761|2118.07 \pm 70.5101|
+|MC Data | 249 | 339 | 2118 |
+
+////////////////////////////////
+| | SM |
+|bkg | 214.4 \pm 111.153|
+|B.W_pf |124.44 \pm 41.8727|
+|Sum fit_pf | 338.838 \pm 118.778|
+|MC Data | 339 | 
+
+
+
+================================================== AFTER SCALING
+
+
+/////////// MC-fit ////////////////
+//// Tstring fname = "hamb-shapes-UnbinnedParam-m60-MC-fit.root";
+//// stringstream lambda; lambda << -0.139822;
+//// stringstream alpha; alpha << 1.55975;
+//// stringstream n; n <<  0.467486;
+//// stringstream meanbw; meanbw <<  89.7275;
+//// stringstream sigmabw; sigmabw <<  1;
+//// stringstream meancb; meancb <<  1.38404;
+//// stringstream sigmacb; sigmacb <<  1.87482;
+///////////////////////////////////
+| | SL | SM | SU |
+|expo | 247.382 \pm 24.5462|1.14894 \pm 0.114002|0.0746051 \pm 0.00740261|
+|B.W | 1.68556 \pm 0.058903|342.562 \pm 11.971|2117.88 \pm 74.0107|
+|Sum fit | 249.067 \pm 24.5462|343.71 \pm 11.9716|2117.96 \pm 74.0107|
+|MC Data | 249 | 341.565 | 2118 |
+
+////////////////////////////////
+| | SM |
+|bkg | 7.33092 \pm 4.57061|
+|B.W_pf | 334.179 \pm 18.4764|
+|Sum fit_pf | 341.51 \pm 19.0333|
+|MC Data | 341.565 | 

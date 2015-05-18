@@ -1,0 +1,254 @@
+*Conditional preapproval (31.03.2015)*
+
+[[https://hypernews.cern.ch/HyperNews/CMS/get/HIG-14-041/5.html][Comments on hn]]
+
+[[https://twiki.cern.ch/twiki/bin/viewauth/CMS/PasHIG14041][twiki]]
+
+* DONE 1-Hres NNLO: 
+** DONE to make sure that the genInfo are accessible in our PAT-tuples.
+   - Just needs to be applied on signal
+   - GenParticles are in PATtuples.
+   - How to keep Higgs in RDS files?
+     - Done. It has two part: SM Higgs and BSM Higgs
+   - How to change the pt threshold of jets?
+     - Done!
+   - How to run on GRID and put everything on llbb
+     - Done!
+** DONE Check the final number of events if they make sense
+   - Things look reasonable. Systematics are in production ...
+* DONE slide 12. Can you check the yields at pre-selection level for the signal? They look too large taking into account the expected sigma X BR and luminosity. 
+  - There was a mistake in the code. For illustration on plots, we enlarge the signal cross section by a factor of 30. Mistakenly, this factor has appeared in the yields.
+    | ma |     N0 |     N |        eff | \sigma\times Lumi |   N_{exp} |
+    | 30 | 102030 | 23701 | 0.23229442 |              59.1 | 13.728600 |
+    | 40 | 101467 | 23610 | 0.23268649 |              59.1 | 13.751772 |
+    | 50 | 100617 | 24407 | 0.24257332 |              59.1 | 14.336083 |
+    | 60 | 101822 | 24571 | 0.24131327 |              59.1 | 14.261614 |
+    #+TBLFM: $4=$3/$2::$5=19700*0.003::$6=$4*$5
+* DONE 4-Check the expected sensitivity for a simple set of proposed cuts w.r.t. the nominal mass dependent selection. The current option seems to be hard to justify. 
+** *Bare numbers for each selection scenario*
+  - *Bare numbers for each selection scenario*
+   | cut version | ma = 30 GeV | ma = 40 GeV | ma = 50 GeV | ma = 60 GeV |     N0 |
+   | v30         |        5515 |        5482 |        6161 |        7249 | 102030 |
+   | v40         |        5904 |        5931 |        6172 |        6982 | 101467 |
+   | v50         |        6244 |        6245 |        6608 |        7436 | 100617 |
+   | v60         |        4043 |        3870 |        4645 |        6617 | 101822 |
+  - 
+   | v30 |     N0 |    N |         eff | #sigma#times Lumi |   N_{exp} |
+   |  30 | 102030 | 5515 | 0.054052730 |              59.1 | 3.1945163 |
+   |  40 | 101467 | 5482 | 0.054027418 |              59.1 | 3.1930204 |
+   |  50 | 100617 | 6161 | 0.061232197 |              59.1 | 3.6188228 |
+   |  60 | 101822 | 7249 | 0.071192866 |              59.1 | 4.2074984 |
+  #+TBLFM: $4=$3/$2::$6=$4*$5
+  - 
+   | v40 |     N0 |    N |         eff | #sigma#times Lumi |   N_{exp} |
+   |  30 | 102030 | 5904 | 0.057865334 |              59.1 | 3.4198412 |
+   |  40 | 101467 | 5931 | 0.058452502 |              59.1 | 3.4545429 |
+   |  50 | 100617 | 6172 | 0.061341523 |              59.1 | 3.6252840 |
+   |  60 | 101822 | 6982 | 0.068570643 |              59.1 | 4.0525250 |
+  #+TBLFM: $4=$3/$2::$6=$4*$5
+  - 
+    | v50 |     N0 |    N |         eff | #sigma#times Lumi |   N_{exp} |
+    |  30 | 102030 | 6244 | 0.061197687 |              59.1 | 3.6167833 |
+    |  40 | 101467 | 6245 | 0.061547104 |              59.1 | 3.6374338 |
+    |  50 | 100617 | 6608 | 0.065674787 |              59.1 | 3.8813799 |
+    |  60 | 101822 | 7436 | 0.073029404 |              59.1 | 4.3160378 |
+    #+TBLFM: $4=$3/$2::$6=$4*$5
+  - 
+    | v60 |     N0 |    N |         eff | #sigma#times Lumi |   N_{exp} |
+    |  30 | 102030 | 4043 | 0.039625600 |              59.1 | 2.3418730 |
+    |  40 | 101467 | 3870 | 0.038140479 |              59.1 | 2.2541023 |
+    |  50 | 100617 | 4645 | 0.046165161 |              59.1 | 2.7283610 |
+    |  60 | 101822 | 6617 | 0.064985956 |              59.1 | 3.8406700 |
+    #+TBLFM: $4=$3/$2::$6=$4*$5
+** *Signal yield per scenario*
+  - *Signal yield per scenario*
+    | cut version | ma = 30 GeV | ma = 40 GeV | ma = 50 GeV | ma = 60 GeV |
+    | v30         |        3.35 |        3.19 |        3.62 |        4.21 |
+    | v40         |        3.58 |        3.46 |        3.63 |        4.05 |
+    | v50         |        3.79 |        3.64 |        3.88 |        4.32 |
+    | v60         |        2.45 |        2.25 |        2.73 |        3.84 |
+    #+TBLFM: $2=2.34*3.35/3.2
+** Background yields for |m_{\mu\mu}-m_a|< 10 GeV
+    | cut version | ma = 30 GeV | ma = 40 GeV | ma = 50 GeV | ma = 60 GeV |
+    | v30         | 427 \pm 54  | 369 \pm 48  | 476 \pm 45  | 436 \pm 29  |
+    | v40         | 683 \pm 70  | 549 \pm 61  | 473 \pm 46  | 425 \pm 31  |
+    | v50         | 764 \pm 74  | 620 \pm 65  | 523 \pm 49  | 474 \pm 32  |
+    | v60         | 219 \pm 38  | 252 \pm 40  | 396 \pm 42  | 411 \pm 35  |
+** *Significance: S/\sqrt{S+B}*
+  - *Significance: S/\sqrt{S+B}*
+    | cut version | ma = 30 GeV | ma = 40 GeV | ma = 50 GeV | ma = 60 GeV |
+    |-------------+-------------+-------------+-------------+-------------|
+    | v30         |        3.35 |        3.19 |        3.62 |        4.21 |
+    |             |  427 \pm 54 |  369 \pm 48 |  476 \pm 45 |  436 \pm 29 |
+    |             |        0.16 |        0.17 |        0.17 |        0.20 |
+    |-------------+-------------+-------------+-------------+-------------|
+    | v40         |        3.58 |        3.46 |        3.63 |        4.05 |
+    |             |  683 \pm 70 |  549 \pm 61 |  473 \pm 46 |  425 \pm 31 |
+    |             |        0.14 |        0.15 |        0.17 |        0.20 |
+    |-------------+-------------+-------------+-------------+-------------|
+    | v50         |        3.79 |        3.64 |        3.88 |        4.32 |
+    |             |  764 \pm 74 |  620 \pm 65 |  523 \pm 49 |  474 \pm 32 |
+    |             |        0.14 |        0.15 |        0.17 |        0.20 |
+    |-------------+-------------+-------------+-------------+-------------|
+    | v60         |        2.45 |        2.25 |        2.73 |        3.84 |
+    |             |  219 \pm 38 |  252 \pm 40 |  396 \pm 42 |  411 \pm 35 |
+    |             |        0.16 |        0.14 |        0.14 |        0.19 |
+    #+TBLFM: $2=@11/sqrt(@11+219)::$3=@11/sqrt(@11+252)::$4=@11/sqrt(@11+396)::$5=@11/sqrt(@11+411)
+
+** *FOM: S/\sqrt{B+(#Delta B)^2}*
+  - *FOM: S/\sqrt{B+(#Delta B)^2}*
+    | cut version         | ma = 30 GeV | ma = 40 GeV | ma = 50 GeV | ma = 60 GeV |
+    |---------------------+-------------+-------------+-------------+-------------|
+    | *v30* -- N_{signal} |        3.35 |        3.19 |        3.62 |        4.21 |
+    | N_{bkg}             |         427 |         369 |         476 |         436 |
+    | \delta_{bkg}        |          54 |          48 |          45 |          29 |
+    | FOM                 |       0.058 |       0.062 |       0.072 |       0.118 |
+    |---------------------+-------------+-------------+-------------+-------------|
+    | *v40* -- N_{signal} |        3.58 |        3.46 |        3.63 |        4.05 |
+    | N_{bkg}             |         683 |         549 |         473 |         425 |
+    | \delta_{bkg}        |          70 |          61 |          46 |          31 |
+    | FOM                 |       0.048 |       0.053 |       0.071 |       0.109 |
+    |---------------------+-------------+-------------+-------------+-------------|
+    | *v50* -- N_{signal} |        3.79 |        3.64 |        3.88 |        4.32 |
+    | N_{bkg}             |         764 |         620 |         523 |         474 |
+    | \delta_{bkg}        |          74 |          65 |          49 |          32 |
+    | FOM                 |       0.048 |       0.052 |       0.072 |       0.112 |
+    |---------------------+-------------+-------------+-------------+-------------|
+    | *v60* -- N_{signal} |        2.45 |        2.25 |        2.73 |        3.84 |
+    | N_{bkg}             |         219 |         252 |         396 |         411 |
+    | \delta_{bkg}        |          38 |          40 |          42 |          35 |
+    | FOM                 |       0.060 |       0.052 |       0.059 |       0.095 |
+    #+TBLFM: $2=@14/sqrt(@15+(@16*@16))::$3=@14/sqrt(@15+(@16*@16))::$4=@14/sqrt(@15+(@16*@16))::$5=@14/sqrt(@15+(@16*@16))
+
+** Conclusion
+   - The optimized values sound to be the best from the point of view of "FOM AND Nsignal"
+   - The only exception is ma = 60 GeV for which the selection of 50 GeV works the best.
+** could you please revisit the optimization and show S/sqrt(S+B) after the optimization and at preselection level in the same mass window.
+* DONE 6-Can you show the m_mumubb mass distribution in a narrower mass range to show if the peak is at 125 GeV. Due to the tails, are you sure that you don't need asymmetric requirements?. 
+  - The peak is exactly at 125 GeV and asymmetric cut introduces more background as shown in [[http://ajafari.web.cern.ch/ajafari/SignalvsDY_fullSel.gif][this]] picture
+* DONE 7-Can you check the discriminating power of m_mumubb and m_bb and the combination in 2D? We would like to see if this variable has additional power and if it can be used in the selection. 
+  - m_mumubb is already in the game. We apply a cut on that.
+  - the mbb power is meaningful, in the sense of being mass-independent, when it is constrained to |mbb - m#mu#mu| which is a feasture of signal. The problem with this variable is that there is a shape discrepancy between data and MC. Hence optimization on this would not be relaible.
+** *On Mbb*
+   - Pictures before 4-boady mass cut:
+   	  - [[http://ajafari.web.cern.ch/ajafari/signal_DY_step4_fullSel.gif][mbb]]
+   	  - [[http://ajafari.web.cern.ch/ajafari/signal_DY_step4_fullSel_2D.gif][mbb vs mbb\mu\mu]]
+   - *Does not give a big gain!*
+   - Taking the following picture for ma = 30, we cut on |mbb- ma| < 10.
+   - [[http://ajafari.web.cern.ch/ajafari/mbb_30.gif][picture m= 30]]
+   - [[http://ajafari.web.cern.ch/ajafari/mbb_40.gif][picture m= 40]]
+   - [[http://ajafari.web.cern.ch/ajafari/mbb_50.gif][picture m= 50]]
+   - [[http://ajafari.web.cern.ch/ajafari/mbb_60.gif][picture m= 60]]
+   - Table
+     |    | signal  eff | signal yield | N expected after mbb | ~bkg eff | N bkg | N bkg after mbb |
+     | 30 |    0.771714 |         3.35 |            2.5852419 |     0.35 |   427 |          149.45 |
+     | 40 |    0.804586 |         3.46 |            2.7838676 |      0.5 |   599 |           299.5 |
+     | 50 |     0.85003 |         3.88 |            3.2981164 |      0.7 |   523 |           366.1 |
+     | 60 |    0.926099 |         3.84 |            3.5562202 |     0.92 |   411 |          378.12 |
+     #+TBLFM: $4=$2*$3::$7=$6*$5
+   
+** *On diffMass bb,#mu#mu*
+   - Pictures before 4-boady mass cut:
+	 - [[http://ajafari.web.cern.ch/ajafari/signal_DY_diffM_fullSel.gif][diffM]]
+   - None of the pictures below show any sign of improvement 	 
+     - [[http://ajafari.web.cern.ch/ajafari/diffM_30.gif][30 GeV]]
+     - [[http://ajafari.web.cern.ch/ajafari/diffM_40.gif][40 GeV]]
+     - [[http://ajafari.web.cern.ch/ajafari/diffM_50.gif][50 GeV]]
+     - [[http://ajafari.web.cern.ch/ajafari/diffM_60.gif][60 GeV]]
+* DONE 9-Signal description 
+  - Voig added to CB sounds good (image [[http://ajafari.web.cern.ch/ajafari/testCB.gif][testCB]] and [[file:/home/nadjieh/work/Haamumu/macro/CondPreApp/9-SignalModel/testCBVoig.gif][testCBVoig]])
+  - Communicated with Andrea [[https://mail.google.com/mail/u/0/#inbox/14c76106daa50682][here]]
+* DONE 12-Please check the efficiency as function of mass below 20 GeV and justify why you stop at 20 GeV.
+** Optimization
+   - Leading muon pt = 25 GeV
+     - [[file:~/work/Haamumu/macro/CondPreApp/12-LimitAt20GeV/leadMupt.gif][significance]]
+   - Subleading muon pt = 8 GeV
+     - [[file:/home/nadjieh/work/Haamumu/macro/CondPreApp/12-LimitAt20GeV/subleadMupt.gif][significance]]
+   - Leading jet pt = 25 GeV
+     - [[/home/nadjieh/work/Haamumu/macro/CondPreApp/12-LimitAt20GeV/leadJetpt.gif][significance]]
+   - Subleading jet pt = 15 GeV
+     - [[/home/nadjieh/work/Haamumu/macro/CondPreApp/12-LimitAt20GeV/subleadJetpt.gif][significance]]
+   - mH window < 20 GeV
+** Check the selection on background and comparison with the flat selection
+*** Optimized for 20 GeV (10 <m_{\mu\mu}<30 GeV)
+   - (3205./101467.)*0.003*19700=1.87
+   - Bkg: 763.85 +- 76.98
+     | DYjet Low        | DY jet           | TTFull           | Others    |
+     | 728.33 +/- 76.77 | 12.003 +/- 5.368 | 18.802 +/- 0.827 | 4.7 +/- 1 | 
+   - FOM S/#sqrt{B + \Delta B^2} = 3.21/sqrt(763.85 + pow( 76.98,2)) = *0.0392*
+*** Equivalent selection to other points (24 GeV, 8 GeV, 20 GeV, 15 GeV + 10 <m_{\mu\mu}<30 GeV)
+   - (3491./101467.)*0.003*19700=2.03
+     | cut version | ma = 20 GeV | ma = 30 GeV | ma = 40 GeV | ma = 50 GeV | ma = 60 GeV |
+     |-------------+-------------+-------------+-------------+-------------+-------------|
+     | v20         |        1.87 |             |             |             |             |
+     |             |         764 |             |             |             |             |
+     |             |          77 |             |             |             |             |
+     |             |       0.023 |             |             |             |             |
+     |-------------+-------------+-------------+-------------+-------------+-------------|
+     | v30         |        1.90 |        3.35 |        3.19 |        3.62 |        4.21 |
+     |             |         735 |         427 |         369 |         476 |         436 |
+     |             |          76 |          54 |          48 |          45 |          29 |
+     |             |       0.024 |       0.058 |       0.062 |       0.072 |       0.118 |
+     |-------------+-------------+-------------+-------------+-------------+-------------|
+     | v40         |        1.88 |        3.58 |        3.46 |        3.63 |        4.05 |
+     |             |         865 |         683 |         549 |         473 |         425 |
+     |             |          82 |          70 |          61 |          46 |          31 |
+     |             |       0.022 |       0.048 |       0.053 |       0.071 |       0.109 |
+     |-------------+-------------+-------------+-------------+-------------+-------------|
+     | v50         |        2.03 |        3.79 |        3.64 |        3.88 |        4.32 |
+     |             |         965 |         764 |         620 |         523 |         474 |
+     |             |          87 |          74 |          65 |          49 |          32 |
+     |             |       0.022 |       0.048 |       0.052 |       0.072 |       0.112 |
+     |-------------+-------------+-------------+-------------+-------------+-------------|
+     | v60         |        1.37 |        2.45 |        2.25 |        2.73 |        3.84 |
+     |             |         426 |         219 |         252 |         396 |         411 |
+     |             |          57 |          38 |          40 |          42 |          35 |
+     |             |       0.023 |       0.060 |       0.052 |       0.059 |       0.095 |
+     #+TBLFM: $2=@18/sqrt(@19+(@20*@20))
+** Conclusion
+   - The signal yield is always less than 2 (statistically too low)
+   - The sensitivity is always less that 0.5 times the other mass points.
+   - The limit is expected to be worse at least by a factor of 2, meaning 10 \times(\sigma\times\Br)
+* DONE 13-There was a question to understand the effect of VBF, VH and so on that are currently neglected in the analysis. Could you check and give us an idea of the efficiency and total expected fraction for such events?
+    |          |         ggF |         VBF |
+    | N0       |      995117 |       49939 |
+    | N0UCL    |      708382 |       39362 |
+    | Eff      |        0.71 |        0.79 |
+    | Nmumu    |      267613 |       15501 |
+    | Eff      |        0.38 |        0.39 |
+    | N2mu2J   |      177591 |       11987 |
+    | Eff      |        0.66 |        0.77 |
+    | N2mu1j1b |        3157 |         294 |
+    | Eff      | 0.017776802 | 0.024526570 |
+  - The additional sensitivity is expected to be negligible
+  - The theory argument based on 1312.4992v1
+  - For ggF, using the full Run I data (25 fb^{-1}), we expect ~20 signal events before any selection
+  - Considering VBF with \sigma_{VBF}/\sigma_{ggF}~1./20., one would expected 1 event within the entire dataset of Run I.
+  - We can atribute this one event to 8 TeV run, i.e. our analysis
+  - Any selection would reduce the contribution of VBF to below 1 which means the statistical contribution would be negligible.
+  - However, we tried to estimate the efficiency: 
+    - We applied a simplified dimuon selection on SM VBFto4L and ggFto4L to have an estimate of the difference in efficiencies.
+      - The lepton selection efficiency is almost the same (\epsilon_{vbf} =39% and \epsilon_{ggF} = 38%)
+    - Due to differen jet kinematics it is not informative to compare the central jet efficiencies between the two.
+      - In particular we know that SM VBF has two forward jets at lowet order while ggF is jet-free.
+      - Asking for two additional jets yields relative efficiency of \epsilon_{vbf} =77% and \epsilon_{ggF} = 66%
+    - The bjet requirement is not expected to differ between the two after asking for two jets (~2% for both)
+  - In conclusion, we can take similar efficiencies for both or to be more conservative (optimist about vbf selection) we can assume 20% more efficiency for VBF.
+  - The ggF->BSM efficiency is
+    - ~3./20. = 15%,
+  - hence one would expect the follwoing yield for VBF
+    - 0.15*1*1.2 = 0.18
+  - Comparing FOM of S/\sqrt{B+(#Delta B)^2}
+    | signal      | ma = 30 GeV | ma = 40 GeV | ma = 50 GeV | ma = 60 GeV |
+    | VBF only    |        0.20 |        0.21 |        0.23 |        0.23 |
+    | ggF only    |        3.35 |        3.46 |        3.88 |        3.84 |
+    | ggF+VBF     |        3.55 |        3.67 |        4.11 |        4.07 |
+    | bkg         |  427 \pm 54 |  599 \pm 62 |  523 \pm 49 |  411 \pm 35 |
+    | FOM ggFonly |       0.058 |       0.052 |       0.072 |       0.095 |
+    | FOM ggF+VBF |       0.061 |       0.055 |       0.076 |       0.101 |
+    |-------------+-------------+-------------+-------------+-------------|
+    | Difference  |        3e-3 |        3e-3 |        4e-3 |        6e-3 |
+    | Rel. Diff   |        0.05 |        0.06 |        0.06 |        0.06 |
+    #+TBLFM: $2=@8/@6::$3=@8/@6::$4=@8/@6::$5=@8/@6
+  - As expected, the improvement is marginal
+

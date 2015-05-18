@@ -1,0 +1,5 @@
+
+./Plot prefix ./forStack/rdsDataMComp out inWindow_DataMComp.root data Data  mcinput ZZ    beta 0.0148983   mcname ZZ  mcinput WZ    beta 0.070332   mcname WZ  mcinput WW    beta  0.00640123   mcname WW  mcinput TTF   beta 0.0366756   mcname TTF  mcinput TTS    beta 0.073873   mcname TTS  mcinput Wtbar    beta 0.411741   mcname Wtbar   mcinput Wt    beta 0.401741   mcname Wt mcinput DY   beta 2.37304   mcname DY mcinput DYLow   beta 8.77496   mcname DYLow  mcinput ZH125   beta 0.000428876   mcname ZH125   
+
+
+#./Plot prefix ./forStack/rdsDataMComp out inWindow_DataMComp.root data Data  mcinput ZZ    beta 0.015627874   mcname ZZ  mcinput WZ    beta 0.062232778   mcname WZ  mcinput WW    beta 0.092674686   mcname WW  mcinput TTF   beta 0.042669241   mcname TTF  mcinput TTS    beta 0.16755231   mcname TTS  mcinput Wtbar    beta 0.35925155   mcname Wtbar   mcinput Wt    beta 0.40349285   mcname Wt mcinput DY   beta 2.6020854   mcname DY mcinput DYLow   beta  7.4012970   mcname DYLow  mcinput ZH125   beta  4.5862984e-4   mcname ZH125 

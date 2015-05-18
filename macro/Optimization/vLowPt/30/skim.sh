@@ -1,0 +1,15 @@
+./doSkim step 4 data DoubleMu2012A_Summer12_final_4.root  AddCut 26. AddCut 10. AddCut 15. AddCut 15. AddCut 6. AddCut -1. AddCut 22.
+./doSkim step 4 data DoubleMu2012B_Summer12_final_4.root  AddCut 26. AddCut 10. AddCut 15. AddCut 15. AddCut 6. AddCut -1. AddCut 22.
+./doSkim step 4 data DoubleMu2012C_Summer12_final_4.root  AddCut 26. AddCut 10. AddCut 15. AddCut 15. AddCut 6. AddCut -1. AddCut 22.
+./doSkim step 4 data DoubleMu2012D_Summer12_final_4.root  AddCut 26. AddCut 10. AddCut 15. AddCut 15. AddCut 6. AddCut -1. AddCut 22.
+./doSkim step 4 mc DYjets_M10to50_Summer12_final_4.root  AddCut 26. AddCut 10. AddCut 15. AddCut 15. AddCut 6. AddCut -1. AddCut 22.
+./doSkim step 4 mc DYjets_Summer12_final_4.root  AddCut 26. AddCut 10. AddCut 15. AddCut 15. AddCut 6. AddCut -1. AddCut 22.
+./doSkim step 4 mc H2ToH1H1_H1To2Mu2B_mH2-125_mH1-30_Summer12_final_4.root  AddCut 26. AddCut 10. AddCut 15. AddCut 15. AddCut 6. AddCut -1. AddCut 22.
+./doSkim step 4 mc TTFullLept_Summer12_final_4.root  AddCut 26. AddCut 10. AddCut 15. AddCut 15. AddCut 6. AddCut -1. AddCut 22.
+./doSkim step 4 mc TTSemiLept_Summer12_final_4.root  AddCut 26. AddCut 10. AddCut 15. AddCut 15. AddCut 6. AddCut -1. AddCut 22.
+./doSkim step 4 mc Wtbar_Summer12_final_4.root  AddCut 26. AddCut 10. AddCut 15. AddCut 15. AddCut 6. AddCut -1. AddCut 22.
+./doSkim step 4 mc Wt_Summer12_final_4.root  AddCut 26. AddCut 10. AddCut 15. AddCut 15. AddCut 6. AddCut -1. AddCut 22.
+./doSkim step 4 mc WW_Summer12_final_4.root  AddCut 26. AddCut 10. AddCut 15. AddCut 15. AddCut 6. AddCut -1. AddCut 22.
+./doSkim step 4 mc WZ_Summer12_final_4.root  AddCut 26. AddCut 10. AddCut 15. AddCut 15. AddCut 6. AddCut -1. AddCut 22.
+./doSkim step 4 mc ZH125_Summer12_final_4.root  AddCut 26. AddCut 10. AddCut 15. AddCut 15. AddCut 6. AddCut -1. AddCut 22.
+./doSkim step 4 mc ZZ_Summer12_final_4.root  AddCut 26. AddCut 10. AddCut 15. AddCut 15. AddCut 6. AddCut -1. AddCut 22.

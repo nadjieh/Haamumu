@@ -1,0 +1,15 @@
+./plotRDS data DoubleMu2012_Summer12_final_1.root out dphiBoptData step 1
+./plotRDS mc DYjets_M10to50_Summer12_final_1.root out dphiBoptDYLow step 1
+./plotRDS mc DYjets_Summer12_final_1.root out dphiBoptDY step 1
+./plotRDS mc TTFullLept_Summer12_final_1.root out dphiBoptTTF step 1
+./plotRDS mc TTSemiLept_Summer12_final_1.root out dphiBoptTTS step 1
+./plotRDS mc Wtbar_Summer12_final_1.root out dphiBoptWtbar step 1
+./plotRDS mc Wt_Summer12_final_1.root out dphiBoptWt step 1
+./plotRDS mc WW_Summer12_final_1.root out dphiBoptWW step 1
+./plotRDS mc WZ_Summer12_final_1.root out dphiBoptWZ step 1
+./plotRDS mc ZH125_Summer12_final_1.root out dphiBoptZH125 step 1
+./plotRDS mc ZZ_Summer12_final_1.root out dphiBoptZZ step 1
+./plotRDS mc ZZ_Summer12_final_1.root out dphiBoptZZ step 1
+./plotRDS mc Optimization/HTo2Mu2B_mH125_ma40_Summer12_final_1.root out dphiBopt40 step 1
+./plotRDS mc Optimization/HTo2Mu2B_mH125_ma50_Summer12_final_1.root out dphiBopt50 step 1
+./plotRDS mc Optimization/HTo2Mu2B_mH125_ma60_Summer12_final_1.root out dphiBopt60 step 1

@@ -1,0 +1,95 @@
+*Conditional preapproval (31.03.2015)*
+
+[[https://hypernews.cern.ch/HyperNews/CMS/get/HIG-14-041/5.html][Comments on hn]]
+
+[[https://twiki.cern.ch/twiki/bin/viewauth/CMS/PasHIG14041][twiki]]
+
+* Higgs Pt reweighting NNLO:
+  - I contacted Pascuale [[https://mail.google.com/mail/u/0/#sent/14c97cc955bb9280][here]]
+
+* slide 12. Can you check the yields at pre-selection level for the signal? They look too large taking into account the expected sigma X BR and luminosity. 
+  - There was a mistake in the code. For illustration on plots, we enlarge the signal cross section by a factor of 30. Mistakenly, this factor has appeared in the yields.
+    | ma |     N0 |     N |        eff | \sigma\times Lumi |   N_{exp} |
+    | 30 | 102030 | 23701 | 0.23229442 |              59.1 | 13.728600 |
+    | 40 | 101467 | 23610 | 0.23268649 |              59.1 | 13.751772 |
+    | 50 | 100617 | 24407 | 0.24257332 |              59.1 | 14.336083 |
+    | 60 | 101822 | 24571 | 0.24131327 |              59.1 | 14.261614 |
+    #+TBLFM: $4=$3/$2::$5=19700*0.003::$6=$4*$5
+
+* The issue with the jet pt threshold needs to be fixed. We recommend to do this fix before showing any of the additional studies and changes. 
+   - Before doing the prodcuion I need to make sure that the genInfo are accessible in our PAT-tuples.
+   - GenParticles are in PATtuples.
+   - How to keep Higgs in RDS files?
+     - Done. It has two part: SM Higgs and BSM Higgs
+   - How to change the pt threshold of jets?
+     - Done!
+   - How to run on GRID and put everything on llbb
+     - Done!
+** TODO Check the final number of events if they make sense
+   - Ongoing
+* Check the expected sensitivity for a simple set of proposed cuts w.r.t. the nominal mass dependent selection. The current option seems to be hard to justify. 
+** *Signal yield per scenario*
+  - *Signal yield per scenario*
+    | cut version | ma = 30 GeV | ma = 40 GeV | ma = 50 GeV | ma = 60 GeV | total MC bkg |
+    | v30         |        3.35 |        3.19 |        3.62 |        4.21 | 427 \pm 54   |
+    | v40         |        3.58 |        3.46 |        3.63 |        4.05 | 599 \pm 62   |
+    | v50         |        3.79 |        3.64 |        3.88 |        4.32 | 523 \pm 49   |
+    | v60         |        2.45 |        2.25 |        2.73 |        3.84 | 411 \pm 35   |
+    #+TBLFM: $2=2.34*3.35/3.2
+** *Significance: S/\sqrt{S+B}*
+  - *Significance: S/\sqrt{S+B}*
+    | cut version | ma = 30 GeV | ma = 40 GeV | ma = 50 GeV | ma = 60 GeV | total MC bkg |
+    | v30         |        0.16 |        0.15 | *0.17*      |      *0.20* |          427 |
+    | v40         |        0.15 |        0.14 | 0.15        |        0.17 |          599 |
+    | v50         |      *0.17* |      *0.16* | *0.17*      |        0.19 |          523 |
+    | v60         |        0.12 |        0.11 | 0.13        |        0.19 |          411 |
+** *FOM: S/\sqrt{B+(\Delta B)^2}*
+  - *FOM: S/\sqrt{B+(\Delta B)^2}*
+    | cut version | ma = 30 GeV | ma = 40 GeV | ma = 50 GeV | ma = 60 GeV | total MC bkg | denominator |
+    | v30         |       0.058 |       0.055 |       0.063 |       0.073 | 427 \pm 54   |        57.8 |
+    | v40         |       0.054 |       0.052 |       0.055 |       0.061 | 599 \pm 62   |        66.7 |
+    | v50         |     *0.070* |     *0.067* |     *0.072* |       0.080 | 523 \pm 49   |        54.1 |
+    | v60         |       0.061 |       0.056 |       0.068 |     *0.095* | 411 \pm 35   |        40.5 |
+
+** Conclusion
+   - v50 and v60 have the best sensitivity for all
+   - v50 compared with v60
+     | cut version   | ma = 30 GeV | ma = 40 GeV | ma = 50 GeV | ma = 60 GeV |
+     | v50           |       0.070 |       0.067 |       0.072 |       0.080 |
+     | v60           |       0.061 |       0.056 |       0.068 |       0.095 |
+     | (v60-v50)/v50 |       -0.13 |       -0.16 |      -0.056 |        0.19 |
+** could you please revisit the optimization and show S/sqrt(S+B) after the optimization and at preselection level in the same mass window.
+* Can you show the m_mumubb mass distribution in a narrower mass range to show if the peak is at 125 GeV. Due to the tails, are you sure that you don't need asymmetric requirements?. 
+  - The peak is exactly at 125 GeV and asymmetric cut introduces more background as shown in the picture [[http://ajafari.web.cern.ch/ajafari/SignalvsDY_fullSel.gif]] 
+* Can you check the discriminating power of m_mumubb and m_bb and the combination in 2D? We would like to see if this variable has additional power and if it can be used in the selection. 
+  - m_mumubb is already in the game. We apply a cut on that.
+  - the mbb power is meaningful, in the sense of being mass-independent, when it is constrained to |mbb - m\mu\mu| which is a feasture of signal. The problem with this variable is that there is a shape discrepancy between data and MC. Hence optimization on this would not be relaible.
+** *On Mbb*
+   - Pictures before 4-boady mass cut:
+   	  - [[http://ajafari.web.cern.ch/ajafari/signal_DY_step4_fullSel.gif]]
+   	  - [[http://ajafari.web.cern.ch/ajafari/signal_DY_step4_fullSel_2D.gif]]
+   - *Does not give a big gain!*
+   - Taking the following picture for ma = 30, we cut on |mbb- ma| < 10.
+   - [[http://ajafari.web.cern.ch/ajafari/mbb_30.gif]]
+   - [[http://ajafari.web.cern.ch/ajafari/mbb_40.gif]]
+   - [[http://ajafari.web.cern.ch/ajafari/mbb_50.gif]]
+   - [[http://ajafari.web.cern.ch/ajafari/mbb_60.gif]]
+   - Table
+     |    | signal  eff | signal yield | N expected after mbb | ~bkg eff | N bkg | N bkg after mbb |
+     | 30 |    0.771714 |         3.35 |            2.5852419 |     0.35 |   427 |          149.45 |
+     | 40 |    0.804586 |         3.46 |            2.7838676 |      0.5 |   599 |           299.5 |
+     | 50 |     0.85003 |         3.88 |            3.2981164 |      0.7 |   523 |           366.1 |
+     | 60 |    0.926099 |         3.84 |            3.5562202 |     0.92 |   411 |          378.12 |
+     \+TBLFM: $4=$2*$3::$7=$6*$5
+   
+** *On diffMass bb,\mu\mu*
+   - Pictures before 4-boady mass cut:
+	 - [[http://ajafari.web.cern.ch/ajafari/signal_DY_diffM_fullSel.gif]]
+   - None of the pictures below show any sign of improvement 	 
+     - [[http://ajafari.web.cern.ch/ajafari/diffM_30.gif]]
+     - [[http://ajafari.web.cern.ch/ajafari/diffM_40.gif]]
+     - [[http://ajafari.web.cern.ch/ajafari/diffM_50.gif]]
+     - [[http://ajafari.web.cern.ch/ajafari/diffM_60.gif]]
+* Signal description 
+  - Voig added to CB sounds good (image [[http://ajafari.web.cern.ch/ajafari/testCB.gif]] and [[file:/home/nadjieh/work/Haamumu/macro/CondPreApp/9-SignalModel/testCBVoig.gif]])
+  - Communicated with Andrea [[https://mail.google.com/mail/u/0/\inbox/14c76106daa50682][here]]

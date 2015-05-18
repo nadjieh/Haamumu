@@ -1,0 +1,11 @@
+signal mass H2ToH1H1_H1To2Mu2B_mH2-125_mH1-60_Summer12_final_0.root
+signal mass 60
+background DYjets_M10to50
+3
+4
+--- 3
+--- 4
+signal weight 2.94632e-08
+bkg weight 1	1.39789e-05
+bkg weight 2	0.000115109
+bkg weight 3	0.000349666

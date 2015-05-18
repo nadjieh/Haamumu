@@ -1,0 +1,104 @@
+{
+//=========Macro generated from canvas: Canvas_1/Canvas_1
+//=========  (Wed Nov 26 11:18:29 2014) by ROOT version5.34/19
+   TCanvas *Canvas_1 = new TCanvas("Canvas_1", "Canvas_1",839,114,700,500);
+   Canvas_1->Range(-125,-5474.832,1125,49273.48);
+   Canvas_1->SetFillColor(0);
+   Canvas_1->SetBorderMode(0);
+   Canvas_1->SetBorderSize(2);
+   Canvas_1->SetFrameBorderMode(0);
+   Canvas_1->SetFrameBorderMode(0);
+   
+   TH1D *jet2pt__31 = new TH1D("jet2pt__31","",100,0,1000);
+   jet2pt__31->SetBinContent(2,41713);
+   jet2pt__31->SetBinContent(3,29666);
+   jet2pt__31->SetBinContent(4,10064);
+   jet2pt__31->SetBinContent(5,4393);
+   jet2pt__31->SetBinContent(6,2464);
+   jet2pt__31->SetBinContent(7,1449);
+   jet2pt__31->SetBinContent(8,928);
+   jet2pt__31->SetBinContent(9,618);
+   jet2pt__31->SetBinContent(10,423);
+   jet2pt__31->SetBinContent(11,308);
+   jet2pt__31->SetBinContent(12,214);
+   jet2pt__31->SetBinContent(13,157);
+   jet2pt__31->SetBinContent(14,106);
+   jet2pt__31->SetBinContent(15,72);
+   jet2pt__31->SetBinContent(16,66);
+   jet2pt__31->SetBinContent(17,49);
+   jet2pt__31->SetBinContent(18,43);
+   jet2pt__31->SetBinContent(19,32);
+   jet2pt__31->SetBinContent(20,23);
+   jet2pt__31->SetBinContent(21,25);
+   jet2pt__31->SetBinContent(22,13);
+   jet2pt__31->SetBinContent(23,15);
+   jet2pt__31->SetBinContent(24,6);
+   jet2pt__31->SetBinContent(25,10);
+   jet2pt__31->SetBinContent(26,7);
+   jet2pt__31->SetBinContent(27,5);
+   jet2pt__31->SetBinContent(28,5);
+   jet2pt__31->SetBinContent(29,3);
+   jet2pt__31->SetBinContent(30,2);
+   jet2pt__31->SetBinContent(31,6);
+   jet2pt__31->SetBinContent(32,4);
+   jet2pt__31->SetBinContent(33,1);
+   jet2pt__31->SetBinContent(34,1);
+   jet2pt__31->SetBinContent(35,4);
+   jet2pt__31->SetBinContent(36,2);
+   jet2pt__31->SetBinContent(37,1);
+   jet2pt__31->SetBinContent(38,1);
+   jet2pt__31->SetBinContent(40,1);
+   jet2pt__31->SetBinContent(41,1);
+   jet2pt__31->SetBinContent(44,1);
+   jet2pt__31->SetBinContent(46,1);
+   jet2pt__31->SetBinContent(50,2);
+   jet2pt__31->SetBinContent(56,1);
+   jet2pt__31->SetEntries(92906);
+   jet2pt__31->SetStats(0);   
+   TPaveStats *ptstats = new TPaveStats(0.78,0.775,0.98,0.935,"brNDC");
+   ptstats->SetName("stats");
+   ptstats->SetBorderSize(1);
+   ptstats->SetFillColor(0);
+   ptstats->SetTextAlign(12);
+   ptstats->SetTextFont(42);
+   TText *text = ptstats->AddText("jet2pt__31");
+   text->SetTextSize(0.0368);
+   text = ptstats->AddText("Entries = 92906  ");
+   text = ptstats->AddText("Mean  =  27.18");
+   text = ptstats->AddText("RMS   =  19.48");
+   ptstats->SetOptStat(1111);
+   ptstats->SetOptFit(0);
+   ptstats->Draw();
+   jet2pt__31->GetListOfFunctions()->Add(ptstats);
+   ptstats->SetParent(jet2pt__31);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#000099");
+   jet2pt__31->SetLineColor(ci);
+   jet2pt__31->GetXaxis()->SetLabelFont(42);
+   jet2pt__31->GetXaxis()->SetLabelSize(0.035);
+   jet2pt__31->GetXaxis()->SetTitleSize(0.035);
+   jet2pt__31->GetXaxis()->SetTitleFont(42);
+   jet2pt__31->GetYaxis()->SetLabelFont(42);
+   jet2pt__31->GetYaxis()->SetLabelSize(0.035);
+   jet2pt__31->GetYaxis()->SetTitleSize(0.035);
+   jet2pt__31->GetYaxis()->SetTitleFont(42);
+   jet2pt__31->GetZaxis()->SetLabelFont(42);
+   jet2pt__31->GetZaxis()->SetLabelSize(0.035);
+   jet2pt__31->GetZaxis()->SetTitleSize(0.035);
+   jet2pt__31->GetZaxis()->SetTitleFont(42);
+   jet2pt__31->Draw("");
+   
+   TPaveText *pt = new TPaveText(0.444023,0.9342405,0.555977,0.995,"blNDC");
+   pt->SetName("title");
+   pt->SetBorderSize(0);
+   pt->SetFillColor(0);
+   pt->SetFillStyle(0);
+   pt->SetTextFont(42);
+   text = pt->AddText("jet2pt__31");
+   pt->Draw();
+   Canvas_1->Modified();
+   Canvas_1->cd();
+   Canvas_1->SetSelected(Canvas_1);
+}

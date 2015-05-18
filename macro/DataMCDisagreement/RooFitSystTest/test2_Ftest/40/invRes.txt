@@ -1,0 +1,257 @@
+================ Degree: 2
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2)
+2
+inva2: 4.83282 which is necessary -----
+-0.00563197, -0.00796269, -0.00330125
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2)
+
+================ Degree: 3
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3)
+3
+cut off is COs[47] = 2.0117
+inva2: 10.2491 which is necessary -----
+-0.0269624, -0.0322238, -0.0217009
+inva3: 7.67377 which is necessary -----
+0.00027246, 0.000201449, 0.000343471
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3)
+
+================ Degree: 4
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4)
+4
+
+cut off is COs[46] = 2.0129
+inva2: 47.1477 which is necessary -----
+-0.0546017, -0.0569179, -0.0522855
+inva3: 39.5581 which is necessary -----
+0.00113295, 0.00107567, 0.00119023
+inva4: 26.7777 which is necessary -----
+-7.56383e-06, -8.12877e-06, -6.9989e-06
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4)
+ 
+
+================ Degree: 5
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5)
+5
+ 
+cut off is COs[45] = 2.0141
+inva2: 19.5171 which is necessary -----
+0.644911, 0.578824, 0.710998
+inva3: 38.8007 which is necessary -----
+-0.0366355, -0.0385239, -0.0347471
+inva4: 47.1904 which is necessary -----
+0.000716428, 0.000686064, 0.000746791
+inva5: 32.6685 which is necessary -----
+-4.60443e-06, -4.88632e-06, -4.32254e-06
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5)
+
+================ Degree: 6
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6)
+6
+ 
+cut off is COs[44] = 2.0154
+inva2: 3.05938e-11 which is NOT necessary ////
+inva3: 6.84882e-11 which is NOT necessary ////
+inva4: 0 which is NOT necessary ////
+inva5: 0 which is NOT necessary ////
+inva6: 0 which is NOT necessary ////
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6)
+
+================ Degree: 7
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7)
+7
+ 
+cut off is COs[43] = 2.0167
+inva2: 11.6531 which is necessary -----
+-0.0254849, -0.0298588, -0.021111
+inva3: 3.12081 which is necessary -----
+-0.000153687, -0.000252178, -5.51951e-05
+inva4: 11.4973 which is necessary -----
+8.46461e-06, 6.99216e-06, 9.93705e-06
+inva5: 0.768536 which is NOT necessary ////
+inva6: 0.14976 which is NOT necessary ////
+inva7: 18.0846 which is necessary -----
+-1.17737e-11, -1.30758e-11, -1.04716e-11
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7)
+
+================ Degree: 8
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8)
+8
+
+cut off is COs[42] = 2.0181
+inva2: 2.44261 which is necessary -----
+-0.015099, -0.027462, -0.00273601
+inva3: 0.155804 which is NOT necessary ////
+inva4: 0.371231 which is NOT necessary ////
+inva5: 0.405159 which is NOT necessary ////
+inva6: 0.631831 which is NOT necessary ////
+inva7: 0.0784469 which is NOT necessary ////
+inva8: 0 which is NOT necessary ////
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8)
+ 
+================ Degree: 9
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8+inva9*eventSelectionamassMu^9)
+9
+ 
+cut off is COs[41] = 2.0196
+inva2: 8.85825e-09 which is NOT necessary ////
+inva3: 4.6112e-08 which is NOT necessary ////
+inva4: 1.35139e-07 which is NOT necessary ////
+inva5: 8.14898e-08 which is NOT necessary ////
+inva6: 5.60138e-06 which is NOT necessary ////
+inva7: 0.00107066 which is NOT necessary ////
+inva8: 0 which is NOT necessary ////
+inva9: 0 which is NOT necessary ////
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8+inva9*eventSelectionamassMu^9)
+
+================ Degree: 10
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8+inva9*eventSelectionamassMu^9+inva10*eventSelectionamassMu^10)
+10
+ 
+cut off is COs[40] = 2.0211
+inva2: 1.02165e-12 which is NOT necessary ////
+inva3: 0 which is NOT necessary ////
+inva4: 0 which is NOT necessary ////
+inva5: 0 which is NOT necessary ////
+inva6: 0 which is NOT necessary ////
+inva7: 0 which is NOT necessary ////
+inva8: 0 which is NOT necessary ////
+inva9: nan which is NOT necessary ////
+inva10: nan which is NOT necessary ////
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8+inva9*eventSelectionamassMu^9+inva10*eventSelectionamassMu^10)
+
+================ Degree: 11
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8+inva9*eventSelectionamassMu^9+inva10*eventSelectionamassMu^10+inva11*eventSelectionamassMu^11)
+11
+ 
+ ERR MATRIX NOT POS-DEF
+cut off is COs[39] = 2.0227
+inva2: 1.77735e-12 which is NOT necessary ////
+inva3: 0 which is NOT necessary ////
+inva4: 0 which is NOT necessary ////
+inva5: 0 which is NOT necessary ////
+inva6: 0 which is NOT necessary ////
+inva7: 0 which is NOT necessary ////
+inva8: 0 which is NOT necessary ////
+inva9: 0 which is NOT necessary ////
+inva10: 0 which is NOT necessary ////
+inva11: 0 which is NOT necessary ////
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8+inva9*eventSelectionamassMu^9+inva10*eventSelectionamassMu^10+inva11*eventSelectionamassMu^11)
+ 
+
+================ Degree: 15
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8+inva9*eventSelectionamassMu^9+inva10*eventSelectionamassMu^10+inva11*eventSelectionamassMu^11+inva12*eventSelectionamassMu^12+inva13*eventSelectionamassMu^13+inva14*eventSelectionamassMu^14+inva15*eventSelectionamassMu^15)
+15
+ 
+ ERR MATRIX NOT POS-DEF
+cut off is COs[35] = 2.0301
+inva2: 2.35847e-12 which is NOT necessary ////
+inva3: 0 which is NOT necessary ////
+inva4: 0 which is NOT necessary ////
+inva5: 0 which is NOT necessary ////
+inva6: 0 which is NOT necessary ////
+inva7: 0 which is NOT necessary ////
+inva8: 0 which is NOT necessary ////
+inva9: 0 which is NOT necessary ////
+inva10: 0 which is NOT necessary ////
+inva11: 0 which is NOT necessary ////
+inva12: 0 which is NOT necessary ////
+inva13: 0 which is NOT necessary ////
+inva14: 0 which is NOT necessary ////
+inva15: 0 which is NOT necessary ////
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8+inva9*eventSelectionamassMu^9+inva10*eventSelectionamassMu^10+inva11*eventSelectionamassMu^11+inva12*eventSelectionamassMu^12+inva13*eventSelectionamassMu^13+inva14*eventSelectionamassMu^14+inva15*eventSelectionamassMu^15)
+ 
+
+================ Degree: 20
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8+inva9*eventSelectionamassMu^9+inva10*eventSelectionamassMu^10+inva11*eventSelectionamassMu^11+inva12*eventSelectionamassMu^12+inva13*eventSelectionamassMu^13+inva14*eventSelectionamassMu^14+inva15*eventSelectionamassMu^15+inva16*eventSelectionamassMu^16+inva17*eventSelectionamassMu^17+inva18*eventSelectionamassMu^18+inva19*eventSelectionamassMu^19+inva20*eventSelectionamassMu^20)
+20
+ 
+cut off is COs[30] = 2.0423
+inva2: 1.12012e-11 which is NOT necessary ////
+inva3: 0 which is NOT necessary ////
+inva4: 0 which is NOT necessary ////
+inva5: 0 which is NOT necessary ////
+inva6: 0 which is NOT necessary ////
+inva7: 0 which is NOT necessary ////
+inva8: 0 which is NOT necessary ////
+inva9: 0 which is NOT necessary ////
+inva10: 0 which is NOT necessary ////
+inva11: 0 which is NOT necessary ////
+inva12: 0 which is NOT necessary ////
+inva13: 0 which is NOT necessary ////
+inva14: 0 which is NOT necessary ////
+inva15: 0 which is NOT necessary ////
+inva16: 0 which is NOT necessary ////
+inva17: 0 which is NOT necessary ////
+inva18: 0 which is NOT necessary ////
+inva19: 0 which is NOT necessary ////
+inva20: 0 which is NOT necessary ////
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8+inva9*eventSelectionamassMu^9+inva10*eventSelectionamassMu^10+inva11*eventSelectionamassMu^11+inva12*eventSelectionamassMu^12+inva13*eventSelectionamassMu^13+inva14*eventSelectionamassMu^14+inva15*eventSelectionamassMu^15+inva16*eventSelectionamassMu^16+inva17*eventSelectionamassMu^17+inva18*eventSelectionamassMu^18+inva19*eventSelectionamassMu^19+inva20*eventSelectionamassMu^20)
+
+================ Degree: 25
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8+inva9*eventSelectionamassMu^9+inva10*eventSelectionamassMu^10+inva11*eventSelectionamassMu^11+inva12*eventSelectionamassMu^12+inva13*eventSelectionamassMu^13+inva14*eventSelectionamassMu^14+inva15*eventSelectionamassMu^15+inva16*eventSelectionamassMu^16+inva17*eventSelectionamassMu^17+inva18*eventSelectionamassMu^18+inva19*eventSelectionamassMu^19+inva20*eventSelectionamassMu^20+inva21*eventSelectionamassMu^21+inva22*eventSelectionamassMu^22+inva23*eventSelectionamassMu^23+inva24*eventSelectionamassMu^24+inva25*eventSelectionamassMu^25)
+25
+
+cut off is COs[25] = 2.0596
+inva2: 2.24944e-11 which is NOT necessary ////
+inva3: 0 which is NOT necessary ////
+inva4: 0 which is NOT necessary ////
+inva5: 0 which is NOT necessary ////
+inva6: 0 which is NOT necessary ////
+inva7: 0 which is NOT necessary ////
+inva8: 0 which is NOT necessary ////
+inva9: 0 which is NOT necessary ////
+inva10: 0 which is NOT necessary ////
+inva11: 0 which is NOT necessary ////
+inva12: 0 which is NOT necessary ////
+inva13: 0 which is NOT necessary ////
+inva14: 0 which is NOT necessary ////
+inva15: 0 which is NOT necessary ////
+inva16: 0 which is NOT necessary ////
+inva17: 0 which is NOT necessary ////
+inva18: 0 which is NOT necessary ////
+inva19: 0 which is NOT necessary ////
+inva20: 0 which is NOT necessary ////
+inva21: 0 which is NOT necessary ////
+inva22: 0 which is NOT necessary ////
+inva23: 0 which is NOT necessary ////
+inva24: 0 which is NOT necessary ////
+inva25: 0 which is NOT necessary ////
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8+inva9*eventSelectionamassMu^9+inva10*eventSelectionamassMu^10+inva11*eventSelectionamassMu^11+inva12*eventSelectionamassMu^12+inva13*eventSelectionamassMu^13+inva14*eventSelectionamassMu^14+inva15*eventSelectionamassMu^15+inva16*eventSelectionamassMu^16+inva17*eventSelectionamassMu^17+inva18*eventSelectionamassMu^18+inva19*eventSelectionamassMu^19+inva20*eventSelectionamassMu^20+inva21*eventSelectionamassMu^21+inva22*eventSelectionamassMu^22+inva23*eventSelectionamassMu^23+inva24*eventSelectionamassMu^24+inva25*eventSelectionamassMu^25)
+
+
+================ Degree: 30
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8+inva9*eventSelectionamassMu^9+inva10*eventSelectionamassMu^10+inva11*eventSelectionamassMu^11+inva12*eventSelectionamassMu^12+inva13*eventSelectionamassMu^13+inva14*eventSelectionamassMu^14+inva15*eventSelectionamassMu^15+inva16*eventSelectionamassMu^16+inva17*eventSelectionamassMu^17+inva18*eventSelectionamassMu^18+inva19*eventSelectionamassMu^19+inva20*eventSelectionamassMu^20+inva21*eventSelectionamassMu^21+inva22*eventSelectionamassMu^22+inva23*eventSelectionamassMu^23+inva24*eventSelectionamassMu^24+inva25*eventSelectionamassMu^25+inva26*eventSelectionamassMu^26+inva27*eventSelectionamassMu^27+inva28*eventSelectionamassMu^28+inva29*eventSelectionamassMu^29+inva30*eventSelectionamassMu^30)
+30
+ 
+cut off is COs[20] = 2.086
+inva2: 3.42343e-11 which is NOT necessary ////
+inva3: 0 which is NOT necessary ////
+inva4: 0 which is NOT necessary ////
+inva5: 0 which is NOT necessary ////
+inva6: 0 which is NOT necessary ////
+inva7: 0 which is NOT necessary ////
+inva8: 0 which is NOT necessary ////
+inva9: 0 which is NOT necessary ////
+inva10: 0 which is NOT necessary ////
+inva11: 0 which is NOT necessary ////
+inva12: 0 which is NOT necessary ////
+inva13: 0 which is NOT necessary ////
+inva14: 0 which is NOT necessary ////
+inva15: 0 which is NOT necessary ////
+inva16: 0 which is NOT necessary ////
+inva17: 0 which is NOT necessary ////
+inva18: 0 which is NOT necessary ////
+inva19: 0 which is NOT necessary ////
+inva20: 0 which is NOT necessary ////
+inva21: 0 which is NOT necessary ////
+inva22: 0 which is NOT necessary ////
+inva23: 0 which is NOT necessary ////
+inva24: 0 which is NOT necessary ////
+inva25: 0 which is NOT necessary ////
+inva26: 0 which is NOT necessary ////
+inva27: 0 which is NOT necessary ////
+inva28: 0 which is NOT necessary ////
+inva29: 0 which is NOT necessary ////
+inva30: 0 which is NOT necessary ////
+1/(eventSelectionamassMu+inva2*eventSelectionamassMu^2+inva3*eventSelectionamassMu^3+inva4*eventSelectionamassMu^4+inva5*eventSelectionamassMu^5+inva6*eventSelectionamassMu^6+inva7*eventSelectionamassMu^7+inva8*eventSelectionamassMu^8+inva9*eventSelectionamassMu^9+inva10*eventSelectionamassMu^10+inva11*eventSelectionamassMu^11+inva12*eventSelectionamassMu^12+inva13*eventSelectionamassMu^13+inva14*eventSelectionamassMu^14+inva15*eventSelectionamassMu^15+inva16*eventSelectionamassMu^16+inva17*eventSelectionamassMu^17+inva18*eventSelectionamassMu^18+inva19*eventSelectionamassMu^19+inva20*eventSelectionamassMu^20+inva21*eventSelectionamassMu^21+inva22*eventSelectionamassMu^22+inva23*eventSelectionamassMu^23+inva24*eventSelectionamassMu^24+inva25*eventSelectionamassMu^25+inva26*eventSelectionamassMu^26+inva27*eventSelectionamassMu^27+inva28*eventSelectionamassMu^28+inva29*eventSelectionamassMu^29+inva30*eventSelectionamassMu^30)
+ 

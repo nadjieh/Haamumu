@@ -1,0 +1,24 @@
+imax 1
+jmax 1  number of backgrounds
+kmax 5  number of nuisance parameters (sources of systematical uncertainties)
+
+------------
+shapes	sigPdf	dimu	hamb-shapes-UnbinnedParam-m40-Data-fit.root w:test_sigPdf_dimu
+shapes	expo	dimu	hamb-shapes-UnbinnedParam-m40-Data-fit.root w:test_expo_dimu
+shapes	bwcb	dimu	hamb-shapes-UnbinnedParam-m40-Data-fit.root w:test_bwxCryBall_dimu
+shapes	dytt	dimu	hamb-shapes-UnbinnedParam-m40-Data-fit.root w:test_dytt_dimu
+shapes	data_obs	dimu	hamb-shapes-UnbinnedParam-m40-Data-fit.root w:data_dimu
+------------
+bin	dimu
+observation	-1.0
+------------
+bin	dimu	dimu	dimu	dimu
+process	sigPdf	expo	bwcb	dytt
+process	0	1	2	3
+rate	1.0	1.0	1.0	1.0
+------------
+lumi_8TeV	lnN	1.026	-	-	-
+test_sigPdf_dimu_norm	lnN	1.3	-	-	-
+test_expo_dimu_norm	lnU	-	2	-	-
+test_bwcb_dimu_norm	lnU	-	-	2	-
+test_dytt_dimu_norm	lnU	-	-	-	2

@@ -1,0 +1,120 @@
+{
+//=========Macro generated from canvas: c1_n10/c1_n10
+//=========  (Fri Feb 13 10:31:33 2015) by ROOT version5.34/19
+   TCanvas *c1_n10 = new TCanvas("c1_n10", "c1_n10",228,37,700,560);
+   gStyle->SetOptFit(1);
+   gStyle->SetOptStat(0);
+   c1_n10->SetHighLightColor(2);
+   c1_n10->Range(-3265.771,-3264.18,29391.94,29377.62);
+   c1_n10->SetFillColor(0);
+   c1_n10->SetBorderMode(0);
+   c1_n10->SetBorderSize(2);
+   c1_n10->SetFrameBorderMode(0);
+   c1_n10->SetFrameBorderMode(0);
+   
+   TGraph *graph = new TGraph(7);
+   graph->SetName("Graph0");
+   graph->SetTitle("Graph");
+   graph->SetFillColor(1);
+   graph->SetFillStyle(0);
+   graph->SetMarkerColor(2);
+   graph->SetMarkerStyle(20);
+   graph->SetPoint(0,2300.5,1959.567839);
+   graph->SetPoint(1,1959.568055,1667.336014);
+   graph->SetPoint(2,1667.012979,11085.45234);
+   graph->SetPoint(3,11081.57764,23891.06426);
+   graph->SetPoint(4,23902.6114,7504.119195);
+   graph->SetPoint(5,7148.168597,2991.416559);
+   graph->SetPoint(6,2974.854837,4448.649755);
+   
+   TH1F *Graph_Graph_Graph_Graph_Graph01231 = new TH1F("Graph_Graph_Graph_Graph_Graph01231","Graph",100,0,26126.17);
+   Graph_Graph_Graph_Graph_Graph01231->SetMinimum(0);
+   Graph_Graph_Graph_Graph_Graph01231->SetMaximum(26113.44);
+   Graph_Graph_Graph_Graph_Graph01231->SetDirectory(0);
+   Graph_Graph_Graph_Graph_Graph01231->SetStats(0);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#000099");
+   Graph_Graph_Graph_Graph_Graph01231->SetLineColor(ci);
+   Graph_Graph_Graph_Graph_Graph01231->GetXaxis()->SetTitle("RSS of polynom n");
+   Graph_Graph_Graph_Graph_Graph01231->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_Graph_Graph_Graph01231->GetXaxis()->SetLabelSize(0.035);
+   Graph_Graph_Graph_Graph_Graph01231->GetXaxis()->SetTitleSize(0.05);
+   Graph_Graph_Graph_Graph_Graph01231->GetXaxis()->SetTitleOffset(0.92);
+   Graph_Graph_Graph_Graph_Graph01231->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_Graph_Graph_Graph01231->GetYaxis()->SetTitle("RSS of polynom n+1");
+   Graph_Graph_Graph_Graph_Graph01231->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_Graph_Graph_Graph01231->GetYaxis()->SetLabelSize(0.03);
+   Graph_Graph_Graph_Graph_Graph01231->GetYaxis()->SetTitleSize(0.05);
+   Graph_Graph_Graph_Graph_Graph01231->GetYaxis()->SetTitleOffset(0.98);
+   Graph_Graph_Graph_Graph_Graph01231->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_Graph_Graph_Graph01231->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_Graph_Graph_Graph01231->GetZaxis()->SetLabelSize(0.035);
+   Graph_Graph_Graph_Graph_Graph01231->GetZaxis()->SetTitleSize(0.035);
+   Graph_Graph_Graph_Graph_Graph01231->GetZaxis()->SetTitleFont(42);
+   graph->SetHistogram(Graph_Graph_Graph_Graph_Graph01231);
+   
+   graph->Draw("ap");
+   
+   TPaveText *pt = new TPaveText(0.4397126,0.9342405,0.5602874,0.995,"blNDC");
+   pt->SetName("title");
+   pt->SetBorderSize(0);
+   pt->SetFillColor(0);
+   pt->SetFillStyle(0);
+   pt->SetTextColor(0);
+   pt->SetTextFont(42);
+   TText *text = pt->AddText("Graph");
+   pt->Draw();
+   TLine *line = new TLine(41.319,41.319,25000,25000);
+   line->SetLineColor(4);
+   line->SetLineStyle(7);
+   line->SetLineWidth(2);
+   line->Draw();
+      tex = new TLatex(2599.479,1398.934,"10");
+   tex->SetTextColor(4);
+   tex->SetTextFont(42);
+   tex->SetTextSize(0.03769841);
+   tex->SetLineWidth(2);
+   tex->Draw();
+      tex = new TLatex(1379.507,427.452,"21");
+   tex->SetTextColor(4);
+   tex->SetTextFont(42);
+   tex->SetTextSize(0.03769841);
+   tex->SetLineWidth(2);
+   tex->Draw();
+      tex = new TLatex(1379.507,9624.15,"32");
+   tex->SetTextColor(4);
+   tex->SetTextFont(42);
+   tex->SetTextSize(0.03769841);
+   tex->SetLineWidth(2);
+   tex->Draw();
+      tex = new TLatex(10670.06,22512.48,"43");
+   tex->SetTextColor(4);
+   tex->SetTextFont(42);
+   tex->SetTextSize(0.03769841);
+   tex->SetLineWidth(2);
+   tex->Draw();
+      tex = new TLatex(23667.46,6126.814,"54");
+   tex->SetTextColor(4);
+   tex->SetTextFont(42);
+   tex->SetTextSize(0.03769841);
+   tex->SetLineWidth(2);
+   tex->Draw();
+      tex = new TLatex(7479.367,2435.182,"65");
+   tex->SetTextColor(4);
+   tex->SetTextFont(42);
+   tex->SetTextSize(0.03769841);
+   tex->SetLineWidth(2);
+   tex->Draw();
+      tex = new TLatex(2599.479,5025.801,"76");
+   tex->SetTextColor(4);
+   tex->SetTextFont(42);
+   tex->SetTextSize(0.03769841);
+   tex->SetLineWidth(2);
+   tex->Draw();
+   c1_n10->Modified();
+   c1_n10->cd();
+   c1_n10->SetSelected(c1_n10);
+   c1_n10->ToggleToolBar();
+}

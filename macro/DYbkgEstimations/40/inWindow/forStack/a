@@ -1,0 +1,12 @@
+mv rdsDataMCompData.root rdsDataMCompData_plots.root
+mv rdsDataMCompDYLow.root rdsDataMCompDYLow_plots.root
+mv rdsDataMCompDY.root rdsDataMCompDY_plots.root
+mv rdsDataMCompTTF.root rdsDataMCompTTF_plots.root
+mv rdsDataMCompTTS.root rdsDataMCompTTS_plots.root
+mv rdsDataMCompWtbar.root rdsDataMCompWtbar_plots.root
+mv rdsDataMCompWt.root rdsDataMCompWt_plots.root
+mv rdsDataMCompWW.root rdsDataMCompWW_plots.root
+mv rdsDataMCompWZ.root rdsDataMCompWZ_plots.root
+mv rdsDataMCompZH125.root rdsDataMCompZH125_plots.root
+mv rdsDataMCompZZ.root rdsDataMCompZZ_plots.root
+

@@ -1,0 +1,26 @@
+if (smass == 60.) {
+
+                if (rds->eventSelectionmu1pt < 17.)
+                    continue;
+                if (rds->eventSelectionmu2pt < 10.)
+                    continue;
+                if (rds->jetmetjet1pt < 25.)
+                    continue;
+                if (rds->jetmetjet2pt < 20.)
+                    continue;
+                if (rds->eventSelectionMETsignificance_hamb > 6.)
+                    continue;
+                //                if (fabs(rds->eventSelectiondiffMassaa) > 16.)
+                //                continue;
+                if (fabs(rds->eventSelectionhMass - 125.) > 20.)//23-20.
+                    continue;
+                if (!(rds->eventSelectionamassMu > 50. && rds->eventSelectionamassMu < 70.))
+                    continue;
+            }
+            if (rds->jetmetjet1CSVdisc > rds->jetmetjet2CSVdisc) {
+                if (!(rds->jetmetjet1CSVdisc > 0.898))
+                    continue;
+            } else {
+                if (!(rds->jetmetjet2CSVdisc > 0.898))
+                    continue;
+            }

@@ -1,0 +1,18 @@
+imax 1
+jmax 1  number of backgrounds
+kmax 3  number of nuisance parameters (sources of systematical uncertainties)
+
+------------
+shapes * *  hamb-shapes-BinnedParam-m30-Data-fit.root $CHANNEL/$PROCESS
+------------
+bin	dimu
+observation	1255
+------------
+bin	dimu	dimu
+process	signal	bkg
+process	0	1
+rate	3.35	1129.5
+------------
+lumi_8TeV	lnN	1.026	-
+signal_norm	lnN	1.3	-
+bkg_norm	lnU	-	2

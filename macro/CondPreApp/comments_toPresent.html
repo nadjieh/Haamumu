@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title><b>Conditional preapproval (31.03.2015)</b></title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="<b>Conditional preapproval (31.03.2015)</b>"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2015-04-21T16:26+0430"/>
+<meta name="author" content="Nadjieh"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title"><b>Conditional preapproval (31.03.2015)</b></h1>
+
+<p><a href="https://hypernews.cern.ch/HyperNews/CMS/get/HIG-14-041/5.html">Comments on hn</a>
+</p>
+<p>
+<a href="https://twiki.cern.ch/twiki/bin/viewauth/CMS/PasHIG14041">twiki</a>
+</p>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Higgs Pt reweighting NNLO:</a></li>
+<li><a href="#sec-2">2 slide 12. Can you check the yields at pre-selection level for the signal? They look too large taking into account the expected sigma X BR and luminosity.</a></li>
+<li><a href="#sec-3">3 The issue with the jet pt threshold needs to be fixed. We recommend to do this fix before showing any of the additional studies and changes.</a>
+<ul>
+<li><a href="#sec-3-1">3.1 Check the final number of events if they make sense</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4 Check the expected sensitivity for a simple set of proposed cuts w.r.t. the nominal mass dependent selection. The current option seems to be hard to justify.</a>
+<ul>
+<li><a href="#sec-4-1">4.1 <b>Signal yield per scenario</b></a></li>
+<li><a href="#sec-4-2">4.2 <b>Significance: S/\sqrt{S+B}</b></a></li>
+<li><a href="#sec-4-3">4.3 <b>FOM: S/\sqrt{B+(&Delta; B)<sup>2</sup>}</b></a></li>
+<li><a href="#sec-4-4">4.4 Conclusion</a></li>
+<li><a href="#sec-4-5">4.5 could you please revisit the optimization and show S/sqrt(S+B) after the optimization and at preselection level in the same mass window.</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5 Can you show the m<sub>mumubb</sub> mass distribution in a narrower mass range to show if the peak is at 125 GeV. Due to the tails, are you sure that you don't need asymmetric requirements?.</a></li>
+<li><a href="#sec-6">6 Can you check the discriminating power of m<sub>mumubb</sub> and m<sub>bb</sub> and the combination in 2D? We would like to see if this variable has additional power and if it can be used in the selection.</a>
+<ul>
+<li><a href="#sec-6-1">6.1 <b>On Mbb</b></a></li>
+<li><a href="#sec-6-2">6.2 <b>On diffMass bb,&mu;&mu;</b></a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7 Signal description</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Higgs Pt reweighting NNLO:</h2>
+<div class="outline-text-2" id="text-1">
+
+<ul>
+<li>I contacted Pascuale <a href="https://mail.google.com/mail/u/0/#sent/14c97cc955bb9280">here</a>
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> slide 12. Can you check the yields at pre-selection level for the signal? They look too large taking into account the expected sigma X BR and luminosity.</h2>
+<div class="outline-text-2" id="text-2">
+
+<ul>
+<li>There was a mistake in the code. For illustration on plots, we enlarge the signal cross section by a factor of 30. Mistakenly, this factor has appeared in the yields.
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="right" /><col class="right" /><col class="right" /><col class="right" /><col class="right" /><col class="right" />
+</colgroup>
+<tbody>
+<tr><td class="right">ma</td><td class="right">N0</td><td class="right">N</td><td class="right">eff</td><td class="right">&sigma;&times; Lumi</td><td class="right">N<sub>exp</sub></td></tr>
+<tr><td class="right">30</td><td class="right">102030</td><td class="right">23701</td><td class="right">0.23229442</td><td class="right">59.1</td><td class="right">13.728600</td></tr>
+<tr><td class="right">40</td><td class="right">101467</td><td class="right">23610</td><td class="right">0.23268649</td><td class="right">59.1</td><td class="right">13.751772</td></tr>
+<tr><td class="right">50</td><td class="right">100617</td><td class="right">24407</td><td class="right">0.24257332</td><td class="right">59.1</td><td class="right">14.336083</td></tr>
+<tr><td class="right">60</td><td class="right">101822</td><td class="right">24571</td><td class="right">0.24131327</td><td class="right">59.1</td><td class="right">14.261614</td></tr>
+</tbody>
+</table>
+
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> The issue with the jet pt threshold needs to be fixed. We recommend to do this fix before showing any of the additional studies and changes.</h2>
+<div class="outline-text-2" id="text-3">
+
+<ul>
+<li>Before doing the prodcuion I need to make sure that the genInfo are accessible in our PAT-tuples.
+</li>
+<li>GenParticles are in PATtuples.
+</li>
+<li>How to keep Higgs in RDS files?
+<ul>
+<li>Done. It has two part: SM Higgs and BSM Higgs
+</li>
+</ul>
+
+</li>
+<li>How to change the pt threshold of jets?
+<ul>
+<li>Done!
+</li>
+</ul>
+
+</li>
+<li>How to run on GRID and put everything on llbb
+<ul>
+<li>Done!
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> <span class="todo TODO">TODO</span> Check the final number of events if they make sense</h3>
+<div class="outline-text-3" id="text-3-1">
+
+<ul>
+<li>Ongoing
+</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Check the expected sensitivity for a simple set of proposed cuts w.r.t. the nominal mass dependent selection. The current option seems to be hard to justify.</h2>
+<div class="outline-text-2" id="text-4">
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> <b>Signal yield per scenario</b></h3>
+<div class="outline-text-3" id="text-4-1">
+
+<ul>
+<li><b>Signal yield per scenario</b>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="right" /><col class="right" /><col class="right" /><col class="right" /><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">cut version</td><td class="right">ma = 30 GeV</td><td class="right">ma = 40 GeV</td><td class="right">ma = 50 GeV</td><td class="right">ma = 60 GeV</td><td class="left">total MC bkg</td></tr>
+<tr><td class="left">v30</td><td class="right">3.35</td><td class="right">3.19</td><td class="right">3.62</td><td class="right">4.21</td><td class="left">427 &plusmn; 54</td></tr>
+<tr><td class="left">v40</td><td class="right">3.58</td><td class="right">3.46</td><td class="right">3.63</td><td class="right">4.05</td><td class="left">599 &plusmn; 62</td></tr>
+<tr><td class="left">v50</td><td class="right">3.79</td><td class="right">3.64</td><td class="right">3.88</td><td class="right">4.32</td><td class="left">523 &plusmn; 49</td></tr>
+<tr><td class="left">v60</td><td class="right">2.45</td><td class="right">2.25</td><td class="right">2.73</td><td class="right">3.84</td><td class="left">411 &plusmn; 35</td></tr>
+</tbody>
+</table>
+
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> <b>Significance: S/\sqrt{S+B}</b></h3>
+<div class="outline-text-3" id="text-4-2">
+
+<ul>
+<li><b>Significance: S/\sqrt{S+B}</b>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="right" /><col class="right" /><col class="left" /><col class="right" /><col class="right" />
+</colgroup>
+<tbody>
+<tr><td class="left">cut version</td><td class="right">ma = 30 GeV</td><td class="right">ma = 40 GeV</td><td class="left">ma = 50 GeV</td><td class="right">ma = 60 GeV</td><td class="right">total MC bkg</td></tr>
+<tr><td class="left">v30</td><td class="right">0.16</td><td class="right">0.15</td><td class="left"><b>0.17</b></td><td class="right"><b>0.20</b></td><td class="right">427</td></tr>
+<tr><td class="left">v40</td><td class="right">0.15</td><td class="right">0.14</td><td class="left">0.15</td><td class="right">0.17</td><td class="right">599</td></tr>
+<tr><td class="left">v50</td><td class="right"><b>0.17</b></td><td class="right"><b>0.16</b></td><td class="left"><b>0.17</b></td><td class="right">0.19</td><td class="right">523</td></tr>
+<tr><td class="left">v60</td><td class="right">0.12</td><td class="right">0.11</td><td class="left">0.13</td><td class="right">0.19</td><td class="right">411</td></tr>
+</tbody>
+</table>
+
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> <b>FOM: S/\sqrt{B+(&Delta; B)<sup>2</sup>}</b></h3>
+<div class="outline-text-3" id="text-4-3">
+
+<ul>
+<li><b>FOM: S/\sqrt{B+(&Delta; B)<sup>2</sup>}</b>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="right" /><col class="right" /><col class="right" /><col class="right" /><col class="left" /><col class="right" />
+</colgroup>
+<tbody>
+<tr><td class="left">cut version</td><td class="right">ma = 30 GeV</td><td class="right">ma = 40 GeV</td><td class="right">ma = 50 GeV</td><td class="right">ma = 60 GeV</td><td class="left">total MC bkg</td><td class="right">denominator</td></tr>
+<tr><td class="left">v30</td><td class="right">0.058</td><td class="right">0.055</td><td class="right">0.063</td><td class="right">0.073</td><td class="left">427 &plusmn; 54</td><td class="right">57.8</td></tr>
+<tr><td class="left">v40</td><td class="right">0.054</td><td class="right">0.052</td><td class="right">0.055</td><td class="right">0.061</td><td class="left">599 &plusmn; 62</td><td class="right">66.7</td></tr>
+<tr><td class="left">v50</td><td class="right"><b>0.070</b></td><td class="right"><b>0.067</b></td><td class="right"><b>0.072</b></td><td class="right">0.080</td><td class="left">523 &plusmn; 49</td><td class="right">54.1</td></tr>
+<tr><td class="left">v60</td><td class="right">0.061</td><td class="right">0.056</td><td class="right">0.068</td><td class="right"><b>0.095</b></td><td class="left">411 &plusmn; 35</td><td class="right">40.5</td></tr>
+</tbody>
+</table>
+
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> Conclusion</h3>
+<div class="outline-text-3" id="text-4-4">
+
+<ul>
+<li>v50 and v60 have the best sensitivity for all
+</li>
+<li>v50 compared with v60
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="right" /><col class="right" /><col class="right" /><col class="right" />
+</colgroup>
+<tbody>
+<tr><td class="left">cut version</td><td class="right">ma = 30 GeV</td><td class="right">ma = 40 GeV</td><td class="right">ma = 50 GeV</td><td class="right">ma = 60 GeV</td></tr>
+<tr><td class="left">v50</td><td class="right">0.070</td><td class="right">0.067</td><td class="right">0.072</td><td class="right">0.080</td></tr>
+<tr><td class="left">v60</td><td class="right">0.061</td><td class="right">0.056</td><td class="right">0.068</td><td class="right">0.095</td></tr>
+<tr><td class="left">(v60-v50)/v50</td><td class="right">-0.13</td><td class="right">-0.16</td><td class="right">-0.056</td><td class="right">0.19</td></tr>
+</tbody>
+</table>
+
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-4-5" class="outline-3">
+<h3 id="sec-4-5"><span class="section-number-3">4.5</span> could you please revisit the optimization and show S/sqrt(S+B) after the optimization and at preselection level in the same mass window.</h3>
+<div class="outline-text-3" id="text-4-5">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Can you show the m<sub>mumubb</sub> mass distribution in a narrower mass range to show if the peak is at 125 GeV. Due to the tails, are you sure that you don't need asymmetric requirements?.</h2>
+<div class="outline-text-2" id="text-5">
+
+<ul>
+<li>The peak is exactly at 125 GeV and asymmetric cut introduces more background as shown in the picture <img src="http://ajafari.web.cern.ch/ajafari/SignalvsDY_fullSel.gif"  alt="http://ajafari.web.cern.ch/ajafari/SignalvsDY_fullSel.gif" /> 
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Can you check the discriminating power of m<sub>mumubb</sub> and m<sub>bb</sub> and the combination in 2D? We would like to see if this variable has additional power and if it can be used in the selection.</h2>
+<div class="outline-text-2" id="text-6">
+
+<ul>
+<li>m<sub>mumubb</sub> is already in the game. We apply a cut on that.
+</li>
+<li>the mbb power is meaningful, in the sense of being mass-independent, when it is constrained to |mbb - m&mu;&mu;| which is a feasture of signal. The problem with this variable is that there is a shape discrepancy between data and MC. Hence optimization on this would not be relaible.
+</li>
+</ul>
+
+
+</div>
+
+<div id="outline-container-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> <b>On Mbb</b></h3>
+<div class="outline-text-3" id="text-6-1">
+
+<ul>
+<li>Pictures before 4-boady mass cut:
+<ul>
+<li><img src="http://ajafari.web.cern.ch/ajafari/signal_DY_step4_fullSel.gif"  alt="http://ajafari.web.cern.ch/ajafari/signal_DY_step4_fullSel.gif" />
+</li>
+<li><img src="http://ajafari.web.cern.ch/ajafari/signal_DY_step4_fullSel_2D.gif"  alt="http://ajafari.web.cern.ch/ajafari/signal_DY_step4_fullSel_2D.gif" />
+</li>
+</ul>
+
+</li>
+<li><b>Does not give a big gain!</b>
+</li>
+<li>Taking the following picture for ma = 30, we cut on |mbb- ma| &lt; 10.
+</li>
+<li><img src="http://ajafari.web.cern.ch/ajafari/mbb_30.gif"  alt="http://ajafari.web.cern.ch/ajafari/mbb_30.gif" />
+</li>
+<li><img src="http://ajafari.web.cern.ch/ajafari/mbb_40.gif"  alt="http://ajafari.web.cern.ch/ajafari/mbb_40.gif" />
+</li>
+<li><img src="http://ajafari.web.cern.ch/ajafari/mbb_50.gif"  alt="http://ajafari.web.cern.ch/ajafari/mbb_50.gif" />
+</li>
+<li><img src="http://ajafari.web.cern.ch/ajafari/mbb_60.gif"  alt="http://ajafari.web.cern.ch/ajafari/mbb_60.gif" />
+</li>
+<li>Table
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="right" /><col class="right" /><col class="right" /><col class="right" /><col class="right" /><col class="right" /><col class="right" />
+</colgroup>
+<tbody>
+<tr><td class="right"></td><td class="right">signal  eff</td><td class="right">signal yield</td><td class="right">N expected after mbb</td><td class="right">~bkg eff</td><td class="right">N bkg</td><td class="right">N bkg after mbb</td></tr>
+<tr><td class="right">30</td><td class="right">0.771714</td><td class="right">3.35</td><td class="right">2.5852419</td><td class="right">0.35</td><td class="right">427</td><td class="right">149.45</td></tr>
+<tr><td class="right">40</td><td class="right">0.804586</td><td class="right">3.46</td><td class="right">2.7838676</td><td class="right">0.5</td><td class="right">599</td><td class="right">299.5</td></tr>
+<tr><td class="right">50</td><td class="right">0.85003</td><td class="right">3.88</td><td class="right">3.2981164</td><td class="right">0.7</td><td class="right">523</td><td class="right">366.1</td></tr>
+<tr><td class="right">60</td><td class="right">0.926099</td><td class="right">3.84</td><td class="right">3.5562202</td><td class="right">0.92</td><td class="right">411</td><td class="right">378.12</td></tr>
+</tbody>
+</table>
+
+     \+TBLFM: $4=$2*$3::$7=$6*$5
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> <b>On diffMass bb,&mu;&mu;</b></h3>
+<div class="outline-text-3" id="text-6-2">
+
+<ul>
+<li>Pictures before 4-boady mass cut:
+<ul>
+<li><img src="http://ajafari.web.cern.ch/ajafari/signal_DY_diffM_fullSel.gif"  alt="http://ajafari.web.cern.ch/ajafari/signal_DY_diffM_fullSel.gif" />
+</li>
+</ul>
+
+</li>
+<li>None of the pictures below show any sign of improvement     
+<ul>
+<li><img src="http://ajafari.web.cern.ch/ajafari/diffM_30.gif"  alt="http://ajafari.web.cern.ch/ajafari/diffM_30.gif" />
+</li>
+<li><img src="http://ajafari.web.cern.ch/ajafari/diffM_40.gif"  alt="http://ajafari.web.cern.ch/ajafari/diffM_40.gif" />
+</li>
+<li><img src="http://ajafari.web.cern.ch/ajafari/diffM_50.gif"  alt="http://ajafari.web.cern.ch/ajafari/diffM_50.gif" />
+</li>
+<li><img src="http://ajafari.web.cern.ch/ajafari/diffM_60.gif"  alt="http://ajafari.web.cern.ch/ajafari/diffM_60.gif" />
+</li>
+</ul>
+
+</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Signal description</h2>
+<div class="outline-text-2" id="text-7">
+
+<ul>
+<li>Voig added to CB sounds good (image <img src="http://ajafari.web.cern.ch/ajafari/testCB.gif"  alt="http://ajafari.web.cern.ch/ajafari/testCB.gif" /> and <img src="file:///home/nadjieh/work/Haamumu/macro/CondPreApp/9-SignalModel/testCBVoig.gif"  alt="file:///home/nadjieh/work/Haamumu/macro/CondPreApp/9-SignalModel/testCBVoig.gif" />)
+</li>
+<li>Communicated with Andrea <a href="https://mail.google.com/mail/u/0/\inbox/14c76106daa50682">here</a>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2015-04-21T16:26+0430</p>
+<p class="author">Author: Nadjieh</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

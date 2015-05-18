@@ -1,0 +1,117 @@
+{
+//=========Macro generated from canvas: c_20df050_projection_99001/Canvas_1_n2
+//=========  (Mon Sep 22 16:54:06 2014) by ROOT version5.34/19
+   TCanvas *c_20df050_projection_99001 = new TCanvas("c_20df050_projection_99001", "Canvas_1_n2",13,34,700,500);
+   c_20df050_projection_99001->Range(-12.5,-144.9,112.5,1304.1);
+   c_20df050_projection_99001->SetFillColor(0);
+   c_20df050_projection_99001->SetBorderMode(0);
+   c_20df050_projection_99001->SetBorderSize(2);
+   c_20df050_projection_99001->SetGridx();
+   c_20df050_projection_99001->SetGridy();
+   c_20df050_projection_99001->SetFrameBorderMode(0);
+   c_20df050_projection_99001->SetFrameBorderMode(0);
+   
+   TH1D *slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll = new TH1D("slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll","ProjectionX of biny=[11,1000] [y=10.0..1000.0]",100,0,100);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(21,379);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(22,426);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(23,455);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(24,439);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(25,472);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(26,512);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(27,488);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(28,476);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(29,506);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(30,570);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(31,581);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(32,604);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(33,547);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(34,614);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(35,655);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(36,608);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(37,645);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(38,727);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(39,698);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(40,709);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(41,743);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(42,722);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(43,786);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(44,753);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(45,767);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(46,800);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(47,753);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(48,831);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(49,804);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(50,818);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(51,874);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(52,911);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(53,874);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(54,892);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(55,934);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(56,956);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(57,974);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(58,987);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(59,958);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(60,1057);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(61,1013);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(62,1008);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(63,1051);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(64,1013);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(65,1058);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(66,1080);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(67,1097);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(68,1072);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(69,1005);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetBinContent(70,1104);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetEntries(38806);
+   
+   TPaveStats *ptstats = new TPaveStats(0.78,0.775,0.98,0.935,"brNDC");
+   ptstats->SetName("stats");
+   ptstats->SetBorderSize(1);
+   ptstats->SetFillColor(0);
+   ptstats->SetTextAlign(12);
+   ptstats->SetTextFont(42);
+   TText *text = ptstats->AddText("slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll");
+   text->SetTextSize(0.0368);
+   text = ptstats->AddText("Entries = 38806  ");
+   text = ptstats->AddText("Mean  =   48.9");
+   text = ptstats->AddText("RMS   =  13.78");
+   ptstats->SetOptStat(1111);
+   ptstats->SetOptFit(0);
+   ptstats->Draw();
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetListOfFunctions()->Add(ptstats);
+   ptstats->SetParent(slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetFillColor(38);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#000099");
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->SetLineColor(ci);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetXaxis()->SetTitle("m_{#mu#mu}");
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetXaxis()->SetRange(1,100);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetXaxis()->SetLabelFont(42);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetXaxis()->SetLabelSize(0.035);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetXaxis()->SetTitleSize(0.035);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetXaxis()->SetTitleFont(42);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetYaxis()->SetTitle("Number of Entries");
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetYaxis()->SetLabelFont(42);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetYaxis()->SetLabelSize(0.035);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetYaxis()->SetTitleSize(0.035);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetYaxis()->SetTitleFont(42);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetZaxis()->SetLabelFont(42);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetZaxis()->SetLabelSize(0.035);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetZaxis()->SetTitleSize(0.035);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->GetZaxis()->SetTitleFont(42);
+   slice_px_of_step_2_Mll_MetSig_MetSigvsHamb_Mll->Draw("");
+   
+   TPaveText *pt = new TPaveText(0.15,0.9342405,0.85,0.995,"blNDC");
+   pt->SetName("title");
+   pt->SetBorderSize(0);
+   pt->SetFillColor(0);
+   pt->SetFillStyle(0);
+   pt->SetTextFont(42);
+   text = pt->AddText("ProjectionX of biny=[11,1000] [y=10.0..1000.0]");
+   pt->Draw();
+   c_20df050_projection_99001->Modified();
+   c_20df050_projection_99001->cd();
+   c_20df050_projection_99001->SetSelected(c_20df050_projection_99001);
+}

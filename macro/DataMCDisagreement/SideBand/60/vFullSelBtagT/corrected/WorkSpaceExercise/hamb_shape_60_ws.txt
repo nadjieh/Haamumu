@@ -1,0 +1,46 @@
+# Invisible Higgs analysis for mH=125 GeV
+imax 1
+jmax 1  number of backgrounds
+kmax 3  number of nuisance parameters (sources of systematical uncertainties)
+
+------------
+shapes 	sigPdf  	dimu	simple-shapes-UnbinnedParam-test.root w:test_sigPdf_dimu
+shapes  sum		dimu	simple-shapes-UnbinnedParam-test.root w:test_sum_dimu
+shapes  data_obs 	dimu	simple-shapes-UnbinnedParam-test.root w:data_dimu
+-----------
+# we have just one channel, in which we observe 0 events
+bin dimu 
+observation -1.0 
+------------
+bin			     dimu		dimu		    
+process			     sigPdf		sum		 
+process			     0			1		      
+rate			     1.0		1.0	 
+------------
+lumi_8TeV	      lnN    1.026		-		 
+test_sigPdf_dimu_norm lnN    1.3		-
+test_sum_dimu_norm    lnN    -			1.2
+
+
+# Data: 02/07/2014
+# # Description: Haa40 significance
+# ------------------------------------------------------------------------------------------------
+# imax   1  number of channels
+# jmax   2  number of backgrounds
+# kmax   * number of nuisance parameters
+#
+# shapes * * Haa40_exp_2018_v2.root $CHANNEL/$PROCESS
+# ------------------------------------------------------------------------------------------------
+# bin            Haa
+# observation    0
+# ------------------------------------------------------------------------------------------------
+# bin        Haa    Haa    Haa
+# process    Haa40    DY    Top
+# process     0      1       2
+# rate       0.613  190.3  44.7
+# ------------------------------------------------------------------------------------------------
+#  lumi       lnN  1.026   -  -  - lumi for 8 TeV
+#   SigAcc     lnN  1.1    -  -  -  Signal modeling
+#    DY_norm    lnN  -    1.1   -  -  DY norm free
+#     Top_norm   lnN  -    -  1.07  -  Top norm
+#

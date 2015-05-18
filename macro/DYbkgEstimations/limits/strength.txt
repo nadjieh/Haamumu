@@ -1,0 +1,22 @@
+Expected  2.5%: r < 15.2527
+Expected 16.0%: r < 20.8372
+Expected 50.0%: r < 30.6250
+Expected 84.0%: r < 47.3489
+Expected 97.5%: r < 73.4563
+
+
+
+Expected  2.5%: r < 17.1044
+Expected 16.0%: r < 23.2394
+Expected 50.0%: r < 33.8125
+Expected 84.0%: r < 51.7380
+Expected 97.5%: r < 79.4733
+
+
+
+Expected  2.5%: r < 17.0134
+Expected 16.0%: r < 22.9573
+Expected 50.0%: r < 33.3750
+Expected 84.0%: r < 50.5364
+Expected 97.5%: r < 77.4057
+

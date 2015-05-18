@@ -1,0 +1,193 @@
+{
+//=========Macro generated from canvas: aptMu/di-#mu p_{T}
+//=========  (Sat Nov 15 21:14:41 2014) by ROOT version5.34/19
+   TCanvas *aptMu = new TCanvas("aptMu", "di-#mu p_{T}",211,39,500,502);
+   aptMu->SetHighLightColor(2);
+   aptMu->Range(0,0,1,1);
+   aptMu->SetFillColor(0);
+   aptMu->SetBorderMode(0);
+   aptMu->SetBorderSize(2);
+   aptMu->SetLogy();
+   aptMu->SetTickx(1);
+   aptMu->SetTicky(1);
+   aptMu->SetLeftMargin(0.16);
+   aptMu->SetRightMargin(0.02);
+   aptMu->SetTopMargin(0.05);
+   aptMu->SetBottomMargin(0.13);
+   aptMu->SetFrameFillStyle(0);
+   aptMu->SetFrameBorderMode(0);
+
+   
+   TLegend *leg = new TLegend(0.0915323,0.0539588,0.9915323,0.980218,NULL,"brNDC");
+   leg->SetBorderSize(0);
+   leg->SetTextFont(62);
+   leg->SetLineColor(1);
+   leg->SetLineStyle(1);
+   leg->SetLineWidth(1);
+   leg->SetFillColor(0);
+   leg->SetFillStyle(1001);
+   TLegendEntry *entry=leg->AddEntry("","Data, 19.7 fb^{-1} @ 8 TeV","LEP");
+
+   ci = TColor::GetColor("#000099");
+   entry->SetLineColor(ci);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(20);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("","ZH_125","f");
+   entry->SetFillStyle(1001);
+
+   ci = TColor::GetColor("#000099");
+   entry->SetLineColor(ci);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("","Z/#gamma*+j (10-50 GeV)","f");
+
+   ci = TColor::GetColor("#ff9999");
+   entry->SetFillColor(ci);
+   entry->SetFillStyle(1001);
+
+   ci = TColor::GetColor("#000099");
+   entry->SetLineColor(ci);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("","Z/#gamma*+j (> 50 GeV)","f");
+
+   ci = TColor::GetColor("#ff6666");
+   entry->SetFillColor(ci);
+   entry->SetFillStyle(1001);
+
+   ci = TColor::GetColor("#000099");
+   entry->SetLineColor(ci);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("","tW","f");
+
+   ci = TColor::GetColor("#336600");
+   entry->SetFillColor(ci);
+   entry->SetFillStyle(1001);
+
+   ci = TColor::GetColor("#000099");
+   entry->SetLineColor(ci);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("","t#bar{t} lept","f");
+
+   ci = TColor::GetColor("#339966");
+   entry->SetFillColor(ci);
+   entry->SetFillStyle(1001);
+
+   ci = TColor::GetColor("#000099");
+   entry->SetLineColor(ci);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("","t#bar{t} dilep","f");
+
+   ci = TColor::GetColor("#ffff66");
+   entry->SetFillColor(ci);
+   entry->SetFillStyle(1001);
+
+   ci = TColor::GetColor("#000099");
+   entry->SetLineColor(ci);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("","WW","f");
+
+   ci = TColor::GetColor("#996633");
+   entry->SetFillColor(ci);
+   entry->SetFillStyle(1001);
+
+   ci = TColor::GetColor("#000099");
+   entry->SetLineColor(ci);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("","WZ","f");
+
+   ci = TColor::GetColor("#66ffff");
+   entry->SetFillColor(ci);
+   entry->SetFillStyle(1001);
+
+   ci = TColor::GetColor("#000099");
+   entry->SetLineColor(ci);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("","ZZ","f");
+
+   ci = TColor::GetColor("#ff66ff");
+   entry->SetFillColor(ci);
+   entry->SetFillStyle(1001);
+
+   ci = TColor::GetColor("#000099");
+   entry->SetLineColor(ci);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+
+   entry=leg->AddEntry("","m_{a} = 40 GeV","f");
+   entry->SetFillColor(kSpring+4);   
+   entry->SetFillStyle(3004);
+   entry->SetLineColor(kSpring+4);	
+   entry->SetLineWidth(2);
+   entry->SetMarkerColor(kSpring+4);
+   entry->SetMarkerStyle(1);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   /*entry=leg->AddEntry("aptMu__125","m_{a} = 50 GeV","lpf");
+   entry->SetFillStyle(1001);
+   entry->SetLineColor(8);
+   entry->SetLineStyle(5);
+   entry->SetLineWidth(4);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(1);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("aptMu__126","m_{a} = 60 GeV","lpf");
+   entry->SetFillStyle(1001);
+
+   ci = TColor::GetColor("#000099");
+   entry->SetLineColor(kBlue+2);
+   entry->SetLineStyle(3);
+   entry->SetLineWidth(4);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(1);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);*/
+   leg->Draw();
+   
+}

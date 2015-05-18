@@ -1,0 +1,72 @@
+
+
+/////////// MC-fit ////////////////
+//// Tstring fname = "hamb-shapes-UnbinnedParam-m60-MC-fit.root";
+//// stringstream lambda; lambda << -0.0641845;
+//// stringstream alpha; alpha << 1.07219;
+//// stringstream n; n <<  0.76627;
+//// stringstream meanbw; meanbw <<  91.0098;
+//// stringstream sigmabw; sigmabw <<  1.42159;
+//// stringstream meancb; meancb <<  0.900627;
+//// stringstream sigmacb; sigmacb <<  0.328756;
+///////////////////////////////////
+| | SL | SM | SU |
+|expo | 118.346 \pm 19.9817|50.0378 \pm 8.44847|5.09641 \pm 0.860486|
+|B.W | 1.40418 \pm 0.0566705|140.97 \pm 5.6893|1211.72 \pm 48.9029|
+|Sum fit | 119.75 \pm 19.9818|191.007 \pm 10.1855|1216.81 \pm 48.9105|
+|MC Data | 120.282 | 49.207 | 1216.27 |
+
+////////////////////////////////
+| | SM |
+|bkg | 0.000738907 \pm 53.8987|
+|B.W_pf | 49.167 \pm 7.02026|
+|Sum fit_pf | 49.1677 \pm 54.3539|
+|MC Data | 49.207 | 
+
+////////////// NORMALIZATION /////////////
+| | SL | SM | SP |
+|bkg | 116.205 \pm 10.6919|49.1326 \pm 4.52064|18.6146 \pm 1.71271|
+|B.W_pf | 1.37885 \pm 0.0370355|138.427 \pm 3.71809|1403.65 \pm 37.7015|
+|Sum fit_pf | 117.583 \pm 10.6919|187.559 \pm 5.85323|1422.26 \pm 37.7403|
+|MC Data | 120.282 | 49.207 | 1419.39 |
+
+////////////// NORMALIZATION RESCALED /////////////
+| | SL | SM | SP |
+|bkg | 79.3513 \pm 8.90835|33.4815 \pm 3.75879|12.6557 \pm 1.42079|
+|B.W_pf | 1.264 \pm 0.0354755|127.106 \pm 3.56738|1282.69 \pm 36.0001|
+|Sum fit_pf | 80.6153 \pm 8.90842|160.588 \pm 5.18215|1295.34 \pm 36.0281|
+|MC Data | 81.6668 | 33.4097 | 1294.45 |
+
+
+/////////// Data-fit ////////////////
+//// Tstring fname = "hamb-shapes-UnbinnedParam-m60-Data-fit.root";
+//// stringstream lambda; lambda << -0.0942391;
+//// stringstream alpha; alpha << 0.0164094;
+//// stringstream n; n <<  1.24169;
+//// stringstream meanbw; meanbw <<  91.1679;
+//// stringstream sigmabw; sigmabw <<  1.41406;
+//// stringstream meancb; meancb <<  1.63862;
+//// stringstream sigmacb; sigmacb <<  0.00495189;
+///////////////////////////////////
+| | SL | SM | SU |
+|expo | 78.1363 \pm 20.7781|16.4901 \pm 4.38506|0.44436 \pm 0.118165|
+|B.W | 0.906687 \pm 0.0341758|65.6917 \pm 2.47612|1081.69 \pm 40.7723|
+|Sum fit | 79.043 \pm 20.7782|82.1818 \pm 5.03587|1082.13 \pm 40.7725|
+|MC Data | 79 | 112 | 1082 |
+
+////////////////////////////////
+| | SM |
+|bkg | 112.008 \pm 25.3128|
+|B.W_pf | 0.00333525 \pm 105.594|
+|Sum fit_pf | 112.011 \pm 108.586|
+|MC Data | 112 | 
+
+////////////// NORMALIZATION /////////////
+| | SL | SM | SP |
+|bkg | 78.9498 \pm 9.67862|78.3661 \pm 9.60705|96.0397 \pm 11.7737|
+|B.W_pf | 0.884687 \pm 0.0282867|64.0978 \pm 2.04945|1180.12 \pm 37.7329|
+|Sum fit_pf | 79.8345 \pm 9.67866|142.464 \pm 9.82322|1276.16 \pm 39.5271|
+|MC Data | 79 | 112 | 1277 |
+
+
+

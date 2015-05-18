@@ -1,0 +1,81 @@
+
+/////////// MC-fit ////////////////
+//// Tstring fname = "hamb-shapes-UnbinnedParam-m60-MC-fit.root";
+//// stringstream lambda; lambda << -0.150868;
+//// stringstream alpha; alpha << 0.941793;
+//// stringstream n; n <<  0.994515;
+//// stringstream meanbw; meanbw <<  90.6778;
+//// stringstream sigmabw; sigmabw <<  1;
+//// stringstream meancb; meancb <<  0.825519;
+//// stringstream sigmacb; sigmacb <<  1.45609;
+///////////////////////////////////
+| | SL | SM | SU |
+|expo | 612.974 \pm 35.8215|8.10197 \pm 0.47347|0.0921531 \pm 0.00538532|
+|B.W | 1.12501 \pm 0.039792|171.145 \pm 6.05347|1877.88 \pm 66.4216|
+|Sum fit | 614.099 \pm 35.8215|179.247 \pm 6.07195|1877.98 \pm 66.4216|
+|MC Data | 614 | 506.521 | 1878 |
+ 
+/////////// MC-fit ////////////////
+//// Tstring fname = "hamb-shapes-UnbinnedParam-m"+Mass+"-MC-fit.root";
+//// stringstream lambda; lambda << -0.133754;
+//// stringstream alpha; alpha << 1.45032;
+//// stringstream n; n <<  0.645892;
+//// stringstream meanbw; meanbw <<  90.8648;
+//// stringstream sigmabw; sigmabw <<  1.00001;
+//// stringstream meancb; meancb <<  0.235185;
+//// stringstream sigmacb; sigmacb <<  1.84863;
+///////////////////////////////////
+////////////////////////////////
+| |SLP |SM |SUP|
+|bkg | 1277.88 \pm 6.72073|428.158 \pm 2.25181|180.275 \pm 0.948118|
+|B.W_pf | 76.272 \pm 0.344524|182.346 \pm 0.823664|1925.8 \pm 8.69892|
+|Sum fit_pf | 1354.15 \pm 2.39772|610.494 \pm 2.39772|2106.08 \pm 2.39772|
+|MC Data | 1359.8 | 506.521 | 2102.15 | 
+
+////////////// NORMALIZATION /////////////
+| | SLP | SM | SUP |
+|bkg | 1278.38 \pm 2.09851|428.509 \pm 0.703414|180.436 \pm 0.296192|
+|B.W_pf | 76.8326 \pm 0.105717|183.084 \pm 0.251912|1926.13 \pm 2.65023|
+|Sum fit_pf | 1355.21 \pm 2.10117|611.583 \pm 0.747162|2106.56 \pm 2.66673|
+|MC Data | 1359.8 | 506.521 | 2102.15 | 
+
+
+/////////// Data-fit ////////////////
+//// Tstring fname = "hamb-shapes-UnbinnedParam-m60-Data-fit.root";
+//// stringstream lambda; lambda << -0.144923;
+//// stringstream alpha; alpha << 1.19926;
+//// stringstream n; n <<  0.761363;
+//// stringstream meanbw; meanbw <<  90.8425;
+//// stringstream sigmabw; sigmabw <<  1.00001;
+//// stringstream meancb; meancb <<  0.321917;
+//// stringstream sigmacb; sigmacb <<  1.74216;
+///////////////////////////////////
+| | SL | SM | SU |
+|expo | 612.76 \pm 37.3323|9.78791 \pm 0.596326|0.133912 \pm 0.00815853|
+|B.W | 1.18127 \pm 0.043343|204.05 \pm 7.48698|1877.82 \pm 68.9006|
+|Sum fit | 613.941 \pm 37.3323|213.838 \pm 7.51069|1877.95 \pm 68.9006|
+|MC Data | 614 | 545 | 1878 |
+ 
+/////////// Data-fit ////////////////
+//// Tstring fname = "hamb-shapes-UnbinnedParam-m"+Mass+"-Data-fit.root";
+//// stringstream lambda; lambda << -0.282865;
+//// stringstream alpha; alpha << 0.797896;
+//// stringstream n; n <<  2.03974;
+//// stringstream meanbw; meanbw <<  90.887;
+//// stringstream sigmabw; sigmabw <<  1;
+//// stringstream meancb; meancb <<  0.43045;
+//// stringstream sigmacb; sigmacb <<  1.64717;
+///////////////////////////////////
+////////////////////////////////
+| |SLP |SM |SUP|
+|bkg | 1249.36 \pm 36.0288|591.564 \pm 17.0594|255.19 \pm 7.35914|
+|B.W_pf | 13.0558 \pm 0.381667|44.1313 \pm 1.29012|1801.55 \pm 52.6659|
+|Sum fit_pf | 1262.41 \pm 17.1081|635.695 \pm 17.1081|2056.74 \pm 17.1081|
+|MC Data | 1276 | 545 | 2043 | 
+
+////////////// NORMALIZATION /////////////
+| | SLP | SM | SUP |
+|bkg | 1247.49 \pm 130.539|589.853 \pm 61.723|254.452 \pm 26.6261|
+|B.W_pf | 13.2955 \pm 0.392833|44.7872 \pm 1.3233|1802.35 \pm 53.2527|
+|Sum fit_pf | 1260.78 \pm 130.539|634.64 \pm 61.7371|2056.8 \pm 59.5382|
+|MC Data | 1276 | 545 | 2043 | 

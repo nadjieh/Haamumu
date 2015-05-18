@@ -1,0 +1,251 @@
+
+Processing fit.C...
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+scaleSU: 0.885421
+scaleSL: 1.13061
+ **********
+ **   13 **MIGRAD        4500           1
+ **********
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ START MIGRAD MINIMIZATION.  STRATEGY  1.  CONVERGENCE WHEN EDM .LT. 1.00e-03
+ FCN=-4999.07 FROM MIGRAD    STATUS=INITIATE      103 CALLS         104 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+  EXT PARAMETER               CURRENT GUESS       STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  test_alpha   2.51831e-01   5.00000e-01   0.00000e+00  -1.61097e+02
+   2  test_background   5.24043e+02   2.09617e+02   0.00000e+00  -3.41813e+02
+   3  test_lambda  -1.00000e-01   5.00000e-02   0.00000e+00   1.05926e+03
+   4  test_mean_bw   9.08000e+01   6.00000e+00   0.00000e+00   2.93025e+02
+   5  test_mean_cb   1.00000e+00   5.00000e-01   0.00000e+00   6.02787e+01
+   6  test_n       5.64168e-01   5.00000e-01  -8.85660e-01  -7.86979e+00
+   7  test_sigma_bw   6.50000e+00   2.75000e+00   0.00000e+00   1.07486e+03
+   8  test_sigma_cb   2.30000e+00   1.15000e+00   0.00000e+00   8.59222e+02
+   9  test_signal_bw   2.66171e+03   1.06468e+03   0.00000e+00   4.43510e+02
+                               ERR DEF= 0.5
+ MIGRAD MINIMIZATION HAS CONVERGED.
+ MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-5500.24 FROM MIGRAD    STATUS=CONVERGED     650 CALLS         651 TOTAL
+                     EDM=0.000552728    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  test_alpha   1.21265e+00   1.23444e+00   9.88548e-04  -1.54959e-01
+   2  test_background   6.67495e+02   3.60595e+01   1.49144e-03  -2.47484e-02
+   3  test_lambda  -1.75961e-01   1.59200e-02   6.97650e-04   2.11821e-01
+   4  test_mean_bw   9.10325e+01   7.67692e-02   8.51200e-05   1.16938e+00
+   5  test_mean_cb   9.26787e-01   3.48901e-01   1.73293e-04   1.34371e+00
+   6  test_n       6.99539e-01   9.26351e-02   5.98655e-04  -1.77505e-01
+   7  test_sigma_bw   1.34398e+00   1.54175e-01   5.21536e-04   1.32399e-01
+   8  test_sigma_cb   3.11864e-01   3.20887e-01   8.68205e-05  -7.53962e-02
+   9  test_signal_bw   1.60584e+03   7.09872e+01   6.23871e-04  -2.47125e-01
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR=  9    ERR DEF=0.5
+  1.731e+00 -3.229e-01 -8.181e-05 -3.630e-02  4.546e-01 -8.281e-02 -6.505e-02 -4.198e-01  4.233e+01 
+ -3.229e-01  1.301e+03  3.533e-01  2.001e-02 -7.219e-02  3.251e-02  5.176e-02  7.155e-02 -2.148e+01 
+ -8.181e-05  3.533e-01  2.535e-04  4.735e-06 -1.838e-05  8.427e-06  1.199e-05  1.809e-05 -5.811e-03 
+ -3.630e-02  2.001e-02  4.735e-06  5.894e-03 -7.946e-03  2.997e-03  8.514e-03  8.033e-03 -1.206e+00 
+  4.546e-01 -7.219e-02 -1.838e-05 -7.946e-03  1.218e-01 -1.902e-02 -1.356e-02 -1.114e-01  9.831e+00 
+ -8.281e-02  3.251e-02  8.427e-06  2.997e-03 -1.902e-02  8.589e-03  5.124e-03  1.804e-02 -4.744e+00 
+ -6.505e-02  5.176e-02  1.199e-05  8.514e-03 -1.356e-02  5.124e-03  2.377e-02  1.483e-02 -1.901e+00 
+ -4.198e-01  7.155e-02  1.809e-05  8.033e-03 -1.114e-01  1.804e-02  1.483e-02  1.030e-01 -9.226e+00 
+  4.233e+01 -2.148e+01 -5.811e-03 -1.206e+00  9.831e+00 -4.744e+00 -1.901e+00 -9.226e+00  5.040e+03 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9
+        1  0.99951   1.000 -0.007 -0.004 -0.359  0.990 -0.679 -0.321 -0.994  0.453
+        2  0.61538  -0.007  1.000  0.615  0.007 -0.006  0.010  0.009  0.006 -0.008
+        3  0.61533  -0.004  0.615  1.000  0.004 -0.003  0.006  0.005  0.004 -0.005
+        4  0.76127  -0.359  0.007  0.004  1.000 -0.297  0.421  0.719  0.326 -0.221
+        5  0.99793   0.990 -0.006 -0.003 -0.297  1.000 -0.588 -0.252 -0.995  0.397
+        6  0.97591  -0.679  0.010  0.006  0.421 -0.588  1.000  0.359  0.607 -0.721
+        7  0.78125  -0.321  0.009  0.005  0.719 -0.252  0.359  1.000  0.300 -0.174
+        8  0.99891  -0.994  0.006  0.004  0.326 -0.995  0.607  0.300  1.000 -0.405
+        9  0.75664   0.453 -0.008 -0.005 -0.221  0.397 -0.721 -0.174 -0.405  1.000
+ **********
+ **   18 **HESSE        4500
+ **********
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-5500.24 FROM HESSE     STATUS=OK             73 CALLS         724 TOTAL
+                     EDM=0.00023308    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                INTERNAL      INTERNAL  
+  NO.   NAME      VALUE            ERROR       STEP SIZE       VALUE   
+   1  test_alpha   1.21265e+00   6.50474e-01   1.97710e-04  -5.40936e-01
+   2  test_background   6.67495e+02   3.60133e+01   2.98288e-04  -3.71624e-01
+   3  test_lambda  -1.75961e-01   1.58998e-02   1.39530e-04   1.19337e+00
+   4  test_mean_bw   9.10325e+01   7.29593e-02   1.70240e-05   3.44225e-02
+   5  test_mean_cb   9.26787e-01   1.78024e-01   3.46586e-05  -1.29766e+00
+   6  test_n       6.99539e-01   7.53773e-02   1.19731e-04  -8.04068e-01
+   7  test_sigma_bw   1.34398e+00   1.48215e-01   2.08615e-05  -1.64370e+00
+   8  test_sigma_cb   3.11864e-01   1.63148e-01   3.47282e-06  -1.50152e+00
+   9  test_signal_bw   1.60584e+03   6.53570e+01   1.24774e-04  -7.73081e-01
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR=  9    ERR DEF=0.5
+  4.368e-01 -8.647e-02 -2.174e-05 -1.033e-02  1.131e-01 -2.152e-02 -1.921e-02 -1.054e-01  1.065e+01 
+ -8.647e-02  1.298e+03  3.517e-01  1.510e-02 -9.936e-03  2.121e-02  4.309e-02  1.417e-02 -1.566e+01 
+ -2.174e-05  3.517e-01  2.528e-04  3.495e-06 -2.561e-06  5.559e-06  9.805e-06  3.509e-06 -4.329e-03 
+ -1.033e-02  1.510e-02  3.495e-06  5.323e-03 -1.127e-03  1.735e-03  7.491e-03  1.740e-03 -5.587e-01 
+  1.131e-01 -9.936e-03 -2.561e-06 -1.127e-03  3.170e-02 -2.875e-03 -1.524e-03 -2.845e-02  1.482e+00 
+ -2.152e-02  2.121e-02  5.559e-06  1.735e-03 -2.875e-03  5.685e-03  2.866e-03  3.149e-03 -3.251e+00 
+ -1.921e-02  4.309e-02  9.805e-06  7.491e-03 -1.524e-03  2.866e-03  2.197e-02  3.732e-03 -7.419e-01 
+ -1.054e-01  1.417e-02  3.509e-06  1.740e-03 -2.845e-02  3.149e-03  3.732e-03  2.662e-02 -1.525e+00 
+  1.065e+01 -1.566e+01 -4.329e-03 -5.587e-01  1.482e+00 -3.251e+00 -7.419e-01 -1.525e+00  4.272e+03 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9
+        1  0.99805   1.000 -0.004 -0.002 -0.214  0.961 -0.432 -0.196 -0.978  0.247
+        2  0.61408  -0.004  1.000  0.614  0.006 -0.002  0.008  0.008  0.002 -0.007
+        3  0.61404  -0.002  0.614  1.000  0.003 -0.001  0.005  0.004  0.001 -0.004
+        4  0.73107  -0.214  0.006  0.003  1.000 -0.087  0.315  0.693  0.146 -0.117
+        5  0.99202   0.961 -0.002 -0.001 -0.087  1.000 -0.214 -0.058 -0.979  0.127
+        6  0.96337  -0.432  0.008  0.005  0.315 -0.214  1.000  0.256  0.256 -0.660
+        7  0.76051  -0.196  0.008  0.004  0.693 -0.058  0.256  1.000  0.154 -0.077
+        8  0.99579  -0.978  0.002  0.001  0.146 -0.979  0.256  0.154  1.000 -0.143
+        9  0.70404   0.247 -0.007 -0.004 -0.117  0.127 -0.660 -0.077 -0.143  1.000
+RooRealVar::test_lambda = -0.175961 +/- 0.0158998  L(-5 - 0) 
+RooRealVar::test_alpha = 1.21265 +/- 0.650474  L(0 - 5) 
+RooRealVar::test_n = 0.699539 +/- 0.0753773  L(0 - 5) 
+RooRealVar::test_mean_bw = 91.0325 +/- 0.0729593  L(60 - 120) 
+RooRealVar::test_mean_cb = 0.926787 +/- 0.178024  L(0 - 50) 
+RooRealVar::test_sigma_bw = 1.34398 +/- 0.148215  L(1 - 260) 
+RooRealVar::test_sigma_cb = 0.311864 +/- 0.163148  L(0 - 260) 
+RooRealVar::test_signal_bw = 1605.84 +/- 65.357  L(0 - 10646.8) 
+RooRealVar::test_signal_cb = 100  L(0 - 10000) 
+RooRealVar::test_background = 667.495 +/- 36.0133  L(0 - 2096.17) 
+/////////// MC-fit ////////////////
+//// Tstring fname = "hamb-shapes-UnbinnedParam-m60-MC-fit.root";
+//// stringstream lambda; lambda << -0.175961;
+//// stringstream alpha; alpha << 1.21265;
+//// stringstream n; n <<  0.699539;
+//// stringstream meanbw; meanbw <<  91.0325;
+//// stringstream sigmabw; sigmabw <<  1.34398;
+//// stringstream meancb; meancb <<  0.926787;
+//// stringstream sigmacb; sigmacb <<  0.311864;
+///////////////////////////////////
+| | SL | SM | SU |
+|expo | 552.611 \pm 29.8149|19.1872 \pm 1.0352|0.0173481 \pm 0.000935978|
+|B.W | 1.43605 \pm 0.0584466|161.209 \pm 6.56114|1196.81 \pm 48.7097|
+|Sum fit | 554.047 \pm 29.815|180.397 \pm 6.64231|1196.83 \pm 48.7097|
+|MC Data | 554 | 621.068 | 1197 |
+ **********
+ **   13 **MIGRAD        1500           1
+ **********
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ START MIGRAD MINIMIZATION.  STRATEGY  1.  CONVERGENCE WHEN EDM .LT. 1.00e-03
+ FCN=-1456.23 FROM MIGRAD    STATUS=INITIATE       12 CALLS          13 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+  EXT PARAMETER               CURRENT GUESS       STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  test_background_pf   5.24043e+02   2.09617e+02   2.35352e-01  -1.26516e+02
+   2  test_signal_bw_pf   2.66171e+03   1.06468e+03   2.35352e-01  -2.82620e+02
+   3  testfrac     5.00000e-01   1.00000e-01   2.01358e-01  -6.43082e+01
+                               ERR DEF= 0.5
+ MIGRAD MINIMIZATION HAS CONVERGED.
+ MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-1519.2 FROM MIGRAD    STATUS=CONVERGED     182 CALLS         183 TOTAL
+                     EDM=3.51518e-05    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  test_background_pf   1.26628e+03   4.22636e+02   1.56223e-03  -9.99997e-02
+   2  test_signal_bw_pf   8.84295e+02   1.69987e+03   2.33576e-03  -6.95423e-02
+   3  testfrac     1.00000e+00   1.85096e-01   2.30805e-02** at limit **
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR=  3    ERR DEF=0.5
+  1.898e+05 -7.822e+05  2.428e-04 
+ -7.822e+05  3.286e+06  3.439e-03 
+  2.428e-04  3.439e-03  3.320e-08 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3
+        1  0.99070   1.000 -0.991  0.003
+        2  0.99070  -0.991  1.000  0.010
+        3  0.09837   0.003  0.010  1.000
+ **********
+ **   18 **HESSE        1500
+ **********
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-1519.2 FROM HESSE     STATUS=OK             16 CALLS         199 TOTAL
+                     EDM=3.4407e-05    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                INTERNAL      INTERNAL  
+  NO.   NAME      VALUE            ERROR       STEP SIZE       VALUE   
+   1  test_background_pf   1.26628e+03   4.33257e+02   3.12446e-04   2.09714e-01
+   2  test_signal_bw_pf   8.84295e+02   1.73923e+03   4.67152e-04  -9.86111e-01
+   3  testfrac     1.00000e+00   1.85200e-01   4.61610e-03   1.57039e+00
+                                 WARNING -   - ABOVE PARAMETER IS AT LIMIT.
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR=  3    ERR DEF=0.5
+  2.001e+05 -8.252e+05  4.497e-05 
+ -8.252e+05  3.464e+06  5.718e-04 
+  4.497e-05  5.718e-04  3.322e-08 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3
+        1  0.99118   1.000 -0.991  0.001
+        2  0.99118  -0.991  1.000  0.002
+        3  0.01685   0.001  0.002  1.000
+////////////////////////////////
+| | SM |
+|bkg | 532.149 \pm 182.075|
+|B.W_pf | 88.7738 \pm 174.6|
+|Sum fit_pf | 620.923 \pm 252.263|
+|MC Data | 621.068 | 
+ **********
+ **   13 **MIGRAD        1500           1
+ **********
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ START MIGRAD MINIMIZATION.  STRATEGY  1.  CONVERGENCE WHEN EDM .LT. 1.00e-03
+ FCN=-6982.05 FROM MIGRAD    STATUS=INITIATE       28 CALLS          29 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+  EXT PARAMETER               CURRENT GUESS       STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  test_background_norm   5.24043e+02   2.09617e+02   0.00000e+00  -7.71612e+02
+   2  test_signal_bw_norm   2.66171e+03   1.06468e+03   0.00000e+00   1.27114e+03
+   3  testfrac     1.32155e-01   1.85200e-01  -2.39707e+00   4.27121e+01
+                               ERR DEF= 0.5
+ MIGRAD MINIMIZATION HAS CONVERGED.
+ MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-7444.62 FROM MIGRAD    STATUS=CONVERGED     118 CALLS         119 TOTAL
+                     EDM=3.53478e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  test_background_norm   1.72785e+03   6.30969e+01   3.92343e-03  -8.43823e-03
+   2  test_signal_bw_norm   1.49592e+03   4.52406e+01   7.00320e-04  -2.09279e-02
+   3  testfrac     6.44506e-01   2.20335e-02   2.28904e-03   9.26009e-03
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR=  3    ERR DEF=0.5
+  3.990e+03 -7.022e+02  7.527e-01 
+ -7.022e+02  2.047e+03 -2.370e-01 
+  7.527e-01 -2.370e-01  4.858e-04 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3
+        1  0.55395   1.000 -0.246  0.541
+        2  0.27554  -0.246  1.000 -0.238
+        3  0.55136   0.541 -0.238  1.000
+ **********
+ **   18 **HESSE        1500
+ **********
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-7444.62 FROM HESSE     STATUS=OK             16 CALLS         135 TOTAL
+                     EDM=3.52708e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                INTERNAL      INTERNAL  
+  NO.   NAME      VALUE            ERROR       STEP SIZE       VALUE   
+   1  test_background_norm   1.72785e+03   6.31629e+01   1.56937e-04   7.05713e-01
+   2  test_signal_bw_norm   1.49592e+03   4.52530e+01   1.40064e-04  -8.02351e-01
+   3  testfrac     6.44506e-01   2.20558e-02   4.57807e-04   2.93194e-01
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR=  3    ERR DEF=0.5
+  3.998e+03 -7.059e+02  7.560e-01 
+ -7.059e+02  2.048e+03 -2.382e-01 
+  7.560e-01 -2.382e-01  4.868e-04 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3
+        1  0.55526   1.000 -0.247  0.542
+        2  0.27646  -0.247  1.000 -0.239
+        3  0.55263   0.542 -0.239  1.000
+////////////// NORMALIZATION /////////////
+| | SLP | SM | SUP |
+|bkg | 898.141 \pm 32.8322|485.648 \pm 17.7532|344.061 \pm 12.5774|
+|B.W_pf | 7.27859 \pm 0.220184|150.175 \pm 4.54292|1338.49 \pm 40.4904|
+|Sum fit_pf | 905.431 \pm 32.833|635.822 \pm 18.3253|1682.55 \pm 42.3989|
+|MC Data | 949.753 | 621.068 | 1638.24 | 

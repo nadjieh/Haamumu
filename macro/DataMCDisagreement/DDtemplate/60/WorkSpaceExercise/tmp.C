@@ -1,0 +1,140 @@
+{
+//=========Macro generated from canvas: Canvas_1/Canvas_1
+//=========  (Thu Jan 29 20:08:38 2015) by ROOT version5.34/19
+   TCanvas *Canvas_1 = new TCanvas("Canvas_1", "Canvas_1",954,259,700,500);
+   Canvas_1->Range(13.75,-0.0204584,76.25,0.1841255);
+   Canvas_1->SetFillColor(0);
+   Canvas_1->SetBorderMode(0);
+   Canvas_1->SetBorderSize(2);
+   Canvas_1->SetFrameBorderMode(0);
+   Canvas_1->SetFrameBorderMode(0);
+   
+   TH1D *amassMu__1 = new TH1D("amassMu__1","amassMu",1000,0,1000);
+   amassMu__1->SetBinContent(56,0.1082803);
+   amassMu__1->SetBinContent(57,0.1210191);
+   amassMu__1->SetBinContent(58,0.1082803);
+   amassMu__1->SetBinContent(59,0.08280255);
+   amassMu__1->SetBinContent(60,0.1082803);
+   amassMu__1->SetBinContent(61,0.1273885);
+   amassMu__1->SetBinContent(62,0.1019108);
+   amassMu__1->SetBinContent(63,0.06369427);
+   amassMu__1->SetBinContent(64,0.06369427);
+   amassMu__1->SetBinContent(65,0.1146497);
+   amassMu__1->SetBinError(56,0.02626182);
+   amassMu__1->SetBinError(57,0.02776369);
+   amassMu__1->SetBinError(58,0.02626182);
+   amassMu__1->SetBinError(59,0.02296529);
+   amassMu__1->SetBinError(60,0.02626182);
+   amassMu__1->SetBinError(61,0.02848494);
+   amassMu__1->SetBinError(62,0.02547771);
+   amassMu__1->SetBinError(63,0.0201419);
+   amassMu__1->SetBinError(64,0.0201419);
+   amassMu__1->SetBinError(65,0.02702319);
+   amassMu__1->SetEntries(157);
+   amassMu__1->SetDirectory(0);
+   
+   TPaveStats *ptstats = new TPaveStats(0.78,0.775,0.98,0.935,"brNDC");
+   ptstats->SetName("stats");
+   ptstats->SetBorderSize(1);
+   ptstats->SetFillColor(0);
+   ptstats->SetTextAlign(12);
+   ptstats->SetTextFont(42);
+   TText *text = ptstats->AddText("amassMu");
+   text->SetTextSize(0.0368);
+   text = ptstats->AddText("Entries = 157    ");
+   text = ptstats->AddText("Mean  =  49.75");
+   text = ptstats->AddText("RMS   =  2.875");
+   ptstats->SetOptStat(1111);
+   ptstats->SetOptFit(0);
+   ptstats->Draw();
+   amassMu__1->GetListOfFunctions()->Add(ptstats);
+   ptstats->SetParent(amassMu__1);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#ff0000");
+   amassMu__1->SetLineColor(ci);
+   amassMu__1->GetXaxis()->SetRange(21,70);
+   amassMu__1->GetXaxis()->SetLabelFont(42);
+   amassMu__1->GetXaxis()->SetLabelSize(0.035);
+   amassMu__1->GetXaxis()->SetTitleSize(0.035);
+   amassMu__1->GetXaxis()->SetTitleFont(42);
+   amassMu__1->GetYaxis()->SetLabelFont(42);
+   amassMu__1->GetYaxis()->SetLabelSize(0.035);
+   amassMu__1->GetYaxis()->SetTitleSize(0.035);
+   amassMu__1->GetYaxis()->SetTitleFont(42);
+   amassMu__1->GetZaxis()->SetLabelFont(42);
+   amassMu__1->GetZaxis()->SetLabelSize(0.035);
+   amassMu__1->GetZaxis()->SetTitleSize(0.035);
+   amassMu__1->GetZaxis()->SetTitleFont(42);
+   amassMu__1->Draw("E");
+   
+   TPaveText *pt = new TPaveText(0.4124138,0.94,0.5875862,0.995,"blNDC");
+   pt->SetName("title");
+   pt->SetBorderSize(0);
+   pt->SetFillColor(0);
+   pt->SetFillStyle(0);
+   pt->SetTextFont(42);
+   text = pt->AddText("amassMu");
+   pt->Draw();
+   
+   TH1D *amassMu__2 = new TH1D("amassMu__2","amassMu",1000,0,1000);
+   amassMu__2->SetBinContent(56,0.1858407);
+   amassMu__2->SetBinContent(57,0.1327434);
+   amassMu__2->SetBinContent(58,0.1061947);
+   amassMu__2->SetBinContent(59,0.08849558);
+   amassMu__2->SetBinContent(60,0.1061947);
+   amassMu__2->SetBinContent(61,0.05309735);
+   amassMu__2->SetBinContent(62,0.07079646);
+   amassMu__2->SetBinContent(63,0.07964602);
+   amassMu__2->SetBinContent(64,0.1150442);
+   amassMu__2->SetBinContent(65,0.0619469);
+   amassMu__2->SetBinError(56,0.04055377);
+   amassMu__2->SetBinError(57,0.03427419);
+   amassMu__2->SetBinError(58,0.03065577);
+   amassMu__2->SetBinError(59,0.02798476);
+   amassMu__2->SetBinError(60,0.03065577);
+   amassMu__2->SetBinError(61,0.0216769);
+   amassMu__2->SetBinError(62,0.02503033);
+   amassMu__2->SetBinError(63,0.02654867);
+   amassMu__2->SetBinError(64,0.03190753);
+   amassMu__2->SetBinError(65,0.02341373);
+   amassMu__2->SetEntries(113);
+   amassMu__2->SetDirectory(0);
+   
+   ptstats = new TPaveStats(0.78,0.775,0.98,0.935,"brNDC");
+   ptstats->SetName("stats");
+   ptstats->SetBorderSize(1);
+   ptstats->SetFillColor(0);
+   ptstats->SetTextAlign(12);
+   ptstats->SetTextFont(42);
+   text = ptstats->AddText("amassMu");
+   text->SetTextSize(0.0368);
+   text = ptstats->AddText("Entries = 113    ");
+   text = ptstats->AddText("Mean  =  59.29");
+   text = ptstats->AddText("RMS   =  2.986");
+   ptstats->SetOptStat(1111);
+   ptstats->SetOptFit(0);
+   ptstats->Draw();
+   amassMu__2->GetListOfFunctions()->Add(ptstats);
+   ptstats->SetParent(amassMu__2);
+
+   ci = TColor::GetColor("#000099");
+   amassMu__2->SetLineColor(ci);
+   amassMu__2->GetXaxis()->SetLabelFont(42);
+   amassMu__2->GetXaxis()->SetLabelSize(0.035);
+   amassMu__2->GetXaxis()->SetTitleSize(0.035);
+   amassMu__2->GetXaxis()->SetTitleFont(42);
+   amassMu__2->GetYaxis()->SetLabelFont(42);
+   amassMu__2->GetYaxis()->SetLabelSize(0.035);
+   amassMu__2->GetYaxis()->SetTitleSize(0.035);
+   amassMu__2->GetYaxis()->SetTitleFont(42);
+   amassMu__2->GetZaxis()->SetLabelFont(42);
+   amassMu__2->GetZaxis()->SetLabelSize(0.035);
+   amassMu__2->GetZaxis()->SetTitleSize(0.035);
+   amassMu__2->GetZaxis()->SetTitleFont(42);
+   amassMu__2->Draw("ESAMES");
+   Canvas_1->Modified();
+   Canvas_1->cd();
+   Canvas_1->SetSelected(Canvas_1);
+}

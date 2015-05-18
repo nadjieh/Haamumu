@@ -1,0 +1,641 @@
+
+[1mRooFit v3.60 -- Developed by Wouter Verkerke and David Kirkby[0m 
+                Copyright (C) 2000-2013 NIKHEF, University of California & Stanford University
+                All rights reserved, please read http://roofit.sourceforge.net/license.txt
+
+var: amassMu
+low: 10
+high: 120
+step: 10
+Number of entries: 33
+6.88842	227.318	DYjets_M10to50
+Number of entries: 2157
+2.26606	4887.89	DYjets
+Number of entries: 64041
+0.0443774	2841.97	TTFullLept
+Number of entries: 199
+0.195614	38.9272	TTSemiLept
+Number of entries: 88
+0.443136	38.996	Wtbar
+Number of entries: 82
+0.439398	36.0306	Wt
+Number of entries: 11
+0.110315	1.21347	WW
+Number of entries: 207
+0.0661901	13.7014	WZ
+Number of entries: 37319
+0.000490794	18.3159	ZH125
+Number of entries: 7752
+0.0166004	128.686	ZZ
+Binned dataset integral: 227.318
+Binned dataset integral: 4887.89
+Binned dataset integral: 2841.97
+Binned dataset integral: 38.9272
+Binned dataset integral: 38.996
+Binned dataset integral: 36.0306
+Binned dataset integral: 1.21347
+Binned dataset integral: 13.7014
+Binned dataset integral: 18.3159
+Binned dataset integral: 128.686
+---------------- 0
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'DYPE_amassMu_0_0' created with bounds [10,20]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'DYPE_amassMu_0_1' created with bounds [20,70]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'DYPE_amassMu_0_2' created with bounds [70,120]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_0_sum_DYPE_pData_0_DYPE_amassMu_0_0) constructing test statistic for sub-range named DYPE_amassMu_0_0
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'NormalizationRangeForDYPE_amassMu_0_0' created with bounds [10,120]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'fit_nll_DYPE_amassMu_0_sum_DYPE_pData_0_DYPE_amassMu_0_0' created with bounds [10,20]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_0_sum_DYPE_pData_0_DYPE_amassMu_0_0) fixing interpretation of coefficients of any RooAddPdf to full domain of observables 
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_0_sum_DYPE_pData_0_DYPE_amassMu_0_2) constructing test statistic for sub-range named DYPE_amassMu_0_2
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'NormalizationRangeForDYPE_amassMu_0_2' created with bounds [10,120]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'fit_nll_DYPE_amassMu_0_sum_DYPE_pData_0_DYPE_amassMu_0_2' created with bounds [70,120]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_0_sum_DYPE_pData_0_DYPE_amassMu_0_2) fixing interpretation of coefficients of any RooAddPdf to full domain of observables 
+[#1] INFO:Fitting -- RooAddition::defaultErrorLevel(nll_DYPE_amassMu_0_sum_DYPE_pData_0) Summation contains a RooNLLVar, using its error level
+[#1] INFO:Minization -- RooMinuit::optimizeConst: activating const optimization
+[#1] INFO:Minization --  The following expressions will be evaluated in cache-and-track mode: (DYPE_amassMu_0_gauss_bw,DYPE_amassMu_0_cball,DYPE_amassMu_0_expo)
+[#1] INFO:Minization --  The following expressions will be evaluated in cache-and-track mode: (DYPE_amassMu_0_gauss_bw,DYPE_amassMu_0_cball,DYPE_amassMu_0_expo)
+ **********
+ **   13 **MIGRAD        5000           1
+ **********
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ START MIGRAD MINIMIZATION.  STRATEGY  1.  CONVERGENCE WHEN EDM .LT. 1.00e-03
+ FCN=-6739.26 FROM MIGRAD    STATUS=INITIATE      219 CALLS         220 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+  EXT PARAMETER               CURRENT GUESS       STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  DYPE_amassMu_0_alpha   2.01660e+00   5.00000e-01   0.00000e+00  -1.37434e+01
+   2  DYPE_amassMu_0_background   1.00000e+02   5.00000e+01   0.00000e+00   9.01127e+01
+   3  DYPE_amassMu_0_lambda  -5.09285e-02   5.00000e-02   0.00000e+00  -3.49205e+01
+   4  DYPE_amassMu_0_mean_bw   9.08000e+01   6.00000e+00   0.00000e+00  -8.16960e+01
+   5  DYPE_amassMu_0_mean_cb   9.08000e+01   6.00000e+00   0.00000e+00  -1.94628e+02
+   6  DYPE_amassMu_0_n   2.50000e+00   5.00000e-01   0.00000e+00  -2.00638e+00
+   7  DYPE_amassMu_0_sigma_bw   6.50000e+00   2.75000e+00   0.00000e+00   1.44593e+03
+   8  DYPE_amassMu_0_sigma_cb   2.30000e+00   6.50000e-01   0.00000e+00   6.64558e+02
+   9  DYPE_amassMu_0_signal_bw   1.69343e+03   5.00000e+01   0.00000e+00   4.54505e+02
+  10  DYPE_amassMu_0_signal_cb   3.93748e+02   5.00000e+01   1.99179e-01  -3.60656e+01
+                               ERR DEF= 0.5
+ MIGRAD MINIMIZATION HAS CONVERGED.
+ MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-6824.95 FROM MIGRAD    STATUS=CONVERGED     810 CALLS         811 TOTAL
+                     EDM=0.000101148    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  DYPE_amassMu_0_alpha   1.25605e+00   4.43062e-01   2.96006e-03   1.04061e-01
+   2  DYPE_amassMu_0_background   9.93394e+01   4.51704e+01   1.07932e-03  -6.82767e-02
+   3  DYPE_amassMu_0_lambda  -3.65354e-02   1.86528e-02   1.11183e-03   1.23236e-01
+   4  DYPE_amassMu_0_mean_bw   9.04007e+01   1.69930e-01   1.71294e-04   1.95058e+00
+   5  DYPE_amassMu_0_mean_cb   9.21468e+01   3.30497e-01   2.59425e-04   1.18436e+00
+   6  DYPE_amassMu_0_n   1.46061e+00   8.44373e-01   5.57595e-03   5.87425e-02
+   7  DYPE_amassMu_0_sigma_bw   3.89601e+00   2.93130e-01   3.69718e-04  -3.12053e-01
+   8  DYPE_amassMu_0_sigma_cb   1.48807e+00   2.46633e-01   6.41339e-04  -9.73295e-02
+   9  DYPE_amassMu_0_signal_bw   1.32185e+03   1.45461e+02   7.19437e-04   8.74099e-04
+  10  DYPE_amassMu_0_signal_cb   5.54974e+02   1.29885e+02   9.81288e-04   2.02043e-01
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR= 10    ERR DEF=0.5
+  1.991e-01 -4.933e+00 -9.024e-04 -4.648e-02  4.419e-02 -3.353e-01  5.147e-03 -4.217e-02  2.657e+01 -1.845e+01 
+ -4.933e+00  2.042e+03  7.428e-01 -4.433e-01 -3.449e+00  1.711e+01  7.140e-01  2.691e+00 -2.288e+03  1.095e+03 
+ -9.024e-04  7.428e-01  3.481e-04 -3.761e-04 -8.534e-04  4.294e-03 -1.404e-04  7.391e-04 -7.559e-01  3.420e-01 
+ -4.648e-02 -4.433e-01 -3.761e-04  2.888e-02 -2.269e-03  5.261e-02 -1.029e-02  5.289e-03  2.763e+00 -3.141e+00 
+  4.419e-02 -3.449e+00 -8.534e-04 -2.269e-03  1.092e-01 -1.558e-01 -6.406e-02 -6.200e-02  3.670e+01 -3.177e+01 
+ -3.353e-01  1.711e+01  4.294e-03  5.261e-02 -1.558e-01  7.484e-01  6.857e-02  1.184e-01 -7.366e+01  4.916e+01 
+  5.147e-03  7.140e-01 -1.404e-04 -1.029e-02 -6.406e-02  6.857e-02  8.593e-02  2.477e-02 -1.720e+01  1.457e+01 
+ -4.217e-02  2.691e+00  7.391e-04  5.289e-03 -6.200e-02  1.184e-01  2.477e-02  6.084e-02 -2.720e+01  2.376e+01 
+  2.657e+01 -2.288e+03 -7.559e-01  2.763e+00  3.670e+01 -7.366e+01 -1.720e+01 -2.720e+01  2.117e+04 -1.747e+04 
+ -1.845e+01  1.095e+03  3.420e-01 -3.141e+00 -3.177e+01  4.916e+01  1.457e+01  2.376e+01 -1.747e+04  1.689e+04 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9     10
+        1  0.96781   1.000 -0.245 -0.108 -0.613  0.300 -0.869  0.039 -0.383  0.409 -0.318
+        2  0.91033  -0.245  1.000  0.881 -0.058 -0.231  0.438  0.054  0.241 -0.348  0.187
+        3  0.89423  -0.108  0.881  1.000 -0.119 -0.138  0.266 -0.026  0.161 -0.278  0.141
+        4  0.84803  -0.613 -0.058 -0.119  1.000 -0.040  0.358 -0.207  0.126  0.112 -0.142
+        5  0.91123   0.300 -0.231 -0.138 -0.040  1.000 -0.545 -0.661 -0.761  0.763 -0.740
+        6  0.96674  -0.869  0.438  0.266  0.358 -0.545  1.000  0.270  0.555 -0.585  0.437
+        7  0.79852   0.039  0.054 -0.026 -0.207 -0.661  0.270  1.000  0.343 -0.403  0.382
+        8  0.85884  -0.383  0.241  0.161  0.126 -0.761  0.555  0.343  1.000 -0.758  0.741
+        9  0.95595   0.409 -0.348 -0.278  0.112  0.763 -0.585 -0.403 -0.758  1.000 -0.924
+       10  0.95296  -0.318  0.187  0.141 -0.142 -0.740  0.437  0.382  0.741 -0.924  1.000
+ **********
+ **   18 **HESSE        5000
+ **********
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-6824.95 FROM HESSE     STATUS=OK             86 CALLS         897 TOTAL
+                     EDM=0.000111346    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                INTERNAL      INTERNAL  
+  NO.   NAME      VALUE            ERROR       STEP SIZE       VALUE   
+   1  DYPE_amassMu_0_alpha   1.25605e+00   5.75097e-01   5.92012e-04  -5.20805e-01
+   2  DYPE_amassMu_0_background   9.93394e+01   4.85590e+01   2.15865e-04  -1.37113e+00
+   3  DYPE_amassMu_0_lambda  -3.65354e-02   1.92190e-02   2.22367e-04   1.39962e+00
+   4  DYPE_amassMu_0_mean_bw   9.04007e+01   1.83027e-01   3.42588e-05   1.33557e-02
+   5  DYPE_amassMu_0_mean_cb   9.21468e+01   3.63458e-01   5.18850e-05   7.16206e-02
+   6  DYPE_amassMu_0_n   1.46061e+00   1.10542e+00   2.23038e-04  -4.28772e-01
+   7  DYPE_amassMu_0_sigma_bw   3.89601e+00   2.98377e-01   7.39435e-05  -1.35891e+00
+   8  DYPE_amassMu_0_sigma_cb   1.48807e+00   2.74298e-01   2.56536e-05  -1.48395e+00
+   9  DYPE_amassMu_0_signal_bw   1.32185e+03   1.64945e+02   2.87775e-05  -8.26598e-01
+  10  DYPE_amassMu_0_signal_cb   5.54974e+02   1.40539e+02   1.96258e-04  -1.09517e+00
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR= 10    ERR DEF=0.5
+  3.388e-01 -1.135e+01 -2.482e-03 -7.091e-02  9.566e-02 -6.201e-01 -1.143e-02 -8.279e-02  5.319e+01 -3.587e+01 
+ -1.135e+01  2.360e+03  8.246e-01  6.089e-01 -6.065e+00  3.045e+01  1.610e+00  4.767e+00 -3.643e+03  2.013e+03 
+ -2.482e-03  8.246e-01  3.696e-04 -1.252e-04 -1.524e-03  7.613e-03  9.642e-05  1.271e-03 -1.103e+00  5.794e-01 
+ -7.091e-02  6.089e-01 -1.252e-04  3.350e-02 -1.017e-02  1.012e-01 -8.006e-03  1.142e-02 -1.283e+00 -6.425e-01 
+  9.566e-02 -6.065e+00 -1.524e-03 -1.017e-02  1.321e-01 -2.653e-01 -7.242e-02 -8.029e-02  4.844e+01 -3.985e+01 
+ -6.201e-01  3.045e+01  7.613e-03  1.012e-01 -2.653e-01  1.333e+00  1.045e-01  2.052e-01 -1.304e+02  8.697e+01 
+ -1.143e-02  1.610e+00  9.642e-05 -8.006e-03 -7.242e-02  1.045e-01  8.903e-02  3.164e-02 -2.152e+01  1.767e+01 
+ -8.279e-02  4.767e+00  1.271e-03  1.142e-02 -8.029e-02  2.052e-01  3.164e-02  7.525e-02 -3.656e+01  3.021e+01 
+  5.319e+01 -3.643e+03 -1.103e+00 -1.283e+00  4.844e+01 -1.304e+02 -2.152e+01 -3.656e+01  2.723e+04 -2.164e+04 
+ -3.587e+01  2.013e+03  5.794e-01 -6.425e-01 -3.985e+01  8.697e+01  1.767e+01  3.021e+01 -2.164e+04  1.978e+04 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9     10
+        1  0.98121   1.000 -0.401 -0.222 -0.666  0.452 -0.923 -0.066 -0.519  0.554 -0.438
+        2  0.92292  -0.401  1.000  0.883  0.068 -0.343  0.543  0.111  0.358 -0.454  0.295
+        3  0.90072  -0.222  0.883  1.000 -0.036 -0.218  0.343  0.017  0.241 -0.348  0.214
+        4  0.87058  -0.666  0.068 -0.036  1.000 -0.153  0.479 -0.147  0.227 -0.042 -0.025
+        5  0.92719   0.452 -0.343 -0.218 -0.153  1.000 -0.632 -0.668 -0.805  0.808 -0.780
+        6  0.98146  -0.923  0.543  0.343  0.479 -0.632  1.000  0.304  0.648 -0.685  0.536
+        7  0.80639  -0.066  0.111  0.017 -0.147 -0.668  0.304  1.000  0.387 -0.437  0.421
+        8  0.88758  -0.519  0.358  0.241  0.227 -0.805  0.648  0.387  1.000 -0.808  0.783
+        9  0.96592   0.554 -0.454 -0.348 -0.042  0.808 -0.685 -0.437 -0.808  1.000 -0.933
+       10  0.95998  -0.438  0.295  0.214 -0.025 -0.780  0.536  0.421  0.783 -0.933  1.000
+[#1] INFO:Minization -- RooMinuit::optimizeConst: deactivating const optimization
+---------------- 1
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'DYPE_amassMu_1_0' created with bounds [10,20]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'DYPE_amassMu_1_1' created with bounds [20,70]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'DYPE_amassMu_1_2' created with bounds [70,120]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_1_sum_DYPE_pData_1_DYPE_amassMu_1_0) constructing test statistic for sub-range named DYPE_amassMu_1_0
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'NormalizationRangeForDYPE_amassMu_1_0' created with bounds [10,120]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'fit_nll_DYPE_amassMu_1_sum_DYPE_pData_1_DYPE_amassMu_1_0' created with bounds [10,20]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_1_sum_DYPE_pData_1_DYPE_amassMu_1_0) fixing interpretation of coefficients of any RooAddPdf to full domain of observables 
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_1_sum_DYPE_pData_1_DYPE_amassMu_1_2) constructing test statistic for sub-range named DYPE_amassMu_1_2
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'NormalizationRangeForDYPE_amassMu_1_2' created with bounds [10,120]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'fit_nll_DYPE_amassMu_1_sum_DYPE_pData_1_DYPE_amassMu_1_2' created with bounds [70,120]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_1_sum_DYPE_pData_1_DYPE_amassMu_1_2) fixing interpretation of coefficients of any RooAddPdf to full domain of observables 
+[#1] INFO:Fitting -- RooAddition::defaultErrorLevel(nll_DYPE_amassMu_1_sum_DYPE_pData_1) Summation contains a RooNLLVar, using its error level
+[#1] INFO:Minization -- RooMinuit::optimizeConst: activating const optimization
+[#1] INFO:Minization --  The following expressions will be evaluated in cache-and-track mode: (DYPE_amassMu_1_gauss_bw,DYPE_amassMu_1_cball,DYPE_amassMu_1_expo)
+[#1] INFO:Minization --  The following expressions will be evaluated in cache-and-track mode: (DYPE_amassMu_1_gauss_bw,DYPE_amassMu_1_cball,DYPE_amassMu_1_expo)
+ **********
+ **   13 **MIGRAD        5000           1
+ **********
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ START MIGRAD MINIMIZATION.  STRATEGY  1.  CONVERGENCE WHEN EDM .LT. 1.00e-03
+ FCN=-6950.41 FROM MIGRAD    STATUS=INITIATE      186 CALLS         187 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+  EXT PARAMETER               CURRENT GUESS       STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  DYPE_amassMu_1_alpha   2.50000e+00   5.00000e-01   0.00000e+00  -5.00790e+00
+   2  DYPE_amassMu_1_background   1.00000e+02   5.00000e+01   0.00000e+00   8.66465e+01
+   3  DYPE_amassMu_1_lambda  -4.72814e-02   5.00000e-02   0.00000e+00   5.41529e+00
+   4  DYPE_amassMu_1_mean_bw   9.08000e+01   6.00000e+00   0.00000e+00  -2.16952e+02
+   5  DYPE_amassMu_1_mean_cb   9.08000e+01   6.00000e+00   0.00000e+00  -2.08821e+02
+   6  DYPE_amassMu_1_n   2.50000e+00   5.00000e-01   0.00000e+00  -9.26200e-01
+   7  DYPE_amassMu_1_sigma_bw   6.50000e+00   2.75000e+00   0.00000e+00   1.49865e+03
+   8  DYPE_amassMu_1_sigma_cb   2.30000e+00   6.50000e-01   0.00000e+00   5.04842e+02
+   9  DYPE_amassMu_1_signal_bw   1.76841e+03   5.00000e+01   0.00000e+00   4.86146e+02
+  10  DYPE_amassMu_1_signal_cb   3.81206e+02   5.00000e+01   1.92680e-01  -2.96859e+01
+                               ERR DEF= 0.5
+ MIGRAD MINIMIZATION HAS CONVERGED.
+ FCN=-7038.18 FROM MIGRAD    STATUS=CONVERGED     891 CALLS         892 TOTAL
+                     EDM=3.82927e-05    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   1.2 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  DYPE_amassMu_1_alpha   1.11310e+00   1.91909e-01   1.50745e-03   8.39171e-02
+   2  DYPE_amassMu_1_background   7.73250e+01   4.30670e+01   5.98558e-04   1.11624e-01
+   3  DYPE_amassMu_1_lambda  -5.48336e-02   4.08831e-02   1.12986e-03  -3.26113e-02
+   4  DYPE_amassMu_1_mean_bw   9.11496e+01   2.82278e-01  -1.48586e-04   8.00691e-01
+   5  DYPE_amassMu_1_mean_cb   9.08394e+01   4.29720e-01   5.37318e-05   1.01381e+00
+   6  DYPE_amassMu_1_n   5.00000e+00   3.19526e+00   1.73978e-03  -8.28499e-04
+   7  DYPE_amassMu_1_sigma_bw   4.07422e+00   8.80790e-01  -9.09443e-05  -2.31367e-01
+   8  DYPE_amassMu_1_sigma_cb   2.36750e+00   5.69482e-01   3.03321e-04  -4.18813e-01
+   9  DYPE_amassMu_1_signal_bw   1.09353e+03   1.75595e+02   2.68943e-04   2.46143e-01
+  10  DYPE_amassMu_1_signal_cb   7.98540e+02   1.72813e+02  -3.13282e-04   1.36383e-01
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR= 10    ERR DEF=0.5
+  3.693e-02  2.897e+00  2.906e-03  3.427e-03 -5.056e-02  1.303e-05 -1.183e-01  9.168e-02  1.688e+01 -1.761e+01 
+  2.897e+00  1.856e+03  1.675e+00  1.655e+00 -5.302e+00  2.781e-04 -1.050e+01  7.097e+00  3.869e+02 -7.505e+02 
+  2.906e-03  1.675e+00  1.675e-03  1.921e-03 -5.611e-03 -1.317e-06 -1.005e-02  6.797e-03  4.223e-01 -7.805e-01 
+  3.427e-03  1.655e+00  1.921e-03  7.968e-02 -8.262e-02  9.672e-06 -1.387e-02  3.686e-03 -8.526e+00  8.118e+00 
+ -5.056e-02 -5.302e+00 -5.611e-03 -8.262e-02  1.847e-01 -1.061e-04  2.545e-01 -1.623e-01 -3.225e+01  3.310e+01 
+  1.303e-05  2.781e-04 -1.317e-06  9.672e-06 -1.061e-04  1.031e-05 -1.579e-04  1.223e-04  5.373e-02 -5.845e-02 
+ -1.183e-01 -1.050e+01 -1.005e-02 -1.387e-02  2.545e-01 -1.579e-04  7.760e-01 -4.726e-01 -1.168e+02  1.194e+02 
+  9.168e-02  7.097e+00  6.797e-03  3.686e-03 -1.623e-01  1.223e-04 -4.726e-01  3.244e-01  6.932e+01 -7.103e+01 
+  1.688e+01  3.869e+02  4.223e-01 -8.526e+00 -3.225e+01  5.373e-02 -1.168e+02  6.932e+01  3.087e+04 -2.942e+04 
+ -1.761e+01 -7.505e+02 -7.805e-01  8.118e+00  3.310e+01 -5.845e-02  1.194e+02 -7.103e+01 -2.942e+04  2.991e+04 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9     10
+        1  0.90323   1.000  0.350  0.369  0.063 -0.612  0.021 -0.699  0.838  0.500 -0.530
+        2  0.95141   0.350  1.000  0.950  0.136 -0.286  0.002 -0.277  0.289  0.051 -0.101
+        3  0.95270   0.369  0.950  1.000  0.166 -0.319 -0.010 -0.279  0.292  0.059 -0.110
+        4  0.91890   0.063  0.136  0.166  1.000 -0.681  0.011 -0.056  0.023 -0.172  0.166
+        5  0.95485  -0.612 -0.286 -0.319 -0.681  1.000 -0.077  0.672 -0.663 -0.427  0.445
+        6  0.19559   0.021  0.002 -0.010  0.011 -0.077  1.000 -0.056  0.067  0.095 -0.105
+        7  0.96987  -0.699 -0.277 -0.279 -0.056  0.672 -0.056  1.000 -0.942 -0.754  0.784
+        8  0.97713   0.838  0.289  0.292  0.023 -0.663  0.067 -0.942  1.000  0.693 -0.721
+        9  0.97016   0.500  0.051  0.059 -0.172 -0.427  0.095 -0.754  0.693  1.000 -0.968
+       10  0.97293  -0.530 -0.101 -0.110  0.166  0.445 -0.105  0.784 -0.721 -0.968  1.000
+ **********
+ **   18 **HESSE        5000
+ **********
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-7038.18 FROM HESSE     STATUS=OK             88 CALLS         980 TOTAL
+                     EDM=9.90623e-05    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                INTERNAL      INTERNAL  
+  NO.   NAME      VALUE            ERROR       STEP SIZE       VALUE   
+   1  DYPE_amassMu_1_alpha   1.11310e+00   2.05498e-01   2.58366e-03  -5.88074e-01
+   2  DYPE_amassMu_1_background   7.73250e+01   4.41646e+01   9.07420e-04  -1.39470e+00
+   3  DYPE_amassMu_1_lambda  -5.48336e-02   4.04461e-02   1.41027e-03   1.36097e+00
+   4  DYPE_amassMu_1_mean_bw   9.11496e+01   2.89393e-01   2.24069e-04   3.83298e-02
+   5  DYPE_amassMu_1_mean_cb   9.08394e+01   4.97318e-01   2.87622e-04   2.79848e-02
+   6  DYPE_amassMu_1_n   5.00000e+00   3.28164e+00   6.83194e-02   1.56964e+00
+   7  DYPE_amassMu_1_sigma_bw   4.07422e+00   8.60631e-01   4.67705e-04  -1.35247e+00
+   8  DYPE_amassMu_1_sigma_cb   2.36750e+00   5.74157e-01   4.03078e-04  -1.42534e+00
+   9  DYPE_amassMu_1_signal_bw   1.09353e+03   1.77040e+02   8.06770e-04  -8.96736e-01
+  10  DYPE_amassMu_1_signal_cb   7.98540e+02   1.76815e+02   8.96915e-04  -9.97821e-01
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR= 10    ERR DEF=0.5
+  4.237e-02  2.688e+00  2.501e-03  9.405e-03 -6.819e-02  2.402e-05 -1.200e-01  9.597e-02  1.850e+01 -1.952e+01 
+  2.688e+00  1.952e+03  1.699e+00  1.159e+00 -4.130e+00 -7.194e-04 -8.215e+00  5.506e+00  5.865e+01 -4.523e+02 
+  2.501e-03  1.699e+00  1.639e-03  1.057e-03 -3.799e-03 -6.749e-07 -7.553e-03  5.067e-03  5.264e-02 -4.205e-01 
+  9.405e-03  1.159e+00  1.057e-03  8.375e-02 -1.017e-01  4.283e-06 -1.905e-02  9.943e-03 -6.588e+00  5.968e+00 
+ -6.819e-02 -4.130e+00 -3.799e-03 -1.017e-01  2.473e-01 -2.312e-05  2.736e-01 -1.874e-01 -3.836e+01  4.026e+01 
+  2.402e-05 -7.194e-04 -6.749e-07  4.283e-06 -2.312e-05  1.177e-05 -3.800e-05  2.883e-05  5.638e-03 -5.242e-03 
+ -1.200e-01 -8.215e+00 -7.553e-03 -1.905e-02  2.736e-01 -3.800e-05  7.409e-01 -4.655e-01 -1.143e+02  1.179e+02 
+  9.597e-02  5.506e+00  5.067e-03  9.943e-03 -1.874e-01  2.883e-05 -4.655e-01  3.298e-01  7.152e+01 -7.392e+01 
+  1.850e+01  5.865e+01  5.264e-02 -6.588e+00 -3.836e+01  5.638e-03 -1.143e+02  7.152e+01  3.138e+04 -3.033e+04 
+ -1.952e+01 -4.523e+02 -4.205e-01  5.968e+00  4.026e+01 -5.242e-03  1.179e+02 -7.392e+01 -3.033e+04  3.131e+04 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9     10
+        1  0.89172   1.000  0.296  0.300  0.158 -0.666  0.034 -0.678  0.812  0.507 -0.536
+        2  0.95019   0.296  1.000  0.950  0.091 -0.188 -0.005 -0.216  0.217  0.007 -0.058
+        3  0.95052   0.300  0.950  1.000  0.090 -0.189 -0.005 -0.217  0.218  0.007 -0.059
+        4  0.91653   0.158  0.091  0.090  1.000 -0.707  0.004 -0.076  0.060 -0.129  0.117
+        5  0.95399  -0.666 -0.188 -0.189 -0.707  1.000 -0.014  0.639 -0.656 -0.435  0.458
+        6  0.05045   0.034 -0.005 -0.005  0.004 -0.014  1.000 -0.013  0.015  0.009 -0.009
+        7  0.96481  -0.678 -0.216 -0.217 -0.076  0.639 -0.013  1.000 -0.942 -0.750  0.774
+        8  0.97375   0.812  0.217  0.218  0.060 -0.656  0.015 -0.942  1.000  0.703 -0.728
+        9  0.96944   0.507  0.007  0.007 -0.129 -0.435  0.009 -0.750  0.703  1.000 -0.968
+       10  0.97143  -0.536 -0.058 -0.059  0.117  0.458 -0.009  0.774 -0.728 -0.968  1.000
+[#1] INFO:Minization -- RooMinuit::optimizeConst: deactivating const optimization
+---------------- 2
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'DYPE_amassMu_2_0' created with bounds [10,20]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'DYPE_amassMu_2_1' created with bounds [20,70]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'DYPE_amassMu_2_2' created with bounds [70,120]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_2_sum_DYPE_pData_2_DYPE_amassMu_2_0) constructing test statistic for sub-range named DYPE_amassMu_2_0
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'NormalizationRangeForDYPE_amassMu_2_0' created with bounds [10,120]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'fit_nll_DYPE_amassMu_2_sum_DYPE_pData_2_DYPE_amassMu_2_0' created with bounds [10,20]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_2_sum_DYPE_pData_2_DYPE_amassMu_2_0) fixing interpretation of coefficients of any RooAddPdf to full domain of observables 
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_2_sum_DYPE_pData_2_DYPE_amassMu_2_2) constructing test statistic for sub-range named DYPE_amassMu_2_2
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'NormalizationRangeForDYPE_amassMu_2_2' created with bounds [10,120]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'fit_nll_DYPE_amassMu_2_sum_DYPE_pData_2_DYPE_amassMu_2_2' created with bounds [70,120]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_2_sum_DYPE_pData_2_DYPE_amassMu_2_2) fixing interpretation of coefficients of any RooAddPdf to full domain of observables 
+[#1] INFO:Fitting -- RooAddition::defaultErrorLevel(nll_DYPE_amassMu_2_sum_DYPE_pData_2) Summation contains a RooNLLVar, using its error level
+[#1] INFO:Minization -- RooMinuit::optimizeConst: activating const optimization
+[#1] INFO:Minization --  The following expressions will be evaluated in cache-and-track mode: (DYPE_amassMu_2_gauss_bw,DYPE_amassMu_2_cball,DYPE_amassMu_2_expo)
+[#1] INFO:Minization --  The following expressions will be evaluated in cache-and-track mode: (DYPE_amassMu_2_gauss_bw,DYPE_amassMu_2_cball,DYPE_amassMu_2_expo)
+ **********
+ **   13 **MIGRAD        5000           1
+ **********
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ START MIGRAD MINIMIZATION.  STRATEGY  1.  CONVERGENCE WHEN EDM .LT. 1.00e-03
+ FCN=-6828.17 FROM MIGRAD    STATUS=INITIATE      221 CALLS         222 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+  EXT PARAMETER               CURRENT GUESS       STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  DYPE_amassMu_2_alpha   1.87580e+00   5.00000e-01   0.00000e+00  -1.55920e+01
+   2  DYPE_amassMu_2_background   1.00000e+02   5.00000e+01   0.00000e+00   6.52388e+01
+   3  DYPE_amassMu_2_lambda  -4.89830e-02   5.00000e-02   0.00000e+00  -1.83616e+01
+   4  DYPE_amassMu_2_mean_bw   9.08000e+01   6.00000e+00   0.00000e+00  -1.64264e+02
+   5  DYPE_amassMu_2_mean_cb   9.08000e+01   6.00000e+00   0.00000e+00  -2.68481e+02
+   6  DYPE_amassMu_2_n   2.50000e+00   5.00000e-01   0.00000e+00  -2.24980e+00
+   7  DYPE_amassMu_2_sigma_bw   6.50000e+00   2.75000e+00   0.00000e+00   9.54249e+02
+   8  DYPE_amassMu_2_sigma_cb   2.30000e+00   6.50000e-01   0.00000e+00   6.26521e+02
+   9  DYPE_amassMu_2_signal_bw   1.52615e+03   5.00000e+01   0.00000e+00   3.18412e+02
+  10  DYPE_amassMu_2_signal_cb   5.17161e+02   5.00000e+01   2.58503e-01  -2.10625e+01
+                               ERR DEF= 0.5
+ MIGRAD MINIMIZATION HAS CONVERGED.
+ MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-6874.16 FROM MIGRAD    STATUS=CONVERGED    1114 CALLS        1115 TOTAL
+                     EDM=4.60308e-05    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  DYPE_amassMu_2_alpha   1.27142e+00   2.10372e-01   2.44648e-03   7.33079e-02
+   2  DYPE_amassMu_2_background   9.06108e+01   4.75649e+01   1.00849e-03  -9.05320e-02
+   3  DYPE_amassMu_2_lambda  -4.36194e-02   2.73195e-02   1.22933e-03   1.04374e-01
+   4  DYPE_amassMu_2_mean_bw   9.13732e+01   4.36019e-01   1.95263e-04   3.43196e-01
+   5  DYPE_amassMu_2_mean_cb   9.04117e+01   4.83595e-01   3.20446e-04   3.49961e-01
+   6  DYPE_amassMu_2_n   1.68151e+00   6.54609e-01   6.85062e-03   2.25455e-02
+   7  DYPE_amassMu_2_sigma_bw   4.08694e+00   4.49864e-01   4.24707e-04  -4.38749e-01
+   8  DYPE_amassMu_2_sigma_cb   2.21166e+00   4.77174e-01   5.11861e-04  -3.23615e-01
+   9  DYPE_amassMu_2_signal_bw   1.20674e+03   1.66593e+02   7.58600e-04  -7.08632e-02
+  10  DYPE_amassMu_2_signal_cb   7.04772e+02   1.69077e+02   9.49841e-04  -1.29537e-01
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR= 10    ERR DEF=0.5
+  4.439e-02 -1.281e+00 -2.451e-04 -7.173e-03  2.035e-02 -1.113e-01  2.884e-02  9.789e-04 -6.671e+00  9.715e+00 
+ -1.281e+00  2.264e+03  1.205e+00 -2.060e+00  2.345e+00  1.182e+01 -3.101e+00  3.375e+00 -5.568e+02 -4.755e+02 
+ -2.451e-04  1.205e+00  7.472e-04 -1.021e-03  1.314e-03  4.840e-03 -1.599e-03  1.710e-03 -4.213e-01 -1.124e-01 
+ -7.173e-03 -2.060e+00 -1.021e-03  1.901e-01 -1.642e-01 -3.241e-02  8.103e-02 -1.816e-01 -3.902e+01  4.113e+01 
+  2.035e-02  2.345e+00  1.314e-03 -1.642e-01  2.339e-01  2.033e-02  1.175e-02  1.363e-01  8.724e-01 -2.431e+00 
+ -1.113e-01  1.182e+01  4.840e-03 -3.241e-02  2.033e-02  4.400e-01 -5.920e-02  5.849e-02  7.631e+00 -2.436e+01 
+  2.884e-02 -3.101e+00 -1.599e-03  8.103e-02  1.175e-02 -5.920e-02  2.024e-01 -1.364e-01 -4.830e+01  5.107e+01 
+  9.789e-04  3.375e+00  1.710e-03 -1.816e-01  1.363e-01  5.849e-02 -1.364e-01  2.278e-01  4.070e+01 -4.393e+01 
+ -6.671e+00 -5.568e+02 -4.213e-01 -3.902e+01  8.724e-01  7.631e+00 -4.830e+01  4.070e+01  2.778e+04 -2.678e+04 
+  9.715e+00 -4.755e+02 -1.124e-01  4.113e+01 -2.431e+00 -2.436e+01  5.107e+01 -4.393e+01 -2.678e+04  2.863e+04 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9     10
+        1  0.89732   1.000 -0.128 -0.043 -0.078  0.200 -0.797  0.304  0.010 -0.190  0.272
+        2  0.93648  -0.128  1.000  0.926 -0.099  0.102  0.375 -0.145  0.149 -0.070 -0.059
+        3  0.93109  -0.043  0.926  1.000 -0.086  0.099  0.267 -0.130  0.131 -0.092 -0.024
+        4  0.97200  -0.078 -0.099 -0.086  1.000 -0.779 -0.112  0.413 -0.873 -0.537  0.557
+        5  0.93819   0.200  0.102  0.099 -0.779  1.000  0.063  0.054  0.591  0.011 -0.030
+        6  0.90375  -0.797  0.375  0.267 -0.112  0.063  1.000 -0.198  0.185  0.069 -0.217
+        7  0.88563   0.304 -0.145 -0.130  0.413  0.054 -0.198  1.000 -0.635 -0.644  0.671
+        8  0.94394   0.010  0.149  0.131 -0.873  0.591  0.185 -0.635  1.000  0.512 -0.544
+        9  0.96585  -0.190 -0.070 -0.092 -0.537  0.011  0.069 -0.644  0.512  1.000 -0.950
+       10  0.96807   0.272 -0.059 -0.024  0.557 -0.030 -0.217  0.671 -0.544 -0.950  1.000
+ **********
+ **   18 **HESSE        5000
+ **********
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-6874.16 FROM HESSE     STATUS=OK             86 CALLS        1201 TOTAL
+                     EDM=4.64564e-05    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                INTERNAL      INTERNAL  
+  NO.   NAME      VALUE            ERROR       STEP SIZE       VALUE   
+   1  DYPE_amassMu_2_alpha   1.27142e+00   2.22338e-01   4.89295e-04  -5.13731e-01
+   2  DYPE_amassMu_2_background   9.06108e+01   4.79192e+01   2.01699e-04  -1.38013e+00
+   3  DYPE_amassMu_2_lambda  -4.36194e-02   2.73936e-02   2.45866e-04   1.38372e+00
+   4  DYPE_amassMu_2_mean_bw   9.13732e+01   4.17482e-01   3.90527e-05   4.57886e-02
+   5  DYPE_amassMu_2_mean_cb   9.04117e+01   4.83105e-01   6.40892e-05   1.37248e-02
+   6  DYPE_amassMu_2_n   1.68151e+00   6.89528e-01   2.74025e-04  -3.33546e-01
+   7  DYPE_amassMu_2_sigma_bw   4.08694e+00   4.41656e-01   8.49413e-05  -1.35201e+00
+   8  DYPE_amassMu_2_sigma_cb   2.21166e+00   4.57313e-01   1.02372e-04  -1.43389e+00
+   9  DYPE_amassMu_2_signal_bw   1.20674e+03   1.63930e+02   1.51720e-04  -8.61242e-01
+  10  DYPE_amassMu_2_signal_cb   7.04772e+02   1.65746e+02   1.89968e-04  -1.03340e+00
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR= 10    ERR DEF=0.5
+  4.961e-02 -1.670e+00 -3.893e-04 -1.053e-02  2.402e-02 -1.269e-01  2.936e-02  4.208e-03 -6.501e+00  1.013e+01 
+ -1.670e+00  2.298e+03  1.217e+00 -1.760e+00  2.228e+00  1.320e+01 -2.925e+00  3.106e+00 -6.948e+02 -3.895e+02 
+ -3.893e-04  1.217e+00  7.513e-04 -9.040e-04  1.289e-03  5.373e-03 -1.505e-03  1.606e-03 -4.871e-01 -6.615e-02 
+ -1.053e-02 -1.760e+00 -9.040e-04  1.743e-01 -1.552e-01 -2.053e-02  6.643e-02 -1.642e-01 -3.305e+01  3.471e+01 
+  2.402e-02  2.228e+00  1.289e-03 -1.552e-01  2.334e-01  1.187e-02  2.505e-02  1.258e-01 -5.003e+00  3.703e+00 
+ -1.269e-01  1.320e+01  5.373e-03 -2.053e-02  1.187e-02  4.896e-01 -5.627e-02  4.704e-02  4.404e+00 -2.310e+01 
+  2.936e-02 -2.925e+00 -1.505e-03  6.643e-02  2.505e-02 -5.627e-02  1.951e-01 -1.214e-01 -4.544e+01  4.805e+01 
+  4.208e-03  3.106e+00  1.606e-03 -1.642e-01  1.258e-01  4.704e-02 -1.214e-01  2.092e-01  3.435e+01 -3.716e+01 
+ -6.501e+00 -6.948e+02 -4.871e-01 -3.305e+01 -5.003e+00  4.404e+00 -4.544e+01  3.435e+01  2.690e+04 -2.574e+04 
+  1.013e+01 -3.895e+02 -6.615e-02  3.471e+01  3.703e+00 -2.310e+01  4.805e+01 -3.716e+01 -2.574e+04  2.751e+04 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9     10
+        1  0.90851   1.000 -0.156 -0.064 -0.113  0.223 -0.814  0.298  0.041 -0.178  0.274
+        2  0.93745  -0.156  1.000  0.926 -0.088  0.096  0.393 -0.138  0.142 -0.088 -0.049
+        3  0.93147  -0.064  0.926  1.000 -0.079  0.097  0.280 -0.124  0.128 -0.108 -0.015
+        4  0.96942  -0.113 -0.088 -0.079  1.000 -0.770 -0.070  0.360 -0.860 -0.483  0.501
+        5  0.93802   0.223  0.096  0.097 -0.770  1.000  0.035  0.117  0.569 -0.063  0.046
+        6  0.91396  -0.814  0.393  0.280 -0.070  0.035  1.000 -0.182  0.147  0.038 -0.199
+        7  0.88105   0.298 -0.138 -0.124  0.360  0.117 -0.182  1.000 -0.601 -0.627  0.656
+        8  0.93871   0.041  0.142  0.128 -0.860  0.569  0.147 -0.601  1.000  0.458 -0.490
+        9  0.96471  -0.178 -0.088 -0.108 -0.483 -0.063  0.038 -0.627  0.458  1.000 -0.946
+       10  0.96675   0.274 -0.049 -0.015  0.501  0.046 -0.199  0.656 -0.490 -0.946  1.000
+[#1] INFO:Minization -- RooMinuit::optimizeConst: deactivating const optimization
+---------------- 3
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'DYPE_amassMu_3_0' created with bounds [10,20]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'DYPE_amassMu_3_1' created with bounds [20,70]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'DYPE_amassMu_3_2' created with bounds [70,120]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_3_sum_DYPE_pData_3_DYPE_amassMu_3_0) constructing test statistic for sub-range named DYPE_amassMu_3_0
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'NormalizationRangeForDYPE_amassMu_3_0' created with bounds [10,120]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'fit_nll_DYPE_amassMu_3_sum_DYPE_pData_3_DYPE_amassMu_3_0' created with bounds [10,20]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_3_sum_DYPE_pData_3_DYPE_amassMu_3_0) fixing interpretation of coefficients of any RooAddPdf to full domain of observables 
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_3_sum_DYPE_pData_3_DYPE_amassMu_3_2) constructing test statistic for sub-range named DYPE_amassMu_3_2
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'NormalizationRangeForDYPE_amassMu_3_2' created with bounds [10,120]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'fit_nll_DYPE_amassMu_3_sum_DYPE_pData_3_DYPE_amassMu_3_2' created with bounds [70,120]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_3_sum_DYPE_pData_3_DYPE_amassMu_3_2) fixing interpretation of coefficients of any RooAddPdf to full domain of observables 
+[#1] INFO:Fitting -- RooAddition::defaultErrorLevel(nll_DYPE_amassMu_3_sum_DYPE_pData_3) Summation contains a RooNLLVar, using its error level
+[#1] INFO:Minization -- RooMinuit::optimizeConst: activating const optimization
+[#1] INFO:Minization --  The following expressions will be evaluated in cache-and-track mode: (DYPE_amassMu_3_gauss_bw,DYPE_amassMu_3_cball,DYPE_amassMu_3_expo)
+[#1] INFO:Minization --  The following expressions will be evaluated in cache-and-track mode: (DYPE_amassMu_3_gauss_bw,DYPE_amassMu_3_cball,DYPE_amassMu_3_expo)
+ **********
+ **   13 **MIGRAD        5000           1
+ **********
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ START MIGRAD MINIMIZATION.  STRATEGY  1.  CONVERGENCE WHEN EDM .LT. 1.00e-03
+ FCN=-6899 FROM MIGRAD    STATUS=INITIATE      220 CALLS         221 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+  EXT PARAMETER               CURRENT GUESS       STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  DYPE_amassMu_3_alpha   1.81793e+00   5.00000e-01   0.00000e+00  -1.68305e+01
+   2  DYPE_amassMu_3_background   1.00000e+02   5.00000e+01   0.00000e+00   1.07384e+02
+   3  DYPE_amassMu_3_lambda  -2.75903e-02   5.00000e-02   0.00000e+00  -2.84730e+01
+   4  DYPE_amassMu_3_mean_bw   9.08000e+01   6.00000e+00   0.00000e+00  -2.62793e+02
+   5  DYPE_amassMu_3_mean_cb   9.08000e+01   6.00000e+00   0.00000e+00  -2.95010e+02
+   6  DYPE_amassMu_3_n   2.50000e+00   5.00000e-01   0.00000e+00  -3.16848e+00
+   7  DYPE_amassMu_3_sigma_bw   6.50000e+00   2.75000e+00   0.00000e+00   1.41629e+03
+   8  DYPE_amassMu_3_sigma_cb   2.30000e+00   6.50000e-01   0.00000e+00   6.01626e+02
+   9  DYPE_amassMu_3_signal_bw   1.73009e+03   5.00000e+01   0.00000e+00   4.32597e+02
+  10  DYPE_amassMu_3_signal_cb   3.93408e+02   5.00000e+01   1.99004e-01  -2.66345e+01
+                               ERR DEF= 0.5
+ MIGRAD MINIMIZATION HAS CONVERGED.
+ FCN=-6988.53 FROM MIGRAD    STATUS=CONVERGED     912 CALLS         913 TOTAL
+                     EDM=7.4358e-05    STRATEGY= 1  ERROR MATRIX UNCERTAINTY   2.6 per cent
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  DYPE_amassMu_3_alpha   8.27975e-01   1.06749e-01  -9.48522e-04  -1.89616e-01
+   2  DYPE_amassMu_3_background   1.24427e+02   4.28855e+01  -1.97427e-04   5.76296e-02
+   3  DYPE_amassMu_3_lambda  -1.37161e-02   9.07340e-03   1.52607e-04  -1.32727e-01
+   4  DYPE_amassMu_3_mean_bw   9.13468e+01   2.70352e-01   5.17897e-05  -7.66175e-01
+   5  DYPE_amassMu_3_mean_cb   9.08661e+01   3.90858e-01   1.09510e-04  -1.31051e+00
+   6  DYPE_amassMu_3_n   4.89964e+00   2.54464e-01   1.42834e-03  -5.62375e-02
+   7  DYPE_amassMu_3_sigma_bw   3.70075e+00   5.73460e-01   2.42835e-04   3.37809e-01
+   8  DYPE_amassMu_3_sigma_cb   2.13413e+00   3.41795e-01  -3.97619e-04   2.57801e-02
+   9  DYPE_amassMu_3_signal_bw   1.05436e+03   1.66684e+02  -1.37458e-04  -2.89639e-01
+  10  DYPE_amassMu_3_signal_cb   8.14821e+02   1.52813e+02   1.34792e-04   2.88698e-02
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR= 10    ERR DEF=0.5
+  1.141e-02  1.558e+00 -3.559e-04 -6.890e-04 -1.328e-02 -2.113e-03 -1.987e-02  2.245e-02 -2.116e+00  8.666e-01 
+  1.558e+00  1.840e+03 -3.038e-01  5.847e-01 -3.563e-01  4.226e+00 -8.866e+00  4.259e+00 -3.145e+03  2.157e+03 
+ -3.559e-04 -3.038e-01  8.236e-05 -5.256e-05  7.725e-05 -7.409e-04  2.141e-03 -9.914e-04  6.105e-01 -4.014e-01 
+ -6.890e-04  5.847e-01 -5.256e-05  7.309e-02 -7.345e-02  3.641e-02  1.530e-03 -1.598e-02 -1.024e+01  9.244e+00 
+ -1.328e-02 -3.563e-01  7.725e-05 -7.345e-02  1.528e-01 -1.403e-02  9.771e-02 -5.116e-02 -1.608e+01  1.680e+01 
+ -2.113e-03  4.226e+00 -7.409e-04  3.641e-02 -1.403e-02  6.781e-02  3.143e-02 -2.528e-02 -3.185e+01  2.729e+01 
+ -1.987e-02 -8.866e+00  2.141e-03  1.530e-03  9.771e-02  3.143e-02  3.289e-01 -1.617e-01 -2.864e+01  3.392e+01 
+  2.245e-02  4.259e+00 -9.914e-04 -1.598e-02 -5.116e-02 -2.528e-02 -1.617e-01  1.168e-01  1.452e+01 -1.725e+01 
+ -2.116e+00 -3.145e+03  6.105e-01 -1.024e+01 -1.608e+01 -3.185e+01 -2.864e+01  1.452e+01  2.781e+04 -2.430e+04 
+  8.666e-01  2.157e+03 -4.014e-01  9.244e+00  1.680e+01  2.729e+01  3.392e+01 -1.725e+01 -2.430e+04  2.338e+04 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9     10
+        1  0.84217   1.000  0.340 -0.367 -0.024 -0.318 -0.076 -0.324  0.615 -0.119  0.053
+        2  0.81650   0.340  1.000 -0.780  0.050 -0.021  0.378 -0.360  0.290 -0.440  0.329
+        3  0.82736  -0.367 -0.780  1.000 -0.021  0.022 -0.313  0.411 -0.320  0.403 -0.289
+        4  0.91700  -0.024  0.050 -0.021  1.000 -0.695  0.517  0.010 -0.173 -0.227  0.224
+        5  0.94276  -0.318 -0.021  0.022 -0.695  1.000 -0.138  0.436 -0.383 -0.247  0.281
+        6  0.87742  -0.076  0.378 -0.313  0.517 -0.138  1.000  0.210 -0.284 -0.733  0.686
+        7  0.91630  -0.324 -0.360  0.411  0.010  0.436  0.210  1.000 -0.825 -0.299  0.387
+        8  0.92963   0.615  0.290 -0.320 -0.173 -0.383 -0.284 -0.825  1.000  0.255 -0.330
+        9  0.97123  -0.119 -0.440  0.403 -0.227 -0.247 -0.733 -0.299  0.255  1.000 -0.953
+       10  0.96129   0.053  0.329 -0.289  0.224  0.281  0.686  0.387 -0.330 -0.953  1.000
+ **********
+ **   18 **HESSE        5000
+ **********
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-6988.53 FROM HESSE     STATUS=OK             90 CALLS        1003 TOTAL
+                     EDM=0.00886766    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                INTERNAL      INTERNAL  
+  NO.   NAME      VALUE            ERROR       STEP SIZE       VALUE   
+   1  DYPE_amassMu_3_alpha   8.27975e-01   1.12237e-01   1.84205e-03  -7.32607e-01
+   2  DYPE_amassMu_3_background   1.24427e+02   4.27190e+01   1.32265e-03  -1.34724e+00
+   3  DYPE_amassMu_3_lambda  -1.37161e-02   8.74327e-03   1.14621e-03   1.67560e+00
+   4  DYPE_amassMu_3_mean_bw   9.13468e+01   2.63964e-01   2.06211e-04   4.49092e-02
+   5  DYPE_amassMu_3_mean_cb   9.08661e+01   3.79703e-01   2.81797e-04   2.88725e-02
+   6  DYPE_amassMu_3_n   4.89964e+00   4.33050e+00   8.35710e-02   1.28649e+00
+   7  DYPE_amassMu_3_sigma_bw   3.70075e+00   5.01083e-01   4.71406e-04  -1.36621e+00
+   8  DYPE_amassMu_3_sigma_cb   2.13413e+00   3.31882e-01   4.08837e-04  -1.43835e+00
+   9  DYPE_amassMu_3_signal_bw   1.05436e+03   1.59554e+02   8.12726e-04  -9.09387e-01
+  10  DYPE_amassMu_3_signal_cb   8.14821e+02   1.46385e+02   8.82594e-04  -9.91843e-01
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR= 10    ERR DEF=0.5
+  1.261e-02  1.709e+00 -3.431e-04  1.778e-03 -1.329e-02 -4.985e-02 -1.486e-02  1.910e-02 -4.328e+00  3.142e+00 
+  1.709e+00  1.826e+03 -2.879e-01  2.520e-01 -7.871e-02  6.131e+00 -6.332e+00  3.250e+00 -3.161e+03  2.166e+03 
+ -3.431e-04 -2.879e-01  7.647e-05 -2.360e-05 -1.017e-05 -1.062e-03  1.354e-03 -6.987e-04  6.499e-01 -4.481e-01 
+  1.778e-03  2.520e-01 -2.360e-05  6.968e-02 -6.882e-02 -2.289e-02  9.514e-03 -2.263e-02 -1.011e+01  9.706e+00 
+ -1.329e-02 -7.871e-02 -1.017e-05 -6.882e-02  1.442e-01  9.286e-03  7.857e-02 -4.000e-02 -1.387e+01  1.419e+01 
+ -4.985e-02  6.131e+00 -1.062e-03 -2.289e-02  9.286e-03  1.620e+00 -9.351e-02  4.926e-02  1.127e+01 -1.793e+01 
+ -1.486e-02 -6.332e+00  1.354e-03  9.514e-03  7.857e-02 -9.351e-02  2.511e-01 -1.372e-01 -2.337e+01  2.772e+01 
+  1.910e-02  3.250e+00 -6.987e-04 -2.263e-02 -4.000e-02  4.926e-02 -1.372e-01  1.102e-01  1.407e+01 -1.631e+01 
+ -4.328e+00 -3.161e+03  6.499e-01 -1.011e+01 -1.387e+01  1.127e+01 -2.337e+01  1.407e+01  2.548e+04 -2.218e+04 
+  3.142e+00  2.166e+03 -4.481e-01  9.706e+00  1.419e+01 -1.793e+01  2.772e+01 -1.631e+01 -2.218e+04  2.145e+04 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9     10
+        1  0.85001   1.000  0.356 -0.349  0.060 -0.312 -0.349 -0.264  0.512 -0.241  0.191
+        2  0.80423   0.356  1.000 -0.770  0.022 -0.005  0.113 -0.296  0.229 -0.463  0.346
+        3  0.80453  -0.349 -0.770  1.000 -0.010 -0.003 -0.095  0.309 -0.241  0.466 -0.350
+        4  0.91369   0.060  0.022 -0.010  1.000 -0.687 -0.068  0.072 -0.258 -0.240  0.251
+        5  0.92309  -0.312 -0.005 -0.003 -0.687  1.000  0.019  0.413 -0.317 -0.229  0.255
+        6  0.59855  -0.349  0.113 -0.095 -0.068  0.019  1.000 -0.147  0.117  0.055 -0.096
+        7  0.90326  -0.264 -0.296  0.309  0.072  0.413 -0.147  1.000 -0.825 -0.292  0.378
+        8  0.93112   0.512  0.229 -0.241 -0.258 -0.317  0.117 -0.825  1.000  0.266 -0.336
+        9  0.96261  -0.241 -0.463  0.466 -0.240 -0.229  0.055 -0.292  0.266  1.000 -0.949
+       10  0.95838   0.191  0.346 -0.350  0.251  0.255 -0.096  0.378 -0.336 -0.949  1.000
+[#1] INFO:Minization -- RooMinuit::optimizeConst: deactivating const optimization
+---------------- 4
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'DYPE_amassMu_4_0' created with bounds [10,20]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'DYPE_amassMu_4_1' created with bounds [20,70]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'DYPE_amassMu_4_2' created with bounds [70,120]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_4_sum_DYPE_pData_4_DYPE_amassMu_4_0) constructing test statistic for sub-range named DYPE_amassMu_4_0
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'NormalizationRangeForDYPE_amassMu_4_0' created with bounds [10,120]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'fit_nll_DYPE_amassMu_4_sum_DYPE_pData_4_DYPE_amassMu_4_0' created with bounds [10,20]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_4_sum_DYPE_pData_4_DYPE_amassMu_4_0) fixing interpretation of coefficients of any RooAddPdf to full domain of observables 
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_4_sum_DYPE_pData_4_DYPE_amassMu_4_2) constructing test statistic for sub-range named DYPE_amassMu_4_2
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'NormalizationRangeForDYPE_amassMu_4_2' created with bounds [10,120]
+[#1] INFO:Eval -- RooRealVar::setRange(eventSelectionamassMu) new range named 'fit_nll_DYPE_amassMu_4_sum_DYPE_pData_4_DYPE_amassMu_4_2' created with bounds [70,120]
+[#1] INFO:Fitting -- RooAbsOptTestStatistic::ctor(nll_DYPE_amassMu_4_sum_DYPE_pData_4_DYPE_amassMu_4_2) fixing interpretation of coefficients of any RooAddPdf to full domain of observables 
+[#1] INFO:Fitting -- RooAddition::defaultErrorLevel(nll_DYPE_amassMu_4_sum_DYPE_pData_4) Summation contains a RooNLLVar, using its error level
+[#1] INFO:Minization -- RooMinuit::optimizeConst: activating const optimization
+[#1] INFO:Minization --  The following expressions will be evaluated in cache-and-track mode: (DYPE_amassMu_4_gauss_bw,DYPE_amassMu_4_cball,DYPE_amassMu_4_expo)
+[#1] INFO:Minization --  The following expressions will be evaluated in cache-and-track mode: (DYPE_amassMu_4_gauss_bw,DYPE_amassMu_4_cball,DYPE_amassMu_4_expo)
+ **********
+ **   13 **MIGRAD        5000           1
+ **********
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ START MIGRAD MINIMIZATION.  STRATEGY  1.  CONVERGENCE WHEN EDM .LT. 1.00e-03
+ FCN=-6682.55 FROM MIGRAD    STATUS=INITIATE      221 CALLS         222 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+  EXT PARAMETER               CURRENT GUESS       STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  DYPE_amassMu_4_alpha   1.83329e+00   5.00000e-01   0.00000e+00  -1.52082e+01
+   2  DYPE_amassMu_4_background   1.00000e+02   5.00000e+01   0.00000e+00   6.99761e+01
+   3  DYPE_amassMu_4_lambda  -4.54025e-02   5.00000e-02   0.00000e+00  -2.39660e+00
+   4  DYPE_amassMu_4_mean_bw   9.08000e+01   6.00000e+00   0.00000e+00  -1.20288e+02
+   5  DYPE_amassMu_4_mean_cb   9.08000e+01   6.00000e+00   0.00000e+00  -1.88061e+02
+   6  DYPE_amassMu_4_n   2.50000e+00   5.00000e-01   0.00000e+00  -2.82571e+00
+   7  DYPE_amassMu_4_sigma_bw   6.50000e+00   2.75000e+00   0.00000e+00   1.13557e+03
+   8  DYPE_amassMu_4_sigma_cb   2.30000e+00   6.50000e-01   0.00000e+00   5.82545e+02
+   9  DYPE_amassMu_4_signal_bw   1.63757e+03   5.00000e+01   0.00000e+00   3.63036e+02
+  10  DYPE_amassMu_4_signal_cb   4.15237e+02   5.00000e+01   2.10087e-01  -1.16913e+01
+                               ERR DEF= 0.5
+ MIGRAD MINIMIZATION HAS CONVERGED.
+ MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=-6740.19 FROM MIGRAD    STATUS=CONVERGED    1821 CALLS        1822 TOTAL
+                     EDM=5.08817e-05    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  DYPE_amassMu_4_alpha   4.52040e-01   5.28453e-02   1.36608e-03   1.21774e-01
+   2  DYPE_amassMu_4_background   1.57550e+02   5.65032e+01   1.21078e-03  -1.15668e-02
+   3  DYPE_amassMu_4_lambda  -2.04764e-02   1.10702e-02   9.03650e-04  -7.52460e-02
+   4  DYPE_amassMu_4_mean_bw   9.18679e+01   3.01410e-01   1.56214e-04  -4.84044e-01
+   5  DYPE_amassMu_4_mean_cb   9.01941e+01   2.67599e-01   2.24236e-04   1.51131e-01
+   6  DYPE_amassMu_4_n   4.99999e+00   4.37171e+00   1.12747e-01   6.25808e-04
+   7  DYPE_amassMu_4_sigma_bw   3.55341e+00   2.66262e-01   3.77075e-04  -2.75570e-01
+   8  DYPE_amassMu_4_sigma_cb   1.00000e+00   9.11901e-01   5.47408e-03** at limit **
+   9  DYPE_amassMu_4_signal_bw   1.23118e+03   1.81765e+02   7.06420e-04   7.93019e-02
+  10  DYPE_amassMu_4_signal_cb   6.00802e+02   1.60512e+02   8.20402e-04   1.83028e-01
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR= 10    ERR DEF=0.5
+  2.794e-03  1.361e+00  2.658e-04  8.872e-03  5.010e-03  1.176e-04  6.250e-04  4.475e-06 -5.444e+00  4.597e+00 
+  1.361e+00  3.195e+03  5.460e-01  9.017e+00  4.098e+00 -2.894e-02 -6.543e+00  3.573e-04 -6.136e+03  4.525e+03 
+  2.658e-04  5.460e-01  1.226e-04  1.796e-03  8.163e-04 -5.307e-06 -1.322e-03  6.993e-08 -1.226e+00  9.044e-01 
+  8.872e-03  9.017e+00  1.796e-03  9.085e-02  5.859e-02  1.477e-05 -1.011e-02  6.738e-06 -5.178e+01  4.613e+01 
+  5.010e-03  4.098e+00  8.163e-04  5.859e-02  7.161e-02 -3.084e-05  2.268e-02  5.876e-06 -3.683e+01  3.425e+01 
+  1.176e-04 -2.894e-02 -5.307e-06  1.477e-05 -3.084e-05  2.087e-04  6.577e-05  5.468e-09  4.210e-03  1.997e-02 
+  6.250e-04 -6.543e+00 -1.322e-03 -1.011e-02  2.268e-02  6.577e-05  7.090e-02  7.789e-06  6.652e+00 -2.735e+00 
+  4.475e-06  3.573e-04  6.993e-08  6.738e-06  5.876e-06  5.468e-09  7.789e-06  4.312e-08 -5.222e-03  4.991e-03 
+ -5.444e+00 -6.136e+03 -1.226e+00 -5.178e+01 -3.683e+01  4.210e-03  6.652e+00 -5.222e-03  3.307e+04 -2.804e+04 
+  4.597e+00  4.525e+03  9.044e-01  4.613e+01  3.425e+01  1.997e-02 -2.735e+00  4.991e-03 -2.804e+04  2.580e+04 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9     10
+        1  0.75627   1.000  0.456  0.454  0.557  0.354  0.154  0.044  0.408 -0.566  0.541
+        2  0.88244   0.456  1.000  0.872  0.529  0.271 -0.035 -0.435  0.030 -0.597  0.498
+        3  0.88807   0.454  0.872  1.000  0.538  0.276 -0.033 -0.448  0.030 -0.609  0.508
+        4  0.96183   0.557  0.529  0.538  1.000  0.726  0.003 -0.126  0.108 -0.945  0.953
+        5  0.89607   0.354  0.271  0.276  0.726  1.000 -0.008  0.318  0.106 -0.757  0.797
+        6  0.23894   0.154 -0.035 -0.033  0.003 -0.008  1.000  0.017  0.002  0.002  0.009
+        7  0.76918   0.044 -0.435 -0.448 -0.126  0.318  0.017  1.000  0.141  0.137 -0.064
+        8  0.48228   0.408  0.030  0.030  0.108  0.106  0.002  0.141  1.000 -0.138  0.150
+        9  0.97434  -0.566 -0.597 -0.609 -0.945 -0.757  0.002  0.137 -0.138  1.000 -0.960
+       10  0.97681   0.541  0.498  0.508  0.953  0.797  0.009 -0.064  0.150 -0.960  1.000
+ **********
+ **   18 **HESSE        5000
+ **********
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -2.2360e-02  8.7650e-02  1.4129e-01  3.7490e-01  5.7012e-01  1.0729e+00  1.5195e+00  1.7068e+00  1.9335e+00  2.6157e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.024976 TO DIAGONAL.
+ FCN=-6740.19 FROM HESSE     STATUS=NOT POSDEF    100 CALLS        1922 TOTAL
+                     EDM=0.000160777    STRATEGY= 1      ERR MATRIX NOT POS-DEF
+  EXT PARAMETER                APPROXIMATE     INTERNAL      INTERNAL  
+  NO.   NAME      VALUE            ERROR       STEP SIZE       VALUE   
+   1  DYPE_amassMu_4_alpha   4.52040e-01   1.91375e-01   2.73217e-04  -9.59987e-01
+   2  DYPE_amassMu_4_background   1.57550e+02   1.00121e+02   4.84312e-05  -1.31909e+00
+   3  DYPE_amassMu_4_lambda  -2.04764e-02   1.98181e-02   1.80730e-04   1.44272e+00
+   4  DYPE_amassMu_4_mean_bw   9.18679e+01   7.75042e-01   3.12429e-05   6.23029e-02
+   5  DYPE_amassMu_4_mean_cb   9.01941e+01   4.79952e-01   8.96943e-06   6.46843e-03
+   6  DYPE_amassMu_4_n   4.99999e+00   4.50476e+00   4.60010e-01   1.57356e+00
+   7  DYPE_amassMu_4_sigma_bw   3.55341e+00   6.18063e-01   7.54150e-05  -1.37189e+00
+   8  DYPE_amassMu_4_sigma_cb   1.00000e+00   1.48004e+00   6.77219e-02  -1.57081e+00
+                                 WARNING -   - ABOVE PARAMETER IS AT LIMIT.
+   9  DYPE_amassMu_4_signal_bw   1.23118e+03   3.72620e+02   1.41284e-04  -8.53772e-01
+  10  DYPE_amassMu_4_signal_cb   6.00802e+02   3.13253e+02   1.64080e-04  -1.07552e+00
+                               ERR DEF= 0.5
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR= 10    ERR DEF=0.5
+  3.684e-02 -1.570e+01 -3.123e-03 -1.353e-01 -7.919e-02  1.889e-03  1.055e-01  4.901e-05  6.368e+01 -5.324e+01 
+ -1.570e+01  1.005e+04  1.909e+00  6.905e+01  3.852e+01 -8.173e-01 -5.466e+01 -2.321e-02 -3.369e+04  2.751e+04 
+ -3.123e-03  1.909e+00  3.933e-04  1.373e-02  7.656e-03 -1.610e-04 -1.089e-02 -4.614e-06 -6.701e+00  5.472e+00 
+ -1.353e-01  6.905e+01  1.373e-02  6.008e-01  3.462e-01 -6.228e-03 -4.287e-01 -1.981e-04 -2.860e+02  2.406e+02 
+ -7.919e-02  3.852e+01  7.656e-03  3.462e-01  2.304e-01 -3.740e-03 -2.221e-01 -1.143e-04 -1.678e+02  1.425e+02 
+  1.889e-03 -8.173e-01 -1.610e-04 -6.228e-03 -3.740e-03  2.349e-04  4.840e-03  2.183e-06  2.990e+00 -2.432e+00 
+  1.055e-01 -5.466e+01 -1.089e-02 -4.287e-01 -2.221e-01  4.840e-03  3.821e-01  1.496e-04  2.040e+02 -1.682e+02 
+  4.901e-05 -2.321e-02 -4.614e-06 -1.981e-04 -1.143e-04  2.183e-06  1.496e-04  7.003e-08  9.367e-02 -7.836e-02 
+  6.368e+01 -3.369e+04 -6.701e+00 -2.860e+02 -1.678e+02  2.990e+00  2.040e+02  9.367e-02  1.394e+05 -1.162e+05 
+ -5.324e+01  2.751e+04  5.472e+00  2.406e+02  1.425e+02 -2.432e+00 -1.682e+02 -7.836e-02 -1.162e+05  9.870e+04 
+ERR MATRIX NOT POS-DEF
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      4      5      6      7      8      9     10
+        1  0.98404   1.000 -0.816 -0.821 -0.909 -0.860  0.642  0.890  0.965  0.888 -0.883
+        2  0.96506  -0.816  1.000  0.960  0.889  0.801 -0.532 -0.882 -0.875 -0.900  0.874
+        3  0.96733  -0.821  0.960  1.000  0.893  0.804 -0.530 -0.888 -0.879 -0.905  0.878
+        4  0.99446  -0.909  0.889  0.893  1.000  0.930 -0.524 -0.895 -0.966 -0.988  0.988
+        5  0.96960  -0.860  0.801  0.804  0.930  1.000 -0.508 -0.749 -0.900 -0.936  0.945
+        6  0.77370   0.642 -0.532 -0.530 -0.524 -0.508  1.000  0.511  0.538  0.522 -0.505
+        7  0.96233   0.890 -0.882 -0.888 -0.895 -0.749  0.511  1.000  0.915  0.884 -0.866
+        8  0.99145   0.965 -0.875 -0.879 -0.966 -0.900  0.538  0.915  1.000  0.948 -0.942
+        9  0.99412   0.888 -0.900 -0.905 -0.988 -0.936  0.522  0.884  0.948  1.000 -0.990
+       10  0.99414  -0.883  0.874  0.878  0.988  0.945 -0.505 -0.866 -0.942 -0.990  1.000
+ ERR MATRIX NOT POS-DEF
+[#1] INFO:Minization -- RooMinuit::optimizeConst: deactivating const optimization

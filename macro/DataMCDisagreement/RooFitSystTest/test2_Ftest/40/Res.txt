@@ -1,0 +1,416 @@
+
+
+
+================ Degree: 1
+p1
+cut off is COs[49] = 2.0096
+p1: 13.6413 which is necessary -----
+================ Degree: 2
+p1
+p2
+
+cut off is COs[48] = 2.0106
+p1: 0.822244 which is NOT necessary ////
+p2: 0.555854 which is NOT necessary ////
+ 
+
+
+================ Degree: 3
+p1
+p2
+p3
+ 
+cut off is COs[47] = 2.0117
+p1: 15.4781 which is necessary -----
+1.35538, 1.18025, 1.53052
+p2: 20.6403 which is necessary -----
+-0.0359665, -0.0394516, -0.0324814
+p3: 14.4319 which is necessary -----
+0.000259017, 0.000223122, 0.000294912
+ 
+
+================ Degree: 4
+p1
+p2
+p3
+p4
+
+cut off is COs[46] = 2.0129
+p1: 6.4246 which is necessary -----
+6.43294, 4.43034, 8.43553
+p2: 6.11009 which is necessary -----
+-0.130175, -0.172785, -0.0875654
+p3: 0.0158563 which is NOT necessary ////
+p4: 2.24207 which is necessary -----
+9.81607e-06, 1.05981e-06, 1.85723e-05
+ 
+
+================ Degree: 5
+p1
+p2
+p3
+p4
+p5
+ 
+
+================ Degree: 6
+p1
+p2
+p3
+p4
+p5
+p6
+
+cut off is COs[44] = 2.0154
+p1: 2.98174 which is necessary -----
+0.307497, 0.101244, 0.51375
+p2: 0.562331 which is NOT necessary ////
+p3: 2.59665 which is necessary -----
+-7.70942e-05, -0.000136474, -1.77145e-05
+p4: 2.43778 which is necessary -----
+-1.00888e-06, -1.83658e-06, -1.81175e-07
+p5: 4.14714 which is necessary -----
+2.06128e-08, 1.06721e-08, 3.05536e-08
+p6: 2.14989 which is necessary -----
+2.31086e-11, 1.61116e-12, 4.46061e-11
+
+
+
+================ Degree: 7
+p1
+p2
+p3
+p4
+p5
+p6
+p7
+ 
+cut off is COs[43] = 2.0167
+p1: 1.45166 which is NOT necessary ////
+p2: 0.922077 which is NOT necessary ////
+p3: 1.59132 which is NOT necessary ////
+p4: 0.57767 which is NOT necessary ////
+p5: 0.956038 which is NOT necessary ////
+p6: 2.38061 which is necessary -----
+5.27649e-11, 8.43592e-12, 9.70939e-11
+p7: 0 which is NOT necessary ////
+ 
+
+
+
+================ Degree: 8
+p1
+p2
+p3
+p4
+p5
+p6
+p7
+p8
+
+cut off is COs[42] = 2.0181
+p1: 2.07468 which is necessary -----
+0.00487585, 0.000175518, 0.00957618
+p2: 0.207558 which is NOT necessary ////
+p3: 4.09147 which is necessary -----
+-2.53368e-06, -3.7722e-06, -1.29516e-06
+p4: 3.79758 which is necessary -----
+-4.13385e-08, -6.31094e-08, -1.95675e-08
+p5: 1.32752 which is NOT necessary ////
+p6: 0.164232 which is NOT necessary ////
+p7: 4.65116 which is necessary -----
+1.77636e-13, 1.01252e-13, 2.54019e-13
+p8: nan which is NOT necessary ////
+
+
+================ Degree: 9
+p1
+p2
+p3
+p4
+p5
+p6
+p7
+p8
+p9
+
+cut off is COs[41] = 2.0196
+p1: 16.6676 which is necessary -----
+0.0515575, 0.0453709, 0.0577441
+p2: 2.43233 which is necessary -----
+-0.000122507, -0.000223239, -2.17747e-05
+p3: 14.309 which is necessary -----
+-1.23277e-05, -1.40507e-05, -1.06046e-05
+p4: 11.3106 which is necessary -----
+-1.64605e-07, -1.93712e-07, -1.35499e-07
+p5: 0.304345 which is NOT necessary ////
+p6: 13.7621 which is necessary -----
+4.02878e-11, 3.44329e-11, 4.61426e-11
+p7: 0.262626 which is NOT necessary ////
+p8: nan which is NOT necessary ////
+p9: nan which is NOT necessary ////
+
+
+================ Degree: 10
+p1
+p2
+p3
+p4
+p5
+p6
+p7
+p8
+p9
+p10
+
+cut off is COs[40] = 2.0211
+p1: 5.38061 which is necessary -----
+-0.00875698, -0.012012, -0.00550196
+p2: 0.112149 which is NOT necessary ////
+p3: 0.12056 which is NOT necessary ////
+p4: 0.0394198 which is NOT necessary ////
+p5: 0.0357818 which is NOT necessary ////
+p6: 0.00228814 which is NOT necessary ////
+p7: 0 which is NOT necessary ////
+p8: nan which is NOT necessary ////
+p9: nan which is NOT necessary ////
+p10: nan which is NOT necessary ////
+ 
+
+
+================ Degree: 11
+p1
+p2
+p3
+p4
+p5
+p6
+p7
+p8
+p9
+p10
+p11
+ 
+cut off is COs[39] = 2.0227
+p1: 2.68628 which is necessary -----
+-0.00914287, -0.01595, -0.00233579
+p2: 8.89662e-10 which is NOT necessary ////
+p3: 0 which is NOT necessary ////
+p4: 0 which is NOT necessary ////
+p5: 0 which is NOT necessary ////
+p6: 0 which is NOT necessary ////
+p7: 0 which is NOT necessary ////
+p8: 0 which is NOT necessary ////
+p9: 0 which is NOT necessary ////
+p10: 0 which is NOT necessary ////
+p11: 0 which is NOT necessary ////
+ 
+
+
+
+================ Degree: 15
+p1
+p2
+p3
+p4
+p5
+p6
+p7
+p8
+p9
+p10
+p11
+p12
+p13
+p14
+p15
+ 
+cut off is COs[35] = 2.0301
+p1: 11.3143 which is necessary -----
+-0.00914287, -0.010759, -0.00752671
+p2: 1.93164e-09 which is NOT necessary ////
+p3: 0 which is NOT necessary ////
+p4: 0 which is NOT necessary ////
+p5: 0 which is NOT necessary ////
+p6: 0 which is NOT necessary ////
+p7: 0 which is NOT necessary ////
+p8: nan which is NOT necessary ////
+p9: nan which is NOT necessary ////
+p10: nan which is NOT necessary ////
+p11: nan which is NOT necessary ////
+p12: nan which is NOT necessary ////
+p13: nan which is NOT necessary ////
+p14: nan which is NOT necessary ////
+p15: nan which is NOT necessary ////
+ 
+
+
+================ Degree: 20
+p1
+p2
+p3
+p4
+p5
+p6
+p7
+p8
+p9
+p10
+p11
+p12
+p13
+p14
+p15
+p16
+p17
+p18
+p19
+p20
+
+cut off is COs[30] = 2.0423
+p1: 21.3143 which is necessary -----
+-0.00914287, -0.0100008, -0.00828496
+p2: 2.42006e-08 which is NOT necessary ////
+p3: 2.2305e-08 which is NOT necessary ////
+p4: 6.09203e-06 which is NOT necessary ////
+p5: 0.000105385 which is NOT necessary ////
+p6: 0 which is NOT necessary ////
+p7: 0 which is NOT necessary ////
+p8: 0 which is NOT necessary ////
+p9: 0 which is NOT necessary ////
+p10: 0 which is NOT necessary ////
+p11: 0 which is NOT necessary ////
+p12: 0 which is NOT necessary ////
+p13: 0 which is NOT necessary ////
+p14: 0 which is NOT necessary ////
+p15: 0 which is NOT necessary ////
+p16: 0 which is NOT necessary ////
+p17: 0 which is NOT necessary ////
+p18: 0 which is NOT necessary ////
+p19: 0 which is NOT necessary ////
+p20: 0 which is NOT necessary ////
+ 
+
+================ Degree: 25
+p1
+p2
+p3
+p4
+p5
+p6
+p7
+p8
+p9
+p10
+p11
+p12
+p13
+p14
+p15
+p16
+p17
+p18
+p19
+p20
+p21
+p22
+p23
+p24
+p25
+ 
+cut off is COs[25] = 2.0596
+p1: 25.6442 which is necessary -----
+-0.00914287, -0.00985593, -0.00842982
+p2: 4.19358e-09 which is NOT necessary ////
+p3: 0 which is NOT necessary ////
+p4: 0 which is NOT necessary ////
+p5: 0 which is NOT necessary ////
+p6: 0 which is NOT necessary ////
+p7: 0 which is NOT necessary ////
+p8: 0 which is NOT necessary ////
+p9: 0 which is NOT necessary ////
+p10: 0 which is NOT necessary ////
+p11: 0 which is NOT necessary ////
+p12: 0 which is NOT necessary ////
+p13: 0 which is NOT necessary ////
+p14: 0 which is NOT necessary ////
+p15: 0 which is NOT necessary ////
+p16: 0 which is NOT necessary ////
+p17: 0 which is NOT necessary ////
+p18: 0 which is NOT necessary ////
+p19: 0 which is NOT necessary ////
+p20: 0 which is NOT necessary ////
+p21: 0 which is NOT necessary ////
+p22: 0 which is NOT necessary ////
+p23: 0 which is NOT necessary ////
+p24: 0 which is NOT necessary ////
+p25: 0 which is NOT necessary ////
+ 
+
+
+
+================ Degree: 30
+p1
+p2
+p3
+p4
+p5
+p6
+p7
+p8
+p9
+p10
+p11
+p12
+p13
+p14
+p15
+p16
+p17
+p18
+p19
+p20
+p21
+p22
+p23
+p24
+p25
+p26
+p27
+p28
+p29
+p30
+
+cut off is COs[20] = 2.086
+p1: 29.1301 which is necessary -----
+-0.00914287, -0.0097706, -0.00851514
+p2: 3.02803e-09 which is NOT necessary ////
+p3: 0 which is NOT necessary ////
+p4: 0 which is NOT necessary ////
+p5: 0 which is NOT necessary ////
+p6: 0 which is NOT necessary ////
+p7: 0 which is NOT necessary ////
+p8: 0 which is NOT necessary ////
+p9: 0 which is NOT necessary ////
+p10: 0 which is NOT necessary ////
+p11: 0 which is NOT necessary ////
+p12: 0 which is NOT necessary ////
+p13: 0 which is NOT necessary ////
+p14: 0 which is NOT necessary ////
+p15: 0 which is NOT necessary ////
+p16: 0 which is NOT necessary ////
+p17: 0 which is NOT necessary ////
+p18: 0 which is NOT necessary ////
+p19: 0 which is NOT necessary ////
+p20: 0 which is NOT necessary ////
+p21: 0 which is NOT necessary ////
+p22: 0 which is NOT necessary ////
+p23: 0 which is NOT necessary ////
+p24: 0 which is NOT necessary ////
+p25: 0 which is NOT necessary ////
+p26: 0 which is NOT necessary ////
+p27: 0 which is NOT necessary ////
+p28: 0 which is NOT necessary ////
+p29: 0 which is NOT necessary ////
+p30: 0 which is NOT necessary ////
+ 

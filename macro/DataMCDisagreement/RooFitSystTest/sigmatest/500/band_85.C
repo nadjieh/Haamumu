@@ -1,0 +1,60 @@
+{
+//========= Macro generated from object: pointErrs/Graph
+//========= by ROOT version5.34/19
+   
+   gre = new TGraphErrors(25);
+   gre->SetName("pointErrs");
+   gre->SetTitle("Graph");
+   gre->SetFillColor(1);
+   gre->SetPoint(0,20,54.8636);
+   gre->SetPointError(0,0,4.17862);
+   gre->SetPoint(1,22,51.8902);
+   gre->SetPointError(1,0,3.3024);
+   gre->SetPoint(2,24,45.4852);
+   gre->SetPointError(2,0,2.74888);
+   gre->SetPoint(3,26,39.5861);
+   gre->SetPointError(3,0,2.25065);
+   gre->SetPoint(4,28,35.6225);
+   gre->SetPointError(4,0,2.27216);
+   gre->SetPoint(5,30,33.4921);
+   gre->SetPointError(5,0,2.62633);
+   gre->SetPoint(6,32,33.5975);
+   gre->SetPointError(6,0,2.31693);
+   gre->SetPoint(7,34,36.1996);
+   gre->SetPointError(7,0,2.6947);
+   gre->SetPoint(8,36,39.9109);
+   gre->SetPointError(8,0,3.03503);
+   gre->SetPoint(9,38,42.4895);
+   gre->SetPointError(9,0,2.57751);
+   gre->SetPoint(10,40,42.3182);
+   gre->SetPointError(10,0,2.7577);
+   gre->SetPoint(11,42,39.9617);
+   gre->SetPointError(11,0,2.58609);
+   gre->SetPoint(12,44,37.5559);
+   gre->SetPointError(12,0,2.39091);
+   gre->SetPoint(13,46,36.3362);
+   gre->SetPointError(13,0,2.50586);
+   gre->SetPoint(14,48,35.3753);
+   gre->SetPointError(14,0,2.78125);
+   gre->SetPoint(15,50,32.9903);
+   gre->SetPointError(15,0,2.98284);
+   gre->SetPoint(16,52,28.822);
+   gre->SetPointError(16,0,2.24792);
+   gre->SetPoint(17,54,23.8728);
+   gre->SetPointError(17,0,1.79322);
+   gre->SetPoint(18,56,19.2153);
+   gre->SetPointError(18,0,1.41104);
+   gre->SetPoint(19,58,15.3399);
+   gre->SetPointError(19,0,1.17817);
+   gre->SetPoint(20,60,12.3543);
+   gre->SetPointError(20,0,1.10619);
+   gre->SetPoint(21,62,10.2219);
+   gre->SetPointError(21,0,0.913354);
+   gre->SetPoint(22,64,8.81966);
+   gre->SetPointError(22,0,0.839798);
+   gre->SetPoint(23,66,7.97878);
+   gre->SetPointError(23,0,0.893182);
+   gre->SetPoint(24,68,7.54329);
+   gre->SetPointError(24,0,1.0049);
+   gre->Draw("");
+}

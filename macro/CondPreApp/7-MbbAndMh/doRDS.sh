@@ -1,0 +1,12 @@
+./plotRDS mc H2ToH1H1_H1To2Mu2B_mH2-125_mH1-30_Summer12_final_4_4.root  out M30 step 4 mass 30 
+./plotRDS mc H2ToH1H1_H1To2Mu2B_mH2-125_mH1-40_Summer12_final_4_4.root  out M40 step 4 mass 40 
+./plotRDS mc H2ToH1H1_H1To2Mu2B_mH2-125_mH1-50_Summer12_final_4_4.root  out M50 step 4 mass 50 
+./plotRDS mc H2ToH1H1_H1To2Mu2B_mH2-125_mH1-60_Summer12_final_4_4.root  out M60 step 4 mass 60 
+./plotRDS mc DYjets_Summer12_final_30.root  out DY30 step 4  mass 30 
+./plotRDS mc DYjets_M10to50_Summer12_final_30.root  out DYL30 step 4 mass 30 
+./plotRDS mc DYjets_Summer12_final_40.root  out DY40 step 4 mass 40 
+./plotRDS mc DYjets_M10to50_Summer12_final_40.root  out DYL40 step 4 mass 40 
+./plotRDS mc DYjets_Summer12_final_50.root  out DY50 step 4 mass 50 
+./plotRDS mc DYjets_M10to50_Summer12_final_50.root  out DYL50 step 4 mass 50 
+./plotRDS mc DYjets_Summer12_final_60.root  out DY60 step 4 mass 60 
+./plotRDS mc DYjets_M10to50_Summer12_final_60.root  out DYL60 step 4 mass 60
