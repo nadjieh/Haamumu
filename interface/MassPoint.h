@@ -4,7 +4,7 @@
  *
  * Created on May 5, 2015, 6:39 PM
  */
-
+#define JER
 #ifndef MASSPOINT_H
 #define	MASSPOINT_H
 #include <vector>
@@ -31,10 +31,32 @@
 using namespace std;
 using namespace RooFit;
 const long SEED = 124578963;
-//const int NSYST = 2;
-//const TString systprefix[NSYST] = {"pud", "puu"};
+#ifdef pu
+const int NSYST = 2;
+const TString systprefix[NSYST] = {"pud", "puu"};
+#endif /*pu*/
+#ifdef mu
+const int NSYST = 2;
+const TString systprefix[NSYST] = {"mud", "muu"};
+#endif /*mu*/
+#ifdef bTag
+const int NSYST = 2;
+const TString systprefix[NSYST] = {"bDown", "bUp"};
+#endif /*b*/
+#ifdef JES
+const int NSYST = 2;
+const TString systprefix[NSYST] = {"JESD", "JESU"};
+#endif /*JES*/
+#ifdef JER
+const int NSYST = 2;
+const TString systprefix[NSYST] = {"JERD", "JERU"};
+#endif /*JER*/
+
+
+#ifdef All
 const int NSYST = 10;
 const TString systprefix[NSYST] = {"bDown", "bUp", "JESD", "JESU", "JERD", "JERU", "mud", "muu", "pud", "puu"};
+#endif /*All*/
 
 enum Colors {
     bDownC = 618, bUpC = 616, JESDC = 434, JESUC = 432, JERDC = 632, JERUC = 623, mudC = 801, muuC = 796, pudC = 602, puuC = 596
@@ -68,7 +90,7 @@ public:
             TString pref2 = "_LowJetPt10_Summer12_final_4.root",
             TString prefsys1 = "H2ToH1H1_H1To2Mu2B_mH2-125_mH1_",
             TString prefsys2 = "_Summer12_final_4.root") :
-    mass_(mass) {
+    mass_(mass), print(false) {
         stringstream Mass;
         Mass << mass;
         TString MassStr = Mass.str().c_str();
@@ -113,6 +135,9 @@ public:
     ~MassPoint() {
     }
 
+    void SetPrint(bool in = true){
+        print = in;
+    }
     void SetMeanCBInit(double mean, double low, double high) {
         MeanCBInit.mean = mean;
         MeanCBInit.low = low;
@@ -217,7 +242,8 @@ public:
             //                    << ", " << paramNominal["frac"] + paramNominalErr["frac"] << " );" << endl;
             RooAddPdf Voig2("sum" + syst, "Gaussian crystal ball and Voig PDF" + syst, RooArgList(Voig, CB), RooArgList(frac));
             RooFitResult * ret = Voig2.fitTo(*data, RooFit::Save());
-
+            if(print)
+                this->PrintCorrelations(ret);
             delete hist;
             return ret;
         }
@@ -391,6 +417,31 @@ public:
     double GetMass()const {
         return mass_;
     }
+
+    void PrintCorrelations(RooFitResult* fr, TString syst = "") {
+        cout << "\tMass = " << mass_ << " GeV ===================== " << endl;
+        cout << "\talpha,n: " << fr->correlation("alpha" + syst, "n" + syst) << endl;
+        cout << "\talpha,width: " << fr->correlation("width" + syst, "alpha" + syst) << endl;
+        cout << "\talpha,frac: " << fr->correlation("frac" + syst, "alpha" + syst) << endl;
+        cout << "\talpha,sigma_cb: " << fr->correlation("sigma_cb" + syst, "alpha" + syst) << endl;
+        cout << "\talpha,sigma: " << fr->correlation("sigma" + syst, "alpha" + syst) << endl;
+        cout << "\talpha,mean: " << fr->correlation("mean" + syst, "alpha" + syst) << endl;
+        cout << "\tn,width: " << fr->correlation("width" + syst, "n" + syst) << endl;
+        cout << "\tn,frac: " << fr->correlation("frac" + syst, "n" + syst) << endl;
+        cout << "\tn,sigma_cb: " << fr->correlation("sigma_cb" + syst, "n" + syst) << endl;
+        cout << "\tn,sigma: " << fr->correlation("sigma_cb" + syst, "n" + syst) << endl;
+        cout << "\tn,mean: " << fr->correlation("mean" + syst, "n" + syst) << endl;
+        cout << "\twidth,frac: " << fr->correlation("frac" + syst, "width" + syst) << endl;
+        cout << "\twidth,sigma_cb: " << fr->correlation("sigma_cb" + syst, "width" + syst) << endl;
+        cout << "\twidth,sigma: " << fr->correlation("sigma_cb" + syst, "width" + syst) << endl;
+        cout << "\twidth,mean: " << fr->correlation("mean" + syst, "width" + syst) << endl;
+        cout << "\tfrac,sigma_cb: " << fr->correlation("sigma_cb" + syst, "frac" + syst) << endl;
+        cout << "\tfrac,sigma: " << fr->correlation("sigma_cb" + syst, "frac" + syst) << endl;
+        cout << "\tfrac,mean: " << fr->correlation("mean" + syst, "frac" + syst) << endl;
+        cout << "\tsigma_cb,sigma: " << fr->correlation("sigma_cb" + syst, "sigma" + syst) << endl;
+        cout << "\tsigma_cb,mean: " << fr->correlation("mean" + syst, "sigma_cb" + syst) << endl;
+        cout << "\tsigma,mean: " << fr->correlation("mean" + syst, "sigma" + syst) << endl;
+    }
 private:
     double mass_;
     std::vector<RooDataSet*> systUp;
@@ -409,6 +460,7 @@ private:
     Initials NInit;
     Initials AlphaInit;
     Initials FracInit;
+    bool print;
 };
 
 

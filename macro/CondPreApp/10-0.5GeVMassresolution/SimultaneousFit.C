@@ -13,6 +13,7 @@
 #include "RooRealVar.h"
 #include "RooDataSet.h"
 #include "RooGaussian.h"
+#include "RooExponential.h"
 #include "RooConstVar.h"
 #include "RooChebychev.h"
 #include "RooAddPdf.h"
@@ -245,25 +246,25 @@ int main() {
     cout << "\tsigma,mean: " << fr->correlation("mean" + syst, "sigma" + syst) << endl;
 
 
-    RooPlot* frame1 = mass->frame( Title("30 GeV sample"));
+    RooPlot* frame1 = mass->frame(Title("30 GeV sample"));
     combData.plotOn(frame1, Cut("sample==sample::p30"), Binning(100));
     simPdf.plotOn(frame1, Slice(sample, "p30"), ProjWData(sample, combData));
     simPdf.plotOn(frame1, Slice(sample, "p30"), Components("tmp_M30"), ProjWData(sample, combData), LineStyle(kDashed));
     simPdf.plotOn(frame1, Slice(sample, "p30"), Components("cball_M30"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
 
-    RooPlot* frame2 = mass->frame( Title("40 GeV sample"), Binning(100));
+    RooPlot* frame2 = mass->frame(Title("40 GeV sample"), Binning(100));
     combData.plotOn(frame2, Cut("sample==sample::p40"));
     simPdf.plotOn(frame2, Slice(sample, "p40"), ProjWData(sample, combData));
     simPdf.plotOn(frame2, Slice(sample, "p40"), Components("tmp_M40"), ProjWData(sample, combData), LineStyle(kDashed));
     simPdf.plotOn(frame2, Slice(sample, "p40"), Components("cball_M40"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
 
-    RooPlot* frame3 = mass->frame( Title("50 GeV sample"), Binning(100));
+    RooPlot* frame3 = mass->frame(Title("50 GeV sample"), Binning(100));
     combData.plotOn(frame3, Cut("sample==sample::p50"));
     simPdf.plotOn(frame3, Slice(sample, "p50"), ProjWData(sample, combData));
     simPdf.plotOn(frame3, Slice(sample, "p50"), Components("tmp_M50"), ProjWData(sample, combData), LineStyle(kDashed));
     simPdf.plotOn(frame3, Slice(sample, "p50"), Components("cball_M50"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
 
-    RooPlot* frame4 = mass->frame( Title("60 GeV sample"));
+    RooPlot* frame4 = mass->frame(Title("60 GeV sample"));
     combData.plotOn(frame4, Cut("sample==sample::p60"));
     simPdf.plotOn(frame4, Slice(sample, "p60"), ProjWData(sample, combData), Binning(100));
     simPdf.plotOn(frame4, Slice(sample, "p60"), Components("tmp_M60"), ProjWData(sample, combData), LineStyle(kDashed));
@@ -416,31 +417,31 @@ int main() {
     simPdfInt.addPdf(*m55, "p55");
     simPdfInt.addPdf(*m65, "p65");
     RooFitResult * frIn = simPdfInt.fitTo(combDataIn, RooFit::Save());
-    
-    RooPlot* framIn1 = mass->frame( Title("35 GeV sampleIn"));
+
+    RooPlot* framIn1 = mass->frame(Title("35 GeV sampleIn"));
     combDataIn.plotOn(framIn1, Cut("sampleIn==sampleIn::p35"), Binning(100));
     simPdfInt.plotOn(framIn1, Slice(sampleIn, "p35"), ProjWData(sampleIn, combDataIn));
     simPdfInt.plotOn(framIn1, Slice(sampleIn, "p35"), Components("tmp_M35"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed));
     simPdfInt.plotOn(framIn1, Slice(sampleIn, "p35"), Components("cball_M35"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed), LineColor(kRed));
 
-    RooPlot* framIn2 = mass->frame( Title("45 GeV sampleIn"), Binning(100));
+    RooPlot* framIn2 = mass->frame(Title("45 GeV sampleIn"), Binning(100));
     combDataIn.plotOn(framIn2, Cut("sampleIn==sampleIn::p45"));
     simPdfInt.plotOn(framIn2, Slice(sampleIn, "p45"), ProjWData(sampleIn, combDataIn));
     simPdfInt.plotOn(framIn2, Slice(sampleIn, "p45"), Components("tmp_M45"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed));
     simPdfInt.plotOn(framIn2, Slice(sampleIn, "p45"), Components("cball_M45"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed), LineColor(kRed));
 
-    RooPlot* framIn3 = mass->frame( Title("55 GeV sampleIn"), Binning(100));
+    RooPlot* framIn3 = mass->frame(Title("55 GeV sampleIn"), Binning(100));
     combDataIn.plotOn(framIn3, Cut("sampleIn==sampleIn::p55"));
     simPdfInt.plotOn(framIn3, Slice(sampleIn, "p55"), ProjWData(sampleIn, combDataIn));
     simPdfInt.plotOn(framIn3, Slice(sampleIn, "p55"), Components("tmp_M55"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed));
     simPdfInt.plotOn(framIn3, Slice(sampleIn, "p55"), Components("cball_M55"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed), LineColor(kRed));
 
-    RooPlot* framIn4 = mass->frame( Title("65 GeV sampleIn"));
+    RooPlot* framIn4 = mass->frame(Title("65 GeV sampleIn"));
     combDataIn.plotOn(framIn4, Cut("sampleIn==sampleIn::p65"));
     simPdfInt.plotOn(framIn4, Slice(sampleIn, "p65"), ProjWData(sampleIn, combDataIn), Binning(100));
     simPdfInt.plotOn(framIn4, Slice(sampleIn, "p65"), Components("tmp_M65"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed));
     simPdfInt.plotOn(framIn4, Slice(sampleIn, "p65"), Components("cball_M65"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed), LineColor(kRed));
-    
+
     TCanvas* c3 = new TCanvas("SimultaneousFitIn", "SimultaneousFitIn", 1600, 800);
     c3->Divide(2, 2);
     c3->cd(1);
@@ -461,6 +462,69 @@ int main() {
     framIn4->Draw();
 
     c3->SaveAs("Graph_SimFitIn.C");
+    /*
+     * Test on a pseudo data with background using functional form for parameters
+     * Mass = 47 GeV
+     */
+
+    //Data production
+
+    double Mass = 47;
+    RooFormulaVar sigma_cb_model("sigma_cb_model", "-0.4756193+0.04638364*@0 -0.0004420156*(@0^2) -7.566989e-07*(@0^3) -1.041907e-08*(@0^4) +8.410242e-10*(@0^5)"
+            , RooArgList(*mass));
+    RooRealVar mean_model("mean_model", "mean", Mass);
+    RooFormulaVar sigma_model("sigma_model", "(0.010226*@0)-0.0215593", RooArgList(*mass));
+    RooRealVar width_model("width_model", "width", inputVars["width"]->getVal());
+    RooVoigtian Voig_model("tmp", "", *mass, mean_model, width_model, sigma_model);
+    RooRealVar n_model("n_model", "", inputVars["n"]->getVal());
+    RooRealVar alpha_model("alpha_model", "", inputVars["alpha"]->getVal());
+    RooCBShape CB_model("cball_model", "crystal ball", *mass, mean_model, sigma_cb_model, alpha_model, n_model);
+    RooRealVar frac_model("frac_model", "frac", frac->getVal());
+    RooAddPdf Voig2_model("sum_model", "Gaussian crystal ball and Voig PDF", RooArgList(Voig_model, CB_model), RooArgList(frac_model));
+
+    RooRealVar beta_model("beta_model", "", -0.05);
+    RooExponential bkg_model("bkg_model", "", *mass, beta_model);
+    RooRealVar frac_SB("frac_SB", "frac_SB", 0.2);
+
+    RooAddPdf model_SB("model_SB", "", RooArgList(Voig2_model, bkg_model), RooArgList(frac_SB));
+
+    RooDataSet * dModel = model_SB.generate(*mass, 5000);
+
+    //Modeling the data for fitting
+    RooFormulaVar sigma_cb_fit("sigma_cb_fit", "-0.4756193+0.04638364*@0 -0.0004420156*(@0^2) -7.566989e-07*(@0^3) -1.041907e-08*(@0^4) +8.410242e-10*(@0^5)"
+            , RooArgList(*mass));
+    RooRealVar mean_fit("mean_fit", "mean", 20., 70.);
+    RooFormulaVar sigma_fit("sigma_fit", "(0.010226*@0)-0.0215593", RooArgList(*mass));
+    RooRealVar width_fit("width_fit", "width", inputVars["width"]->getVal());
+    RooVoigtian Voig_fit("tmp_fit", "", *mass, mean_fit, width_fit, sigma_fit);
+    RooRealVar n_fit("n_fit", "", inputVars["n"]->getVal());
+    RooRealVar alpha_fit("alpha_fit", "", inputVars["alpha"]->getVal());
+    RooCBShape CB_fit("cball_fit", "crystal ball", *mass, mean_fit, sigma_cb_fit, alpha_fit, n_fit);
+    RooRealVar frac_fit("frac_fit", "frac", frac->getVal());
+    RooAddPdf Voig2_fit("sum_fit", "Gaussian crystal ball and Voig PDF", RooArgList(Voig_fit, CB_fit), RooArgList(frac_fit));
+
+    RooRealVar beta_fit("beta_fit", "", -0.5, 0.5);
+    RooExponential bkg_fit("bkg_fit", "", *mass, beta_fit);
+    RooRealVar fit_frac_SB("fit_frac_SB", "fit_frac_SB", 0., 1.);
+
+    RooAddPdf fit_SB("fit_SB", "", RooArgList(Voig2_fit, bkg_fit), RooArgList(fit_frac_SB));
+
+    fit_SB.fitTo(*dModel, RooFit::Save());
+    RooPlot * frame5 = mass->frame();
+    dModel->plotOn(frame5);
+    fit_SB.plotOn(frame5, RooFit::Components(Voig2_fit), RooFit::LineColor(kBlue));
+    fit_SB.plotOn(frame5, RooFit::Components(Voig_fit), RooFit::LineColor(kGreen + 2), RooFit::LineStyle(kDashed));
+    fit_SB.plotOn(frame5, RooFit::Components(CB_fit), RooFit::LineColor(kOrange - 2), RooFit::LineStyle(kDashed));
+    fit_SB.plotOn(frame5, RooFit::Components(bkg_fit), RooFit::LineColor(kRed));
+    fit_SB.plotOn(frame5, RooFit::LineColor(kBlack));
+    TCanvas* c4 = new TCanvas("TestParam", "TestParam", 1600, 800);
+    c4->cd();
+    c4->SetLeftMargin(0.05);
+    frame5->GetYaxis()->SetTitleOffset(0.9);
+    frame5->Draw();
+
+    c4->SaveAs("Graph_TestParam.C");
     return 0;
+
 }
 

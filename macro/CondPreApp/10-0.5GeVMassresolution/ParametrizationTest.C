@@ -160,24 +160,14 @@ int ParametrizationTest() {
     RooDataSet * D2 = mypdf->generate(mass, 1000);
     RooPlot* frame4 = mass.frame();
     D2->plotOn(frame4);
-    //    for (int i = 1; i < 100; i++) {
-    //        RooDataSet * D3 = mypdf->generate(mass, 1000);
-    //        RooRealVar a1("a1", "a1", -1., 1.);
-    //        RooRealVar a2("a2", "a2", 0, 10);
-    //        RooRealVar a3("a3", "a3", 0, 10);
-    //        RooRealVar a4("a4", "a4", 0, 10);
-    //        RooRealVar a5("a5", "a5", 0, 10);
-    //        RooPolynomial pol1("pol1", "pol1", mass, RooArgList(a1));
-    //        pol1->fitTo(*D3, RooFit::Save());
-    //        pol1.plotOn(frame4, RooFit::LineColor(kYellow));
-    //
-    //    }
+
     mypdf->plotOn(frame4);
     TCanvas* c3 = new TCanvas("Params3", "params");
     c3->SetLeftMargin(0.15);
     frame4->GetYaxis()->SetTitleOffset(1.6);
     frame4->Draw();
     c3->SaveAs("Params3.C");
+
 
     return 0;
 }

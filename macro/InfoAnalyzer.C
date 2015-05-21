@@ -131,6 +131,7 @@ int main(int argc, char** argv) {
         cout << "sigma_cb" << endl;
         sigma_cb2 = myME->MakeStruct("sigma_cb");
         sigma_cb[i] = sigma_cb2.value;
+        cout << "Sigma_cb Value: " << sigma_cb[i] << endl;
         std::pair<double, double> sigma_cbSyst = GetEnvelope(sigma_cb2);
         sigma_cb_eL[i] = fabs(sigma_cbSyst.first);
         sigma_cb_eH[i] = fabs(sigma_cbSyst.second);
