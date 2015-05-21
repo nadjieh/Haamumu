@@ -1,0 +1,466 @@
+/* 
+ * File:   SimultaneousFit.C
+ * Author: nadjieh
+ *
+ * Created on May 20, 2015, 2:47 PM
+ */
+
+#include <iostream>
+#include <sstream>
+#ifndef __CINT__
+#include "RooGlobalFunc.h"
+#endif
+#include "RooRealVar.h"
+#include "RooDataSet.h"
+#include "RooGaussian.h"
+#include "RooConstVar.h"
+#include "RooChebychev.h"
+#include "RooAddPdf.h"
+#include "RooSimultaneous.h"
+#include "RooFitResult.h"
+#include "RooCategory.h"
+#include "TGraphErrors.h"
+#include "TCanvas.h"
+#include "TAxis.h"
+#include "RooPlot.h"
+#include <vector>
+#include <sstream>
+#include <iostream>
+#include "RooDataSet.h"
+#include "RooRealVar.h"
+#include "RooFitResult.h"
+#include "TFile.h"
+#include "TTree.h"
+#include "TH1.h"
+#include "TString.h"
+#include "TCanvas.h"
+#include "TColor.h"
+#include "TColorWheel.h"
+#include "TColorGradient.h"
+#include "RooVoigtian.h"
+#include "RooCBShape.h"
+#include "RooPlot.h"
+#include "RooAddPdf.h"
+#include "RooRandom.h"
+#include <algorithm>
+#include <map>
+using namespace std;
+using namespace RooFit;
+
+RooCBShape * CBMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
+        RooRealVar * sigma_cb = 0, RooRealVar * n = 0, RooRealVar * alpha = 0) {
+    stringstream s;
+    s << "_M" << Mass;
+    TString Name = s.str().c_str();
+    double widthSigmaCB = (2 * Mass - 1) * 0.01;
+    if (n == 0)
+        n = new RooRealVar("n" + Name, "" + Name, 0, 10);
+    if (alpha == 0)
+        alpha = new RooRealVar("alpha" + Name, "" + Name, 0, 5);
+    if (sigma_cb == 0)
+        sigma_cb = new RooRealVar("sigma_cb" + Name, "Width" + Name, widthSigmaCB, 0., 2 * widthSigmaCB);
+    RooCBShape * CB = new RooCBShape("cball" + Name, "crystal ball" + Name, *mass, *mean, *sigma_cb, *alpha, *n);
+    return CB;
+}
+
+RooVoigtian * VoigMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
+        RooRealVar * sigma = 0, RooRealVar * width = 0) {
+    stringstream s;
+    s << "_M" << Mass;
+    TString Name = s.str().c_str();
+    double sigmaMean = (0.010226 * Mass) - 0.0215593;
+    if (sigma == 0)
+        sigma = new RooRealVar("sigma" + Name, "sigma" + Name, sigmaMean, 0., 2 * sigmaMean);
+    if (width == 0)
+        width = new RooRealVar("width" + Name, "width" + Name, 1, 0., 5);
+    RooVoigtian * Voig = new RooVoigtian("tmp" + Name, "" + Name, *mass, *mean, *width, *sigma);
+    return Voig;
+}
+
+RooAddPdf * VoigCBMaker(double Mass, RooRealVar * mass, std::map< TString, RooRealVar*> inputs, RooRealVar * frac = 0) {
+    stringstream s;
+    s << "_M" << Mass;
+    TString Name = s.str().c_str();
+    RooRealVar * mean = new RooRealVar("mean" + Name, "mean" + Name, Mass, 0.8 * Mass, 1.2 * Mass);
+    RooVoigtian * Voig = VoigMaker(Mass, mass, mean, inputs["sigma"], inputs["width"]);
+    RooCBShape * CB = CBMaker(Mass, mass, mean, inputs["sigma_cb"], inputs["n"], inputs["alpha"]);
+    if (frac == 0)
+        frac = new RooRealVar("frac" + Name, "frac" + Name, 0.5, 0, 1);
+    RooAddPdf * Voig2 = new RooAddPdf("sum" + Name, "Gaussian crystal ball and Voig PDF" + Name, RooArgList(*Voig, *CB), RooArgList(*frac));
+    return Voig2;
+}
+
+/*
+ * 
+ *//*SimultaneousFit*/
+
+int main() {
+    RooRealVar * mass = new RooRealVar("eventSelectionamassMu", "eventSelectionamassMu", 20, 70);
+    TFile * f30 = TFile::Open("H2ToH1H1_H1To2Mu2B_mH2-125_mH1-30_LowJetPt10_Summer12_final_4_4.root");
+    TTree * t30 = (TTree*) f30->Get("rds_zbb");
+    RooDataSet * d30 = new RooDataSet("d30", "d30", t30, *mass, "");
+    TFile * f40 = TFile::Open("H2ToH1H1_H1To2Mu2B_mH2-125_mH1-40_LowJetPt10_Summer12_final_4_4.root");
+    TTree * t40 = (TTree*) f40->Get("rds_zbb");
+    RooDataSet * d40 = new RooDataSet("d40", "d40", t40, *mass, "");
+    TFile * f50 = TFile::Open("H2ToH1H1_H1To2Mu2B_mH2-125_mH1-50_LowJetPt10_Summer12_final_4_4.root");
+    TTree * t50 = (TTree*) f50->Get("rds_zbb");
+    RooDataSet * d50 = new RooDataSet("d50", "d50", t50, *mass, "");
+    TFile * f60 = TFile::Open("H2ToH1H1_H1To2Mu2B_mH2-125_mH1-60_LowJetPt10_Summer12_final_4_4.root");
+    TTree * t60 = (TTree*) f60->Get("rds_zbb");
+    RooDataSet * d60 = new RooDataSet("d60", "d60", t60, *mass, "");
+
+    RooCategory sample("sample", "sample");
+    sample.defineType("p30");
+    sample.defineType("p40");
+    sample.defineType("p50");
+    sample.defineType("p60");
+
+    RooDataSet combData("combData", "combined data", *mass, Index(sample),
+            Import("p30", *d30),
+            Import("p40", *d40),
+            Import("p50", *d50),
+            Import("p60", *d60)
+            );
+
+    std::map< TString, RooRealVar *> inputVars;
+    //*AFTER FIXING FRAC:* alpha,n: -0.824042
+    //*AFTER FIXING FRAC:* 1  alpha        9.87339e-01   3.69894e-02   1.24114e-03  -6.49847e-01
+    inputVars["alpha"] = new RooRealVar("alpha", "", 9.87339e-01);
+    inputVars["sigma"] = 0;
+    inputVars["sigma_cb"] = 0;
+
+    //*AFTER FIXING FRAC AND ALPHA:* 17  width        8.24026e-02   9.61136e-03   3.54104e-04  -1.31333e+00
+    inputVars["width"] = new RooRealVar("width", "width", 8.24026e-02); //0;
+
+    //*AFTER FIXING FRAC AND ALPHA:* n,sigma: 0.621405 (n has big correlation with sigma_cb, too.)
+    //*AFTER FIXING FRAC AND ALPHA:* 5  n            2.22999e+00   5.09997e-02   1.52068e-03  -5.87163e-01
+    //*AFTER FIXING FRAC AND ALPHA AND WIDTH:* 5  n            3.55967e+00   1.22480e-01   1.51230e-04  -2.92207e-01
+    inputVars["n"] = new RooRealVar("n", "", 3.55967e+00); //0;
+
+    // 5  frac         6.09832e-01   4.50521e-02   5.52433e-04   2.21470e-01
+    RooRealVar* frac = new RooRealVar("frac", "frac", 6.09832e-01);
+    RooAddPdf * m30 = VoigCBMaker(30, mass, inputVars, frac);
+    RooAddPdf * m40 = VoigCBMaker(40, mass, inputVars, frac);
+    RooAddPdf * m50 = VoigCBMaker(50, mass, inputVars, frac);
+    RooAddPdf * m60 = VoigCBMaker(60, mass, inputVars, frac);
+
+    RooSimultaneous simPdf("simPdf", "simultaneous pdf", sample);
+    simPdf.addPdf(*m30, "p30");
+    simPdf.addPdf(*m40, "p40");
+    simPdf.addPdf(*m50, "p50");
+    simPdf.addPdf(*m60, "p60");
+    RooFitResult * fr = simPdf.fitTo(combData, RooFit::Save());
+    cout << "\n\n\nCorrelations: " << endl;
+    TString syst = "_M30";
+    cout << "\t" << syst << " ===================== " << endl;
+    cout << "\talpha,n: " << fr->correlation("alpha" + syst, "n" + syst) << endl;
+    cout << "\talpha,width: " << fr->correlation("width" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,frac: " << fr->correlation("frac" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,sigma_cb: " << fr->correlation("sigma_cb" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,sigma: " << fr->correlation("sigma" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,mean: " << fr->correlation("mean" + syst, "alpha" + syst) << endl;
+    //    cout << "\tn,width: " << fr->correlation("width" + syst, "n" + syst) << endl;
+    //    cout << "\tn,frac: " << fr->correlation("frac" + syst, "n" + syst) << endl;
+    //    cout << "\tn,sigma_cb: " << fr->correlation("sigma_cb" + syst, "n" + syst) << endl;
+    //    cout << "\tn,sigma: " << fr->correlation("sigma_cb" + syst, "n" + syst) << endl;
+    //    cout << "\tn,mean: " << fr->correlation("mean" + syst, "n" + syst) << endl;
+    //    cout << "\tfrac,sigma_cb: " << fr->correlation("sigma_cb" + syst, "frac" + syst) << endl;
+    //    cout << "\tfrac,sigma: " << fr->correlation("sigma_cb" + syst, "frac" + syst) << endl;
+    //    cout << "\tfrac,mean: " << fr->correlation("mean" + syst, "frac" + syst) << endl;
+    //    cout << "\tfrac,width: " << fr->correlation("frac" + syst, "width" + syst) << endl;
+    cout << "\twidth,sigma_cb: " << fr->correlation("sigma_cb" + syst, "width" + syst) << endl;
+    cout << "\twidth,sigma: " << fr->correlation("sigma_cb" + syst, "width" + syst) << endl;
+    cout << "\twidth,mean: " << fr->correlation("mean" + syst, "width" + syst) << endl;
+    cout << "\tsigma_cb,sigma: " << fr->correlation("sigma_cb" + syst, "sigma" + syst) << endl;
+    cout << "\tsigma_cb,mean: " << fr->correlation("mean" + syst, "sigma_cb" + syst) << endl;
+    cout << "\tsigma,mean: " << fr->correlation("mean" + syst, "sigma" + syst) << endl;
+    syst = "_M40";
+    cout << "\t" << syst << " ===================== " << endl;
+    cout << "\talpha,n: " << fr->correlation("alpha" + syst, "n" + syst) << endl;
+    cout << "\talpha,width: " << fr->correlation("width" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,frac: " << fr->correlation("frac" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,sigma_cb: " << fr->correlation("sigma_cb" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,sigma: " << fr->correlation("sigma" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,mean: " << fr->correlation("mean" + syst, "alpha" + syst) << endl;
+    //    cout << "\tn,width: " << fr->correlation("width" + syst, "n" + syst) << endl;
+    //    cout << "\tn,frac: " << fr->correlation("frac" + syst, "n" + syst) << endl;
+    //    cout << "\tn,sigma_cb: " << fr->correlation("sigma_cb" + syst, "n" + syst) << endl;
+    //    cout << "\tn,sigma: " << fr->correlation("sigma_cb" + syst, "n" + syst) << endl;
+    //    cout << "\tn,mean: " << fr->correlation("mean" + syst, "n" + syst) << endl;
+    //    cout << "\tfrac,sigma_cb: " << fr->correlation("sigma_cb" + syst, "frac" + syst) << endl;
+    //    cout << "\tfrac,sigma: " << fr->correlation("sigma_cb" + syst, "frac" + syst) << endl;
+    //    cout << "\tfrac,mean: " << fr->correlation("mean" + syst, "frac" + syst) << endl;
+    //    cout << "\tfrac,width: " << fr->correlation("frac" + syst, "width" + syst) << endl;
+    cout << "\twidth,sigma_cb: " << fr->correlation("sigma_cb" + syst, "width" + syst) << endl;
+    cout << "\twidth,sigma: " << fr->correlation("sigma_cb" + syst, "width" + syst) << endl;
+    cout << "\twidth,mean: " << fr->correlation("mean" + syst, "width" + syst) << endl;
+    cout << "\tsigma_cb,sigma: " << fr->correlation("sigma_cb" + syst, "sigma" + syst) << endl;
+    cout << "\tsigma_cb,mean: " << fr->correlation("mean" + syst, "sigma_cb" + syst) << endl;
+    cout << "\tsigma,mean: " << fr->correlation("mean" + syst, "sigma" + syst) << endl;
+    syst = "_M50";
+    cout << "\t" << syst << " ===================== " << endl;
+    cout << "\talpha,n: " << fr->correlation("alpha" + syst, "n" + syst) << endl;
+    cout << "\talpha,width: " << fr->correlation("width" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,frac: " << fr->correlation("frac" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,sigma_cb: " << fr->correlation("sigma_cb" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,sigma: " << fr->correlation("sigma" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,mean: " << fr->correlation("mean" + syst, "alpha" + syst) << endl;
+    //    cout << "\tn,width: " << fr->correlation("width" + syst, "n" + syst) << endl;
+    //    cout << "\tn,frac: " << fr->correlation("frac" + syst, "n" + syst) << endl;
+    //    cout << "\tn,sigma_cb: " << fr->correlation("sigma_cb" + syst, "n" + syst) << endl;
+    //    cout << "\tn,sigma: " << fr->correlation("sigma_cb" + syst, "n" + syst) << endl;
+    //    cout << "\tn,mean: " << fr->correlation("mean" + syst, "n" + syst) << endl;
+    //    cout << "\tfrac,sigma_cb: " << fr->correlation("sigma_cb" + syst, "frac" + syst) << endl;
+    //    cout << "\tfrac,sigma: " << fr->correlation("sigma_cb" + syst, "frac" + syst) << endl;
+    //    cout << "\tfrac,mean: " << fr->correlation("mean" + syst, "frac" + syst) << endl;
+    //    cout << "\tfrac,width: " << fr->correlation("frac" + syst, "width" + syst) << endl;
+    cout << "\twidth,sigma_cb: " << fr->correlation("sigma_cb" + syst, "width" + syst) << endl;
+    cout << "\twidth,sigma: " << fr->correlation("sigma_cb" + syst, "width" + syst) << endl;
+    cout << "\twidth,mean: " << fr->correlation("mean" + syst, "width" + syst) << endl;
+    cout << "\tsigma_cb,sigma: " << fr->correlation("sigma_cb" + syst, "sigma" + syst) << endl;
+    cout << "\tsigma_cb,mean: " << fr->correlation("mean" + syst, "sigma_cb" + syst) << endl;
+    cout << "\tsigma,mean: " << fr->correlation("mean" + syst, "sigma" + syst) << endl;
+    syst = "_M60";
+    cout << "\t" << syst << " ===================== " << endl;
+    cout << "\talpha,n: " << fr->correlation("alpha" + syst, "n" + syst) << endl;
+    cout << "\talpha,width: " << fr->correlation("width" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,frac: " << fr->correlation("frac" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,sigma_cb: " << fr->correlation("sigma_cb" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,sigma: " << fr->correlation("sigma" + syst, "alpha" + syst) << endl;
+    cout << "\talpha,mean: " << fr->correlation("mean" + syst, "alpha" + syst) << endl;
+    //    cout << "\tn,width: " << fr->correlation("width" + syst, "n" + syst) << endl;
+    //    cout << "\tn,frac: " << fr->correlation("frac" + syst, "n" + syst) << endl;
+    //    cout << "\tn,sigma_cb: " << fr->correlation("sigma_cb" + syst, "n" + syst) << endl;
+    //    cout << "\tn,sigma: " << fr->correlation("sigma_cb" + syst, "n" + syst) << endl;
+    //    cout << "\tn,mean: " << fr->correlation("mean" + syst, "n" + syst) << endl;
+    //    cout << "\tfrac,sigma_cb: " << fr->correlation("sigma_cb" + syst, "frac" + syst) << endl;
+    //    cout << "\tfrac,sigma: " << fr->correlation("sigma_cb" + syst, "frac" + syst) << endl;
+    //    cout << "\tfrac,mean: " << fr->correlation("mean" + syst, "frac" + syst) << endl;
+    //    cout << "\tfrac,width: " << fr->correlation("frac" + syst, "width" + syst) << endl;
+    cout << "\twidth,sigma_cb: " << fr->correlation("sigma_cb" + syst, "width" + syst) << endl;
+    cout << "\twidth,sigma: " << fr->correlation("sigma_cb" + syst, "width" + syst) << endl;
+    cout << "\twidth,mean: " << fr->correlation("mean" + syst, "width" + syst) << endl;
+    cout << "\tsigma_cb,sigma: " << fr->correlation("sigma_cb" + syst, "sigma" + syst) << endl;
+    cout << "\tsigma_cb,mean: " << fr->correlation("mean" + syst, "sigma_cb" + syst) << endl;
+    cout << "\tsigma,mean: " << fr->correlation("mean" + syst, "sigma" + syst) << endl;
+
+
+    RooPlot* frame1 = mass->frame( Title("30 GeV sample"));
+    combData.plotOn(frame1, Cut("sample==sample::p30"), Binning(100));
+    simPdf.plotOn(frame1, Slice(sample, "p30"), ProjWData(sample, combData));
+    simPdf.plotOn(frame1, Slice(sample, "p30"), Components("tmp_M30"), ProjWData(sample, combData), LineStyle(kDashed));
+    simPdf.plotOn(frame1, Slice(sample, "p30"), Components("cball_M30"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
+
+    RooPlot* frame2 = mass->frame( Title("40 GeV sample"), Binning(100));
+    combData.plotOn(frame2, Cut("sample==sample::p40"));
+    simPdf.plotOn(frame2, Slice(sample, "p40"), ProjWData(sample, combData));
+    simPdf.plotOn(frame2, Slice(sample, "p40"), Components("tmp_M40"), ProjWData(sample, combData), LineStyle(kDashed));
+    simPdf.plotOn(frame2, Slice(sample, "p40"), Components("cball_M40"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
+
+    RooPlot* frame3 = mass->frame( Title("50 GeV sample"), Binning(100));
+    combData.plotOn(frame3, Cut("sample==sample::p50"));
+    simPdf.plotOn(frame3, Slice(sample, "p50"), ProjWData(sample, combData));
+    simPdf.plotOn(frame3, Slice(sample, "p50"), Components("tmp_M50"), ProjWData(sample, combData), LineStyle(kDashed));
+    simPdf.plotOn(frame3, Slice(sample, "p50"), Components("cball_M50"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
+
+    RooPlot* frame4 = mass->frame( Title("60 GeV sample"));
+    combData.plotOn(frame4, Cut("sample==sample::p60"));
+    simPdf.plotOn(frame4, Slice(sample, "p60"), ProjWData(sample, combData), Binning(100));
+    simPdf.plotOn(frame4, Slice(sample, "p60"), Components("tmp_M60"), ProjWData(sample, combData), LineStyle(kDashed));
+    simPdf.plotOn(frame4, Slice(sample, "p60"), Components("cball_M60"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
+
+
+    TCanvas* c = new TCanvas("SimultaneousFit", "SimultaneousFit", 1600, 800);
+    c->Divide(2, 2);
+    c->cd(1);
+    gPad->SetLeftMargin(0.05);
+    frame1->GetYaxis()->SetTitleOffset(0.9);
+    frame1->Draw();
+    c->cd(2);
+    gPad->SetLeftMargin(0.05);
+    frame2->GetYaxis()->SetTitleOffset(0.9);
+    frame2->Draw();
+    c->cd(3);
+    gPad->SetLeftMargin(0.05);
+    frame3->GetYaxis()->SetTitleOffset(0.9);
+    frame3->Draw();
+    c->cd(4);
+    gPad->SetLeftMargin(0.05);
+    frame4->GetYaxis()->SetTitleOffset(0.9);
+    frame4->Draw();
+
+    c->SaveAs("graph_SimFit.C");
+
+    /*
+     * Plotting parameters
+     */
+    double x[4] = {30, 40, 50, 60};
+    double x_e[4] = {0., 0., 0., 0.};
+    double Mean[4];
+    double MeanE[4];
+    double fixMass = 30;
+    stringstream S;
+    for (int i = 0; i < 4; i++) {
+        S.str("");
+        S << "mean_M" << fixMass;
+        cout << S.str().c_str() << endl;
+        Mean[i] = ((RooRealVar*) fr->floatParsFinal().find(S.str().c_str()))->getVal();
+        MeanE[i] = ((RooRealVar*) fr->floatParsFinal().find(S.str().c_str()))->getError();
+        fixMass += 10;
+    }
+    TGraphErrors * gMean = new TGraphErrors(4, x, Mean, x_e, MeanE);
+    gMean->SetNameTitle("Mean", "Mean");
+
+    double Sigma[4];
+    double SigmaE[4];
+    fixMass = 30;
+    for (int i = 0; i < 4; i++) {
+        S.str("");
+        S << "sigma_M" << fixMass;
+        Sigma[i] = ((RooRealVar*) fr->floatParsFinal().find(S.str().c_str()))->getVal();
+        SigmaE[i] = ((RooRealVar*) fr->floatParsFinal().find(S.str().c_str()))->getError();
+        fixMass += 10;
+    }
+    TGraphErrors * gSigma = new TGraphErrors(4, x, Sigma, x_e, SigmaE);
+    gSigma->SetNameTitle("Sigma", "Sigma");
+
+    double Sigma_cb[4];
+    double Sigma_cbE[4];
+    fixMass = 30;
+    for (int i = 0; i < 4; i++) {
+        S.str("");
+        S << "sigma_cb_M" << fixMass;
+        Sigma_cb[i] = ((RooRealVar*) fr->floatParsFinal().find(S.str().c_str()))->getVal();
+        Sigma_cbE[i] = ((RooRealVar*) fr->floatParsFinal().find(S.str().c_str()))->getError();
+        fixMass += 10;
+    }
+    TGraphErrors * gSigma_cb = new TGraphErrors(4, x, Sigma_cb, x_e, Sigma_cbE);
+    gSigma_cb->SetNameTitle("Sigma_cb", "Sigma_cb");
+
+    //    double Width[4];
+    //    double WidthE[4];
+    //    fixMass = 30;
+    //    for (int i = 0; i < 4; i++) {
+    //        S.str("");
+    //        S << "width_M" << fixMass;
+    //        Width[i] = ((RooRealVar*) fr->floatParsFinal().find(S.str().c_str()))->getVal();
+    //        WidthE[i] = ((RooRealVar*) fr->floatParsFinal().find(S.str().c_str()))->getError();
+    //        fixMass += 10;
+    //    }
+    //    TGraphErrors * gWidth = new TGraphErrors(4, x, Width, x_e, WidthE);
+    //    gWidth->SetNameTitle("Width", "Width");
+
+    //    double N[4];
+    //    double NE[4];
+    //    fixMass = 30;
+    //    for (int i = 0; i < 4; i++) {
+    //        S.str("");
+    //        S << "n_M" << fixMass;
+    //        N[i] = ((RooRealVar*) fr->floatParsFinal().find(S.str().c_str()))->getVal();
+    //        NE[i] = ((RooRealVar*) fr->floatParsFinal().find(S.str().c_str()))->getError();
+    //        fixMass += 10;
+    //    }
+    //    TGraphErrors * gN = new TGraphErrors(4, x, N, x_e, NE);
+    //    gN->SetNameTitle("N", "N");
+
+    TCanvas* c2 = new TCanvas("Graphs", "Graphs", 1600, 800);
+    c2->Divide(3);
+    c2->cd(1);
+    gPad->SetLeftMargin(0.05);
+    gMean->Draw("alp");
+    c2->cd(2);
+    gPad->SetLeftMargin(0.05);
+    gSigma->Draw("alp");
+    c2->cd(3);
+    gPad->SetLeftMargin(0.05);
+    gSigma_cb->Draw("alp");
+    //    c2->cd(4);
+    //    gPad->SetLeftMargin(0.05);
+    //    gWidth->Draw("alp");
+    //    c2->cd(5);
+    //    gPad->SetLeftMargin(0.05);
+    //    gN->Draw("alp");
+
+    c2->SaveAs("Graphs_SimFit.C");
+
+
+    /*
+     * Pseudo data for intermediate points
+     */
+
+    RooAddPdf * m35 = VoigCBMaker(35, mass, inputVars, frac);
+    RooDataSet * d35 = m35->generate(*mass, 6000);
+    RooAddPdf * m45 = VoigCBMaker(45, mass, inputVars, frac);
+    RooDataSet * d45 = m45->generate(*mass, 6000);
+    RooAddPdf * m55 = VoigCBMaker(55, mass, inputVars, frac);
+    RooDataSet * d55 = m55->generate(*mass, 6000);
+    RooAddPdf * m65 = VoigCBMaker(65, mass, inputVars, frac);
+    RooDataSet * d65 = m65->generate(*mass, 6000);
+
+    RooCategory sampleIn("sampleIn", "sampleIn");
+    sampleIn.defineType("p35");
+    sampleIn.defineType("p45");
+    sampleIn.defineType("p55");
+    sampleIn.defineType("p65");
+
+    RooDataSet combDataIn("combDataIn", "combined data", *mass, Index(sampleIn),
+            Import("p35", *d35),
+            Import("p45", *d45),
+            Import("p55", *d55),
+            Import("p65", *d65)
+            );
+
+    RooSimultaneous simPdfInt("simPdfInt", "simultaneous pdf", sampleIn);
+    simPdfInt.addPdf(*m35, "p35");
+    simPdfInt.addPdf(*m45, "p45");
+    simPdfInt.addPdf(*m55, "p55");
+    simPdfInt.addPdf(*m65, "p65");
+    RooFitResult * frIn = simPdfInt.fitTo(combDataIn, RooFit::Save());
+    
+    RooPlot* framIn1 = mass->frame( Title("35 GeV sampleIn"));
+    combDataIn.plotOn(framIn1, Cut("sampleIn==sampleIn::p35"), Binning(100));
+    simPdfInt.plotOn(framIn1, Slice(sampleIn, "p35"), ProjWData(sampleIn, combDataIn));
+    simPdfInt.plotOn(framIn1, Slice(sampleIn, "p35"), Components("tmp_M35"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed));
+    simPdfInt.plotOn(framIn1, Slice(sampleIn, "p35"), Components("cball_M35"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed), LineColor(kRed));
+
+    RooPlot* framIn2 = mass->frame( Title("45 GeV sampleIn"), Binning(100));
+    combDataIn.plotOn(framIn2, Cut("sampleIn==sampleIn::p45"));
+    simPdfInt.plotOn(framIn2, Slice(sampleIn, "p45"), ProjWData(sampleIn, combDataIn));
+    simPdfInt.plotOn(framIn2, Slice(sampleIn, "p45"), Components("tmp_M45"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed));
+    simPdfInt.plotOn(framIn2, Slice(sampleIn, "p45"), Components("cball_M45"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed), LineColor(kRed));
+
+    RooPlot* framIn3 = mass->frame( Title("55 GeV sampleIn"), Binning(100));
+    combDataIn.plotOn(framIn3, Cut("sampleIn==sampleIn::p55"));
+    simPdfInt.plotOn(framIn3, Slice(sampleIn, "p55"), ProjWData(sampleIn, combDataIn));
+    simPdfInt.plotOn(framIn3, Slice(sampleIn, "p55"), Components("tmp_M55"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed));
+    simPdfInt.plotOn(framIn3, Slice(sampleIn, "p55"), Components("cball_M55"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed), LineColor(kRed));
+
+    RooPlot* framIn4 = mass->frame( Title("65 GeV sampleIn"));
+    combDataIn.plotOn(framIn4, Cut("sampleIn==sampleIn::p65"));
+    simPdfInt.plotOn(framIn4, Slice(sampleIn, "p65"), ProjWData(sampleIn, combDataIn), Binning(100));
+    simPdfInt.plotOn(framIn4, Slice(sampleIn, "p65"), Components("tmp_M65"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed));
+    simPdfInt.plotOn(framIn4, Slice(sampleIn, "p65"), Components("cball_M65"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed), LineColor(kRed));
+    
+    TCanvas* c3 = new TCanvas("SimultaneousFitIn", "SimultaneousFitIn", 1600, 800);
+    c3->Divide(2, 2);
+    c3->cd(1);
+    gPad->SetLeftMargin(0.05);
+    framIn1->GetYaxis()->SetTitleOffset(0.9);
+    framIn1->Draw();
+    c3->cd(2);
+    gPad->SetLeftMargin(0.05);
+    framIn2->GetYaxis()->SetTitleOffset(0.9);
+    framIn2->Draw();
+    c3->cd(3);
+    gPad->SetLeftMargin(0.05);
+    framIn3->GetYaxis()->SetTitleOffset(0.9);
+    framIn3->Draw();
+    c3->cd(4);
+    gPad->SetLeftMargin(0.05);
+    framIn4->GetYaxis()->SetTitleOffset(0.9);
+    framIn4->Draw();
+
+    c3->SaveAs("Graph_SimFitIn.C");
+    return 0;
+}
+

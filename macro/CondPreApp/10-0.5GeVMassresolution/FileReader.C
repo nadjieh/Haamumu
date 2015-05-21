@@ -1,8 +1,8 @@
 void presyst(TString s) {
-    TFile * fin = TFile::Open("graphs.root");
+    TFile * fin = TFile::Open("graphs_"+ s +".root");
     TList * l = fin->GetListOfKeys();
     TCanvas C("C", "C", 3, 58, 1185, 658);
-    C.Divide(2,2);
+    C.Divide(3,1);
     TGraphAsymmErrors * gra = 0;
     TGraphErrors * gr = 0;
     //Loop for line
@@ -64,16 +64,17 @@ void presyst(TString s) {
         I++;
     }
 
-    C.SaveAs(s + "_figs.C");
+    C.SaveAs(s + "_figs.gif");
 }
 
 int FileReader() {
     gStyle->SetEndErrorSize(6);
-    /*presyst("b");
-    presyst("JES");
-    presyst("JER");
-    presyst("mu");
-    presyst("pu");*/
-    presyst("AllSyst");
+    presyst("Btag_final");
+    presyst("JES_final");
+    presyst("JER_final");
+    presyst("Mu_final");
+    presyst("PU_final");
+    //presyst("AllSyst");
+    //presyst("_NFAWfixed");
     return 0;
 }
