@@ -48,109 +48,7 @@
 using namespace std;
 using namespace RooFit;
 
-RooCBShape * CBMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
-        RooRealVar * sigma_cb = 0, RooRealVar * n = 0, RooRealVar * alpha = 0) {
-    stringstream s;
-    s << "_M" << Mass;
-    TString Name = s.str().c_str();
-    double widthSigmaCB = (2 * Mass - 1) * 0.01;
-    if (n == 0)
-        n = new RooRealVar("n" + Name, "" + Name, 0, 10);
-    if (alpha == 0)
-        alpha = new RooRealVar("alpha" + Name, "" + Name, 0, 5);
-    if (sigma_cb == 0)
-        sigma_cb = new RooRealVar("sigma_cb" + Name, "Width" + Name, widthSigmaCB, 0., 2 * widthSigmaCB);
-    RooCBShape * CB = new RooCBShape("cball" + Name, "crystal ball" + Name, *mass, *mean, *sigma_cb, *alpha, *n);
-    return CB;
-}
-
-RooVoigtian * VoigMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
-        RooRealVar * sigma = 0, RooRealVar * width = 0) {
-    stringstream s;
-    s << "_M" << Mass;
-    TString Name = s.str().c_str();
-    double sigmaMean = (0.010226 * Mass) - 0.0215593;
-    if (sigma == 0)
-        sigma = new RooRealVar("sigma" + Name, "sigma" + Name, sigmaMean, 0., 2 * sigmaMean);
-    if (width == 0)
-        width = new RooRealVar("width" + Name, "width" + Name, 1, 0., 5);
-    RooVoigtian * Voig = new RooVoigtian("tmp" + Name, "" + Name, *mass, *mean, *width, *sigma);
-    return Voig;
-}
-
-RooAddPdf * VoigCBMaker(double Mass, RooRealVar * mass, std::map< TString, RooRealVar*> inputs, RooRealVar * frac = 0) {
-    stringstream s;
-    s << "_M" << Mass;
-    TString Name = s.str().c_str();
-    RooRealVar * mean = new RooRealVar("mean" + Name, "mean" + Name, Mass, 0.8 * Mass, 1.2 * Mass);
-    RooVoigtian * Voig = VoigMaker(Mass, mass, mean, inputs["sigma"], inputs["width"]);
-    RooCBShape * CB = CBMaker(Mass, mass, mean, inputs["sigma_cb"], inputs["n"], inputs["alpha"]);
-    if (frac == 0)
-        frac = new RooRealVar("frac" + Name, "frac" + Name, 0.5, 0, 1);
-    RooAddPdf * Voig2 = new RooAddPdf("sum" + Name, "Gaussian crystal ball and Voig PDF" + Name, RooArgList(*Voig, *CB), RooArgList(*frac));
-    return Voig2;
-}
-
-/*
- * 
- *//*SimultaneousFit*/
-
-int main() {
-    RooRealVar * mass = new RooRealVar("eventSelectionamassMu", "eventSelectionamassMu", 20, 70);
-    TFile * f30 = TFile::Open("H2ToH1H1_H1To2Mu2B_mH2-125_mH1-30_LowJetPt10_Summer12_final_4_4.root");
-    TTree * t30 = (TTree*) f30->Get("rds_zbb");
-    RooDataSet * d30 = new RooDataSet("d30", "d30", t30, *mass, "");
-    TFile * f40 = TFile::Open("H2ToH1H1_H1To2Mu2B_mH2-125_mH1-40_LowJetPt10_Summer12_final_4_4.root");
-    TTree * t40 = (TTree*) f40->Get("rds_zbb");
-    RooDataSet * d40 = new RooDataSet("d40", "d40", t40, *mass, "");
-    TFile * f50 = TFile::Open("H2ToH1H1_H1To2Mu2B_mH2-125_mH1-50_LowJetPt10_Summer12_final_4_4.root");
-    TTree * t50 = (TTree*) f50->Get("rds_zbb");
-    RooDataSet * d50 = new RooDataSet("d50", "d50", t50, *mass, "");
-    TFile * f60 = TFile::Open("H2ToH1H1_H1To2Mu2B_mH2-125_mH1-60_LowJetPt10_Summer12_final_4_4.root");
-    TTree * t60 = (TTree*) f60->Get("rds_zbb");
-    RooDataSet * d60 = new RooDataSet("d60", "d60", t60, *mass, "");
-
-    RooCategory sample("sample", "sample");
-    sample.defineType("p30");
-    sample.defineType("p40");
-    sample.defineType("p50");
-    sample.defineType("p60");
-
-    RooDataSet combData("combData", "combined data", *mass, Index(sample),
-            Import("p30", *d30),
-            Import("p40", *d40),
-            Import("p50", *d50),
-            Import("p60", *d60)
-            );
-
-    std::map< TString, RooRealVar *> inputVars;
-    //*AFTER FIXING FRAC:* alpha,n: -0.824042
-    //*AFTER FIXING FRAC:* 1  alpha        9.87339e-01   3.69894e-02   1.24114e-03  -6.49847e-01
-    inputVars["alpha"] = new RooRealVar("alpha", "", 9.87339e-01);
-    inputVars["sigma"] = 0;
-    inputVars["sigma_cb"] = 0;
-
-    //*AFTER FIXING FRAC AND ALPHA:* 17  width        8.24026e-02   9.61136e-03   3.54104e-04  -1.31333e+00
-    inputVars["width"] = new RooRealVar("width", "width", 8.24026e-02); //0;
-
-    //*AFTER FIXING FRAC AND ALPHA:* n,sigma: 0.621405 (n has big correlation with sigma_cb, too.)
-    //*AFTER FIXING FRAC AND ALPHA:* 5  n            2.22999e+00   5.09997e-02   1.52068e-03  -5.87163e-01
-    //*AFTER FIXING FRAC AND ALPHA AND WIDTH:* 5  n            3.55967e+00   1.22480e-01   1.51230e-04  -2.92207e-01
-    inputVars["n"] = new RooRealVar("n", "", 3.55967e+00); //0;
-
-    // 5  frac         6.09832e-01   4.50521e-02   5.52433e-04   2.21470e-01
-    RooRealVar* frac = new RooRealVar("frac", "frac", 6.09832e-01);
-    RooAddPdf * m30 = VoigCBMaker(30, mass, inputVars, frac);
-    RooAddPdf * m40 = VoigCBMaker(40, mass, inputVars, frac);
-    RooAddPdf * m50 = VoigCBMaker(50, mass, inputVars, frac);
-    RooAddPdf * m60 = VoigCBMaker(60, mass, inputVars, frac);
-
-    RooSimultaneous simPdf("simPdf", "simultaneous pdf", sample);
-    simPdf.addPdf(*m30, "p30");
-    simPdf.addPdf(*m40, "p40");
-    simPdf.addPdf(*m50, "p50");
-    simPdf.addPdf(*m60, "p60");
-    RooFitResult * fr = simPdf.fitTo(combData, RooFit::Save());
+void PrintFr(RooFitResult * fr) {
     cout << "\n\n\nCorrelations: " << endl;
     TString syst = "_M30";
     cout << "\t" << syst << " ===================== " << endl;
@@ -244,6 +142,185 @@ int main() {
     cout << "\tsigma_cb,sigma: " << fr->correlation("sigma_cb" + syst, "sigma" + syst) << endl;
     cout << "\tsigma_cb,mean: " << fr->correlation("mean" + syst, "sigma_cb" + syst) << endl;
     cout << "\tsigma,mean: " << fr->correlation("mean" + syst, "sigma" + syst) << endl;
+}
+
+RooCBShape * CBMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
+        RooRealVar * sigma_cb = 0, RooRealVar * n = 0, RooRealVar * alpha = 0) {
+    stringstream s;
+    s << "_M" << Mass;
+    TString Name = s.str().c_str();
+    double widthSigmaCB = (2 * Mass - 1) * 0.01;
+    if (n == 0)
+        n = new RooRealVar("n" + Name, "" + Name, 0, 10);
+    if (alpha == 0)
+        alpha = new RooRealVar("alpha" + Name, "" + Name, 0, 5);
+    if (sigma_cb == 0)
+        sigma_cb = new RooRealVar("sigma_cb" + Name, "Width" + Name, 2.3, 0, 260.);
+    //        sigma_cb = new RooRealVar("sigma_cb" + Name, "Width" + Name, widthSigmaCB, 0., 2 * widthSigmaCB);
+    RooCBShape * CB = new RooCBShape("cball" + Name, "crystal ball" + Name, *mass, *mean, *sigma_cb, *alpha, *n);
+    return CB;
+}
+
+RooVoigtian * VoigMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
+        RooRealVar * sigma = 0, RooRealVar * width = 0) {
+    stringstream s;
+    s << "_M" << Mass;
+    TString Name = s.str().c_str();
+    double sigmaMean = (0.010226 * Mass) - 0.0215593;
+    if (sigma == 0)
+        sigma = new RooRealVar("sigma" + Name, "sigma" + Name, 0, 2.5);
+    //        sigma = new RooRealVar("sigma" + Name, "sigma" + Name, sigmaMean, 0., 2 * sigmaMean);
+    if (width == 0)
+        width = new RooRealVar("width" + Name, "width" + Name, 1, 0., 5);
+    RooVoigtian * Voig = new RooVoigtian("tmp" + Name, "" + Name, *mass, *mean, *width, *sigma);
+    return Voig;
+}
+
+RooAddPdf * VoigCBMaker(double Mass, RooRealVar * mass, std::map< TString, RooRealVar*> inputs, RooRealVar * frac = 0) {
+    stringstream s;
+    s << "_M" << Mass;
+    TString Name = s.str().c_str();
+    RooRealVar * mean = new RooRealVar("mean" + Name, "mean" + Name, Mass, 0.8 * Mass, 1.2 * Mass);
+    RooVoigtian * Voig = VoigMaker(Mass, mass, mean, inputs["sigma"], inputs["width"]);
+    RooCBShape * CB = CBMaker(Mass, mass, mean, inputs["sigma_cb"], inputs["n"], inputs["alpha"]);
+    if (frac == 0)
+        frac = new RooRealVar("frac" + Name, "frac" + Name, 0.5, 0, 1);
+    RooAddPdf * Voig2 = new RooAddPdf("sum" + Name, "Gaussian crystal ball and Voig PDF" + Name, RooArgList(*Voig, *CB), RooArgList(*frac));
+    return Voig2;
+}
+
+/*
+ * 
+ *//*SimultaneousFit*/
+
+int main(int argc, char** argv) {
+    TFile * f30 = 0;
+    TFile * f40 = 0;
+    TFile * f50 = 0;
+    TFile * f60 = 0;
+    RooDataSet * d30;
+    RooDataSet * d40;
+    RooDataSet * d50;
+    RooDataSet * d60;
+    TString sys = "";
+    TString pref1 = "H2ToH1H1_H1To2Mu2B_mH2-125_mH1-";
+    TString pref2 = "_LowJetPt10_Summer12_final_4_4.root";
+    TString prefsys1 = "H2ToH1H1_H1To2Mu2B_mH2-125_mH1_";
+    TString prefsys2 = "_Summer12_final_4_4.root";
+    double fracMean = -1000.;
+    double alphaMean = -1000.;
+    double widthMean = -1000.;
+    double nMean = -1000.;
+    std::map< TString, RooRealVar *> inputVars;
+    inputVars["alpha"] = 0;
+    inputVars["sigma"] = 0;
+    inputVars["sigma_cb"] = 0;
+    inputVars["width"] = 0;
+    inputVars["n"] = 0;
+    RooRealVar* frac = new RooRealVar("frac", "frac", 0.5, 0, 1);
+    for (int f = 1; f < argc; f++) {
+        std::string arg_fth(*(argv + f));
+        if (arg_fth == "syst") {
+            f++;
+            std::string out(*(argv + f));
+            sys = out;
+        } else if (arg_fth == "Frac") {
+            f++;
+            std::string out(*(argv + f));
+            double fracTmp = std::atof(out.c_str());
+            frac = new RooRealVar("frac", "frac", fracTmp, 0, 1);
+        } else if (arg_fth == "frac") {
+            f++;
+            std::string out(*(argv + f));
+            fracMean = std::atof(out.c_str());
+            frac = new RooRealVar("frac", "frac", fracMean);
+            inputVars["alpha"] = new RooRealVar("alpha", "", 0, 5);
+        } else if (arg_fth == "alpha") {
+            if (fracMean == -1000.) {
+                cout << "First fix frac value!!" << endl;
+                return -1;
+            }
+            f++;
+            std::string out(*(argv + f));
+            alphaMean = std::atof(out.c_str());
+            inputVars["alpha"] = new RooRealVar("alpha", "", alphaMean);
+            inputVars["width"] = new RooRealVar("width", "", 1, 0, 5);
+        } else if (arg_fth == "width") {
+            if (alphaMean == -1000.) {
+                cout << "First fix alpha (after frac) value!!" << endl;
+                return -1;
+            }
+            f++;
+            std::string out(*(argv + f));
+            widthMean = std::atof(out.c_str());
+            inputVars["width"] = new RooRealVar("width", "", widthMean);
+            inputVars["n"] = new RooRealVar("n", "", 0, 10);
+        } else if (arg_fth == "n") {
+            if (widthMean == -1000.) {
+                cout << "First fix width (after frac and alpha) value!!" << endl;
+                return -1;
+            }
+            f++;
+            std::string out(*(argv + f));
+            nMean = std::atof(out.c_str());
+            inputVars["n"] = new RooRealVar("n", "", nMean);
+        }
+    }
+    RooRealVar * mass = new RooRealVar("eventSelectionamassMu", "eventSelectionamassMu", 20, 70);
+    if (sys == "") {
+        f30 = TFile::Open(pref1 + "30" + pref2);
+        TTree * t30 = (TTree*) f30->Get("rds_zbb");
+        d30 = new RooDataSet("d30", "d30", t30, *mass, "");
+        f40 = TFile::Open(pref1 + "40" + pref2);
+        TTree * t40 = (TTree*) f40->Get("rds_zbb");
+        d40 = new RooDataSet("d40", "d40", t40, *mass, "");
+        f50 = TFile::Open(pref1 + "50" + pref2);
+        TTree * t50 = (TTree*) f50->Get("rds_zbb");
+        d50 = new RooDataSet("d50", "d50", t50, *mass, "");
+        f60 = TFile::Open(pref1 + "60" + pref2);
+        TTree * t60 = (TTree*) f60->Get("rds_zbb");
+        d60 = new RooDataSet("d60", "d60", t60, *mass, "");
+    } else {
+        f30 = TFile::Open(sys + TString("_") + prefsys1 + "30" + prefsys2);
+        TTree * t30 = (TTree*) f30->Get("rds_zbb");
+        d30 = new RooDataSet("d30", "d30", t30, *mass, "");
+        f40 = TFile::Open(sys + TString("_") + prefsys1 + "40" + prefsys2);
+        TTree * t40 = (TTree*) f40->Get("rds_zbb");
+        d40 = new RooDataSet("d40", "d40", t40, *mass, "");
+        f50 = TFile::Open(sys + TString("_") + prefsys1 + "50" + prefsys2);
+        TTree * t50 = (TTree*) f50->Get("rds_zbb");
+        d50 = new RooDataSet("d50", "d50", t50, *mass, "");
+        f60 = TFile::Open(sys + TString("_") + prefsys1 + "60" + prefsys2);
+        TTree * t60 = (TTree*) f60->Get("rds_zbb");
+        d60 = new RooDataSet("d60", "d60", t60, *mass, "");
+    }
+    RooCategory sample("sample", "sample");
+    sample.defineType("p30");
+    sample.defineType("p40");
+    sample.defineType("p50");
+    sample.defineType("p60");
+
+    RooDataSet combData("combData", "combined data", *mass, Index(sample),
+            Import("p30", *d30),
+            Import("p40", *d40),
+            Import("p50", *d50),
+            Import("p60", *d60)
+            );
+
+
+    RooAddPdf * m30 = VoigCBMaker(30, mass, inputVars, frac);
+    RooAddPdf * m40 = VoigCBMaker(40, mass, inputVars, frac);
+    RooAddPdf * m50 = VoigCBMaker(50, mass, inputVars, frac);
+    RooAddPdf * m60 = VoigCBMaker(60, mass, inputVars, frac);
+
+    RooSimultaneous simPdf("simPdf", "simultaneous pdf", sample);
+    simPdf.addPdf(*m30, "p30");
+    simPdf.addPdf(*m40, "p40");
+    simPdf.addPdf(*m50, "p50");
+    simPdf.addPdf(*m60, "p60");
+    RooFitResult * fr = simPdf.fitTo(combData, RooFit::Save());
+
+    //    PrintFr(fr);
 
 
     RooPlot* frame1 = mass->frame(Title("30 GeV sample"));
@@ -290,7 +367,7 @@ int main() {
     frame4->GetYaxis()->SetTitleOffset(0.9);
     frame4->Draw();
 
-    c->SaveAs("graph_SimFit.C");
+    c->SaveAs(sys + "graph_SimFit.C");
 
     /*
      * Plotting parameters
@@ -382,8 +459,9 @@ int main() {
     //    gPad->SetLeftMargin(0.05);
     //    gN->Draw("alp");
 
-    c2->SaveAs("Graphs_SimFit.C");
+    c2->SaveAs(sys + "Graphs_SimFit.C");
 
+#ifdef INTERMEDIATE
 
     /*
      * Pseudo data for intermediate points
@@ -461,7 +539,9 @@ int main() {
     framIn4->GetYaxis()->SetTitleOffset(0.9);
     framIn4->Draw();
 
-    c3->SaveAs("Graph_SimFitIn.C");
+    c3->SaveAs(sys + "Graph_SimFitIn.C");
+#endif
+#ifdef TESTONPD
     /*
      * Test on a pseudo data with background using functional form for parameters
      * Mass = 47 GeV
@@ -495,12 +575,12 @@ int main() {
             , RooArgList(*mass));
     RooRealVar mean_fit("mean_fit", "mean", 20., 70.);
     RooFormulaVar sigma_fit("sigma_fit", "(0.010226*@0)-0.0215593", RooArgList(*mass));
-    RooRealVar width_fit("width_fit", "width", inputVars["width"]->getVal());
+    RooRealVar width_fit("width_fit", "width", 1, 0., 5);
     RooVoigtian Voig_fit("tmp_fit", "", *mass, mean_fit, width_fit, sigma_fit);
-    RooRealVar n_fit("n_fit", "", inputVars["n"]->getVal());
-    RooRealVar alpha_fit("alpha_fit", "", inputVars["alpha"]->getVal());
+    RooRealVar n_fit("n_fit", "", 0, 10);
+    RooRealVar alpha_fit("alpha_fit", "", 0, 5);
     RooCBShape CB_fit("cball_fit", "crystal ball", *mass, mean_fit, sigma_cb_fit, alpha_fit, n_fit);
-    RooRealVar frac_fit("frac_fit", "frac", frac->getVal());
+    RooRealVar frac_fit("frac_fit", "frac", 0.5, 0., 1);
     RooAddPdf Voig2_fit("sum_fit", "Gaussian crystal ball and Voig PDF", RooArgList(Voig_fit, CB_fit), RooArgList(frac_fit));
 
     RooRealVar beta_fit("beta_fit", "", -0.5, 0.5);
@@ -523,8 +603,9 @@ int main() {
     frame5->GetYaxis()->SetTitleOffset(0.9);
     frame5->Draw();
 
-    c4->SaveAs("Graph_TestParam.C");
-    return 0;
+    c4->SaveAs(sys + "Graph_TestParam.C");
+#endif
 
+    return 0;
 }
 

@@ -1,6 +1,6 @@
 {
 //=========Macro generated from canvas: Graphs/Graphs
-//=========  (Sat May 23 17:45:35 2015) by ROOT version5.34/19
+//=========  (Sat May 23 17:46:22 2015) by ROOT version5.34/19
    TCanvas *Graphs = new TCanvas("Graphs", "Graphs",0,0,1600,800);
    Graphs->SetHighLightColor(2);
    Graphs->Range(0,0,1,1);
@@ -24,14 +24,14 @@
    gre->SetName("Mean");
    gre->SetTitle("Mean");
    gre->SetFillColor(1);
-   gre->SetPoint(0,30,29.96153);
-   gre->SetPointError(0,0,0.005427939);
-   gre->SetPoint(1,40,39.95142);
-   gre->SetPointError(1,0,0.007200891);
-   gre->SetPoint(2,50,49.9037);
-   gre->SetPointError(2,0,0.008560994);
-   gre->SetPoint(3,60,59.89987);
-   gre->SetPointError(3,0,0.009723945);
+   gre->SetPoint(0,30,29.96007);
+   gre->SetPointError(0,0,0.005306763);
+   gre->SetPoint(1,40,39.95366);
+   gre->SetPointError(1,0,0.006960544);
+   gre->SetPoint(2,50,49.91278);
+   gre->SetPointError(2,0,0.008353764);
+   gre->SetPoint(3,60,59.90221);
+   gre->SetPointError(3,0,0.009417526);
    gre->Draw("alp");
    Graphs_1->Modified();
    Graphs->cd();
@@ -51,20 +51,20 @@
    gre->SetName("Sigma");
    gre->SetTitle("Sigma");
    gre->SetFillColor(1);
-   gre->SetPoint(0,30,0.2787429);
-   gre->SetPointError(0,0,0.007031842);
-   gre->SetPoint(1,40,0.3743713);
-   gre->SetPointError(1,0,0.009210511);
-   gre->SetPoint(2,50,0.4821505);
-   gre->SetPointError(2,0,0.01117084);
-   gre->SetPoint(3,60,0.5838269);
-   gre->SetPointError(3,0,0.01140096);
+   gre->SetPoint(0,30,0.2794242);
+   gre->SetPointError(0,0,0.00659359);
+   gre->SetPoint(1,40,0.3714905);
+   gre->SetPointError(1,0,0.008765598);
+   gre->SetPoint(2,50,0.4833495);
+   gre->SetPointError(2,0,0.01066242);
+   gre->SetPoint(3,60,0.5810202);
+   gre->SetPointError(3,0,0.01098746);
    TF1 *Pol1 = new TF1("Pol1","pol1",27,63);
    Pol1->SetFillColor(19);
    Pol1->SetFillStyle(0);
    Pol1->SetLineColor(2);
    Pol1->SetLineWidth(2);
-   Pol1->SetChisquare(0.326662);
+   Pol1->SetChisquare(0.8557202);
    Pol1->SetNDF(2);
    Pol1->GetXaxis()->SetLabelFont(42);
    Pol1->GetXaxis()->SetLabelSize(0.035);
@@ -74,11 +74,11 @@
    Pol1->GetYaxis()->SetLabelSize(0.035);
    Pol1->GetYaxis()->SetTitleSize(0.035);
    Pol1->GetYaxis()->SetTitleFont(42);
-   Pol1->SetParameter(0,-0.02817524);
-   Pol1->SetParError(0,0.01738391);
+   Pol1->SetParameter(0,-0.025579);
+   Pol1->SetParError(0,0.01646716);
    Pol1->SetParLimits(0,0,0);
-   Pol1->SetParameter(1,0.01017779);
-   Pol1->SetParError(1,0.0004123951);
+   Pol1->SetParameter(1,0.01009786);
+   Pol1->SetParError(1,0.0003927586);
    Pol1->SetParLimits(1,0,0);
    gre->GetListOfFunctions()->Add(Pol1);
    gre->Draw("alp");
@@ -109,21 +109,20 @@
    gre->SetName("Sigma_cb");
    gre->SetTitle("Sigma_cb");
    gre->SetFillColor(1);
-   gre->SetPoint(0,30,0.477997);
-   gre->SetPointError(0,0,0.01418597);
-   gre->SetPoint(1,40,0.6468398);
-   gre->SetPointError(1,0,0.01882981);
-   gre->SetPoint(2,50,0.802282);
-   gre->SetPointError(2,0,0.0221238);
-   gre->SetPoint(3,60,1.038351);
-   gre->SetPointError(3,0,0.02361044);
-
+   gre->SetPoint(0,30,0.4872351);
+   gre->SetPointError(0,0,0.01253741);
+   gre->SetPoint(1,40,0.6505005);
+   gre->SetPointError(1,0,0.01689827);
+   gre->SetPoint(2,50,0.8110403);
+   gre->SetPointError(2,0,0.01985502);
+   gre->SetPoint(3,60,1.043565);
+   gre->SetPointError(3,0,0.02114788);
    TF1 *Pol2 = new TF1("Pol2","pol2",27,63);
    Pol2->SetFillColor(19);
    Pol2->SetFillStyle(0);
    Pol2->SetLineColor(2);
    Pol2->SetLineWidth(2);
-   Pol2->SetChisquare(1.058198);
+   Pol2->SetChisquare(0.83031);
    Pol2->SetNDF(1);
    Pol2->GetXaxis()->SetLabelFont(42);
    Pol2->GetXaxis()->SetLabelSize(0.035);
@@ -133,18 +132,19 @@
    Pol2->GetYaxis()->SetLabelSize(0.035);
    Pol2->GetYaxis()->SetTitleSize(0.035);
    Pol2->GetYaxis()->SetTitleFont(42);
-   Pol2->SetParameter(0,0.1924287);
-   Pol2->SetParError(0,0.1780336);
+   Pol2->SetParameter(0,0.2202263);
+   Pol2->SetParError(0,0.1590087);
    Pol2->SetParLimits(0,0,0);
-   Pol2->SetParameter(1,0.005194728);
-   Pol2->SetParError(1,0.008607503);
+   Pol2->SetParameter(1,0.004277578);
+   Pol2->SetParError(1,0.007697109);
    Pol2->SetParLimits(1,0,0);
-   Pol2->SetParameter(2,0.0001466569);
-   Pol2->SetParError(2,9.789726e-05);
+   Pol2->SetParameter(2,0.0001560316);
+   Pol2->SetParError(2,8.759765e-05);
    Pol2->SetParLimits(2,0,0);
    gre->GetListOfFunctions()->Add(Pol2);
    gre->Draw("alp");
-      pt = new TPaveText(0.3680195,0.94,0.6319805,0.995,"blNDC");
+   
+   pt = new TPaveText(0.3680195,0.94,0.6319805,0.995,"blNDC");
    pt->SetName("title");
    pt->SetBorderSize(0);
    pt->SetFillColor(0);
@@ -152,7 +152,6 @@
    pt->SetTextFont(42);
    text = pt->AddText("Sigma_cb");
    pt->Draw();
-   
    Graphs_3->Modified();
    Graphs->cd();
    Graphs->Modified();
