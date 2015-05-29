@@ -35,8 +35,8 @@ void DrawMine(bool yLogScale, TString Mass,int rebin=1){
    tleg->SetTextSize(0.045);
    tleg->SetBorderSize(0);
    tleg->SetFillColor(10);
-   tleg->AddEntry(h_new, "FullSim" , "lp");
-   tleg->AddEntry(h_old, "FastSim" , "le");
+   tleg->AddEntry(h_new, "Reweighted" , "lp");
+   tleg->AddEntry(h_old, "Original" , "le");
 
 
    double max = -999.;

@@ -42,7 +42,8 @@ int main(int argc, char** argv) {
     hop.push_back(new MetSig());
     hop.push_back(new HiggsMass());
     hop.push_back(new DRMuMu());
-
+    TString Mass = "";
+    TFile * weightFile = 0;
     std::vector<int> steps;
     for (int f = 1; f < argc; f++) {
         std::string arg_fth(*(argv + f));
@@ -51,6 +52,13 @@ int main(int argc, char** argv) {
             std::string out(*(argv + f));
             TFile * fMC = TFile::Open(out.c_str());
             rds = new RDS((TTree*) fMC->Get(treename));
+            int pos = out.find("1-");
+            string sub = out.substr(pos + 2);
+            string sub2 = sub.substr(0, 2);
+            Mass = sub2.c_str();
+            weightFile = TFile::Open("rdsgen" + Mass + ".root");
+            cout<<weightFile->GetName()<<endl;
+
         } else if (arg_fth == "data") {
             f++;
             std::string out(*(argv + f));
@@ -68,11 +76,11 @@ int main(int argc, char** argv) {
         } else if (arg_fth == "hpt") {
             f++;
             doHpt = true;
-            outname = "hPtRw_"+outname;
-        } 
+            outname = "hPtRw_" + outname;
+        }
     }
 
-	cout<<"reweighting: "<<doHpt<<endl;
+    cout << "reweighting: " << doHpt << endl;
     std::vector<HambHist*> myHists;
     stringstream s;
     for (unsigned int i = 0; i < steps.size(); i++) {
@@ -92,29 +100,28 @@ int main(int argc, char** argv) {
     TH1D * aptMu = new TH1D("aptMu", "aptMu", 50, 0, 1000);
     TH1D * aptBjet = new TH1D("aptBjet", "aptBjet", 50, 0, 1000);
     TH1D *amassBjet = new TH1D("amassBjet", "amassBjet", 100, 0, 1000);
-    TH2D *amassMuhMass = new TH2D("amassMuhMass", "amassMuhMass", 500, 0, 1000,50, 0, 1000);    
-    TH2D *amassMuhMass125 = new TH2D("amassMuhMass125", "amassMuhMass", 500, 0, 1000,1000, 0, 1000); 
-    TH2D *amassMuMETSig = new TH2D("amassMETSig", "amassMETSig", 500, 0, 1000,1000, 0, 1000);                   
+    TH2D *amassMuhMass = new TH2D("amassMuhMass", "amassMuhMass", 500, 0, 1000, 50, 0, 1000);
+    TH2D *amassMuhMass125 = new TH2D("amassMuhMass125", "amassMuhMass", 500, 0, 1000, 1000, 0, 1000);
+    TH2D *amassMuMETSig = new TH2D("amassMETSig", "amassMETSig", 500, 0, 1000, 1000, 0, 1000);
     int n40 = 0;
     int n40t = 0;
     int n50 = 0;
     int n50t = 0;
     int n60 = 0;
     int n60t = 0;
-	TFile * wF = TFile::Open("higgs_pt-eta.root");
-	TH2D * h2D = (TH2D*)wF->Get("GF_cent");
-	TH1D * wH = h2D->ProjectionY("wH");
+    TH1D * wH = (TH1D*) weightFile->Get("step_0/weight");
+    cout << "wH " << wH << endl;
     for (int eventNumber = 0; eventNumber < rds->fChain->GetEntriesFast(); eventNumber++) {
         rds->GetEntry(eventNumber);
-        if(rds->eventSelectionamassMu < 20)
-        	continue;
-        
+        if (rds->eventSelectionamassMu < 20)
+            continue;
+
         //if(!(rds->eventSelectionmu1pt > 26. && rds->eventSelectionmu2pt > 10.))
         //        continue;
         //Make it blind
         /*if (fabs(rds->eventSelectionhMass-125) < 20) {
-        	if(fabs(rds->eventSelectionamassMu-30)< 1 || fabs(rds->eventSelectionamassMu-40)< 1 || fabs(rds->eventSelectionamassMu-50)< 1 || fabs(rds->eventSelectionamassMu-60)< 1 )
-	            continue;
+                if(fabs(rds->eventSelectionamassMu-30)< 1 || fabs(rds->eventSelectionamassMu-40)< 1 || fabs(rds->eventSelectionamassMu-50)< 1 || fabs(rds->eventSelectionamassMu-60)< 1 )
+                    continue;
         } */
         if (rds->eventSelectionamassMu > 30 && rds->eventSelectionamassMu < 50) {
             n40++;
@@ -123,47 +130,47 @@ int main(int argc, char** argv) {
         } else if (rds->eventSelectionamassMu > 50 && rds->eventSelectionamassMu < 70) {
             n60++;
         }
-       // if (fabs(((RDS*) rds)->mcSelectionFlavLepNeg) == 15 || fabs(((RDS*) rds)->mcSelectionFlavLepPos) == 15) {
-            if (rds->eventSelectionamassMu > 30 && rds->eventSelectionamassMu < 50) {
-                n40t++;
-            } else if (rds->eventSelectionamassMu > 40 && rds->eventSelectionamassMu < 60) {
-                n50t++;
-            } else if (rds->eventSelectionamassMu > 50 && rds->eventSelectionamassMu < 70) {
-                n60t++;
-            }
+        // if (fabs(((RDS*) rds)->mcSelectionFlavLepNeg) == 15 || fabs(((RDS*) rds)->mcSelectionFlavLepPos) == 15) {
+        if (rds->eventSelectionamassMu > 30 && rds->eventSelectionamassMu < 50) {
+            n40t++;
+        } else if (rds->eventSelectionamassMu > 40 && rds->eventSelectionamassMu < 60) {
+            n50t++;
+        } else if (rds->eventSelectionamassMu > 50 && rds->eventSelectionamassMu < 70) {
+            n60t++;
+        }
 
-            double weight = rds->getWeight();
-            //        cout<< weight << endl;
-            if (weight < 0)
-                weight = 1.;
-            double genHpx = ((RDS*) rds)->mcSelectionSMHiggsPx;
-            double genHpy = ((RDS*) rds)->mcSelectionSMHiggsPy;
-            double genHpt = sqrt(pow(genHpx,2)+pow(genHpy,2));
-            int bin = wH->GetXaxis()->FindBin(genHpt);
-            //cout<<"gen hPt "<< genHpt << ", weight: "<<wH->GetBinContent(bin)<<endl;
-            if(doHpt)
-	            weight*=wH->GetBinContent(bin);
-            mu1pt->Fill(rds->eventSelectionmu1pt, weight);
-            mu2pt->Fill(rds->eventSelectionmu2pt, weight);
-            amassMu->Fill(rds->eventSelectionamassMu, weight);
-            hPt->Fill(rds->eventSelectionhPt, weight);
-            hMass->Fill(rds->eventSelectionhMass, weight);
-            aptMu->Fill(rds->eventSelectionaptMu, weight);
-            aptBjet->Fill(rds->eventSelectionaptBjet, weight);
-            jet1pt->Fill(rds->jetmetjet1pt, weight);
-            jet2pt->Fill(rds->jetmetjet2pt, weight);
-            met->Fill(rds->eventSelectionMET_hamb, weight);
-            amassBjet->Fill(rds->eventSelectionamassBjet, weight);
-            amassMuhMass->Fill(rds->eventSelectionamassMu,rds->eventSelectionhMass, weight);
-            amassMuhMass125->Fill(rds->eventSelectionamassMu,fabs(rds->eventSelectionhMass-125), weight);
-       // }
+        double weight = rds->getWeight();
+        //        cout<< weight << endl;
+        if (weight < 0)
+            weight = 1.;
+        double genHpx = ((RDS*) rds)->mcSelectionSMHiggsPx;
+        double genHpy = ((RDS*) rds)->mcSelectionSMHiggsPy;
+        double genHpt = sqrt(pow(genHpx, 2) + pow(genHpy, 2));
+        int bin = wH->GetXaxis()->FindBin(genHpt);
+        //cout<<"gen hPt "<< genHpt << ", weight: "<<wH->GetBinContent(bin)<<endl;
+        if (doHpt)
+            weight *= wH->GetBinContent(bin);
+        mu1pt->Fill(rds->eventSelectionmu1pt, weight);
+        mu2pt->Fill(rds->eventSelectionmu2pt, weight);
+        amassMu->Fill(rds->eventSelectionamassMu, weight);
+        hPt->Fill(rds->eventSelectionhPt, weight);
+        hMass->Fill(rds->eventSelectionhMass, weight);
+        aptMu->Fill(rds->eventSelectionaptMu, weight);
+        aptBjet->Fill(rds->eventSelectionaptBjet, weight);
+        jet1pt->Fill(rds->jetmetjet1pt, weight);
+        jet2pt->Fill(rds->jetmetjet2pt, weight);
+        met->Fill(rds->eventSelectionMET_hamb, weight);
+        amassBjet->Fill(rds->eventSelectionamassBjet, weight);
+        amassMuhMass->Fill(rds->eventSelectionamassMu, rds->eventSelectionhMass, weight);
+        amassMuhMass125->Fill(rds->eventSelectionamassMu, fabs(rds->eventSelectionhMass - 125), weight);
+        // }
     }
-    double err = ((double)n40t/(double)n40)*sqrt(1./(double)n40t+1./(double)n40);
-    cout<<"40: "<<(double)n40t/(double)n40<<" +- "<<err<<endl;
-    err = ((double)n50t/(double)n50)*sqrt(1./(double)n50t+1./(double)n50);
-    cout<<"50: "<<(double)n50t/(double)n50<<" +- "<<err<<endl;
-    err = ((double)n60t/(double)n60)*sqrt(1./(double)n60t+1./(double)n60);    
-    cout<<"60: "<<(double)n60t/(double)n60<<" +- "<<err<<endl;
+    double err = ((double) n40t / (double) n40) * sqrt(1. / (double) n40t + 1. / (double) n40);
+    cout << "40: " << (double) n40t / (double) n40 << " +- " << err << endl;
+    err = ((double) n50t / (double) n50) * sqrt(1. / (double) n50t + 1. / (double) n50);
+    cout << "50: " << (double) n50t / (double) n50 << " +- " << err << endl;
+    err = ((double) n60t / (double) n60) * sqrt(1. / (double) n60t + 1. / (double) n60);
+    cout << "60: " << (double) n60t / (double) n60 << " +- " << err << endl;
 
     TFile * out = new TFile(outname, "recreate");
 

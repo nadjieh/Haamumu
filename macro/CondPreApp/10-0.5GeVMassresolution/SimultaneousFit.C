@@ -14,6 +14,7 @@
 #include "RooDataSet.h"
 #include "RooGaussian.h"
 #include "RooExponential.h"
+#include "RooDataHist.h"
 #include "RooConstVar.h"
 #include "RooChebychev.h"
 #include "RooAddPdf.h"
@@ -198,15 +199,24 @@ int main(int argc, char** argv) {
     TFile * f40 = 0;
     TFile * f50 = 0;
     TFile * f60 = 0;
+    TFile * fh30 = 0;
+    TFile * fh40 = 0;
+    TFile * fh50 = 0;
+    TFile * fh60 = 0;
     RooDataSet * d30;
     RooDataSet * d40;
     RooDataSet * d50;
     RooDataSet * d60;
+    RooDataHist * dh30;
+    RooDataHist * dh40;
+    RooDataHist * dh50;
+    RooDataHist * dh60;
     TString sys = "";
     TString pref1 = "H2ToH1H1_H1To2Mu2B_mH2-125_mH1-";
     TString pref2 = "_LowJetPt10_Summer12_final_4_4.root";
     TString prefsys1 = "H2ToH1H1_H1To2Mu2B_mH2-125_mH1_";
     TString prefsys2 = "_Summer12_final_4_4.root";
+    TString prefsys3 = "_Summer12.root";
     double fracMean = -1000.;
     double alphaMean = -1000.;
     double widthMean = -1000.;
@@ -218,12 +228,14 @@ int main(int argc, char** argv) {
     inputVars["width"] = 0;
     inputVars["n"] = 0;
     RooRealVar* frac = new RooRealVar("frac", "frac", 0.5, 0, 1);
+    bool binned = false;
     for (int f = 1; f < argc; f++) {
         std::string arg_fth(*(argv + f));
         if (arg_fth == "syst") {
             f++;
             std::string out(*(argv + f));
             sys = out;
+            cout << "begin!" << endl;
         } else if (arg_fth == "Frac") {
             f++;
             std::string out(*(argv + f));
@@ -264,8 +276,13 @@ int main(int argc, char** argv) {
             std::string out(*(argv + f));
             nMean = std::atof(out.c_str());
             inputVars["n"] = new RooRealVar("n", "", nMean);
+        } else if (arg_fth == "binned") {
+            std::string out(*(argv + f));
+            binned = true;
         }
     }
+    if (binned)
+        cout << "I am using histograms" << endl;
     RooRealVar * mass = new RooRealVar("eventSelectionamassMu", "eventSelectionamassMu", 20, 70);
     if (sys == "") {
         f30 = TFile::Open(pref1 + "30" + pref2);
@@ -280,6 +297,19 @@ int main(int argc, char** argv) {
         f60 = TFile::Open(pref1 + "60" + pref2);
         TTree * t60 = (TTree*) f60->Get("rds_zbb");
         d60 = new RooDataSet("d60", "d60", t60, *mass, "");
+
+        fh30 = TFile::Open(pref1 + "30" + prefsys3);
+        TH1D * h30 = (TH1D*) fh30->Get("eventSelectionamassMu");
+        dh30 = new RooDataHist("dh30", "dh30", *mass, h30);
+        fh40 = TFile::Open(pref1 + "40" + prefsys3);
+        TH1D * h40 = (TH1D*) fh40->Get("eventSelectionamassMu");
+        dh40 = new RooDataHist("dh40", "dh40", *mass, h40);
+        fh50 = TFile::Open(pref1 + "50" + prefsys3);
+        TH1D * h50 = (TH1D*) fh50->Get("eventSelectionamassMu");
+        dh50 = new RooDataHist("dh50", "dh50", *mass, h50);
+        fh60 = TFile::Open(pref1 + "60" + prefsys3);
+        TH1D * h60 = (TH1D*) fh60->Get("eventSelectionamassMu");
+        dh60 = new RooDataHist("dh60", "dh60", *mass, h60);
     } else {
         f30 = TFile::Open(sys + TString("_") + prefsys1 + "30" + prefsys2);
         TTree * t30 = (TTree*) f30->Get("rds_zbb");
@@ -293,18 +323,44 @@ int main(int argc, char** argv) {
         f60 = TFile::Open(sys + TString("_") + prefsys1 + "60" + prefsys2);
         TTree * t60 = (TTree*) f60->Get("rds_zbb");
         d60 = new RooDataSet("d60", "d60", t60, *mass, "");
+
+        fh30 = TFile::Open(sys + TString("_") + prefsys1 + "30" + prefsys3);
+        TH1D * h30 = (TH1D*) fh30->Get("eventSelectionamassMu");
+        dh30 = new RooDataHist("dh30", "dh30", *mass, h30);
+        fh40 = TFile::Open(sys + TString("_") + prefsys1 + "40" + prefsys3);
+        TH1D * h40 = (TH1D*) fh40->Get("eventSelectionamassMu");
+        dh40 = new RooDataHist("dh40", "dh40", *mass, h40);
+        fh50 = TFile::Open(sys + TString("_") + prefsys1 + "50" + prefsys3);
+        TH1D * h50 = (TH1D*) fh50->Get("eventSelectionamassMu");
+        dh50 = new RooDataHist("dh50", "dh50", *mass, h50);
+        fh60 = TFile::Open(sys + TString("_") + prefsys1 + "60" + prefsys3);
+        TH1D * h60 = (TH1D*) fh60->Get("eventSelectionamassMu");
+        dh60 = new RooDataHist("dh60", "dh60", *mass, h60);
     }
+    cout << "begin ..." << endl;
     RooCategory sample("sample", "sample");
     sample.defineType("p30");
     sample.defineType("p40");
     sample.defineType("p50");
     sample.defineType("p60");
 
+    RooCategory sampleHist("sampleHist", "sampleHist");
+    sampleHist.defineType("p30");
+    sampleHist.defineType("p40");
+    sampleHist.defineType("p50");
+    sampleHist.defineType("p60");
+
     RooDataSet combData("combData", "combined data", *mass, Index(sample),
             Import("p30", *d30),
             Import("p40", *d40),
             Import("p50", *d50),
             Import("p60", *d60)
+            );
+    RooDataHist combDataHist("combDataHist", "combined data", *mass, Index(sampleHist),
+            Import("p30", *dh30),
+            Import("p40", *dh40),
+            Import("p50", *dh50),
+            Import("p60", *dh60)
             );
 
 
@@ -318,36 +374,68 @@ int main(int argc, char** argv) {
     simPdf.addPdf(*m40, "p40");
     simPdf.addPdf(*m50, "p50");
     simPdf.addPdf(*m60, "p60");
-    RooFitResult * fr = simPdf.fitTo(combData, RooFit::Save());
+
+    RooSimultaneous simHistPdf("simHistPdf", "simultaneous pdf", sampleHist);
+    simHistPdf.addPdf(*m30, "p30");
+    simHistPdf.addPdf(*m40, "p40");
+    simHistPdf.addPdf(*m50, "p50");
+    simHistPdf.addPdf(*m60, "p60");
+
+    RooFitResult * fr = 0;
+    if (!binned)
+        fr = simPdf.fitTo(combData, RooFit::Save());
+    else
+        fr = simHistPdf.fitTo(combDataHist, RooFit::Save());
+
 
     //    PrintFr(fr);
 
-
     RooPlot* frame1 = mass->frame(Title("30 GeV sample"));
-    combData.plotOn(frame1, Cut("sample==sample::p30"), Binning(100));
-    simPdf.plotOn(frame1, Slice(sample, "p30"), ProjWData(sample, combData));
-    simPdf.plotOn(frame1, Slice(sample, "p30"), Components("tmp_M30"), ProjWData(sample, combData), LineStyle(kDashed));
-    simPdf.plotOn(frame1, Slice(sample, "p30"), Components("cball_M30"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
-
     RooPlot* frame2 = mass->frame(Title("40 GeV sample"), Binning(100));
-    combData.plotOn(frame2, Cut("sample==sample::p40"));
-    simPdf.plotOn(frame2, Slice(sample, "p40"), ProjWData(sample, combData));
-    simPdf.plotOn(frame2, Slice(sample, "p40"), Components("tmp_M40"), ProjWData(sample, combData), LineStyle(kDashed));
-    simPdf.plotOn(frame2, Slice(sample, "p40"), Components("cball_M40"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
-
     RooPlot* frame3 = mass->frame(Title("50 GeV sample"), Binning(100));
-    combData.plotOn(frame3, Cut("sample==sample::p50"));
-    simPdf.plotOn(frame3, Slice(sample, "p50"), ProjWData(sample, combData));
-    simPdf.plotOn(frame3, Slice(sample, "p50"), Components("tmp_M50"), ProjWData(sample, combData), LineStyle(kDashed));
-    simPdf.plotOn(frame3, Slice(sample, "p50"), Components("cball_M50"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
-
     RooPlot* frame4 = mass->frame(Title("60 GeV sample"));
-    combData.plotOn(frame4, Cut("sample==sample::p60"));
-    simPdf.plotOn(frame4, Slice(sample, "p60"), ProjWData(sample, combData), Binning(100));
-    simPdf.plotOn(frame4, Slice(sample, "p60"), Components("tmp_M60"), ProjWData(sample, combData), LineStyle(kDashed));
-    simPdf.plotOn(frame4, Slice(sample, "p60"), Components("cball_M60"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
+    if (!binned) {
+        combData.plotOn(frame1, Cut("sample==sample::p30"), Binning(100));
+        simPdf.plotOn(frame1, Slice(sample, "p30"), ProjWData(sample, combData));
+        simPdf.plotOn(frame1, Slice(sample, "p30"), Components("tmp_M30"), ProjWData(sample, combData), LineStyle(kDashed));
+        simPdf.plotOn(frame1, Slice(sample, "p30"), Components("cball_M30"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
 
+        combData.plotOn(frame2, Cut("sample==sample::p40"));
+        simPdf.plotOn(frame2, Slice(sample, "p40"), ProjWData(sample, combData));
+        simPdf.plotOn(frame2, Slice(sample, "p40"), Components("tmp_M40"), ProjWData(sample, combData), LineStyle(kDashed));
+        simPdf.plotOn(frame2, Slice(sample, "p40"), Components("cball_M40"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
 
+        combData.plotOn(frame3, Cut("sample==sample::p50"));
+        simPdf.plotOn(frame3, Slice(sample, "p50"), ProjWData(sample, combData));
+        simPdf.plotOn(frame3, Slice(sample, "p50"), Components("tmp_M50"), ProjWData(sample, combData), LineStyle(kDashed));
+        simPdf.plotOn(frame3, Slice(sample, "p50"), Components("cball_M50"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
+
+        combData.plotOn(frame4, Cut("sample==sample::p60"));
+        simPdf.plotOn(frame4, Slice(sample, "p60"), ProjWData(sample, combData), Binning(100));
+        simPdf.plotOn(frame4, Slice(sample, "p60"), Components("tmp_M60"), ProjWData(sample, combData), LineStyle(kDashed));
+        simPdf.plotOn(frame4, Slice(sample, "p60"), Components("cball_M60"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
+    } else {
+        cout << "Using hists!" << endl;
+        combDataHist.plotOn(frame1, Cut("sampleHist==sampleHist::p30"), Binning(100));
+        simHistPdf.plotOn(frame1, Slice(sampleHist, "p30"), ProjWData(sampleHist, combDataHist));
+        simHistPdf.plotOn(frame1, Slice(sampleHist, "p30"), Components("tmp_M30"), ProjWData(sampleHist, combDataHist), LineStyle(kDashed));
+        simHistPdf.plotOn(frame1, Slice(sampleHist, "p30"), Components("cball_M30"), ProjWData(sampleHist, combDataHist), LineStyle(kDashed), LineColor(kRed));
+
+        combDataHist.plotOn(frame2, Cut("sampleHist==sampleHist::p40"));
+        simHistPdf.plotOn(frame2, Slice(sampleHist, "p40"), ProjWData(sampleHist, combDataHist));
+        simHistPdf.plotOn(frame2, Slice(sampleHist, "p40"), Components("tmp_M40"), ProjWData(sampleHist, combDataHist), LineStyle(kDashed));
+        simHistPdf.plotOn(frame2, Slice(sampleHist, "p40"), Components("cball_M40"), ProjWData(sampleHist, combDataHist), LineStyle(kDashed), LineColor(kRed));
+
+        combDataHist.plotOn(frame3, Cut("sampleHist==sampleHist::p50"));
+        simHistPdf.plotOn(frame3, Slice(sampleHist, "p50"), ProjWData(sampleHist, combDataHist));
+        simHistPdf.plotOn(frame3, Slice(sampleHist, "p50"), Components("tmp_M50"), ProjWData(sampleHist, combDataHist), LineStyle(kDashed));
+        simHistPdf.plotOn(frame3, Slice(sampleHist, "p50"), Components("cball_M50"), ProjWData(sampleHist, combDataHist), LineStyle(kDashed), LineColor(kRed));
+
+        combDataHist.plotOn(frame4, Cut("sampleHist==sampleHist::p60"));
+        simHistPdf.plotOn(frame4, Slice(sampleHist, "p60"), ProjWData(sampleHist, combDataHist), Binning(100));
+        simHistPdf.plotOn(frame4, Slice(sampleHist, "p60"), Components("tmp_M60"), ProjWData(sampleHist, combDataHist), LineStyle(kDashed));
+        simHistPdf.plotOn(frame4, Slice(sampleHist, "p60"), Components("cball_M60"), ProjWData(sampleHist, combDataHist), LineStyle(kDashed), LineColor(kRed));
+    }
     TCanvas* c = new TCanvas("SimultaneousFit", "SimultaneousFit", 1600, 800);
     c->Divide(2, 2);
     c->cd(1);

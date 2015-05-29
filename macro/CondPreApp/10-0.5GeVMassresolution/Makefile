@@ -19,6 +19,7 @@ all:  dlps clean
 
 sim: SIM clean
 
+sys: UNC clean
 
 dlps:
 	@echo "Compiling the ParametrizationTest .... \n"
@@ -31,6 +32,12 @@ SIM:
 	$(CXX) SimultaneousFit.C -c -o SimultaneousFit.o -O0 $(ROOTCFLAGS) -fPIC -g
 	@echo "Linking ...... \n"
 	g++ SimultaneousFit.o -o SimFit $(ROOTGLIBS) $(LIBS) -g -fPIC -O0 -I/opt/root/include -m64 -pthread 
+	
+UNC:
+	@echo "Compiling the Uncertainties .... \n"
+	$(CXX) Uncertainties.C -c -o Uncertainties.o -O0 $(ROOTCFLAGS) -fPIC -g
+	@echo "Linking ...... \n"
+	g++ Uncertainties.o -o doSysts $(ROOTGLIBS) $(LIBS) -g -fPIC -O0 -I/opt/root/include -m64 -pthread 	
 	
 clean:
 	@echo "Cleaning..."
