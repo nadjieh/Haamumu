@@ -4,9 +4,12 @@
  *
  * Created on May 20, 2015, 2:47 PM
  */
-
+#include <stdlib.h>
 #include <iostream>
 #include <sstream>
+#include <stdio.h>
+#include <ios>
+#include <fstream>
 #ifndef __CINT__
 #include "RooGlobalFunc.h"
 #endif
@@ -150,7 +153,6 @@ RooCBShape * CBMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
     stringstream s;
     s << "_M" << Mass;
     TString Name = s.str().c_str();
-    double widthSigmaCB = (2 * Mass - 1) * 0.01;
     if (n == 0)
         n = new RooRealVar("n" + Name, "" + Name, 0, 10);
     if (alpha == 0)
@@ -167,7 +169,6 @@ RooVoigtian * VoigMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
     stringstream s;
     s << "_M" << Mass;
     TString Name = s.str().c_str();
-    double sigmaMean = (0.010226 * Mass) - 0.0215593;
     if (sigma == 0)
         sigma = new RooRealVar("sigma" + Name, "sigma" + Name, 0, 2.5);
     //        sigma = new RooRealVar("sigma" + Name, "sigma" + Name, sigmaMean, 0., 2 * sigmaMean);
@@ -227,6 +228,7 @@ int main(int argc, char** argv) {
     inputVars["sigma_cb"] = 0;
     inputVars["width"] = 0;
     inputVars["n"] = 0;
+    bool repeat = true;
     RooRealVar* frac = new RooRealVar("frac", "frac", 0.5, 0, 1);
     bool binned = false;
     for (int f = 1; f < argc; f++) {
@@ -276,6 +278,7 @@ int main(int argc, char** argv) {
             std::string out(*(argv + f));
             nMean = std::atof(out.c_str());
             inputVars["n"] = new RooRealVar("n", "", nMean);
+            repeat = false;
         } else if (arg_fth == "binned") {
             std::string out(*(argv + f));
             binned = true;
@@ -298,16 +301,16 @@ int main(int argc, char** argv) {
         TTree * t60 = (TTree*) f60->Get("rds_zbb");
         d60 = new RooDataSet("d60", "d60", t60, *mass, "");
 
-        fh30 = TFile::Open(pref1 + "30" + prefsys3);
+        fh30 = TFile::Open(pref1 + "30_LowJetPt10" + prefsys3);
         TH1D * h30 = (TH1D*) fh30->Get("eventSelectionamassMu");
         dh30 = new RooDataHist("dh30", "dh30", *mass, h30);
-        fh40 = TFile::Open(pref1 + "40" + prefsys3);
+        fh40 = TFile::Open(pref1 + "40_LowJetPt10" + prefsys3);
         TH1D * h40 = (TH1D*) fh40->Get("eventSelectionamassMu");
         dh40 = new RooDataHist("dh40", "dh40", *mass, h40);
-        fh50 = TFile::Open(pref1 + "50" + prefsys3);
+        fh50 = TFile::Open(pref1 + "50_LowJetPt10" + prefsys3);
         TH1D * h50 = (TH1D*) fh50->Get("eventSelectionamassMu");
         dh50 = new RooDataHist("dh50", "dh50", *mass, h50);
-        fh60 = TFile::Open(pref1 + "60" + prefsys3);
+        fh60 = TFile::Open(pref1 + "60_LowJetPt10" + prefsys3);
         TH1D * h60 = (TH1D*) fh60->Get("eventSelectionamassMu");
         dh60 = new RooDataHist("dh60", "dh60", *mass, h60);
     } else {
@@ -382,20 +385,62 @@ int main(int argc, char** argv) {
     simHistPdf.addPdf(*m60, "p60");
 
     RooFitResult * fr = 0;
-    if (!binned)
+    if (!binned) {
         fr = simPdf.fitTo(combData, RooFit::Save());
-    else
+    } else {
+        cout << "START ====================================================================" << endl;
         fr = simHistPdf.fitTo(combDataHist, RooFit::Save());
+        cout << "END ====================================================================" << endl;
+
+        stringstream myVal;
+        if (repeat) {
+            if (sys != "")
+                myVal << "./SimFit syst " << sys;
+            else
+                myVal << "./SimFit ";
+            if (((RooRealVar*) fr->floatParsFinal().find("frac")) != 0) {
+                cout << "HERE frac >>>>>>>>>>>>>>>>>>>>>>" << endl;
+                myVal << " frac " << ((RooRealVar*) fr->floatParsFinal().find("frac"))->getVal();
+            } else if (((RooRealVar*) fr->floatParsFinal().find("alpha")) != 0) {
+                cout << "HERE alpha >>>>>>>>>>>>>>>>>>>>>>" << endl;
+                myVal << " frac " << fracMean << " alpha " << ((RooRealVar*) fr->floatParsFinal().find("alpha"))->getVal();
+            } else if (((RooRealVar*) fr->floatParsFinal().find("width")) != 0) {
+                cout << "HERE width >>>>>>>>>>>>>>>>>>>>>>" << endl;
+                myVal << " frac " << fracMean << " alpha " << alphaMean << " width " << ((RooRealVar*) fr->floatParsFinal().find("width"))->getVal();
+            } else if (((RooRealVar*) fr->floatParsFinal().find("n")) != 0) {
+                cout << "HERE n >>>>>>>>>>>>>>>>>>>>>>" << endl;
+                myVal << " frac " << fracMean << " alpha " << alphaMean << " width " << widthMean << " n " << ((RooRealVar*) fr->floatParsFinal().find("n"))->getVal();
+            }
+            if (binned)
+                myVal << " binned";
+            cout << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" << endl;
+            cout << myVal.str() << endl;
+            cout << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" << endl;
+
+            system(myVal.str().c_str());
+        } else {
+            myVal.str("");
+            if (sys != "")
+                myVal << "./SimFit syst " << sys;
+            else
+                myVal << "./SimFit ";
+            myVal << " frac " << fracMean << " alpha " << alphaMean << " width " << widthMean << " n " << nMean << " binned\n";
+
+            std::ofstream log("fullSyst.sh", std::ios_base::app | std::ios_base::out);
+            log << myVal.str();
+
+        }
+    }
 
 
     //    PrintFr(fr);
 
     RooPlot* frame1 = mass->frame(Title("30 GeV sample"));
-    RooPlot* frame2 = mass->frame(Title("40 GeV sample"), Binning(100));
-    RooPlot* frame3 = mass->frame(Title("50 GeV sample"), Binning(100));
+    RooPlot* frame2 = mass->frame(Title("40 GeV sample"), RooFit::Binning(100));
+    RooPlot* frame3 = mass->frame(Title("50 GeV sample"), RooFit::Binning(100));
     RooPlot* frame4 = mass->frame(Title("60 GeV sample"));
     if (!binned) {
-        combData.plotOn(frame1, Cut("sample==sample::p30"), Binning(100));
+        combData.plotOn(frame1, Cut("sample==sample::p30"), RooFit::Binning(100));
         simPdf.plotOn(frame1, Slice(sample, "p30"), ProjWData(sample, combData));
         simPdf.plotOn(frame1, Slice(sample, "p30"), Components("tmp_M30"), ProjWData(sample, combData), LineStyle(kDashed));
         simPdf.plotOn(frame1, Slice(sample, "p30"), Components("cball_M30"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
@@ -411,12 +456,12 @@ int main(int argc, char** argv) {
         simPdf.plotOn(frame3, Slice(sample, "p50"), Components("cball_M50"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
 
         combData.plotOn(frame4, Cut("sample==sample::p60"));
-        simPdf.plotOn(frame4, Slice(sample, "p60"), ProjWData(sample, combData), Binning(100));
+        simPdf.plotOn(frame4, Slice(sample, "p60"), ProjWData(sample, combData), RooFit::Binning(100));
         simPdf.plotOn(frame4, Slice(sample, "p60"), Components("tmp_M60"), ProjWData(sample, combData), LineStyle(kDashed));
         simPdf.plotOn(frame4, Slice(sample, "p60"), Components("cball_M60"), ProjWData(sample, combData), LineStyle(kDashed), LineColor(kRed));
     } else {
         cout << "Using hists!" << endl;
-        combDataHist.plotOn(frame1, Cut("sampleHist==sampleHist::p30"), Binning(100));
+        combDataHist.plotOn(frame1, Cut("sampleHist==sampleHist::p30"), RooFit::Binning(100));
         simHistPdf.plotOn(frame1, Slice(sampleHist, "p30"), ProjWData(sampleHist, combDataHist));
         simHistPdf.plotOn(frame1, Slice(sampleHist, "p30"), Components("tmp_M30"), ProjWData(sampleHist, combDataHist), LineStyle(kDashed));
         simHistPdf.plotOn(frame1, Slice(sampleHist, "p30"), Components("cball_M30"), ProjWData(sampleHist, combDataHist), LineStyle(kDashed), LineColor(kRed));
@@ -432,7 +477,7 @@ int main(int argc, char** argv) {
         simHistPdf.plotOn(frame3, Slice(sampleHist, "p50"), Components("cball_M50"), ProjWData(sampleHist, combDataHist), LineStyle(kDashed), LineColor(kRed));
 
         combDataHist.plotOn(frame4, Cut("sampleHist==sampleHist::p60"));
-        simHistPdf.plotOn(frame4, Slice(sampleHist, "p60"), ProjWData(sampleHist, combDataHist), Binning(100));
+        simHistPdf.plotOn(frame4, Slice(sampleHist, "p60"), ProjWData(sampleHist, combDataHist), RooFit::Binning(100));
         simHistPdf.plotOn(frame4, Slice(sampleHist, "p60"), Components("tmp_M60"), ProjWData(sampleHist, combDataHist), LineStyle(kDashed));
         simHistPdf.plotOn(frame4, Slice(sampleHist, "p60"), Components("cball_M60"), ProjWData(sampleHist, combDataHist), LineStyle(kDashed), LineColor(kRed));
     }
@@ -585,18 +630,18 @@ int main(int argc, char** argv) {
     RooFitResult * frIn = simPdfInt.fitTo(combDataIn, RooFit::Save());
 
     RooPlot* framIn1 = mass->frame(Title("35 GeV sampleIn"));
-    combDataIn.plotOn(framIn1, Cut("sampleIn==sampleIn::p35"), Binning(100));
+    combDataIn.plotOn(framIn1, Cut("sampleIn==sampleIn::p35"), RooFit::Binning(100));
     simPdfInt.plotOn(framIn1, Slice(sampleIn, "p35"), ProjWData(sampleIn, combDataIn));
     simPdfInt.plotOn(framIn1, Slice(sampleIn, "p35"), Components("tmp_M35"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed));
     simPdfInt.plotOn(framIn1, Slice(sampleIn, "p35"), Components("cball_M35"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed), LineColor(kRed));
 
-    RooPlot* framIn2 = mass->frame(Title("45 GeV sampleIn"), Binning(100));
+    RooPlot* framIn2 = mass->frame(Title("45 GeV sampleIn"), RooFit::Binning(100));
     combDataIn.plotOn(framIn2, Cut("sampleIn==sampleIn::p45"));
     simPdfInt.plotOn(framIn2, Slice(sampleIn, "p45"), ProjWData(sampleIn, combDataIn));
     simPdfInt.plotOn(framIn2, Slice(sampleIn, "p45"), Components("tmp_M45"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed));
     simPdfInt.plotOn(framIn2, Slice(sampleIn, "p45"), Components("cball_M45"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed), LineColor(kRed));
 
-    RooPlot* framIn3 = mass->frame(Title("55 GeV sampleIn"), Binning(100));
+    RooPlot* framIn3 = mass->frame(Title("55 GeV sampleIn"), RooFit::Binning(100));
     combDataIn.plotOn(framIn3, Cut("sampleIn==sampleIn::p55"));
     simPdfInt.plotOn(framIn3, Slice(sampleIn, "p55"), ProjWData(sampleIn, combDataIn));
     simPdfInt.plotOn(framIn3, Slice(sampleIn, "p55"), Components("tmp_M55"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed));
@@ -604,7 +649,7 @@ int main(int argc, char** argv) {
 
     RooPlot* framIn4 = mass->frame(Title("65 GeV sampleIn"));
     combDataIn.plotOn(framIn4, Cut("sampleIn==sampleIn::p65"));
-    simPdfInt.plotOn(framIn4, Slice(sampleIn, "p65"), ProjWData(sampleIn, combDataIn), Binning(100));
+    simPdfInt.plotOn(framIn4, Slice(sampleIn, "p65"), ProjWData(sampleIn, combDataIn), RooFit::Binning(100));
     simPdfInt.plotOn(framIn4, Slice(sampleIn, "p65"), Components("tmp_M65"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed));
     simPdfInt.plotOn(framIn4, Slice(sampleIn, "p65"), Components("cball_M65"), ProjWData(sampleIn, combDataIn), LineStyle(kDashed), LineColor(kRed));
 

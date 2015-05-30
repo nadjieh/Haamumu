@@ -25,3 +25,5 @@ AnalyzeInfo
 FillMassTree
 *.gif
 *.root*
+*.org*
+*.html*
