@@ -44,7 +44,7 @@ bool isSelected(RDSData * rds, std::vector<double> cutValues, bool blind = false
 	if(blind){
        	ret = (ret && !(fabs(rds->eventSelectionamassMu-30)< 1 || fabs(rds->eventSelectionamassMu-40)< 1 || fabs(rds->eventSelectionamassMu-50)< 1 || fabs(rds->eventSelectionamassMu-60)< 1 ));
     }    
-    ret = (ret && (rds->eventSelectionamassMu > 20 && rds->eventSelectionamassMu < 70));
+    //ret = (ret && (rds->eventSelectionamassMu > 20 && rds->eventSelectionamassMu < 70));
     return ret;
 }
 
