@@ -21,6 +21,8 @@ sim: SIM clean
 
 sys: UNC clean
 
+com: COM clean
+
 dlps:
 	@echo "Compiling the ParametrizationTest .... \n"
 	$(CXX) ParametrizationTest.C -c -o ParametrizationTest.o -O0 $(ROOTCFLAGS) -fPIC -g
@@ -39,6 +41,12 @@ UNC:
 	@echo "Linking ...... \n"
 	g++ Uncertainties.o -o doSysts $(ROOTGLIBS) $(LIBS) -g -fPIC -O0 -I/opt/root/include -m64 -pthread 	
 	
+COM:
+	@echo "Compiling the ComposedFit .... \n"
+	$(CXX) ComposedFit.C -c -o ComposedFit.o -O0 $(ROOTCFLAGS) -fPIC -g
+	@echo "Linking ...... \n"
+	g++ ComposedFit.o -o composedFit $(ROOTGLIBS) $(LIBS) -g -fPIC -O0 -I/opt/root/include -m64 -pthread 
+		
 clean:
 	@echo "Cleaning..."
 	@rm -f *.o

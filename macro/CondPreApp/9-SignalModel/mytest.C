@@ -26,7 +26,7 @@ RooFitResult* fitToSignal(TString Mass, int nbin = 50){
 		RooRealVar sigma_cb("sigma_cb", "Width", 2.3, 0., 260.0);
 		RooRealVar n("n", "", 6,0,10);
 		RooRealVar alpha("alpha", "", 1.5,0.0, 5.0);
-    	RooCBShape CB("cball", "crystal ball", eventSelectionamassMu, mean_cb, sigma_cb, alpha, n);
+    	RooCBShape CB("cball", "crystal ball", eventSelectionamassMu, mean, sigma_cb, alpha, n);
     	
     	RooRealVar frac("frac","frac",0.5,0.,1.);
     	RooAddPdf Voig2("sum", "Gaussian crystal ball and Voig PDF", RooArgList(Voig, CB), RooArgList(frac));
@@ -35,10 +35,11 @@ RooFitResult* fitToSignal(TString Mass, int nbin = 50){
 		RooPlot * p = eventSelectionamassMu.frame();
 		data.plotOn(p);
 		Voig2.plotOn(p);
-		
+		Voig2.plotOn(p,Components("cball"), LineColor(kRed), LineStyle(kDashed));		
+		Voig2.plotOn(p,Components("tmp"), LineColor(kGreen), LineStyle(kDashed));				
 		TCanvas C;
 		p->Draw();
-		C.SaveAs("testCBVoig_"+Mass+".C");
+		C.SaveAs("../HCGMeetingMaterial/testCBVoig_"+Mass+".C");
 	
 		delete 	hist;	
 		return ret;
@@ -71,8 +72,8 @@ void mytest(int seed = 37) {
 	std::vector<RooFitResult*> results;
 
     //results.push_back(fitToSignal("30"));
-    //results.push_back(fitToSignal("40"));
-    results.push_back(fitToSignal("50"));
+    results.push_back(fitToSignal("40"));
+    //results.push_back(fitToSignal("50"));
     //results.push_back(fitToSignal("60"));
     
     stringstream means;

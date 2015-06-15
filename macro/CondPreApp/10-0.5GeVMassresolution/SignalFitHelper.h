@@ -23,6 +23,7 @@
 #include "RooExponential.h"
 #include "RooDataHist.h"
 #include "RooConstVar.h"
+#include "RooPolyVar.h"
 #include "RooChebychev.h"
 #include "RooAddPdf.h"
 #include "RooSimultaneous.h"
@@ -153,8 +154,8 @@ void PrintFr(RooFitResult * fr) {
     cout << "\tsigma,mean: " << fr->correlation("mean" + syst, "sigma" + syst) << endl;
 }
 
-RooCBShape * CBMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
-        RooRealVar * sigma_cb = 0, RooRealVar * n = 0, RooRealVar * alpha = 0) {
+RooCBShape * CBMaker(double Mass, RooRealVar * mass, RooPolyVar * mean,
+        RooPolyVar * sigma_cb = 0, RooRealVar * n = 0, RooRealVar * alpha = 0) {
     stringstream s;
     s << "_M" << Mass;
     TString Name = s.str().c_str();
@@ -162,20 +163,20 @@ RooCBShape * CBMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
         n = new RooRealVar("n" + Name, "" + Name, 0, 10);
     if (alpha == 0)
         alpha = new RooRealVar("alpha" + Name, "" + Name, 0, 5);
-    if (sigma_cb == 0)
-        sigma_cb = new RooRealVar("sigma_cb" + Name, "Width" + Name, 2.3, 0, 260.);
+    //    if (sigma_cb == 0)
+    //        sigma_cb = new RooRealVar("sigma_cb" + Name, "Width" + Name, 2.3, 0, 260.);
     //        sigma_cb = new RooRealVar("sigma_cb" + Name, "Width" + Name, widthSigmaCB, 0., 2 * widthSigmaCB);
     RooCBShape * CB = new RooCBShape("cball" + Name, "crystal ball" + Name, *mass, *mean, *sigma_cb, *alpha, *n);
     return CB;
 }
 
-RooVoigtian * VoigMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
-        RooRealVar * sigma = 0, RooRealVar * width = 0) {
+RooVoigtian * VoigMaker(double Mass, RooRealVar * mass, RooPolyVar * mean,
+        RooPolyVar * sigma = 0, RooRealVar * width = 0) {
     stringstream s;
     s << "_M" << Mass;
     TString Name = s.str().c_str();
-    if (sigma == 0)
-        sigma = new RooRealVar("sigma" + Name, "sigma" + Name, 0, 2.5);
+    //    if (sigma == 0)
+    //        sigma = new RooRealVar("sigma" + Name, "sigma" + Name, 0, 2.5);
     //        sigma = new RooRealVar("sigma" + Name, "sigma" + Name, sigmaMean, 0., 2 * sigmaMean);
     if (width == 0)
         width = new RooRealVar("width" + Name, "width" + Name, 1, 0., 5);
@@ -183,13 +184,15 @@ RooVoigtian * VoigMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
     return Voig;
 }
 
-RooAddPdf * VoigCBMaker(double Mass, RooRealVar * mass, std::map< TString, RooRealVar*> inputs, RooRealVar * frac = 0) {
+RooAddPdf * VoigCBMaker(double Mass, RooRealVar * mass, RooRealVar * massmean, std::map< TString, RooAbsReal*> inputs, RooRealVar * frac = 0) {
     stringstream s;
     s << "_M" << Mass;
     TString Name = s.str().c_str();
-    RooRealVar * mean = new RooRealVar("mean" + Name, "mean" + Name, Mass, 0.8 * Mass, 1.2 * Mass);
-    RooVoigtian * Voig = VoigMaker(Mass, mass, mean, inputs["sigma"], inputs["width"]);
-    RooCBShape * CB = CBMaker(Mass, mass, mean, inputs["sigma_cb"], inputs["n"], inputs["alpha"]);
+    RooRealVar * mean0 = new RooRealVar("mean0", "mean0", 0, -5., 5.);
+    RooRealVar * mean1 = new RooRealVar("mean1", "mean1", 1., 0., 2);
+    RooPolyVar * mean = new RooPolyVar("mean", "mean", *mass, RooArgSet(*mean0, *mean1));
+    RooVoigtian * Voig = VoigMaker(Mass, mass, mean, (RooPolyVar*) inputs["sigma"], (RooRealVar*) inputs["width"]);
+    RooCBShape * CB = CBMaker(Mass, mass, mean, (RooPolyVar*) inputs["sigma_cb"], (RooRealVar*) inputs["n"], (RooRealVar*) inputs["alpha"]);
     if (frac == 0)
         frac = new RooRealVar("frac" + Name, "frac" + Name, 0.5, 0, 1);
     RooAddPdf * Voig2 = new RooAddPdf("sum" + Name, "Gaussian crystal ball and Voig PDF" + Name, RooArgList(*Voig, *CB), RooArgList(*frac));
