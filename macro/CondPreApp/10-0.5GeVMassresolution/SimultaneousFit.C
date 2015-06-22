@@ -6,16 +6,51 @@
  *
  * Created on May 20, 2015, 2:47 PM
  */
-//#define INTERMEDIATE
-const double ALPHA = 1.09;
-const double ALPHAERROR = 0.0777;
-const double FRAC = 0.601;
-const double FRACERROR = 0.0396;
-const double WIDTH = 0.066;
-const double WIDTHERROR = 0.00955;
-const double N = 3.12;
-const double NERROR = 0.2595;
 
+/*
+ * *OPTIONS*
+ * scratch: all peremters are free and mean is not shifting.
+ * meanshift: only mean is shifting but the rest are free.
+ * sgimaline: mean is shifting, sigma is linear
+ * sigmaCBline: as sigmaline + linear sigma_cb
+ * a1b1: as sigmaCBline with sigma's modeled w/o intercept
+ */
+
+/*sigmaCBline*/
+//   1  a0          -2.62883e-02   8.25275e-01   8.75724e-05   8.79445e-01
+//   2  a1           1.01845e-02   6.47069e-03   3.60356e-05  -1.28438e+00
+//   3  alpha        1.13343e+00   1.26604e-01   7.02623e-04   6.07892e-03
+//   4  b0          -5.11135e-02   9.39380e-01   1.52555e-04   8.11395e-01
+//   5  b1           1.83665e-02   9.84682e-03   1.24021e-04  -6.84996e-01
+//   6  frac         5.76716e-01   6.19030e-02   1.89018e-03  -2.84445e-03
+//   7  m0           3.07829e-02   7.62526e-01   2.72526e-04   6.16047e-02
+//   8  m1           9.97791e-01   1.48244e-02   1.13335e-05  -1.10444e-02
+//   9  n            2.97291e+00   3.79496e-01   1.24782e-03   1.93688e-03
+//  10  width        2.86201e-02   1.85804e-02   9.11183e-04  -3.39340e-01
+
+//#define INTERMEDIATE
+//const double ALPHA = 1.09;
+//const double ALPHAERROR = 0.0777;
+//const double FRAC = 0.601;
+//const double FRACERROR = 0.0396;
+//const double WIDTH = 0.066;
+//const double WIDTHERROR = 0.00955;
+//const double N = 3.12;
+//const double NERROR = 0.2595;
+const double ALPHA = 1.13;
+const double ALPHAERROR = 0.127;
+const double FRAC = 0.577;
+const double FRACERROR = 0.062;
+const double WIDTH = 0.0285877;
+const double WIDTHERROR = 0.019;
+const double N = 2.97;
+const double NERROR = 0.38;
+const double A0 = -2.62883e-02;
+const double A1 = 1.01845e-02;
+const double B0 = -5.11135e-02;
+const double B1 = 1.83665e-02;
+const double M0 = 3.07829e-02;
+const double M1 = 9.97791e-01;
 #include <stdlib.h>
 #include <iostream>
 #include <sstream>
@@ -202,17 +237,6 @@ private:
 
 typedef std::map< TString, RangesPerSyst> SystRanges;
 
-/*
- * *OPTIONS*
- * scratch: all peremters are free and mean is not shifting.
- * meanshift: only mean is shifting but the rest are free.
- * sgimaline: mean is shifting, sigma is linear
- * sigmaCBline: as sigmaline + linear sigma_cb
- * a1b1: as sigmaCBline with sigma's modeled w/o intercept
- */
-
-
-
 void PrintFr(RooFitResult * fr, TString common = "", TString option = "") {
     std::vector<TString> syst;
     syst.push_back("_M30");
@@ -253,15 +277,20 @@ void PrintFr(RooFitResult * fr, TString common = "", TString option = "") {
         All.push_back("a1");
         All.push_back("b0");
         All.push_back("b1");
+        All.push_back("m0");
+        All.push_back("m1");
     }
     if (option == "sigmaline") {
+        All.push_back("m0");
+        All.push_back("m1");
         All.push_back("a0");
         All.push_back("a1");
     }
 
-    if (option == "a1b1") {
+    if (option == "m1a1b1") {
         All.push_back("a1");
         All.push_back("b1");
+        All.push_back("m1");
     }
 
     if (common.Contains("width") && !common.Contains("widthFixed"))
@@ -312,14 +341,13 @@ void PrintFr(RooFitResult * fr, TString common = "", TString option = "") {
 
 }
 
-RooCBShape * CBMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
+RooCBShape * CBMaker(double Mass, RooRealVar * mass, RooAbsReal * mean,
         SystRanges systband,
-        RooAbsReal * sigma_cb = 0, RooRealVar * n = 0, RooRealVar * alpha = 0, TString option = "", TString sys = "") {
+        RooAbsReal * sigma_cb = 0, RooRealVar * n = 0, RooRealVar * alpha = 0, RooRealVar * b0 = 0, RooRealVar * b1 = 0, TString sys = "",
+        RooRealVar * MH = 0) {
     stringstream s;
     s << "_M" << Mass;
     TString Name = s.str().c_str();
-    RooRealVar * b0 = 0;
-    RooRealVar * b1 = 0;
     if (n == 0) {
         if (sys == "")
             n = new RooRealVar("n" + Name, "" + Name, 0, 10);
@@ -337,18 +365,11 @@ RooCBShape * CBMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
                 ALPHA + systband[sys].GetParamSystRange(Mass, 0) * ALPHAERROR);
     }
     if (sigma_cb == 0) {
-        if (option == "sigmaCBline") {
-            //variable globals
-            //            b0 = new RooRealVar("b0", "b0", -0.017, -1, 0.1);
-            //            b1 = new RooRealVar("b1", "b1", 0.0059, 0, 0.1);
-            //fixed globals            
-            b0 = new RooRealVar("b0", "b0", -0.0618, -1, 0.1);
-            b1 = new RooRealVar("b1", "b1", 0.01729, 0, 0.1);
-            sigma_cb = new RooPolyVar("sigma_cb" + Name, "sigma_cb" + Name, *mean, RooArgSet(*b0, *b1));
-        } else if (option == "a1b1") {
-            b0 = new RooRealVar("b0", "b0", -0.017);
-            b1 = new RooRealVar("b1", "b1", 0.0059, 0, 0.1);
-            sigma_cb = new RooPolyVar("sigma_cb" + Name, "sigma_cb" + Name, *mean, RooArgSet(*b0, *b1));
+        if (b0 != 0 && b1 != 0) {
+            if (MH == 0)
+                sigma_cb = new RooPolyVar("sigma_cb" + Name, "sigma_cb" + Name, *mean, RooArgSet(*b0, *b1));
+            else
+                sigma_cb = new RooPolyVar("sigma_cb" + Name, "sigma_cb" + Name, *MH, RooArgSet(*b0, *b1));
         } else {
             sigma_cb = new RooRealVar("sigma_cb" + Name, "sigma_cb" + Name, 2.3, 0, 260.);
         }
@@ -358,26 +379,19 @@ RooCBShape * CBMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
     return CB;
 }
 
-RooVoigtian * VoigMaker(double Mass, RooRealVar * mass, RooRealVar * mean,
+RooVoigtian * VoigMaker(double Mass, RooRealVar * mass, RooAbsReal * mean,
         SystRanges systband,
-        RooAbsReal * sigma = 0, RooRealVar * width = 0, TString option = "", TString sys = "") {
+        RooAbsReal * sigma = 0, RooRealVar * width = 0, RooRealVar * a0 = 0, RooRealVar * a1 = 0, TString sys = "",
+        RooRealVar * MH = 0) {
     stringstream s;
     s << "_M" << Mass;
     TString Name = s.str().c_str();
-    RooRealVar * a0 = 0;
-    RooRealVar * a1 = 0;
     if (sigma == 0) {
-        if (option == "sigmaline" || option == "sigmaCBline") {
-            //variable globals
-            //            a0 = new RooRealVar("a0", "a0", -0.02, -1, 0.1);
-            //fixed globals
-            a0 = new RooRealVar("a0", "a0", -0.038, -1, 0.1);
-            a1 = new RooRealVar("a1", "a1", 0.01, 0, 0.5);
-            sigma = new RooPolyVar("sigma" + Name, "mean" + Name, *mean, RooArgSet(*a0, *a1));
-        } else if (option == "a1b1") {
-            a0 = new RooRealVar("a0", "a0", -0.02);
-            a1 = new RooRealVar("a1", "a1", 0.01, 0, 0.5);
-            sigma = new RooPolyVar("sigma" + Name, "mean" + Name, *mean, RooArgSet(*a0, *a1));
+        if (a1 != 0 && a0 != 0) {
+            if (MH == 0)
+                sigma = new RooPolyVar("sigma" + Name, "mean" + Name, *mean, RooArgSet(*a0, *a1));
+            else
+                sigma = new RooPolyVar("sigma" + Name, "mean" + Name, *MH, RooArgSet(*a0, *a1));
         } else {
             sigma = new RooRealVar("sigma" + Name, "sigma" + Name, 0, 2.5);
         }
@@ -402,13 +416,16 @@ RooAddPdf * VoigCBMaker(double Mass, RooRealVar * mass, std::map< TString, RooRe
     stringstream s;
     s << "_M" << Mass;
     TString Name = s.str().c_str();
-    RooRealVar * mean = 0;
-    if (option == "scratch")
+    RooAbsReal * mean = 0;
+    RooRealVar * MH = new RooRealVar("MH" + Name, "MH" + Name, Mass);
+    if (inputs["m0"] == 0 && inputs["m1"] == 0) {
         mean = new RooRealVar("mean" + Name, "mean" + Name, 0.8 * Mass, 1.2 * Mass);
-    else
-        mean = new RooRealVar("mean" + Name, "mean" + Name, Mass);
-    RooVoigtian * Voig = VoigMaker(Mass, mass, mean, systband, inputs["sigma"], inputs["width"], option, sys);
-    RooCBShape * CB = CBMaker(Mass, mass, mean, systband, inputs["sigma_cb"], inputs["n"], inputs["alpha"], option, sys);
+    } else {
+        mean = new RooPolyVar("mean" + Name, "mean" + Name, *MH, RooArgSet(*inputs["m0"], *inputs["m1"]));
+    }
+    RooVoigtian * Voig = VoigMaker(Mass, mass, mean, systband, inputs["sigma"], inputs["width"], inputs["a0"], inputs["a1"], sys, MH);
+    RooCBShape * CB = CBMaker(Mass, mass, mean, systband, inputs["sigma_cb"], inputs["n"],
+            inputs["alpha"], inputs["b0"], inputs["b1"], sys, MH);
     if (frac == 0) {
         if (sys == "")
             frac = new RooRealVar("frac" + Name, "frac" + Name, 0.5, 0, 1);
@@ -465,8 +482,8 @@ int main(int argc, char** argv) {
     RangesPerSyst puu("puu", AllMassSystRanges);
     RangesPerSyst pud("pud", AllMassSystRanges);
     RangesPerSyst muu("muu", AllMassSystRanges);
-    muu.SetParamSystRange(50, "width", 1);
-    muu.SetParamSystRange(50, "alpha", 1);
+    //    muu.SetParamSystRange(50, "width", 1);
+    //    muu.SetParamSystRange(50, "alpha", 1);
     RangesPerSyst mud("mud", AllMassSystRanges);
     RangesPerSyst bDown("bDown", AllMassSystRanges);
     RangesPerSyst bUp("bUp", AllMassSystRanges);
@@ -504,6 +521,12 @@ int main(int argc, char** argv) {
     inputVars["sigma_cb"] = 0;
     inputVars["width"] = 0;
     inputVars["n"] = 0;
+    inputVars["a0"] = 0;
+    inputVars["b0"] = 0;
+    inputVars["m0"] = 0;
+    inputVars["a1"] = 0;
+    inputVars["b1"] = 0;
+    inputVars["m1"] = 0;
     bool repeat = false;
     RooRealVar* frac = 0; //new RooRealVar("frac", "frac", 0.5, 0, 1);
     bool binned = false;
@@ -584,8 +607,26 @@ int main(int argc, char** argv) {
             compare = true;
         }
     }
-    if (binned)
-        cout << "I am using histograms" << endl;
+    if (option != "scratch" && option != "m1a1b1") {
+        inputVars["m0"] = new RooRealVar("m0", "m0", 0, -0.5, 0.5);
+        inputVars["m1"] = new RooRealVar("m1", "m1", 1, 0.8, 1.2);
+    }
+    if (option.Contains("sigma")) {
+        inputVars["a0"] = new RooRealVar("a0", "a0", -0.038, -1, 0.1);
+        inputVars["a1"] = new RooRealVar("a1", "a1", 0.01, 0, 0.5);
+    }
+    if (option == "sigmaCBline") {
+        inputVars["b0"] = new RooRealVar("b0", "b0", -0.0618, -1, 0.1);
+        inputVars["b1"] = new RooRealVar("b1", "b1", 0.01729, 0, 0.1);
+    }
+    if (option == "m1a1b1") {
+        inputVars["a0"] = new RooRealVar("a0", "a0", A0);
+        inputVars["a1"] = new RooRealVar("a1", "a1", A1, 0, 0.5);
+        inputVars["b0"] = new RooRealVar("b0", "b0", B0);
+        inputVars["b1"] = new RooRealVar("b1", "b1", B1, 0, 0.1);
+        inputVars["m0"] = new RooRealVar("m0", "m0", M0);
+        inputVars["m1"] = new RooRealVar("m1", "m1", M1, 0, 0.1);
+    }
     RooRealVar * mass = new RooRealVar("eventSelectionamassMu", "eventSelectionamassMu", 20, 70);
     RooRealVar * leptonWeight = new RooRealVar("LeptonsReweightingweight", "LeptonsReweightingweight", 0, 2.);
     RooRealVar * btagWeightT = new RooRealVar("BtaggingReweightingT", "BtaggingReweightingT", -2., 2.);
@@ -818,6 +859,7 @@ int main(int argc, char** argv) {
     frame4->Draw();
     c->SaveAs(sys + "weighted_graph_SimFit_" + option + ".C");
 
+
     if (option == "sigmaCBline") {
         stringstream ab;
         ab << "\ta0[\"" << sys << "\"] = " << ((RooRealVar*) fr->floatParsFinal().find("a0"))->getVal() << ";\n";
@@ -828,9 +870,74 @@ int main(int argc, char** argv) {
         ab << "\tb0er[\"" << sys << "\"] = " << ((RooRealVar*) fr->floatParsFinal().find("b0"))->getError() << ";\n";
         ab << "\tb1[\"" << sys << "\"] = " << ((RooRealVar*) fr->floatParsFinal().find("b1"))->getVal() << ";\n";
         ab << "\tb1er[\"" << sys << "\"] = " << ((RooRealVar*) fr->floatParsFinal().find("b1"))->getError() << ";\n";
+        ab << "\tm0[\"" << sys << "\"] = " << ((RooRealVar*) fr->floatParsFinal().find("m0"))->getVal() << ";\n";
+        ab << "\tm0er[\"" << sys << "\"] = " << ((RooRealVar*) fr->floatParsFinal().find("m0"))->getError() << ";\n";
+        ab << "\tm1[\"" << sys << "\"] = " << ((RooRealVar*) fr->floatParsFinal().find("m1"))->getVal() << ";\n";
+        ab << "\tm1er[\"" << sys << "\"] = " << ((RooRealVar*) fr->floatParsFinal().find("m1"))->getError() << ";\n";
 
         std::ofstream log("ab.C", std::ios_base::app | std::ios_base::out);
         log << ab.str();
+        RooFitResult * fr30 = m30->fitTo(*wd30, RooFit::Save());
+
+        RooFitResult * fr40 = m40->fitTo(*wd40, RooFit::Save());
+        RooFitResult * fr50 = m50->fitTo(*wd50, RooFit::Save());
+        RooFitResult * fr60 = m60->fitTo(*wd60, RooFit::Save());
+        stringstream cd;
+        cd << "###30 GeV -----------\n";
+        cd << "\ta030[\"" << sys << "\"] = " << ((RooRealVar*) fr30->floatParsFinal().find("a0"))->getVal() << ";\n";
+        cd << "\ta0er30[\"" << sys << "\"] = " << ((RooRealVar*) fr30->floatParsFinal().find("a0"))->getError() << ";\n";
+        cd << "\ta130[\"" << sys << "\"] = " << ((RooRealVar*) fr30->floatParsFinal().find("a1"))->getVal() << ";\n";
+        cd << "\ta1er30[\"" << sys << "\"] = " << ((RooRealVar*) fr30->floatParsFinal().find("a1"))->getError() << ";\n";
+        cd << "\tb030[\"" << sys << "\"] = " << ((RooRealVar*) fr30->floatParsFinal().find("b0"))->getVal() << ";\n";
+        cd << "\tb0er30[\"" << sys << "\"] = " << ((RooRealVar*) fr30->floatParsFinal().find("b0"))->getError() << ";\n";
+        cd << "\tb130[\"" << sys << "\"] = " << ((RooRealVar*) fr30->floatParsFinal().find("b1"))->getVal() << ";\n";
+        cd << "\tb1er30[\"" << sys << "\"] = " << ((RooRealVar*) fr30->floatParsFinal().find("b1"))->getError() << ";\n";
+        cd << "\tm030[\"" << sys << "\"] = " << ((RooRealVar*) fr30->floatParsFinal().find("m0"))->getVal() << ";\n";
+        cd << "\tm0er30[\"" << sys << "\"] = " << ((RooRealVar*) fr30->floatParsFinal().find("m0"))->getError() << ";\n";
+        cd << "\tm130[\"" << sys << "\"] = " << ((RooRealVar*) fr30->floatParsFinal().find("m1"))->getVal() << ";\n";
+        cd << "\tm1er30[\"" << sys << "\"] = " << ((RooRealVar*) fr30->floatParsFinal().find("m1"))->getError() << ";\n\n";
+        cd << "###40 GeV -----------\n";
+        cd << "\ta040[\"" << sys << "\"] = " << ((RooRealVar*) fr40->floatParsFinal().find("a0"))->getVal() << ";\n";
+        cd << "\ta0er40[\"" << sys << "\"] = " << ((RooRealVar*) fr40->floatParsFinal().find("a0"))->getError() << ";\n";
+        cd << "\ta140[\"" << sys << "\"] = " << ((RooRealVar*) fr40->floatParsFinal().find("a1"))->getVal() << ";\n";
+        cd << "\ta1er40[\"" << sys << "\"] = " << ((RooRealVar*) fr40->floatParsFinal().find("a1"))->getError() << ";\n";
+        cd << "\tb040[\"" << sys << "\"] = " << ((RooRealVar*) fr40->floatParsFinal().find("b0"))->getVal() << ";\n";
+        cd << "\tb0er40[\"" << sys << "\"] = " << ((RooRealVar*) fr40->floatParsFinal().find("b0"))->getError() << ";\n";
+        cd << "\tb140[\"" << sys << "\"] = " << ((RooRealVar*) fr40->floatParsFinal().find("b1"))->getVal() << ";\n";
+        cd << "\tb1er40[\"" << sys << "\"] = " << ((RooRealVar*) fr40->floatParsFinal().find("b1"))->getError() << ";\n";
+        cd << "\tm040[\"" << sys << "\"] = " << ((RooRealVar*) fr40->floatParsFinal().find("m0"))->getVal() << ";\n";
+        cd << "\tm0er40[\"" << sys << "\"] = " << ((RooRealVar*) fr40->floatParsFinal().find("m0"))->getError() << ";\n";
+        cd << "\tm140[\"" << sys << "\"] = " << ((RooRealVar*) fr40->floatParsFinal().find("m1"))->getVal() << ";\n";
+        cd << "\tm1er40[\"" << sys << "\"] = " << ((RooRealVar*) fr40->floatParsFinal().find("m1"))->getError() << ";\n\n";
+        cd << "###50 GeV -----------\n";
+        cd << "\ta050[\"" << sys << "\"] = " << ((RooRealVar*) fr50->floatParsFinal().find("a0"))->getVal() << ";\n";
+        cd << "\ta0er50[\"" << sys << "\"] = " << ((RooRealVar*) fr50->floatParsFinal().find("a0"))->getError() << ";\n";
+        cd << "\ta150[\"" << sys << "\"] = " << ((RooRealVar*) fr50->floatParsFinal().find("a1"))->getVal() << ";\n";
+        cd << "\ta1er50[\"" << sys << "\"] = " << ((RooRealVar*) fr50->floatParsFinal().find("a1"))->getError() << ";\n";
+        cd << "\tb050[\"" << sys << "\"] = " << ((RooRealVar*) fr50->floatParsFinal().find("b0"))->getVal() << ";\n";
+        cd << "\tb0er50[\"" << sys << "\"] = " << ((RooRealVar*) fr50->floatParsFinal().find("b0"))->getError() << ";\n";
+        cd << "\tb150[\"" << sys << "\"] = " << ((RooRealVar*) fr50->floatParsFinal().find("b1"))->getVal() << ";\n";
+        cd << "\tb1er50[\"" << sys << "\"] = " << ((RooRealVar*) fr50->floatParsFinal().find("b1"))->getError() << ";\n";
+        cd << "\tm050[\"" << sys << "\"] = " << ((RooRealVar*) fr50->floatParsFinal().find("m0"))->getVal() << ";\n";
+        cd << "\tm0er50[\"" << sys << "\"] = " << ((RooRealVar*) fr50->floatParsFinal().find("m0"))->getError() << ";\n";
+        cd << "\tm150[\"" << sys << "\"] = " << ((RooRealVar*) fr50->floatParsFinal().find("m1"))->getVal() << ";\n";
+        cd << "\tm1er50[\"" << sys << "\"] = " << ((RooRealVar*) fr50->floatParsFinal().find("m1"))->getError() << ";\n\n";
+        cd << "###60 GeV -----------\n";
+        cd << "\ta060[\"" << sys << "\"] = " << ((RooRealVar*) fr60->floatParsFinal().find("a0"))->getVal() << ";\n";
+        cd << "\ta0er60[\"" << sys << "\"] = " << ((RooRealVar*) fr60->floatParsFinal().find("a0"))->getError() << ";\n";
+        cd << "\ta160[\"" << sys << "\"] = " << ((RooRealVar*) fr60->floatParsFinal().find("a1"))->getVal() << ";\n";
+        cd << "\ta1er60[\"" << sys << "\"] = " << ((RooRealVar*) fr60->floatParsFinal().find("a1"))->getError() << ";\n";
+        cd << "\tb060[\"" << sys << "\"] = " << ((RooRealVar*) fr60->floatParsFinal().find("b0"))->getVal() << ";\n";
+        cd << "\tb0er60[\"" << sys << "\"] = " << ((RooRealVar*) fr60->floatParsFinal().find("b0"))->getError() << ";\n";
+        cd << "\tb160[\"" << sys << "\"] = " << ((RooRealVar*) fr60->floatParsFinal().find("b1"))->getVal() << ";\n";
+        cd << "\tb1er60[\"" << sys << "\"] = " << ((RooRealVar*) fr60->floatParsFinal().find("b1"))->getError() << ";\n";
+        cd << "\tm060[\"" << sys << "\"] = " << ((RooRealVar*) fr60->floatParsFinal().find("m0"))->getVal() << ";\n";
+        cd << "\tm0er60[\"" << sys << "\"] = " << ((RooRealVar*) fr60->floatParsFinal().find("m0"))->getError() << ";\n";
+        cd << "\tm160[\"" << sys << "\"] = " << ((RooRealVar*) fr60->floatParsFinal().find("m1"))->getVal() << ";\n";
+        cd << "\tm1er[\"" << sys << "\"] = " << ((RooRealVar*) fr60->floatParsFinal().find("m1"))->getError() << ";\n\n";
+
+        std::ofstream log2("cd_individual.C", std::ios_base::app | std::ios_base::out);
+        log2 << cd.str();
         return 1;
     }
 
@@ -1350,7 +1457,6 @@ int main(int argc, char** argv) {
 
     c4->SaveAs(sys + "Graph_TestParam.C");
 #endif
-
     return 0;
 }
 
