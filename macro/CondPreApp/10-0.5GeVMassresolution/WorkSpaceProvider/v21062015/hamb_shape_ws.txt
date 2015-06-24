@@ -1,0 +1,29 @@
+imax 1
+jmax 1  number of backgrounds
+kmax 11  number of nuisance parameters (sources of systematical uncertainties)
+
+------------
+shapes	signal	dimu	hamb-shapes-UnbinnedParam-Br-Data-fit.root w:signal
+shapes	bkg	dimu	hamb-shapes-UnbinnedParam-Br-Data-fit.root w:bkgshape
+shapes	data_obs	dimu	hamb-shapes-UnbinnedParam-Br-Data-fit.root w:data
+------------
+bin	dimu
+observation	-1.0
+------------
+bin	dimu	dimu
+process	signal	bkg
+process	0	1
+rate	1.0	1.0
+------------
+lumi_8TeV	lnN	1.026	-
+signal_norm	lnN	1.130	-
+JER	lnN	1.005/0.998	-
+JES	lnN	0.934/1.065	-
+PDF	lnN	0.989/1.008	-
+btag	lnN	0.969/1.031	-
+muon	lnN	0.958/1.042	-
+pileup	lnN	0.959	-
+a1	lnN	0.006	-
+b1	lnN	0.010	-
+m1	lnN	0.015	-
+pdfindex	discrete

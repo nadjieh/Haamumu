@@ -1,0 +1,97 @@
+variables
+---------
+(CMS_hgg_globalscale,CMS_hgg_mass,CMS_hgg_nuissancedeltamcat0,CMS_hgg_nuissancedeltasmearcat0,MH)
+
+p.d.f.s
+-------
+RooGaussian::hgg_gaus_g0_ggh_cat0[ x=CMS_hgg_mass mean=hgg_mean_g0_ggh_cat0 sigma=hgg_sigma_g0_ggh_cat0 ] = 0.982464
+RooGaussian::hgg_gaus_g0_tth_cat0[ x=CMS_hgg_mass mean=hgg_mean_g0_tth_cat0 sigma=hgg_sigma_g0_tth_cat0 ] = 0.596475
+RooGaussian::hgg_gaus_g0_vbf_cat0[ x=CMS_hgg_mass mean=hgg_mean_g0_vbf_cat0 sigma=hgg_sigma_g0_vbf_cat0 ] = 0.935725
+RooGaussian::hgg_gaus_g0_wzh_cat0[ x=CMS_hgg_mass mean=hgg_mean_g0_wzh_cat0 sigma=hgg_sigma_g0_wzh_cat0 ] = 0.998094
+RooGaussian::hgg_gaus_g1_ggh_cat0[ x=CMS_hgg_mass mean=hgg_mean_g1_ggh_cat0 sigma=hgg_sigma_g1_ggh_cat0 ] = 0.374921
+RooGaussian::hgg_gaus_g1_tth_cat0[ x=CMS_hgg_mass mean=hgg_mean_g1_tth_cat0 sigma=hgg_sigma_g1_tth_cat0 ] = 0.903406
+RooGaussian::hgg_gaus_g1_vbf_cat0[ x=CMS_hgg_mass mean=hgg_mean_g1_vbf_cat0 sigma=hgg_sigma_g1_vbf_cat0 ] = 0.508929
+RooGaussian::hgg_gaus_g1_wzh_cat0[ x=CMS_hgg_mass mean=hgg_mean_g1_wzh_cat0 sigma=hgg_sigma_g1_wzh_cat0 ] = 0.535305
+RooGaussian::hgg_gaus_g2_ggh_cat0[ x=CMS_hgg_mass mean=hgg_mean_g2_ggh_cat0 sigma=hgg_sigma_g2_ggh_cat0 ] = 0.66556
+RooGaussian::hgg_gaus_g2_tth_cat0[ x=CMS_hgg_mass mean=hgg_mean_g2_tth_cat0 sigma=hgg_sigma_g2_tth_cat0 ] = 0.518527
+RooGaussian::hgg_gaus_g2_vbf_cat0[ x=CMS_hgg_mass mean=hgg_mean_g2_vbf_cat0 sigma=hgg_sigma_g2_vbf_cat0 ] = 0.969128
+RooGaussian::hgg_gaus_g2_wzh_cat0[ x=CMS_hgg_mass mean=hgg_mean_g2_wzh_cat0 sigma=hgg_sigma_g2_wzh_cat0 ] = 0.964173
+RooGaussian::hgg_gaus_g3_tth_cat0[ x=CMS_hgg_mass mean=hgg_mean_g3_tth_cat0 sigma=hgg_sigma_g3_tth_cat0 ] = 0.633125
+RooAddPdf::hggpdfrel_ggh_cat0[ hist_func_frac_g0_ggh_cat0 * hgg_gaus_g0_ggh_cat0 + hist_func_frac_g1_ggh_cat0 * hgg_gaus_g1_ggh_cat0 + const_func_frac_g2_ggh_cat0 * hgg_gaus_g2_ggh_cat0 ] = 0.604097
+RooAddPdf::hggpdfrel_tth_cat0[ hist_func_frac_g0_tth_cat0 * hgg_gaus_g0_tth_cat0 + hist_func_frac_g1_tth_cat0 * hgg_gaus_g1_tth_cat0 + hist_func_frac_g2_tth_cat0 * hgg_gaus_g2_tth_cat0 + const_func_frac_g3_tth_cat0 * hgg_gaus_g3_tth_cat0 ] = 0.61844
+RooAddPdf::hggpdfrel_vbf_cat0[ hist_func_frac_g0_vbf_cat0 * hgg_gaus_g0_vbf_cat0 + hist_func_frac_g1_vbf_cat0 * hgg_gaus_g1_vbf_cat0 + const_func_frac_g2_vbf_cat0 * hgg_gaus_g2_vbf_cat0 ] = 0.622326
+RooAddPdf::hggpdfrel_wh_cat0[ hist_func_frac_g0_wzh_cat0 * hgg_gaus_g0_wzh_cat0 + hist_func_frac_g1_wzh_cat0 * hgg_gaus_g1_wzh_cat0 + const_func_frac_g2_wzh_cat0 * hgg_gaus_g2_wzh_cat0 ] = 0.58176
+RooAddPdf::hggpdfrel_zh_cat0[ hist_func_frac_g0_wzh_cat0 * hgg_gaus_g0_wzh_cat0 + hist_func_frac_g1_wzh_cat0 * hgg_gaus_g1_wzh_cat0 + const_func_frac_g2_wzh_cat0 * hgg_gaus_g2_wzh_cat0 ] = 0.58176
+
+functions
+--------
+
+RooFormulaVar::const_func_frac_g2_ggh_cat0[ actualVars=(hist_func_frac_g0_ggh_cat0,hist_func_frac_g1_ggh_cat0) formula="1.-@0-@1" ] = 0.69567
+RooFormulaVar::const_func_frac_g2_vbf_cat0[ actualVars=(hist_func_frac_g0_vbf_cat0,hist_func_frac_g1_vbf_cat0) formula="1.-@0-@1" ] = 0.00280496
+RooFormulaVar::const_func_frac_g2_wzh_cat0[ actualVars=(hist_func_frac_g0_wzh_cat0,hist_func_frac_g1_wzh_cat0) formula="1.-@0-@1" ] = 0.00265093
+RooFormulaVar::const_func_frac_g3_tth_cat0[ actualVars=(hist_func_frac_g0_tth_cat0,hist_func_frac_g1_tth_cat0,hist_func_frac_g2_tth_cat0) formula="1.-@0-@1-@2" ] = 0.00332199
+RooFormulaVar::hgg_mean_g0_ggh_cat0[ actualVars=(MH,hist_func_dm_g0_ggh_cat0,CMS_hgg_globalscale,CMS_hgg_nuissancedeltamcat0) formula="@0+@1+@0*(@2+@3)" ] = 147.902
+RooFormulaVar::hgg_mean_g0_tth_cat0[ actualVars=(MH,hist_func_dm_g0_tth_cat0,CMS_hgg_globalscale,CMS_hgg_nuissancedeltamcat0) formula="@0+@1+@0*(@2+@3)" ] = 141.899
+RooFormulaVar::hgg_mean_g0_vbf_cat0[ actualVars=(MH,hist_func_dm_g0_vbf_cat0,CMS_hgg_globalscale,CMS_hgg_nuissancedeltamcat0) formula="@0+@1+@0*(@2+@3)" ] = 149.343
+RooFormulaVar::hgg_mean_g0_wzh_cat0[ actualVars=(MH,hist_func_dm_g0_wzh_cat0,CMS_hgg_globalscale,CMS_hgg_nuissancedeltamcat0) formula="@0+@1+@0*(@2+@3)" ] = 148.64
+RooFormulaVar::hgg_mean_g1_ggh_cat0[ actualVars=(MH,hist_func_dm_g1_ggh_cat0,CMS_hgg_globalscale,CMS_hgg_nuissancedeltamcat0) formula="@0+@1+@0*(@2+@3)" ] = 149.848
+RooFormulaVar::hgg_mean_g1_tth_cat0[ actualVars=(MH,hist_func_dm_g1_tth_cat0,CMS_hgg_globalscale,CMS_hgg_nuissancedeltamcat0) formula="@0+@1+@0*(@2+@3)" ] = 149.473
+RooFormulaVar::hgg_mean_g1_vbf_cat0[ actualVars=(MH,hist_func_dm_g1_vbf_cat0,CMS_hgg_globalscale,CMS_hgg_nuissancedeltamcat0) formula="@0+@1+@0*(@2+@3)" ] = 150.001
+RooFormulaVar::hgg_mean_g1_wzh_cat0[ actualVars=(MH,hist_func_dm_g1_wzh_cat0,CMS_hgg_globalscale,CMS_hgg_nuissancedeltamcat0) formula="@0+@1+@0*(@2+@3)" ] = 149.988
+RooFormulaVar::hgg_mean_g2_ggh_cat0[ actualVars=(MH,hist_func_dm_g2_ggh_cat0,CMS_hgg_globalscale,CMS_hgg_nuissancedeltamcat0) formula="@0+@1+@0*(@2+@3)" ] = 149.927
+RooFormulaVar::hgg_mean_g2_tth_cat0[ actualVars=(MH,hist_func_dm_g2_tth_cat0,CMS_hgg_globalscale,CMS_hgg_nuissancedeltamcat0) formula="@0+@1+@0*(@2+@3)" ] = 149.978
+RooFormulaVar::hgg_mean_g2_vbf_cat0[ actualVars=(MH,hist_func_dm_g2_vbf_cat0,CMS_hgg_globalscale,CMS_hgg_nuissancedeltamcat0) formula="@0+@1+@0*(@2+@3)" ] = 150.728
+RooFormulaVar::hgg_mean_g2_wzh_cat0[ actualVars=(MH,hist_func_dm_g2_wzh_cat0,CMS_hgg_globalscale,CMS_hgg_nuissancedeltamcat0) formula="@0+@1+@0*(@2+@3)" ] = 151.453
+RooFormulaVar::hgg_mean_g3_tth_cat0[ actualVars=(MH,hist_func_dm_g3_tth_cat0,CMS_hgg_globalscale,CMS_hgg_nuissancedeltamcat0) formula="@0+@1+@0*(@2+@3)" ] = 159
+RooFormulaVar::hgg_sigma_g0_ggh_cat0[ actualVars=(hist_func_sigma_g0_ggh_cat0,MH,CMS_hgg_constsmearcat0,CMS_hgg_nuissancedeltasmearcat0) formula="TMath::Sqrt(TMath::Power(@0,2)-TMath::Power(@1*@2,2)+TMath::Power(@1*(@2+@3),2))" ] = 3.08584
+RooFormulaVar::hgg_sigma_g0_tth_cat0[ actualVars=(hist_func_sigma_g0_tth_cat0,MH,CMS_hgg_constsmearcat0,CMS_hgg_nuissancedeltasmearcat0) formula="TMath::Sqrt(TMath::Power(@0,2)-TMath::Power(@1*@2,2)+TMath::Power(@1*(@2+@3),2))" ] = 6.47594
+RooFormulaVar::hgg_sigma_g0_vbf_cat0[ actualVars=(hist_func_sigma_g0_vbf_cat0,MH,CMS_hgg_constsmearcat0,CMS_hgg_nuissancedeltasmearcat0) formula="TMath::Sqrt(TMath::Power(@0,2)-TMath::Power(@1*@2,2)+TMath::Power(@1*(@2+@3),2))" ] = 2.36106
+RooFormulaVar::hgg_sigma_g0_wzh_cat0[ actualVars=(hist_func_sigma_g0_wzh_cat0,MH,CMS_hgg_constsmearcat0,CMS_hgg_nuissancedeltasmearcat0) formula="TMath::Sqrt(TMath::Power(@0,2)-TMath::Power(@1*@2,2)+TMath::Power(@1*(@2+@3),2))" ] = 2.55217
+RooFormulaVar::hgg_sigma_g1_ggh_cat0[ actualVars=(hist_func_sigma_g1_ggh_cat0,MH,CMS_hgg_constsmearcat0,CMS_hgg_nuissancedeltasmearcat0) formula="TMath::Sqrt(TMath::Power(@0,2)-TMath::Power(@1*@2,2)+TMath::Power(@1*(@2+@3),2))" ] = 0.974998
+RooFormulaVar::hgg_sigma_g1_tth_cat0[ actualVars=(hist_func_sigma_g1_tth_cat0,MH,CMS_hgg_constsmearcat0,CMS_hgg_nuissancedeltasmearcat0) formula="TMath::Sqrt(TMath::Power(@0,2)-TMath::Power(@1*@2,2)+TMath::Power(@1*(@2+@3),2))" ] = 2.19868
+RooFormulaVar::hgg_sigma_g1_vbf_cat0[ actualVars=(hist_func_sigma_g1_vbf_cat0,MH,CMS_hgg_constsmearcat0,CMS_hgg_nuissancedeltasmearcat0) formula="TMath::Sqrt(TMath::Power(@0,2)-TMath::Power(@1*@2,2)+TMath::Power(@1*(@2+@3),2))" ] = 1.30665
+RooFormulaVar::hgg_sigma_g1_wzh_cat0[ actualVars=(hist_func_sigma_g1_wzh_cat0,MH,CMS_hgg_constsmearcat0,CMS_hgg_nuissancedeltasmearcat0) formula="TMath::Sqrt(TMath::Power(@0,2)-TMath::Power(@1*@2,2)+TMath::Power(@1*(@2+@3),2))" ] = 1.34646
+RooFormulaVar::hgg_sigma_g2_ggh_cat0[ actualVars=(hist_func_sigma_g2_ggh_cat0,MH,CMS_hgg_constsmearcat0,CMS_hgg_nuissancedeltasmearcat0) formula="TMath::Sqrt(TMath::Power(@0,2)-TMath::Power(@1*@2,2)+TMath::Power(@1*(@2+@3),2))" ] = 1.6005
+RooFormulaVar::hgg_sigma_g2_tth_cat0[ actualVars=(hist_func_sigma_g2_tth_cat0,MH,CMS_hgg_constsmearcat0,CMS_hgg_nuissancedeltasmearcat0) formula="TMath::Sqrt(TMath::Power(@0,2)-TMath::Power(@1*@2,2)+TMath::Power(@1*(@2+@3),2))" ] = 1.30501
+RooFormulaVar::hgg_sigma_g2_vbf_cat0[ actualVars=(hist_func_sigma_g2_vbf_cat0,MH,CMS_hgg_constsmearcat0,CMS_hgg_nuissancedeltasmearcat0) formula="TMath::Sqrt(TMath::Power(@0,2)-TMath::Power(@1*@2,2)+TMath::Power(@1*(@2+@3),2))" ] = 8.96554
+RooFormulaVar::hgg_sigma_g2_wzh_cat0[ actualVars=(hist_func_sigma_g2_wzh_cat0,MH,CMS_hgg_constsmearcat0,CMS_hgg_nuissancedeltasmearcat0) formula="TMath::Sqrt(TMath::Power(@0,2)-TMath::Power(@1*@2,2)+TMath::Power(@1*(@2+@3),2))" ] = 10.9983
+RooFormulaVar::hgg_sigma_g3_tth_cat0[ actualVars=(hist_func_sigma_g3_tth_cat0,MH,CMS_hgg_constsmearcat0,CMS_hgg_nuissancedeltasmearcat0) formula="TMath::Sqrt(TMath::Power(@0,2)-TMath::Power(@1*@2,2)+TMath::Power(@1*(@2+@3),2))" ] = 11
+RooHistFunc::hggpdfrel_ggh_cat0_norm[ depList=(MH) depList=(MH) ] = 0.000248634
+RooHistFunc::hggpdfrel_tth_cat0_norm[ depList=(MH) depList=(MH) ] = 7.16031e-06
+RooHistFunc::hggpdfrel_vbf_cat0_norm[ depList=(MH) depList=(MH) ] = 4.11582e-05
+RooHistFunc::hggpdfrel_wh_cat0_norm[ depList=(MH) depList=(MH) ] = 3.5926e-05
+RooHistFunc::hggpdfrel_zh_cat0_norm[ depList=(MH) depList=(MH) ] = 3.5926e-05
+RooHistFunc::hist_func_dm_g0_ggh_cat0[ depList=(MH) depList=(MH) ] = -2.09799
+RooHistFunc::hist_func_dm_g0_tth_cat0[ depList=(MH) depList=(MH) ] = -8.10085
+RooHistFunc::hist_func_dm_g0_vbf_cat0[ depList=(MH) depList=(MH) ] = -0.656901
+RooHistFunc::hist_func_dm_g0_wzh_cat0[ depList=(MH) depList=(MH) ] = -1.3599
+RooHistFunc::hist_func_dm_g1_ggh_cat0[ depList=(MH) depList=(MH) ] = -0.151811
+RooHistFunc::hist_func_dm_g1_tth_cat0[ depList=(MH) depList=(MH) ] = -0.526502
+RooHistFunc::hist_func_dm_g1_vbf_cat0[ depList=(MH) depList=(MH) ] = 0.0011545
+RooHistFunc::hist_func_dm_g1_wzh_cat0[ depList=(MH) depList=(MH) ] = -0.012238
+RooHistFunc::hist_func_dm_g2_ggh_cat0[ depList=(MH) depList=(MH) ] = -0.0733095
+RooHistFunc::hist_func_dm_g2_tth_cat0[ depList=(MH) depList=(MH) ] = -0.0218736
+RooHistFunc::hist_func_dm_g2_vbf_cat0[ depList=(MH) depList=(MH) ] = 0.72776
+RooHistFunc::hist_func_dm_g2_wzh_cat0[ depList=(MH) depList=(MH) ] = 1.45342
+RooHistFunc::hist_func_dm_g3_tth_cat0[ depList=(MH) depList=(MH) ] = 8.99985
+RooHistFunc::hist_func_frac_g0_ggh_cat0[ depList=(MH) depList=(MH) ] = 0.0444197
+RooHistFunc::hist_func_frac_g0_tth_cat0[ depList=(MH) depList=(MH) ] = 0.007311
+RooHistFunc::hist_func_frac_g0_vbf_cat0[ depList=(MH) depList=(MH) ] = 0.262669
+RooHistFunc::hist_func_frac_g0_wzh_cat0[ depList=(MH) depList=(MH) ] = 0.097922
+RooHistFunc::hist_func_frac_g1_ggh_cat0[ depList=(MH) depList=(MH) ] = 0.25991
+RooHistFunc::hist_func_frac_g1_tth_cat0[ depList=(MH) depList=(MH) ] = 0.257128
+RooHistFunc::hist_func_frac_g1_vbf_cat0[ depList=(MH) depList=(MH) ] = 0.734526
+RooHistFunc::hist_func_frac_g1_wzh_cat0[ depList=(MH) depList=(MH) ] = 0.899427
+RooHistFunc::hist_func_frac_g2_tth_cat0[ depList=(MH) depList=(MH) ] = 0.732239
+RooHistFunc::hist_func_sigma_g0_ggh_cat0[ depList=(MH) depList=(MH) ] = 3.08584
+RooHistFunc::hist_func_sigma_g0_tth_cat0[ depList=(MH) depList=(MH) ] = 6.47594
+RooHistFunc::hist_func_sigma_g0_vbf_cat0[ depList=(MH) depList=(MH) ] = 2.36106
+RooHistFunc::hist_func_sigma_g0_wzh_cat0[ depList=(MH) depList=(MH) ] = 2.55217
+RooHistFunc::hist_func_sigma_g1_ggh_cat0[ depList=(MH) depList=(MH) ] = 0.974998
+RooHistFunc::hist_func_sigma_g1_tth_cat0[ depList=(MH) depList=(MH) ] = 2.19868
+RooHistFunc::hist_func_sigma_g1_vbf_cat0[ depList=(MH) depList=(MH) ] = 1.30665
+RooHistFunc::hist_func_sigma_g1_wzh_cat0[ depList=(MH) depList=(MH) ] = 1.34646
+RooHistFunc::hist_func_sigma_g2_ggh_cat0[ depList=(MH) depList=(MH) ] = 1.6005
+RooHistFunc::hist_func_sigma_g2_tth_cat0[ depList=(MH) depList=(MH) ] = 1.30501
+RooHistFunc::hist_func_sigma_g2_vbf_cat0[ depList=(MH) depList=(MH) ] = 8.96554
+RooHistFunc::hist_func_sigma_g3_tth_cat0[ depList=(MH) depList=(MH) ] = 11
